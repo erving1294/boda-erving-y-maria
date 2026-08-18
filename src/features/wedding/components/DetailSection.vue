@@ -3,136 +3,121 @@ import invitationCard from "../../../assets/images/sobre_verde.webp";
 import paperWedding from "../../../assets/images/papel_boda.jpg";
 import sealUrl from "../../../assets/images/Sello.png";
 </script>
+
 <template>
   <section id="detailSection" class="w-full h-[728px] relative overflow-hidden">
+    <!-- Marble Texture Background Layer -->
     <div
       class="bg-texture-marmol absolute inset-0 rounded-[inherit] border-0"
-      style="corner-shape: inherit"
     ></div>
+
+    <!-- Multiply Overlay Layer -->
     <div
-      style="
-        mix-blend-mode: multiply;
-        background-color: #faf5eb69;
-        flex: none;
-        width: 100%;
-        position: absolute;
-        top: 0%;
-        left: 0%;
-      "
-      class=""
+      class="absolute inset-0 mix-blend-multiply bg-[#faf5eb]/40 flex-none"
     ></div>
+
+    <!-- Outer Card Wrapper -->
     <div
-      class="max-sm:!top-[75px] max-sm:!w-[340px]"
-      style="
-        width: 446px;
-        height: 494px;
-        position: absolute;
-        top: 79px;
-        left: calc(50% - 223px);
-        overflow: visible;
-      "
+      class="absolute top-[79px] left-[calc(50%-223px)] w-[446px] h-[494px] overflow-visible max-sm:!top-[75px] max-sm:!w-[340px]"
     >
+      <!-- Envelope Image -->
       <img
         :src="invitationCard"
         alt="Invitation Card"
         class="w-[340px] h-full object-cover max-sm:!h-[480px]"
       />
+
+      <!-- Inner Invitation Paper Card (Overlapping) -->
       <article
-        class="max-sm:!w-[340px] max-sm:!h-[520px] max-sm:!bottom-[-100px] max-sm:!right-[-52px]"
-        style="
-          filter: brightness() drop-shadow(2px 2px 4px #00000040);
-          flex: none;
-          width: 460px;
-          height: 550px;
-          position: absolute;
-          bottom: -110px;
-          right: -24px;
-          overflow: visible;
-        "
+        class="absolute bottom-[-110px] right-[-24px] flex-none w-[460px] h-[550px] overflow-visible filter drop-shadow-[2px_2px_4px_rgba(0,0,0,0.25)] max-sm:!w-[340px] max-sm:!h-[520px] max-sm:!bottom-[-100px] max-sm:!right-[-52px]"
       >
-        <div
-          style="
-            position: absolute;
-            border-radius: inherit;
-            corner-shape: inherit;
-            inset: 0px;
-          "
-        >
+        <!-- Paper Texture Background -->
+        <div class="absolute inset-0 rounded-[inherit]">
           <img
             :src="paperWedding"
             alt="Paper Wedding"
-            style="
-              display: block;
-              width: 100%;
-              height: 100%;
-              border-radius: inherit;
-              corner-shape: inherit;
-              object-position: center center;
-              object-fit: contain;
-            "
+            class="block w-full h-full rounded-[inherit] object-center object-contain"
           />
         </div>
+
+        <!-- Wax Seal (Centered Top) -->
         <div
-          style="
-            width: 70px;
-            height: 74px;
-            position: absolute;
-            top: -20px;
-            left: calc(50% - 35px);
-            overflow: visible;
-          "
+          class="absolute top-[-20px] left-[calc(50%-35px)] w-[70px] h-[74px] overflow-visible"
         >
-          <div
-            style="
-              position: absolute;
-              border-radius: inherit;
-              corner-shape: inherit;
-              inset: 0px;
-            "
-          >
+          <div class="absolute inset-0 rounded-[inherit]">
             <img
               decoding="auto"
               loading="lazy"
               width="100"
               height="100"
-              alt=""
-              style="
-                display: block;
-                width: 100%;
-                height: 100%;
-                border-radius: inherit;
-                corner-shape: inherit;
-                object-position: center center;
-                object-fit: cover;
-              "
+              alt="Sello de cera"
+              class="block w-full h-full rounded-[inherit] object-center object-cover"
               :src="sealUrl"
             />
           </div>
         </div>
+
+        <!-- Invitation Details Content -->
         <div
-          class="text-center"
-          style="
-            height: min-content;
-            z-index: 1;
-            flex-flow: column;
-            flex: none;
-            place-content: center;
-            align-items: center;
-            gap: 18px;
-            width: 299px;
-            padding: 10px;
-            display: flex;
-            position: absolute;
-            top: 53%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-          "
+          class="text-center absolute top-[53%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col justify-center items-center gap-3.5 w-[299px] h-min p-[10px]"
         >
-          <p class="text-3xl font-semibold font-new-icon">Erving & María</p>
-          <p>Tenemos el honor de invitarlos a celebrar nuestra Boda.</p>
-          <p>Que se celebrará el próximo</p>
-          <p class="text-2xl">21 · 11 · 2026</p>
-          <p>En Pachacamac, Lima</p>
+          <!-- Names Layout -->
+          <div class="flex flex-col items-center justify-center w-full mb-1">
+            <span class="font-new-icon text-4xl text-primary uppercase"
+              >Ervíng</span
+            >
+            <span
+              class="font-cookie text-xl text-secondary lowercase italic my-0.5"
+              >&</span
+            >
+            <span class="font-new-icon text-4xl text-primary uppercase"
+              >María</span
+            >
+          </div>
+
+          <!-- Invite phrase -->
+          <p
+            class="font-inria text-sm tracking-[0.1em] text-slate-muted leading-normal max-w-[240px]"
+          >
+            Tenemos el honor de invitarlos a celebrar nuestro matrimonio.
+          </p>
+          <p
+            class="font-inria text-sm tracking-[0.1em] text-slate-muted leading-normal max-w-[240px]"
+          >
+            Que se celebrará el próximo
+          </p>
+
+          <!-- Date Block (Reference Style) -->
+          <div
+            class="flex items-center justify-center w-full my-2 font-inria text-slate-muted select-none"
+          >
+            <!-- Left Side (Day of the week) -->
+            <div
+              class="flex-1 border-y border-primary py-2.5 text-xs tracking-[0.15em] uppercase text-center text-slate-muted"
+            >
+              Sábado
+            </div>
+            <!-- Center (Day number and Month) -->
+            <div
+              class="px-4 flex flex-col justify-center items-center min-w-[80px]"
+            >
+              <span class="text-3xl font-semibold text-primary leading-none"
+                >21</span
+              >
+              <span
+                class="text-[9px] tracking-[0.15em] uppercase font-bold text-primary mt-1.5 leading-none"
+                >Noviembre</span
+              >
+            </div>
+            <!-- Right Side (Time) -->
+            <div
+              class="flex-1 border-y border-primary py-2.5 text-xs tracking-[0.12em] uppercase text-center text-slate-muted"
+            >
+              4:00 PM
+            </div>
+          </div>
+
+          <!-- Venue & Location Address -->
         </div>
       </article>
     </div>

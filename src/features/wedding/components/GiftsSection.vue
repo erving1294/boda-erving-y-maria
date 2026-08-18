@@ -1,144 +1,89 @@
 <template>
   <section
     id="gifts"
-    class="bg-texture-flores py-20 bg-ivory-dark/30 select-none"
+    class="bg-texture-flores py-24 select-none"
     data-aos="fade-up"
   >
     <div class="max-w-4xl mx-auto px-6">
-      <div class="text-center mb-12">
-        <h3 class="text-4xl md:text-5xl font-cookie text-primary">
-          Muestras de Afecto
-        </h3>
-        <div class="w-12 h-[1px] bg-gold mx-auto mt-4"></div>
-      </div>
-
-      <p
-        class="font-serif italic text-sm text-slate-muted text-center max-w-xl mx-auto mb-12"
+      <!-- Arched Card Container with paper texture for volume -->
+      <div
+        class="arched-card max-w-md mx-auto rounded-t-[180px] p-8 md:p-12 text-center relative flex flex-col items-center justify-center border border-gold/15"
       >
-        "El mejor regalo que nos puedes dar es tu presencia compartiendo este
-        gran día con nosotros. Si, sin embargo, deseas realizarnos un obsequio,
-        ponemos a tu disposición estas opciones:"
-      </p>
+        <!-- Header Text -->
+        <h4 class="title text-4xl mt-6 mb-2 max-sm:mt-8">Mesa de Regalos</h4>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-        <!-- LLUVIA DE SOBRES -->
-        <PaperCard shape="left" is-white>
-          <div class="flex flex-col items-center">
-            <!-- Mail / Envelope Icon -->
-            <div
-              class="w-12 h-12 bg-tertiary/20 rounded-full flex justify-center items-center text-primary border border-gold/20 mb-6"
-            >
-              <svg
-                class="w-6 h-6 fill-none stroke-current stroke-[1.5]"
-                viewBox="0 0 24 24"
-              >
-                <rect x="2" y="4" width="20" height="16" rx="2" />
-                <path d="M22 7l-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-              </svg>
-            </div>
+        <!-- Gift GIF Icon -->
+        <img :src="GiftGif" class="icon" />
 
-            <h4 class="font-new-icon text-xl text-primary font-bold mb-4">
-              Lluvia de Sobres
-            </h4>
-            <p class="font-inria text-sm text-slate-muted leading-relaxed">
-              Consiste en la entrega de tu regalo en efectivo dentro de un sobre
-              cerrado el día del evento. En el salón de fiestas Avril
-              encontrarás un buzón especial decorado para depositarlos de forma
-              segura.
-            </p>
-          </div>
+        <!-- Paragraph -->
+        <p
+          class="font-inria text-base text-slate-muted leading-relaxed mb-6 max-w-xs mx-auto"
+        >
+          El mejor regalo es que nos acompañes en este día tan especial, pero si
+          desean tener un detalle con nosotros, pueden hacerlo a través de:
+        </p>
 
-          <div class="w-full h-[1px] bg-gold/20 my-6"></div>
-
-          <span
-            class="text-xs uppercase tracking-widest font-semibold text-secondary"
-            >Tradicional</span
+        <!-- Account details container -->
+        <div class="w-full max-w-[320px] mx-auto space-y-3 text-xs">
+          <!-- Cuenta Box -->
+          <div
+            class="flex justify-between items-center border border-secondary rounded-xl p-3.5 transition duration-200"
           >
-        </PaperCard>
-
-        <!-- TRANSFERENCIA BANCARIA -->
-        <PaperCard shape="right" is-white>
-          <div class="w-full flex flex-col items-center">
-            <!-- Bank Card Icon -->
-            <div
-              class="w-12 h-12 bg-tertiary/20 rounded-full flex justify-center items-center text-primary border border-gold/20 mb-6"
-            >
-              <svg
-                class="w-6 h-6 fill-none stroke-current stroke-[1.5]"
-                viewBox="0 0 24 24"
+            <div class="flex flex-col text-left">
+              <span
+                class="text-[9px] uppercase tracking-wider text-slate-muted font-bold"
+                >Número de Cuenta</span
               >
-                <rect x="2" y="5" width="20" height="14" rx="2" />
-                <line x1="2" y1="10" x2="22" y2="10" />
-              </svg>
+              <span
+                class="font-mono font-semibold text-slate-dark text-xs mt-0.5"
+                >{{ cuenta }}</span
+              >
             </div>
-
-            <h4 class="font-new-icon text-xl text-primary font-bold mb-6">
-              Transferencia Bancaria
-            </h4>
-
-            <!-- Bank Account Box -->
-            <div
-              class="w-full bg-[#faf7f3]/50 border border-gold/20 rounded-2xl p-4 space-y-3 text-xs md:text-sm text-slate-dark relative"
+            <button
+              @click="copyText(cuenta, 'cuenta')"
+              class="px-3 py-1.5 text-[9px] uppercase font-bold text-white bg-secondary hover:bg-secondary rounded transition duration-200 shadow-sm"
             >
-              <div
-                class="flex justify-between items-center py-1 border-b border-gold/10"
-              >
-                <span
-                  class="text-slate-muted uppercase font-semibold text-[10px] tracking-wide"
-                  >Banco</span
-                >
-                <span class="font-semibold text-right">Banco de la Nación</span>
-              </div>
+              {{ copiedField === "cuenta" ? "Copiado" : "Copiar" }}
+            </button>
+          </div>
 
-              <div
-                class="flex justify-between items-center py-1 border-b border-gold/10"
+          <!-- CCI Box -->
+          <div
+            class="flex justify-between items-center border border-secondary rounded-xl p-3.5 transition duration-200"
+          >
+            <div class="flex flex-col text-left">
+              <span
+                class="text-[9px] uppercase tracking-wider text-slate-muted font-bold"
+                >Cuenta Interbancaria (CCI)</span
               >
-                <span
-                  class="text-slate-muted uppercase font-semibold text-[10px] tracking-wide"
-                  >Alias</span
-                >
-                <div class="flex items-center gap-2">
-                  <span class="font-mono font-semibold">{{ alias }}</span>
-                  <button
-                    @click="copyText(alias, 'alias')"
-                    class="px-2 py-0.5 text-[10px] uppercase font-bold text-white bg-primary hover:bg-secondary rounded transition duration-200"
-                  >
-                    {{ copiedField === "alias" ? "Copiado" : "Copiar" }}
-                  </button>
-                </div>
-              </div>
-
-              <div
-                class="flex justify-between items-center py-1 border-b border-gold/10"
+              <span
+                class="font-mono font-semibold text-slate-dark text-[11px] mt-0.5"
+                >{{ cci }}</span
               >
-                <span
-                  class="text-slate-muted uppercase font-semibold text-[10px] tracking-wide"
-                  >CBU / IBAN</span
-                >
-                <div class="flex items-center gap-2">
-                  <span
-                    class="font-mono font-semibold text-[11px] md:text-xs"
-                    >{{ cbu }}</span
-                  >
-                  <button
-                    @click="copyText(cbu, 'cbu')"
-                    class="px-2 py-0.5 text-[10px] uppercase font-bold text-white bg-primary hover:bg-secondary rounded transition duration-200"
-                  >
-                    {{ copiedField === "cbu" ? "Copiado" : "Copiar" }}
-                  </button>
-                </div>
-              </div>
+            </div>
+            <button
+              @click="copyText(cci, 'cci')"
+              class="px-3 py-1.5 text-[9px] uppercase font-bold text-white bg-secondary hover:bg-secondary rounded transition duration-200 shadow-sm"
+            >
+              {{ copiedField === "cci" ? "Copiado" : "Copiar" }}
+            </button>
+          </div>
 
-              <div class="flex justify-between items-center py-1">
-                <span
-                  class="text-slate-muted uppercase font-semibold text-[10px] tracking-wide"
-                  >Titulares</span
-                >
-                <span class="font-semibold text-right">Ervíng y María</span>
-              </div>
+          <!-- Titular Box -->
+          <div
+            class="flex justify-between items-center border border-secondary rounded-xl p-3.5"
+          >
+            <div class="flex flex-col text-left">
+              <span
+                class="text-[9px] uppercase tracking-wider text-slate-muted font-bold"
+                >Titular</span
+              >
+              <span class="font-semibold text-slate-dark text-xs mt-0.5"
+                >Ervíng y María</span
+              >
             </div>
           </div>
-        </PaperCard>
+        </div>
       </div>
     </div>
 
@@ -156,10 +101,10 @@
 
 <script setup>
 import { ref } from "vue";
-import PaperCard from "../../../components/PaperCard.vue";
+import GiftGif from "../../../assets/images/gifs/gift.gif";
 
-const alias = "erving.y.maria.boda";
-const cbu = "0110123456789012345678";
+const cuenta = "193-98765432-0-12";
+const cci = "002-193-0098765432012-14";
 
 const copiedField = ref(null);
 const showToast = ref(false);
@@ -199,6 +144,20 @@ const triggerToast = (fieldName) => {
 </script>
 
 <style scoped>
+.arched-card {
+  position: relative;
+  background-color: #faf7f3;
+  /* Use papel_boda_blanco.jpg to give it texture and volume */
+
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow:
+    0 20px 40px -15px rgba(74, 99, 96, 0.2),
+    inset 0 0 45px rgba(191, 168, 128, 0.04),
+    0 25px 50px -12px rgba(0, 0, 0, 0.08);
+}
+
 .toast-fade-enter-active,
 .toast-fade-leave-active {
   transition:

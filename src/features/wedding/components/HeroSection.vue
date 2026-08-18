@@ -166,18 +166,14 @@
 
       <!-- Love Quote with Decorative Quotations -->
       <div
-        class="max-w-md mx-auto text-white/95 text-sm md:text-base px-6 animate-fade-in delay-500 flex flex-col items-center"
+        class="max-w-md mx-auto !text-white text-sm md:text-base animate-fade-in delay-500 flex flex-col items-center"
       >
-        <span class="text-3xl font-serif text-[#6A8067] leading-none mb-1"
-          >“</span
+        <p
+          class="font-inria text-white text-xl font-light tracking-wide leading-relaxed"
         >
-        <p class="font-inria text-xl font-light tracking-wide leading-relaxed">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa minima
           ab voluptatum, possimus voluptatem laborum asperiores.
         </p>
-        <span class="text-3xl font-serif text-[#6A8067] leading-none mt-2"
-          >”</span
-        >
       </div>
 
       <!-- Arrow down below the quote -->

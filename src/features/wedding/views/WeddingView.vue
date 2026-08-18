@@ -16,48 +16,34 @@
       <DetailSection />
       <!-- 3. Contador -->
       <CountdownSection />
-
-      <!-- 4. Padres -->
-      <!-- <ParentsSection /> -->
-
       <!-- 5. Invitados (Pase de invitados) -->
       <!-- <GuestsSection :guest-name="guestName" :passes="passes" /> -->
 
       <!-- 6. Ubicaciones -->
       <LocationsSection />
 
-      <!-- 7. Itinerario / Timeline -->
-      <!-- <TimelineSection /> -->
-
-      <!-- 8. Nuestra Historia (Carrusel Swiper) -->
-      <!-- <HistorySection /> -->
-
       <!-- 9. Regalos -->
-      <!-- <GiftsSection /> -->
+      <GiftsSection />
 
       <!-- 10. Código de Vestimenta -->
-      <!-- <DressCodeSection /> -->
+      <DressCodeSection />
+      <HistorySection />
       <BannerImage />
+
       <!-- 11. Confirmar Asistencia -->
       <RsvpSection />
 
       <!-- 13. Footer -->
       <footer
-        class="bg-slate-dark text-ivory py-16 text-center select-none border-t border-gold/10"
+        class="bg-primary text-ivory py-16 text-center select-none border-t border-gold/10"
       >
         <div class="max-w-md mx-auto px-6">
-          <h2
-            class="font-serif text-3xl text-gold mb-6 uppercase tracking-wider"
-          >
-            Ervíng & María
-          </h2>
-          <p
-            class="font-serif italic text-base text-gold-light/90 max-w-xs mx-auto mb-8"
-          >
+          <h2 class="title !font-new-icon !text-white">Ervíng & María</h2>
+          <p class="font-serif italic text-xl text-white max-w-xs mx-auto mb-8">
             "Donde tú vayas, yo iré; donde tú vivas, yo viviré."
           </p>
-          <div class="w-12 h-[1px] bg-white/20 mx-auto mb-6"></div>
-          <p class="text-[10px] text-slate-muted tracking-widest uppercase">
+          <div class="w-12 h-[1px] bg-white mx-auto mb-6"></div>
+          <p class="text-[10px] text-white tracking-widest uppercase">
             © 2026 Ervíng & María. Todos los derechos reservados.
           </p>
         </div>

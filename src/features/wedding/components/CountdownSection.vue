@@ -1,7 +1,7 @@
 <template>
   <section
     id="countdown"
-    class="bg-texture-flores py-16 bg-white text-center select-none flex flex-wrap max-lg:flex-col items-center lg:pr-[100px] lg:pl-[100px]"
+    class="bg-texture-white py-16 bg-white text-center select-none flex flex-wrap max-lg:flex-col items-center lg:pr-[100px] lg:pl-[100px]"
     data-aos="fade-up"
     style="
       border-radius: inherit;
@@ -15,14 +15,14 @@
       <div class="h-[550px] w-[360px] relative m-auto">
         <!-- Foto 1 (Rotada a la derecha) -->
         <PolaroidPhoto
-          src="https://framerusercontent.com/images/mYv7ruPie11r2G7Cn5kLgcJ0rL4.jpg?width=4000&amp;height=6000"
+          :src="PolaroidTwo"
           alt="Novios mano a mano 1"
           class="absolute left-0 top-0 w-[216px] h-[283px] rotate-[13deg] z-[1] max-sm:!left-[43px]"
         />
 
         <!-- Foto 2 (Rotada a la izquierda) -->
         <PolaroidPhoto
-          src="https://framerusercontent.com/images/mYv7ruPie11r2G7Cn5kLgcJ0rL4.jpg?width=4000&amp;height=6000"
+          :src="PolaroidOne"
           alt="Novios mano a mano 2"
           class="absolute bottom-[72px] right-[35px] w-[216px] h-[283px] rotate-[-3deg] z-[1] max-sm:!bottom-[60px] max-sm:!right-[35px]"
         />
@@ -32,22 +32,23 @@
     <!-- Contador -->
     <div class="basis-1/2 max-md:w-full">
       <p
-        class="uppercase text-3xl text-sage mb-6 font-new-icon-serif font-bold"
+        class="w-[380px] max-sm:w-full max-sm:px-4 m-auto text-3xl mb-4 font-new-icon-serif"
       >
-        <span class="block">¡Prepárate!</span>
-        {{ isFinished ? "El gran momento ha llegado" : "Nos vemos dentro de" }}
+        <span class="title block !mb-4">Save The Date</span>
+        <span class="block text-base font-inria max-sm:text-sm"
+          >Porque tú has sido parte de nuestra historia, queremos que estés en
+          nuestro mejor capitulo</span
+        >
+        <span
+          class="block max-sm:text-md mt-4 text-secondary font-inria text-2xl"
+          >{{
+            isFinished ? "El gran momento ha llegado" : "Solo faltan:"
+          }}</span
+        >
       </p>
       <div class="w-full flex justify-center">
         <div class="w-[420px] max-sm:w-[280px]">
           <PaperCard shape="right" contentClass="max-sm:!p-4">
-            <!-- Arch/ring background lines -->
-            <div
-              class="absolute -top-12 -left-12 w-32 h-32 rounded-full border border-gold/10 pointer-events-none"
-            ></div>
-            <div
-              class="absolute -bottom-12 -right-12 w-32 h-32 rounded-full border border-gold/10 pointer-events-none"
-            ></div>
-
             <!-- Clock grid -->
             <div class="grid grid-cols-4 gap-4 w-full relative z-10">
               <div
@@ -100,11 +101,6 @@
                 >
               </div>
             </div>
-
-            <!-- Beating Heart SVG in center of countdown section -->
-            <div class="mt-8 flex justify-center items-center">
-              <img :src="WallClockGif" width="80" />
-            </div>
           </PaperCard>
         </div>
       </div>
@@ -117,6 +113,8 @@ import { useCountdown } from "../../../core/composables/useCountdown";
 import PaperCard from "../../../components/PaperCard.vue";
 import PolaroidPhoto from "../../../components/PolaroidPhoto.vue";
 import WallClockGif from "../../../assets/images/gifs/wall-clock.gif";
+import PolaroidOne from "../../../assets/images/badbunny.jpg";
+import PolaroidTwo from "../../../assets/images/pedida.webp";
 
 const { days, hours, minutes, seconds, isFinished } = useCountdown(
   "November 21, 2026 17:00:00",

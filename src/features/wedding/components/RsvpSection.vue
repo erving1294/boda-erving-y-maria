@@ -24,33 +24,25 @@
           containerClass="min-h-[455px]"
         >
           <div
-            class="w-full text-center flex flex-col items-center justify-center pt-8"
+            class="w-full text-center flex flex-col items-center justify-center"
           >
-            <h3
-              class="font-new-icon text-2xl md:text-3xl text-primary leading-tight tracking-wider font-bold mb-6"
-            >
-              CONFIRMACIÓN<br />DE ASISTENCIA
-            </h3>
+            <h3 class="title !mb-6 block">Confirmación<br />de asistencia</h3>
 
             <p
-              class="font-inria text-sm text-slate-muted leading-relaxed mb-6 max-w-[240px]"
+              class="font-inria text-slate-muted leading-relaxed mb-6 max-w-[240px]"
             >
               Estamos muy emocionados de poder celebrar con ustedes uno de los
               días más importantes de nuestras vidas.
             </p>
 
             <p
-              class="font-inria text-sm text-slate-muted leading-relaxed mb-8 max-w-[240px]"
+              class="font-inria text-slate-muted leading-relaxed mb-8 max-w-[240px]"
             >
               Por favor confirmar asistencia antes del
               <strong>01 de agosto de 2026</strong>.
             </p>
 
-            <a
-              :href="whatsappUrl"
-              target="_blank"
-              class="inline-block bg-gold hover:bg-gold-hover text-primary font-sans font-bold text-xs uppercase tracking-widest py-3.5 px-8 rounded transition duration-300 shadow-md text-center w-full max-w-[200px]"
-            >
+            <a :href="whatsappUrl" target="_blank" class="button">
               Confirmar Aquí
             </a>
           </div>

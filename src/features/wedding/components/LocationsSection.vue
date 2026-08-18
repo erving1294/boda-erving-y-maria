@@ -1,24 +1,31 @@
 <template>
   <section
     id="details"
-    class="bg-texture-marmol py-20 select-none bg-ivory-dark/30"
+    class="bg-texture-marmol py-20 select-none"
     data-aos="fade-up"
   >
     <div class="max-w-5xl mx-auto px-6">
+      <!-- <p
+        class="w-[380px] text-center max-sm:w-full max-sm:px-4 m-auto text-3xl mb-4 font-cookie text-[46px]"
+      >
+        <span class="title block mb-4">Itinerario</span>
+        <span class="block text-xl font-inria max-sm:text-sm"
+          >¡Guarda los detalles y la fecha para el gran día!</span
+        >
+      </p> -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">
         <!-- CEREMONIA CARD (LEFT) -->
         <PaperCard
           shape="left"
-          is-white
           class="w-full max-w-md mx-auto"
           containerClass="max-md:w-[95%]"
         >
           <div>
             <!-- Title -->
-            <h4 class="location-title font-new-icon">Ceremonia</h4>
-            <h5 class="location-subtitle font-new-icon">Religiosa</h5>
+            <h4 class="title">Ceremonia</h4>
+            <h5 class="subtitle">Religiosa</h5>
 
-            <img :src="ChurchGif" width="80px" class="m-auto mb-4" />
+            <img :src="ChurchGif" class="icon" />
 
             <!-- Building Name -->
             <p class="location-name">Parroquia Nuestra Señora de Luján</p>
@@ -37,7 +44,7 @@
             <a
               href="https://maps.google.com/?q=Av.+Pergamino+203,+Lima"
               target="_blank"
-              class="location-btn"
+              class="button"
             >
               Ver Ubicación
             </a>
@@ -47,16 +54,15 @@
         <!-- CELEBRACION CARD (RIGHT) -->
         <PaperCard
           shape="right"
-          is-white
           class="w-full max-w-md mx-auto"
           containerClass="max-md:w-[95%]"
         >
           <div>
             <!-- Title -->
-            <h4 class="location-title font-new-icon-serif">Recepción</h4>
-            <h5 class="location-subtitle font-new-icon-serif">& Fiesta</h5>
+            <h4 class="title">Recepción</h4>
+            <h5 class="subtitle">& Fiesta</h5>
 
-            <img :src="WineGif" width="80px" class="m-auto mb-4" />
+            <img :src="WineGif" class="icon" />
 
             <!-- Building Name -->
             <p class="location-name">Salón de Fiestas Avril</p>
@@ -75,7 +81,7 @@
             <a
               href="https://maps.google.com/?q=Av.+Los+Reartes+12,+Lima"
               target="_blank"
-              class="location-btn"
+              class="button"
             >
               Ver Ubicación
             </a>
@@ -113,24 +119,16 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.location-title {
-  @apply text-2xl md:text-3xl text-primary uppercase mb-1 leading-snug font-bold;
-}
-
-.location-subtitle {
-  @apply text-lg md:text-xl text-secondary uppercase mb-6 leading-none font-bold;
-}
-
 .location-icon {
   @apply w-28 h-28 mx-auto mb-6;
 }
 
 .location-name {
-  @apply font-inria font-bold text-sm md:text-base mb-1 px-4 leading-snug;
+  @apply font-inria font-bold mb-1 px-4 leading-snug;
 }
 
 .location-address {
-  @apply font-serif italic text-xs text-slate-muted mb-6;
+  @apply font-serif italic text-base text-slate-muted mb-6;
 }
 
 .location-time-block {

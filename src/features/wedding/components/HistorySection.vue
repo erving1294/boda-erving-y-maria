@@ -1,116 +1,94 @@
 <template>
   <section
-    id="history"
-    class="py-16 bg-ivory select-none"
-    data-aos="fade-up"
+    class="bg-texture-white flex flex-col flex-none justify-center items-center gap-[10px] w-full h-min pb-[60px] relative overflow-hidden"
   >
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="text-center mb-12">
-        <h2 class="text-xs uppercase tracking-[0.2em] text-slate-muted mb-2 font-semibold">
-          Nuestra Historia
-        </h2>
-        <h3 class="text-4xl md:text-5xl">Momentos Compartidos</h3>
-        <div class="w-12 h-[1px] bg-gold mx-auto mt-4"></div>
+    <!-- Main Frame Wrapper -->
+    <div
+      class="relative flex-none w-[425px] h-[517px] overflow-clip max-sm:!w-[356px] max-sm:!h-[398px]"
+    >
+      <!-- Wedding Frame Image Container -->
+      <div class="block">
+        <div
+          class="absolute top-0 bottom-0 right-0 flex-none w-[425px] overflow-clip will-change-[filter] max-sm:!bottom-[unset] max-sm:!h-[383px] max-sm:!left-[calc(50%-173px)] max-sm:!top-[calc(50%-178.5px)] max-sm:!right-[unset] max-sm:!w-[346px]"
+        >
+          <div class="absolute inset-0 rounded-[inherit]">
+            <img
+              class="block w-full h-full rounded-[inherit] object-center object-cover"
+              :src="marcoBoda"
+              alt="Marco de boda"
+            />
+          </div>
+        </div>
       </div>
 
-      <!-- Swiper Slider -->
-      <div class="max-w-2xl mx-auto rounded-3xl overflow-hidden paper-card p-4 md:p-6">
-        <Swiper
-          :modules="modules"
-          :slides-per-view="1"
-          :space-between="30"
-          :loop="true"
-          :autoplay="{
-            delay: 4500,
-            disableOnInteraction: false,
-          }"
-          :pagination="{ clickable: true }"
-          :navigation="true"
-          class="history-swiper"
+      <!-- Couple Photo Container (Cusco) -->
+      <div class="block">
+        <div
+          class="absolute top-[calc(50.4836%-178.5px)] left-[calc(50.5%-173.5px)] z-0 flex-none w-[347px] h-[357px] overflow-clip will-change-[filter] max-sm:!h-[263px] max-sm:!w-[257px] max-sm:!top-[calc(50.2513%-116px)] max-sm:!left-[calc(50.5618%-127px)]"
         >
-          <SwiperSlide
-            v-for="(moment, index) in story"
-            :key="index"
-            class="flex flex-col items-center pb-8"
-          >
-            <!-- Story Image -->
-            <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden mb-6 border border-gold/10">
-              <img
-                :src="moment.image"
-                :alt="moment.title"
-                class="w-full h-full object-cover select-none"
-                loading="lazy"
-              />
-            </div>
-            
-            <!-- Story Text -->
-            <div class="text-center px-4">
-              <span class="text-xs uppercase tracking-widest text-gold-hover font-semibold">{{ moment.period }}</span>
-              <h4 class="font-serif text-2xl text-sage my-2 font-bold">{{ moment.title }}</h4>
-              <p class="text-sm text-slate-muted italic leading-relaxed max-w-lg mx-auto">
-                "{{ moment.desc }}"
-              </p>
-            </div>
-          </SwiperSlide>
-        </Swiper>
+          <div class="absolute inset-0 rounded-[inherit]">
+            <img
+              class="block w-full h-full rounded-[inherit] object-center object-cover"
+              :src="cuscoImg"
+              alt="Nuestra foto en Cusco"
+            />
+          </div>
+        </div>
       </div>
+    </div>
+
+    <!-- Description Text -->
+    <div class="max-sm:px-4">
+      <p
+        class="text-center max-w-[400px] m-auto font-inria text-lg leading-relaxed text-slate-muted"
+      >
+        Todo comenzó en enero del 2017, sin imaginar que ese sería el primer
+        capítulo de nuestra historia. Hoy, con el corazón lleno de gratitud,
+        estamos listos para escribir nuestro…
+      </p>
+      <p
+        class="font-cookie text-center italic text-[26px] mt-2 max-w-[400px] m-auto"
+      >
+        Para siempre
+      </p>
     </div>
   </section>
 </template>
 
 <script setup>
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import marcoBoda from "../../../assets/images/marco_boda.jpg";
+import cuscoImg from "../../../assets/images/cusco.webp";
 
 // Import Swiper styles in script
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
-const modules = [Navigation, Pagination, Autoplay]
+const modules = [Navigation, Pagination, Autoplay];
 
 const story = [
   {
-    period: 'El Comienzo',
-    title: 'Cómo nos conocimos',
-    desc: 'Un cruce de miradas casual, una conversación improvisada y el inicio de una maravillosa amistad que pronto se convirtió en un amor profundo.',
-    image: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800'
+    period: "El Comienzo",
+    title: "Cómo nos conocimos",
+    desc: "Un cruce de miradas casual, una conversación improvisada y el inicio de una maravillosa amistad que pronto se convirtió en un amor profundo.",
+    image:
+      "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800",
   },
   {
-    period: 'El Camino',
-    title: 'El Noviazgo',
-    desc: 'Años llenos de risas, viajes compartidos, apoyo mutuo y crecimiento continuo, confirmando que queríamos pasar el resto de nuestras vidas juntos.',
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800'
+    period: "El Camino",
+    title: "El Noviazgo",
+    desc: "Años llenos de risas, viajes compartidos, apoyo mutuo y crecimiento continuo, confirmando que queríamos pasar el resto de nuestras vidas juntos.",
+    image:
+      "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800",
   },
   {
-    period: 'La Propuesta',
-    title: 'El Sí, Quiero',
-    desc: 'Bajo un atardecer mágico, con los nervios a flor de piel y el mar de testigo, Ervíng hizo la gran pregunta y María respondió con el alma: ¡Sí!',
-    image: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?q=80&w=800'
-  }
-]
+    period: "La Propuesta",
+    title: "El Sí, Quiero",
+    desc: "Bajo un atardecer mágico, con los nervios a flor de piel y el mar de testigo, Ervíng hizo la gran pregunta y María respondió con el alma: ¡Sí!",
+    image:
+      "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?q=80&w=800",
+  },
+];
 </script>
-
-<style>
-/* Custom Swiper pagination and arrow overrides */
-.history-swiper {
-  --swiper-theme-color: #C5A880;
-  --swiper-navigation-size: 20px;
-}
-
-.history-swiper .swiper-button-next,
-.history-swiper .swiper-button-prev {
-  background-color: rgba(255, 255, 255, 0.8);
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(197, 168, 128, 0.2);
-}
-
-.history-swiper .swiper-button-next::after,
-.history-swiper .swiper-button-prev::after {
-  font-size: 14px;
-  font-weight: bold;
-}
-</style>
