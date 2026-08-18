@@ -1,0 +1,96 @@
+<template>
+  <section
+    id="rsvp"
+    class="bg-texture-marmol py-20 bg-ivory-dark/30 select-none overflow-hidden"
+    data-aos="fade-up"
+  >
+    <div class="max-w-4xl mx-auto px-6">
+      <!-- Relative container for overlapping elements -->
+      <div
+        class="max-w-[400px] mx-auto relative px-4 h-[680px] max-sm:h-[600px]"
+      >
+        <!-- Polaroid Photo (Bottom-Left) -->
+        <PolaroidPhoto
+          :src="coverUrl"
+          alt="Ervíng & María"
+          class="absolute -left-[13px] bottom-[28px] w-[180px] h-[235px] z-0 max-sm:-left-0 max-sm:-bottom-[10px] max-sm:w-[140px] max-sm:h-[185px] transition-all duration-300 hover:scale-105"
+        />
+
+        <!-- Main Invitation Card -->
+        <PaperCard
+          shape="standard"
+          show-seal
+          is-white
+          containerClass="min-h-[455px]"
+        >
+          <div
+            class="w-full text-center flex flex-col items-center justify-center pt-8"
+          >
+            <h3
+              class="font-new-icon text-2xl md:text-3xl text-primary leading-tight tracking-wider font-bold mb-6"
+            >
+              CONFIRMACIÓN<br />DE ASISTENCIA
+            </h3>
+
+            <p
+              class="font-inria text-sm text-slate-muted leading-relaxed mb-6 max-w-[240px]"
+            >
+              Estamos muy emocionados de poder celebrar con ustedes uno de los
+              días más importantes de nuestras vidas.
+            </p>
+
+            <p
+              class="font-inria text-sm text-slate-muted leading-relaxed mb-8 max-w-[240px]"
+            >
+              Por favor confirmar asistencia antes del
+              <strong>01 de agosto de 2026</strong>.
+            </p>
+
+            <a
+              :href="whatsappUrl"
+              target="_blank"
+              class="inline-block bg-gold hover:bg-gold-hover text-primary font-sans font-bold text-xs uppercase tracking-widest py-3.5 px-8 rounded transition duration-300 shadow-md text-center w-full max-w-[200px]"
+            >
+              Confirmar Aquí
+            </a>
+          </div>
+        </PaperCard>
+
+        <!-- Clay Medallion (Bottom-Right) -->
+        <div
+          class="absolute -right-8 bottom-[148px] w-[95px] h-[130px] rotate-[8deg] z-20 max-sm:-right-4 max-sm:bottom-[100px] max-sm:w-[75px] max-sm:h-[105px] rounded-[50%/40%] bg-[#efede7]/95 border border-[#bfa880]/15 flex justify-center items-center select-none"
+          style="
+            box-shadow:
+              0 4px 10px rgba(0, 0, 0, 0.15),
+              inset 0 2px 4px rgba(255, 255, 255, 0.4),
+              inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+          "
+        >
+          <span
+            class="font-new-icon text-4xl max-sm:text-3xl text-slate-muted/20 tracking-wider font-light"
+            style="
+              text-shadow:
+                1px 1px 1px rgba(255, 255, 255, 0.6),
+                -1px -1px 1px rgba(0, 0, 0, 0.15);
+            "
+          >
+            E&M
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script setup>
+import PaperCard from "../../../components/PaperCard.vue";
+import PolaroidPhoto from "../../../components/PolaroidPhoto.vue";
+import sealUrl from "../../../assets/images/Sello.png";
+import coverUrl from "../../../assets/images/portada-3.webp";
+
+const phone = "51999999999"; // Reemplazar con el número real si es necesario
+const message = encodeURIComponent(
+  "¡Hola! Confirmo mi asistencia a la boda de Ervíng y María.",
+);
+const whatsappUrl = `https://api.whatsapp.com/send?phone=${phone}&text=${message}`;
+</script>
