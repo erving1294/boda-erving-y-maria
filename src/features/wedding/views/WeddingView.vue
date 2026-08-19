@@ -11,7 +11,7 @@
       <MusicControl />
 
       <!-- 2. Banner/Portada -->
-      <HeroSection />
+      <HeroSection :active="ready" />
 
       <DetailSection />
       <!-- 3. Contador -->

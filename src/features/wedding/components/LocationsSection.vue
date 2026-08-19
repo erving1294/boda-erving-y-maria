@@ -1,119 +1,135 @@
 <template>
   <section
     id="details"
-    class="bg-texture-marmol py-20 select-none"
-    data-aos="fade-up"
+    class="bg-texture-marmol py-20 select-none overflow-hidden"
   >
     <div class="max-w-5xl mx-auto px-6">
-      <!-- <p
-        class="w-[380px] text-center max-sm:w-full max-sm:px-4 m-auto text-3xl mb-4 font-cookie text-[46px]"
-      >
-        <span class="title block mb-4">Itinerario</span>
-        <span class="block text-xl font-inria max-sm:text-sm"
-          >¡Guarda los detalles y la fecha para el gran día!</span
-        >
-      </p> -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">
         <!-- CEREMONIA CARD (LEFT) -->
-        <PaperCard
-          shape="left"
-          class="w-full max-w-md mx-auto"
-          containerClass="max-md:w-[95%]"
+        <div
+          ref="leftCardRef"
+          class="w-full max-w-md mx-auto transition-all duration-[1200ms] ease-out will-change-[transform,opacity]"
+          :class="leftIntersecting ? 'opacity-100 translate-x-0 rotate-0' : 'opacity-0 -translate-x-[60px] -rotate-3'"
         >
-          <div>
-            <!-- Title -->
-            <h4 class="title">Ceremonia</h4>
-            <h5 class="subtitle">Religiosa</h5>
+          <PaperCard
+            shape="left"
+            class="w-full"
+            containerClass="max-md:w-[95%]"
+          >
+            <div>
+              <!-- Title -->
+              <h4 class="title">Ceremonia</h4>
+              <h5 class="subtitle">Religiosa</h5>
 
-            <img :src="ChurchGif" class="icon" />
+              <img :src="ChurchGif" class="icon" />
 
-            <!-- Building Name -->
-            <p class="location-name">Parroquia Nuestra Señora de Luján</p>
+              <!-- Building Name -->
+              <p class="location-name">Parroquia Nuestra Señora de Luján</p>
 
-            <!-- Address -->
-            <p class="location-address">Av. Pergamino 203, Lima</p>
+              <!-- Address -->
+              <p class="location-address">Av. Pergamino 203, Lima</p>
 
-            <!-- Date Block (Classic Invitation Style) -->
-            <div class="location-time-block">
-              <span class="location-time-text">17:00 hs</span>
+              <!-- Date Block (Classic Invitation Style) -->
+              <div class="location-time-block">
+                <span class="location-time-text">17:00 hs</span>
+              </div>
             </div>
-          </div>
 
-          <!-- Action Buttons -->
-          <div class="location-actions">
-            <a
-              href="https://maps.google.com/?q=Av.+Pergamino+203,+Lima"
-              target="_blank"
-              class="button"
-            >
-              Ver Ubicación
-            </a>
-          </div>
-        </PaperCard>
+            <!-- Action Buttons -->
+            <div class="location-actions">
+              <a
+                href="https://maps.google.com/?q=Av.+Pergamino+203,+Lima"
+                target="_blank"
+                class="button"
+              >
+                Ver Ubicación
+              </a>
+            </div>
+          </PaperCard>
+        </div>
 
         <!-- CELEBRACION CARD (RIGHT) -->
-        <PaperCard
-          shape="right"
-          class="w-full max-w-md mx-auto"
-          containerClass="max-md:w-[95%]"
+        <div
+          ref="rightCardRef"
+          class="w-full max-w-md mx-auto transition-all duration-[1200ms] delay-[200ms] ease-out will-change-[transform,opacity]"
+          :class="rightIntersecting ? 'opacity-100 translate-x-0 rotate-0' : 'opacity-0 translate-x-[60px] rotate-3'"
         >
-          <div>
-            <!-- Title -->
-            <h4 class="title">Recepción</h4>
-            <h5 class="subtitle">& Fiesta</h5>
+          <PaperCard
+            shape="right"
+            class="w-full"
+            containerClass="max-md:w-[95%]"
+          >
+            <div>
+              <!-- Title -->
+              <h4 class="title">Recepción</h4>
+              <h5 class="subtitle">& Fiesta</h5>
 
-            <img :src="WineGif" class="icon" />
+              <img :src="WineGif" class="icon" />
 
-            <!-- Building Name -->
-            <p class="location-name">Salón de Fiestas Avril</p>
+              <!-- Building Name -->
+              <p class="location-name">Salón de Fiestas Avril</p>
 
-            <!-- Address -->
-            <p class="location-address">Av. Los Reartes 12, Lima</p>
+              <!-- Address -->
+              <p class="location-address">Av. Los Reartes 12, Lima</p>
 
-            <!-- Date Block (Classic Invitation Style) -->
-            <div class="location-time-block">
-              <span class="location-time-text">19:30 hs</span>
+              <!-- Date Block (Classic Invitation Style) -->
+              <div class="location-time-block">
+                <span class="location-time-text">19:30 hs</span>
+              </div>
             </div>
-          </div>
 
-          <!-- Action Buttons -->
-          <div class="location-actions">
-            <a
-              href="https://maps.google.com/?q=Av.+Los+Reartes+12,+Lima"
-              target="_blank"
-              class="button"
-            >
-              Ver Ubicación
-            </a>
-          </div>
-        </PaperCard>
+            <!-- Action Buttons -->
+            <div class="location-actions">
+              <a
+                href="https://maps.google.com/?q=Av.+Los+Reartes+12,+Lima"
+                target="_blank"
+                class="button"
+              >
+                Ver Ubicación
+              </a>
+            </div>
+          </PaperCard>
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import PaperCard from "../../../components/PaperCard.vue";
 import WineGif from "../../../assets/images/gifs/wine.gif";
 import ChurchGif from "../../../assets/images/gifs/church.gif";
 
-const isVisible = ref(false);
-const churchSvgRef = ref(null);
+const leftCardRef = ref(null);
+const rightCardRef = ref(null);
+const leftIntersecting = ref(false);
+const rightIntersecting = ref(false);
+let observer = null;
 
 onMounted(() => {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        // Controla que el bucle solo corra cuando esté en pantalla para cuidar el rendimiento
-        isVisible.value = entry.isIntersecting;
-      });
-    },
-    { threshold: 0.1 },
-  );
+  if (typeof window !== "undefined") {
+    observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === leftCardRef.value) {
+            leftIntersecting.value = entry.isIntersecting;
+          } else if (entry.target === rightCardRef.value) {
+            rightIntersecting.value = entry.isIntersecting;
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
 
-  if (churchSvgRef.value) {
-    observer.observe(churchSvgRef.value);
+    if (leftCardRef.value) observer.observe(leftCardRef.value);
+    if (rightCardRef.value) observer.observe(rightCardRef.value);
+  }
+});
+
+onUnmounted(() => {
+  if (observer) {
+    observer.disconnect();
   }
 });
 </script>
@@ -145,37 +161,5 @@ onMounted(() => {
 
 .location-btn {
   @apply w-full max-w-[200px] text-center py-3 border border-secondary text-secondary hover:bg-secondary hover:text-white rounded-full font-sans font-bold text-xs uppercase transition-all duration-300 shadow-sm;
-}
-
-/* Estado inicial del SVG de la iglesia (trazos invisibles) */
-.church-svg path,
-.church-svg rect,
-.church-svg circle,
-.church-svg line:not([stroke-dasharray]) {
-  stroke-dasharray: 300;
-  stroke-dashoffset: 300;
-}
-
-/* Animación de dibujo en bucle cuando es visible */
-.church-svg.is-visible path,
-.church-svg.is-visible rect,
-.church-svg.is-visible circle,
-.church-svg.is-visible line:not([stroke-dasharray]) {
-  animation: draw-church-loop 6s ease-in-out infinite;
-}
-
-@keyframes draw-church-loop {
-  0% {
-    stroke-dashoffset: 300;
-  }
-  40% {
-    stroke-dashoffset: 0;
-  }
-  70% {
-    stroke-dashoffset: 0;
-  }
-  100% {
-    stroke-dashoffset: 300;
-  }
 }
 </style>

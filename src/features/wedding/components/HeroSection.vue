@@ -153,62 +153,142 @@
     <div class="px-4 max-w-3xl z-20 flex flex-col items-center">
       <!-- Names with Green Ampersand Circle -->
       <h1
-        class="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 font-new-icon text-6xl md:text-8xl text-white mb-8 drop-shadow-md select-text animate-fade-in normal-case"
+        class="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 font-new-icon text-6xl md:text-8xl text-white mb-8 drop-shadow-md select-text normal-case"
       >
-        <span>Ervíng</span>
+        <!-- Ervíng -->
+        <span class="inline-flex">
+          <span
+            v-for="(char, index) in title1Letters"
+            :key="'t1-' + index"
+            class="inline-block transition-all duration-[1000ms] cubic-bezier(0.16, 1, 0.3, 1) will-change-[transform,opacity]"
+            :style="{ transitionDelay: `${index * 100}ms` }"
+            :class="
+              showTitle1
+                ? 'opacity-100 translate-y-0 scale-100'
+                : 'opacity-0 translate-y-[15px] scale-75'
+            "
+          >
+            {{ char }}
+          </span>
+        </span>
+
+        <!-- Ampersand -->
         <span
-          class="inline-flex justify-center items-center w-12 h-12 md:w-16 md:h-16 rounded-full bg-primary text-white text-3xl md:text-4xl font-new-icon font-light shadow-md shadow-black/10 border border-white/20 select-none my-2 md:my-0 normal-case"
+          class="inline-flex justify-center items-center w-12 h-12 md:w-16 md:h-16 rounded-full bg-primary text-white text-3xl md:text-4xl font-new-icon font-light shadow-md shadow-black/10 border border-white/20 select-none my-2 md:my-0 normal-case transition-all duration-500 ease-out"
+          :class="
+            showAmpersand
+              ? 'opacity-100 scale-100'
+              : 'opacity-0 scale-50 pointer-events-none'
+          "
         >
           &
         </span>
-        <span>María</span>
+
+        <!-- María -->
+        <span class="inline-flex">
+          <span
+            v-for="(char, index) in title2Letters"
+            :key="'t2-' + index"
+            class="inline-block transition-all duration-[1000ms] cubic-bezier(0.16, 1, 0.3, 1) will-change-[transform,opacity]"
+            :style="{ transitionDelay: `${index * 100}ms` }"
+            :class="
+              showTitle2
+                ? 'opacity-100 translate-y-0 scale-100'
+                : 'opacity-0 translate-y-[15px] scale-75'
+            "
+          >
+            {{ char }}
+          </span>
+        </span>
       </h1>
 
       <!-- Love Quote with Decorative Quotations -->
       <div
-        class="max-w-md mx-auto !text-white text-sm md:text-base animate-fade-in delay-500 flex flex-col items-center"
+        class="max-w-md mx-auto !text-white text-sm md:text-base flex flex-col items-center"
       >
         <p
-          class="font-inria text-white text-xl font-light tracking-wide leading-relaxed"
+          class="font-inria text-white text-xl font-light tracking-wide leading-relaxed min-h-[5rem] sm:min-h-[4rem]"
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa minima
-          ab voluptatum, possimus voluptatem laborum asperiores.
+          {{ displayedParagraph }}
         </p>
       </div>
-
-      <!-- Arrow down below the quote -->
-      <button
-        @click="scrollDown"
-        class="mt-6 cursor-pointer animate-bounce-arrow bg-transparent border-none outline-none"
-        aria-label="Desplazarse hacia abajo"
-      >
-        <svg
-          class="w-5 h-5 text-white/70 hover:text-white transition-colors duration-300"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.5"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-          />
-        </svg>
-      </button>
     </div>
   </header>
 </template>
 
 <script setup>
+import { ref, watch } from "vue";
 import coverUrl from "../../../assets/images/portada-3.webp";
 
-const scrollDown = () => {
-  const target = document.getElementById("detailSection");
-  if (target) {
-    target.scrollIntoView({ behavior: "smooth" });
-  }
+const props = defineProps({
+  active: {
+    type: Boolean,
+    default: false,
+  },
+});
+
+const title1Letters = "Ervíng".split("");
+const title2Letters = "María".split("");
+const paragraphText =
+  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa minima ab voluptatum, possimus voluptatem laborum asperiores.";
+
+const showTitle1 = ref(false);
+const showAmpersand = ref(false);
+const showTitle2 = ref(false);
+const displayedParagraph = ref("");
+
+let started = false;
+
+const typeText = (text, refVar, speed) => {
+  return new Promise((resolve) => {
+    let index = 0;
+    const interval = setInterval(() => {
+      refVar.value += text[index];
+      index++;
+      if (index >= text.length) {
+        clearInterval(interval);
+        resolve();
+      }
+    }, speed);
+  });
 };
+
+const startAnimation = async () => {
+  if (started) return;
+  started = true;
+
+  showTitle1.value = false;
+  showAmpersand.value = false;
+  showTitle2.value = false;
+  displayedParagraph.value = "";
+
+  // Step 1: Start "Ervíng" staggered letter transitions
+  showTitle1.value = true;
+
+  // Step 2: Fade & scale in the ampersand circle after 700ms (Ervíng completes layout)
+  await new Promise((resolve) => setTimeout(resolve, 700));
+  showAmpersand.value = true;
+
+  // Step 3: Start "María" staggered letter transitions after 1100ms total (400ms after ampersand)
+  await new Promise((resolve) => setTimeout(resolve, 400));
+  showTitle2.value = true;
+
+  // Step 4: Stagger before paragraph typing (María starts at 1100ms and finishes around 1500ms, wait 1200ms)
+  await new Promise((resolve) => setTimeout(resolve, 1200));
+
+  // Step 5: Type paragraph smoothly (45ms per letter)
+  await typeText(paragraphText, displayedParagraph, 45);
+};
+
+watch(
+  () => props.active,
+  (newVal) => {
+    if (newVal) {
+      startAnimation();
+    }
+  },
+  { immediate: true },
+);
 </script>
 
 <style scoped>

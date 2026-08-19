@@ -1,8 +1,7 @@
 <template>
   <section
     id="countdown"
-    class="bg-texture-white py-16 bg-white text-center select-none flex flex-wrap max-lg:flex-col items-center lg:pr-[100px] lg:pl-[100px]"
-    data-aos="fade-up"
+    class="bg-texture-white py-16 bg-white text-center select-none flex flex-wrap max-lg:flex-col items-center lg:pr-[100px] lg:pl-[100px] overflow-hidden"
     style="
       border-radius: inherit;
       corner-shape: inherit;
@@ -11,97 +10,108 @@
     "
   >
     <!-- Imagenes -->
-    <div class="basis-1/2 max-md:w-full">
+    <div ref="imagesRef" class="basis-1/2 max-md:w-full">
       <div class="h-[550px] w-[360px] relative m-auto">
         <!-- Foto 1 (Rotada a la derecha) -->
         <PolaroidPhoto
           :src="PolaroidTwo"
           alt="Novios mano a mano 1"
-          class="absolute left-0 top-0 w-[216px] h-[283px] rotate-[13deg] z-[1] max-sm:!left-[43px]"
+          class="absolute left-0 top-0 w-[216px] h-[283px] z-[1] max-sm:!left-[43px] transition-all duration-[1000ms] ease-out"
+          :class="imagesIntersecting ? 'opacity-100 translate-x-0 rotate-[13deg]' : 'opacity-0 -translate-x-[80px] rotate-0'"
         />
 
         <!-- Foto 2 (Rotada a la izquierda) -->
         <PolaroidPhoto
           :src="PolaroidOne"
           alt="Novios mano a mano 2"
-          class="absolute bottom-[72px] right-[35px] w-[216px] h-[283px] rotate-[-3deg] z-[1] max-sm:!bottom-[60px] max-sm:!right-[35px]"
+          class="absolute bottom-[72px] right-[35px] w-[216px] h-[283px] z-[1] max-sm:!bottom-[60px] max-sm:!right-[35px] transition-all duration-[1000ms] delay-[1000ms] ease-out"
+          :class="imagesIntersecting ? 'opacity-100 translate-x-0 rotate-[-3deg]' : 'opacity-0 translate-x-[80px] rotate-0'"
         />
       </div>
     </div>
 
     <!-- Contador -->
-    <div class="basis-1/2 max-md:w-full">
-      <p
-        class="w-[380px] max-sm:w-full max-sm:px-4 m-auto text-3xl mb-4 font-new-icon-serif"
+    <div ref="counterRef" class="basis-1/2 max-md:w-full">
+      <div
+        class="transition-all duration-[1200ms] delay-[300ms] ease-out"
+        :class="
+          counterIntersecting
+            ? 'opacity-100 translate-y-0'
+            : 'opacity-0 -translate-y-[40px]'
+        "
       >
-        <span class="title block !mb-4">Save The Date</span>
-        <span class="block text-base font-inria max-sm:text-sm"
-          >Porque tú has sido parte de nuestra historia, queremos que estés en
-          nuestro mejor capitulo</span
+        <p
+          class="w-[380px] max-sm:w-full max-sm:px-4 m-auto text-3xl mb-4 font-new-icon-serif"
         >
-        <span
-          class="block max-sm:text-md mt-4 text-secondary font-inria text-2xl"
-          >{{
-            isFinished ? "El gran momento ha llegado" : "Solo faltan:"
-          }}</span
-        >
-      </p>
-      <div class="w-full flex justify-center">
-        <div class="w-[420px] max-sm:w-[280px]">
-          <PaperCard shape="right" contentClass="max-sm:!p-4">
-            <!-- Clock grid -->
-            <div class="grid grid-cols-4 gap-4 w-full relative z-10">
-              <div
-                class="flex flex-col justify-center items-center border-r-[1px] border-solid border-slate-muted"
-              >
-                <span
-                  class="font-inria text-3xl md:text-4xl text-sage font-bold leading-none"
-                  >{{ days }}</span
+          <span class="title block !mb-4">Save The Date</span>
+          <span class="block text-base font-inria max-sm:text-sm"
+            >Porque tú has sido parte de nuestra historia, queremos que estés en
+            nuestro mejor capitulo</span
+          >
+          <span
+            class="block max-sm:text-md mt-4 text-secondary font-inria text-2xl"
+            >{{
+              isFinished ? "El gran momento ha llegado" : "Solo faltan:"
+            }}</span
+          >
+        </p>
+        <div class="w-full flex justify-center">
+          <div class="w-[420px] max-sm:w-[280px]">
+            <PaperCard shape="right" contentClass="max-sm:!p-4">
+              <!-- Clock grid -->
+              <div class="grid grid-cols-4 gap-4 w-full relative z-10">
+                <div
+                  class="flex flex-col justify-center items-center border-r-[1px] border-solid border-slate-muted"
                 >
-                <span
-                  class="text-[10px] md:text-xs uppercase tracking-wide text-slate-muted mt-2"
-                  >Días</span
-                >
-              </div>
+                  <span
+                    class="font-inria text-3xl md:text-4xl text-sage font-bold leading-none"
+                    >{{ days }}</span
+                  >
+                  <span
+                    class="text-[10px] md:text-xs uppercase tracking-wide text-slate-muted mt-2"
+                    >Días</span
+                  >
+                </div>
 
-              <div
-                class="flex flex-col justify-center items-center border-r-[1px] border-solid border-slate-muted"
-              >
-                <span
-                  class="font-inria text-3xl md:text-4xl text-sage font-bold leading-none"
-                  >{{ hours }}</span
+                <div
+                  class="flex flex-col justify-center items-center border-r-[1px] border-solid border-slate-muted"
                 >
-                <span
-                  class="text-[10px] md:text-xs uppercase tracking-wide text-slate-muted mt-2"
-                  >Horas</span
-                >
-              </div>
+                  <span
+                    class="font-inria text-3xl md:text-4xl text-sage font-bold leading-none"
+                    >{{ hours }}</span
+                  >
+                  <span
+                    class="text-[10px] md:text-xs uppercase tracking-wide text-slate-muted mt-2"
+                    >Horas</span
+                  >
+                </div>
 
-              <div
-                class="flex flex-col justify-center items-center border-r-[1px] border-solid border-slate-muted"
-              >
-                <span
-                  class="font-inria text-3xl md:text-4xl text-sage font-bold leading-none"
-                  >{{ minutes }}</span
+                <div
+                  class="flex flex-col justify-center items-center border-r-[1px] border-solid border-slate-muted"
                 >
-                <span
-                  class="text-[10px] md:text-xs uppercase tracking-wide text-slate-muted mt-2"
-                  >Mins</span
-                >
-              </div>
+                  <span
+                    class="font-inria text-3xl md:text-4xl text-sage font-bold leading-none"
+                    >{{ minutes }}</span
+                  >
+                  <span
+                    class="text-[10px] md:text-xs uppercase tracking-wide text-slate-muted mt-2"
+                    >Mins</span
+                  >
+                </div>
 
-              <div class="flex flex-col justify-center items-center">
-                <span
-                  class="font-inria text-3xl md:text-4xl text-sage font-bold leading-none"
-                  >{{ seconds }}</span
-                >
-                <span
-                  class="text-[10px] md:text-xs uppercase tracking-wide text-slate-muted mt-2"
-                  >Segs</span
-                >
+                <div class="flex flex-col justify-center items-center">
+                  <span
+                    class="font-inria text-3xl md:text-4xl text-sage font-bold leading-none"
+                    >{{ seconds }}</span
+                  >
+                  <span
+                    class="text-[10px] md:text-xs uppercase tracking-wide text-slate-muted mt-2"
+                    >Segs</span
+                  >
+                </div>
               </div>
-            </div>
-          </PaperCard>
+            </PaperCard>
+          </div>
         </div>
       </div>
     </div>
@@ -109,12 +119,46 @@
 </template>
 
 <script setup>
+import { ref, onMounted, onUnmounted } from "vue";
 import { useCountdown } from "../../../core/composables/useCountdown";
 import PaperCard from "../../../components/PaperCard.vue";
 import PolaroidPhoto from "../../../components/PolaroidPhoto.vue";
 import WallClockGif from "../../../assets/images/gifs/wall-clock.gif";
 import PolaroidOne from "../../../assets/images/badbunny.jpg";
 import PolaroidTwo from "../../../assets/images/pedida.webp";
+
+const imagesRef = ref(null);
+const counterRef = ref(null);
+const imagesIntersecting = ref(false);
+const counterIntersecting = ref(false);
+let observer = null;
+
+onMounted(() => {
+  if (typeof window !== "undefined") {
+    observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === imagesRef.value) {
+            imagesIntersecting.value = entry.isIntersecting;
+          } else if (entry.target === counterRef.value) {
+            counterIntersecting.value = entry.isIntersecting;
+          }
+        });
+      },
+      {
+        threshold: 0.15, // Trigger when 15% of the element is visible
+      }
+    );
+    if (imagesRef.value) observer.observe(imagesRef.value);
+    if (counterRef.value) observer.observe(counterRef.value);
+  }
+});
+
+onUnmounted(() => {
+  if (observer) {
+    observer.disconnect();
+  }
+});
 
 const { days, hours, minutes, seconds, isFinished } = useCountdown(
   "November 21, 2026 17:00:00",

@@ -1,13 +1,18 @@
 <template>
   <section
+    ref="giftsRef"
     id="gifts"
-    class="bg-texture-flores py-24 select-none"
-    data-aos="fade-up"
+    class="bg-texture-flores py-24 select-none overflow-hidden"
   >
     <div class="max-w-4xl mx-auto px-6">
       <!-- Arched Card Container with paper texture for volume -->
       <div
-        class="arched-card max-w-md mx-auto rounded-t-[180px] p-8 md:p-12 text-center relative flex flex-col items-center justify-center border border-gold/15"
+        class="arched-card max-w-md mx-auto rounded-t-[180px] p-8 md:p-12 text-center relative flex flex-col items-center justify-center border border-gold/15 transition-all duration-[1200ms] ease-out will-change-[transform,opacity]"
+        :class="
+          isIntersecting
+            ? 'opacity-100 translate-y-0 scale-100'
+            : 'opacity-0 translate-y-[50px] scale-[0.97]'
+        "
       >
         <!-- Header Text -->
         <h4 class="title text-4xl mt-6 mb-2 max-sm:mt-8">Mesa de Regalos</h4>
@@ -27,7 +32,12 @@
         <div class="w-full max-w-[320px] mx-auto space-y-3 text-xs">
           <!-- Cuenta Box -->
           <div
-            class="flex justify-between items-center border border-secondary rounded-xl p-3.5 transition duration-200"
+            class="flex justify-between items-center border border-secondary rounded-xl p-3.5 transition-all duration-[800ms] delay-[400ms] ease-out will-change-[transform,opacity]"
+            :class="
+              isIntersecting
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-[20px]'
+            "
           >
             <div class="flex flex-col text-left">
               <span
@@ -49,7 +59,12 @@
 
           <!-- CCI Box -->
           <div
-            class="flex justify-between items-center border border-secondary rounded-xl p-3.5 transition duration-200"
+            class="flex justify-between items-center border border-secondary rounded-xl p-3.5 transition-all duration-[800ms] delay-[800ms] ease-out will-change-[transform,opacity]"
+            :class="
+              isIntersecting
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-[20px]'
+            "
           >
             <div class="flex flex-col text-left">
               <span
@@ -71,7 +86,12 @@
 
           <!-- Titular Box -->
           <div
-            class="flex justify-between items-center border border-secondary rounded-xl p-3.5"
+            class="flex justify-between items-center border border-secondary rounded-xl p-3.5 transition-all duration-[800ms] delay-[1200ms] ease-out will-change-[transform,opacity]"
+            :class="
+              isIntersecting
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-[20px]'
+            "
           >
             <div class="flex flex-col text-left">
               <span
@@ -100,8 +120,30 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import GiftGif from "../../../assets/images/gifs/gift.gif";
+
+const giftsRef = ref(null);
+const isIntersecting = ref(false);
+let observer = null;
+
+onMounted(() => {
+  if (typeof window !== "undefined") {
+    observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          isIntersecting.value = entry.isIntersecting;
+        });
+      },
+      { threshold: 0.15 },
+    );
+    if (giftsRef.value) observer.observe(giftsRef.value);
+  }
+});
+
+onUnmounted(() => {
+  if (observer) observer.disconnect();
+});
 
 const cuenta = "193-98765432-0-12";
 const cci = "002-193-0098765432012-14";
