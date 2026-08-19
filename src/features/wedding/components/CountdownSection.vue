@@ -10,8 +10,12 @@
     "
   >
     <!-- Imagenes -->
-    <div
+    <motion.div
       class="basis-1/2 max-md:w-full flex justify-center mb-[64px] md:mb-8"
+      :initial="{ scale: 0 }"
+      :while-in-view="{ scale: 1 }"
+      :transition="{ duration: 1.0, ease: 'easeOut' }"
+      :viewport="{ once: false, amount: 0.35 }"
     >
       <div
         class="w-[500px] h-[500px] bg-cover relative max-sm:w-[340px] max-sm:h-[340px]"
@@ -32,13 +36,13 @@
                 class="absolute -bottom-[1px] h-[1px] w-[62px] opacity-[0.3]"
               />
             </div>
-            
+
             <motion.div
               class="z-[1] max-sm:!left-[43px] will-change-[transform,opacity]"
-              :initial="{ opacity: 0, x: -80, rotate: 0 }"
-              :while-in-view="{ opacity: 1, x: 0, rotate: -5 }"
-              :transition="{ duration: 2.0, ease: 'easeOut' }"
-              :viewport="{ once: false, amount: 0.15 }"
+              :initial="{ opacity: 0, rotate: 0 }"
+              :while-in-view="{ opacity: 1, rotate: -5 }"
+              :transition="{ duration: 1.0, ease: 'easeOut' }"
+              :viewport="{ once: false, amount: 0.35 }"
             >
               <PolaroidPhoto
                 :src="PolaroidTwo"
@@ -59,18 +63,30 @@
           </div>
         </div>
 
-        <img
+        <motion.img
           class="absolute -left-[66px] -bottom-[51px] w-[200px] max-sm:w-[120px] max-sm:-left-9"
           :src="FlorBoda"
+          :initial="{ scale: 0 }"
+          :while-in-view="{ scale: 1 }"
+          :transition="{ duration: 0.5, ease: 'easeOut', delay: 0.5 }"
+          :viewport="{ once: false, amount: 0.35 }"
         />
-        <div
-          class="absolute -right-[57px] -bottom-[66px] w-[200px] h-[200px] flex justify-center items-center translate-x-0 rotate-[8deg] max-sm:w-[120px] max-sm:h-[120px] max-sm:-right-4 max-sm:-bottom-10"
-          :style="`background-image: url(${Corazon}); background-size: cover; background-position: center;`"
+        <motion.div
+          class="absolute -right-[57px] -bottom-[66px] w-[200px] h-[200px] translate-x-0 rotate-[8deg] max-sm:w-[120px] max-sm:h-[120px] max-sm:-right-4 max-sm:-bottom-10"
+          :initial="{ scale: 0 }"
+          :while-in-view="{ scale: 1 }"
+          :transition="{ duration: 0.5, ease: 'easeOut', delay: 0.5 }"
+          :viewport="{ once: false, amount: 0.35 }"
         >
-          <span class="font-cookie italic text-3xl">E & M</span>
-        </div>
+          <div
+            class="flex justify-center items-center w-full h-full"
+            :style="`background-image: url(${Corazon}); background-size: cover; background-position: center;`"
+          >
+            <span class="font-cookie italic text-3xl">E & M</span>
+          </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
 
     <!-- Contador -->
     <div class="basis-1/2 max-md:w-full">
@@ -79,7 +95,7 @@
         :initial="{ opacity: 0, y: 90 }"
         :while-in-view="{ opacity: 1, y: 0 }"
         :transition="{ duration: 1.2, delay: 0.3, ease: 'easeOut' }"
-        :viewport="{ once: false, amount: 0.15 }"
+        :viewport="{ once: false, amount: 0.35 }"
       >
         <p
           class="w-[380px] max-sm:w-full max-sm:px-4 m-auto text-3xl mb-4 font-new-icon-serif"
