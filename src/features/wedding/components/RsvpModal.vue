@@ -7,7 +7,10 @@
     >
       <!-- Modal Card using paper-card class for graphic consistency -->
       <div
-        class="paper-card w-full max-w-md p-8 md:p-10 rounded-2xl relative select-text"
+        :class="[
+          'paper-card w-full max-w-md p-6 md:p-10 rounded-2xl relative select-text max-md:overflow-y-auto',
+          isSubmitted ? 'max-md:!h-auto' : 'max-md:!h-full',
+        ]"
         style="box-shadow: 0 20px 50px -12px rgba(44, 73, 69, 0.3)"
       >
         <!-- Close Button Top Right -->
@@ -97,9 +100,9 @@
             <!-- Form Fields -->
             <form @submit.prevent="submitForm" class="space-y-4 text-left">
               <!-- 1. Nombre Completo -->
-              <div class="flex flex-col gap-1">
+              <div class="flex flex-col gap-[2px]">
                 <label
-                  class="text-[10px] uppercase font-sans font-bold tracking-widest text-slate-muted"
+                  class="text-[11px] font-sans font-bold tracking-widest text-slate-muted"
                 >
                   Nombre Completo *
                 </label>
@@ -114,10 +117,27 @@
                 />
               </div>
 
-              <!-- 2. ¿Podrás asistir al evento? -->
-              <div class="flex flex-col gap-1">
+              <!-- Celular -->
+              <div class="flex flex-col gap-[2px]">
                 <label
-                  class="text-[10px] uppercase font-sans font-bold tracking-widest text-slate-muted"
+                  class="text-[11px] font-sans font-bold tracking-widest text-slate-muted"
+                >
+                  Celular *
+                </label>
+                <input
+                  v-model="form.phone"
+                  type="tel"
+                  required
+                  :disabled="isSending"
+                  placeholder="Escribe tu número de celular"
+                  class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-inria text-slate-dark bg-white/70 transition-all duration-300 placeholder:text-slate-muted/40 text-sm disabled:bg-slate-100 disabled:cursor-not-allowed"
+                />
+              </div>
+
+              <!-- 2. ¿Podrás asistir al evento? -->
+              <div class="flex flex-col gap-[2px]">
+                <label
+                  class="text-[11px] font-sans font-bold tracking-widest text-slate-muted"
                 >
                   ¿Podrás asistir al evento? *
                 </label>
@@ -136,9 +156,12 @@
               </div>
 
               <!-- 3. ¿Cuántas personas asistirán? (Visible only if attending is 'yes') -->
-              <div v-if="form.attending === 'yes'" class="flex flex-col gap-1">
+              <div
+                v-if="form.attending === 'yes'"
+                class="flex flex-col gap-[2px]"
+              >
                 <label
-                  class="text-[10px] uppercase font-sans font-bold tracking-widest text-slate-muted"
+                  class="text-[11px] font-sans font-bold tracking-widest text-slate-muted"
                 >
                   ¿Cuántas personas asistirán? *
                 </label>
@@ -155,15 +178,15 @@
               </div>
 
               <!-- 4. Felicitaciones y buenos deseos -->
-              <div class="flex flex-col gap-1">
+              <div class="flex flex-col gap-[2px]">
                 <label
-                  class="text-[10px] uppercase font-sans font-bold tracking-widest text-slate-muted"
+                  class="text-[11px] font-sans font-bold tracking-widest text-slate-muted"
                 >
                   Déjanos tus felicitaciones y buenos deseos
                 </label>
                 <textarea
                   v-model="form.wishes"
-                  rows="3"
+                  rows="2"
                   :disabled="isSending"
                   placeholder="Escribe tu mensaje aquí..."
                   class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-inria text-slate-dark bg-white/70 transition-all duration-300 placeholder:text-slate-muted/40 text-sm resize-none disabled:bg-slate-100 disabled:cursor-not-allowed"
@@ -212,16 +235,6 @@
                 >
                   {{ errorMessage }}
                 </p>
-
-                <button
-                  type="button"
-                  :disabled="isSending"
-                  @click="closeModal"
-                  class="text-[10px] uppercase font-sans font-bold tracking-widest text-slate-muted/65 hover:text-slate-dark transition-colors cursor-pointer mt-1"
-                  :class="isSending ? 'opacity-50 cursor-not-allowed' : ''"
-                >
-                  Cancelar
-                </button>
               </div>
             </form>
           </div>
@@ -256,6 +269,7 @@ const props = defineProps({
 const emit = defineEmits(["close"]);
 
 const isSubmitted = ref(false);
+const sucessConfirmation = ref(false);
 const isSending = ref(false);
 const errorMessage = ref("");
 const hasBeenSubmitted = ref(false);
@@ -263,6 +277,7 @@ const submittedAttending = ref("");
 
 const form = ref({
   fullName: "",
+  phone: "",
   attending: "",
   people: 1,
   wishes: "",
@@ -278,6 +293,7 @@ const closeModal = () => {
       isSubmitted.value = false;
       form.value = {
         fullName: "",
+        phone: "",
         attending: "",
         people: 1,
         wishes: "",
@@ -299,12 +315,13 @@ const submitForm = async () => {
   try {
     await fetch(scriptUrl, {
       method: "POST",
-      mode: "cors",
+      mode: "no-cors",
       headers: {
         "Content-Type": "text/plain", // Evita CORS preflight
       },
       body: JSON.stringify({
         fullName: form.value.fullName,
+        phone: form.value.phone,
         attending: form.value.attending,
         people: form.value.attending === "yes" ? form.value.people : 0,
         wishes: form.value.wishes,
