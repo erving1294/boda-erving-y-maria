@@ -10,43 +10,76 @@
     "
   >
     <!-- Imagenes -->
-    <div ref="imagesRef" class="basis-1/2 max-md:w-full">
-      <div class="h-[550px] w-[360px] relative m-auto">
-        <!-- Foto 1 (Rotada a la derecha) -->
-        <PolaroidPhoto
-          :src="PolaroidTwo"
-          alt="Novios mano a mano 1"
-          class="absolute left-0 top-0 w-[216px] h-[283px] z-[1] max-sm:!left-[43px] transition-all duration-[2000ms] ease-out"
-          :class="
-            imagesIntersecting
-              ? 'opacity-100 translate-x-0 rotate-[13deg]'
-              : 'opacity-0 -translate-x-[80px] rotate-0'
-          "
-        />
+    <div
+      class="basis-1/2 max-md:w-full flex justify-center mb-[64px] md:mb-8"
+    >
+      <div
+        class="w-[500px] h-[500px] bg-cover relative max-sm:w-[340px] max-sm:h-[340px]"
+        :style="`background-image: url(${MarcoFoto})`"
+      >
+        <span
+          class="absolute top-[51px] left-[64px] font-cookie italic font-bold text-3xl tracking-widest max-sm:top-9 max-sm:left-12"
+        >
+          21.11.2026
+        </span>
+        <div class="absolute left-[125px] top-[102px] max-sm:left-[90px]">
+          <div class="relative">
+            <div
+              class="w-[75px] h-5 bg-[#F2EBE1] absolute -top-5 -right-6 z-10 rotate-[15deg]"
+            >
+              <img
+                :src="Sombra"
+                class="absolute -bottom-[1px] h-[1px] w-[62px] opacity-[0.3]"
+              />
+            </div>
+            
+            <motion.div
+              class="z-[1] max-sm:!left-[43px] will-change-[transform,opacity]"
+              :initial="{ opacity: 0, x: -80, rotate: 0 }"
+              :while-in-view="{ opacity: 1, x: 0, rotate: -5 }"
+              :transition="{ duration: 2.0, ease: 'easeOut' }"
+              :viewport="{ once: false, amount: 0.15 }"
+            >
+              <PolaroidPhoto
+                :src="PolaroidTwo"
+                :hasShadow="false"
+                alt="Novios mano a mano 1"
+                class="w-[257px] h-[257px] max-sm:w-[157px] max-sm:h-[157px]"
+              />
+            </motion.div>
 
-        <!-- Foto 2 (Rotada a la izquierda) -->
-        <PolaroidPhoto
-          :src="PolaroidOne"
-          alt="Novios mano a mano 2"
-          class="absolute bottom-[72px] right-[35px] w-[216px] h-[283px] z-[1] max-sm:!bottom-[60px] max-sm:!right-[35px] transition-all duration-[2000ms] delay-[1000ms] ease-out"
-          :class="
-            imagesIntersecting
-              ? 'opacity-100 translate-x-0 rotate-[-3deg]'
-              : 'opacity-0 translate-x-[80px] rotate-0'
-          "
+            <div
+              class="w-[75px] h-5 bg-[#F0E8DE] absolute -bottom-[22px] -left-6 z-10 rotate-[15deg]"
+            >
+              <img
+                :src="Sombra"
+                class="absolute left-[22px] top-[1px] h-[1px] w-[55px] opacity-[0.3]"
+              />
+            </div>
+          </div>
+        </div>
+
+        <img
+          class="absolute -left-[66px] -bottom-[51px] w-[200px] max-sm:w-[120px] max-sm:-left-9"
+          :src="FlorBoda"
         />
+        <div
+          class="absolute -right-[57px] -bottom-[66px] w-[200px] h-[200px] flex justify-center items-center translate-x-0 rotate-[8deg] max-sm:w-[120px] max-sm:h-[120px] max-sm:-right-4 max-sm:-bottom-10"
+          :style="`background-image: url(${Corazon}); background-size: cover; background-position: center;`"
+        >
+          <span class="font-cookie italic text-3xl">E & M</span>
+        </div>
       </div>
     </div>
 
     <!-- Contador -->
-    <div ref="counterRef" class="basis-1/2 max-md:w-full">
-      <div
-        class="transition-all duration-[1200ms] delay-[300ms] ease-out"
-        :class="
-          counterIntersecting
-            ? 'opacity-100 translate-y-0'
-            : 'opacity-0 -translate-y-[40px]'
-        "
+    <div class="basis-1/2 max-md:w-full">
+      <motion.div
+        class="will-change-[transform,opacity]"
+        :initial="{ opacity: 0, y: 90 }"
+        :while-in-view="{ opacity: 1, y: 0 }"
+        :transition="{ duration: 1.2, delay: 0.3, ease: 'easeOut' }"
+        :viewport="{ once: false, amount: 0.15 }"
       >
         <p
           class="w-[380px] max-sm:w-full max-sm:px-4 m-auto text-3xl mb-4 font-new-icon-serif"
@@ -65,108 +98,74 @@
         </p>
         <div class="w-full flex justify-center">
           <div class="w-[420px] max-sm:w-[280px]">
-            <PaperCard shape="right" contentClass="max-sm:!p-4">
-              <!-- Clock grid -->
-              <div class="grid grid-cols-4 gap-4 w-full relative z-10">
-                <div
-                  class="flex flex-col justify-center items-center border-r-[1px] border-solid border-slate-muted"
+            <!-- Clock grid -->
+            <div class="grid grid-cols-4 gap-4 w-full relative z-10">
+              <div
+                class="flex flex-col justify-center items-center border-r-[1px] border-solid border-slate-muted"
+              >
+                <span
+                  class="font-inria text-3xl md:text-4xl text-sage font-bold leading-none"
+                  >{{ days }}</span
                 >
-                  <span
-                    class="font-inria text-3xl md:text-4xl text-sage font-bold leading-none"
-                    >{{ days }}</span
-                  >
-                  <span
-                    class="text-[10px] md:text-xs uppercase tracking-wide text-slate-muted mt-2"
-                    >Días</span
-                  >
-                </div>
-
-                <div
-                  class="flex flex-col justify-center items-center border-r-[1px] border-solid border-slate-muted"
+                <span
+                  class="text-[10px] md:text-xs uppercase tracking-wide text-slate-muted mt-2"
+                  >Días</span
                 >
-                  <span
-                    class="font-inria text-3xl md:text-4xl text-sage font-bold leading-none"
-                    >{{ hours }}</span
-                  >
-                  <span
-                    class="text-[10px] md:text-xs uppercase tracking-wide text-slate-muted mt-2"
-                    >Horas</span
-                  >
-                </div>
-
-                <div
-                  class="flex flex-col justify-center items-center border-r-[1px] border-solid border-slate-muted"
-                >
-                  <span
-                    class="font-inria text-3xl md:text-4xl text-sage font-bold leading-none"
-                    >{{ minutes }}</span
-                  >
-                  <span
-                    class="text-[10px] md:text-xs uppercase tracking-wide text-slate-muted mt-2"
-                    >Mins</span
-                  >
-                </div>
-
-                <div class="flex flex-col justify-center items-center">
-                  <span
-                    class="font-inria text-3xl md:text-4xl text-sage font-bold leading-none"
-                    >{{ seconds }}</span
-                  >
-                  <span
-                    class="text-[10px] md:text-xs uppercase tracking-wide text-slate-muted mt-2"
-                    >Segs</span
-                  >
-                </div>
               </div>
-            </PaperCard>
+
+              <div
+                class="flex flex-col justify-center items-center border-r-[1px] border-solid border-slate-muted"
+              >
+                <span
+                  class="font-inria text-3xl md:text-4xl text-sage font-bold leading-none"
+                  >{{ hours }}</span
+                >
+                <span
+                  class="text-[10px] md:text-xs uppercase tracking-wide text-slate-muted mt-2"
+                  >Horas</span
+                >
+              </div>
+
+              <div
+                class="flex flex-col justify-center items-center border-r-[1px] border-solid border-slate-muted"
+              >
+                <span
+                  class="font-inria text-3xl md:text-4xl text-sage font-bold leading-none"
+                  >{{ minutes }}</span
+                >
+                <span
+                  class="text-[10px] md:text-xs uppercase tracking-wide text-slate-muted mt-2"
+                  >Mins</span
+                >
+              </div>
+
+              <div class="flex flex-col justify-center items-center">
+                <span
+                  class="font-inria text-3xl md:text-4xl text-sage font-bold leading-none"
+                  >{{ seconds }}</span
+                >
+                <span
+                  class="text-[10px] md:text-xs uppercase tracking-wide text-slate-muted mt-2"
+                  >Segs</span
+                >
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { motion } from "motion-v";
 import { useCountdown } from "../../../core/composables/useCountdown";
-import PaperCard from "../../../components/PaperCard.vue";
 import PolaroidPhoto from "../../../components/PolaroidPhoto.vue";
-import WallClockGif from "../../../assets/images/gifs/wall-clock.gif";
-import PolaroidOne from "../../../assets/images/badbunny.jpg";
 import PolaroidTwo from "../../../assets/images/pedida.webp";
-
-const imagesRef = ref(null);
-const counterRef = ref(null);
-const imagesIntersecting = ref(false);
-const counterIntersecting = ref(false);
-let observer = null;
-
-onMounted(() => {
-  if (typeof window !== "undefined") {
-    observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.target === imagesRef.value) {
-            imagesIntersecting.value = entry.isIntersecting;
-          } else if (entry.target === counterRef.value) {
-            counterIntersecting.value = entry.isIntersecting;
-          }
-        });
-      },
-      {
-        threshold: 0.5, // Trigger when 15% of the element is visible
-      },
-    );
-    if (imagesRef.value) observer.observe(imagesRef.value);
-    if (counterRef.value) observer.observe(counterRef.value);
-  }
-});
-
-onUnmounted(() => {
-  if (observer) {
-    observer.disconnect();
-  }
-});
+import MarcoFoto from "../../../assets/images/marco_foto.png";
+import FlorBoda from "../../../assets/images/flor_boda.jpg";
+import Corazon from "../../../assets/images/corazon_blanco.png";
+import Sombra from "../../../assets/images/sombra.png";
 
 const { days, hours, minutes, seconds, isFinished } = useCountdown(
   "November 21, 2026 17:00:00",

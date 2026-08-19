@@ -38,7 +38,6 @@
           <path :d="flapPath" fill="url(#flap-paper-texture)" />
 
           <!-- Double Border Contour using stroke layering -->
-
           <!-- 1. Gold outer line base (thick) -->
           <path
             :d="flapPath"
@@ -49,7 +48,6 @@
             stroke-linejoin="round"
             opacity="0.85"
           />
-
           <!-- 2. Paper mask line (middle) -->
           <path
             :d="flapPath"
@@ -59,7 +57,6 @@
             stroke-linecap="round"
             stroke-linejoin="round"
           />
-
           <!-- 3. Gold inner line (thin) -->
           <path
             :d="flapPath"
@@ -102,7 +99,7 @@
             </pattern>
           </defs>
 
-          <!-- Main Pocket Body -->
+          <!-- Main Pocket Body (Complement of top flap) -->
           <path :d="pocketPath" fill="url(#pocket-paper-texture)" />
         </svg>
       </div>
@@ -136,12 +133,11 @@
           v-if="!isOpened"
           class="fixed left-1/2 top-[55vh] -translate-x-1/2 translate-y-[60px] z-40 flex flex-col items-center animate-bounce-arrow"
         >
-          <!-- "Abrir" indicator badge -->
+          <!-- "Click Aquí" indicator badge -->
           <div
             class="bg-white text-primary font-sans text-[10px] sm:text-xs tracking-[0.2em] px-5 py-2 rounded-full shadow-md font-semibold border border-gold/15 uppercase text-center min-w-[120px] relative"
           >
             Abrir
-
             <!-- Tiny triangle pointing up at the wax seal -->
             <div
               class="absolute top-[-4px] left-1/2 -translate-x-1/2 w-2 h-2 bg-white rotate-45 border-t border-l border-gold/15"
@@ -156,91 +152,64 @@
 <script setup>
 import { ref } from "vue";
 import { useAudio } from "../../../core/composables/useAudio";
-
 import paperTexture from "../../../assets/images/textura_carta.png";
 import sealUrl from "../../../assets/images/Sello.png";
 
 const emit = defineEmits(["enter"]);
-
 const show = ref(true);
 const isOpened = ref(false);
-
 const { play } = useAudio();
 
-/* ==========================================================
-   SOLAPA SUPERIOR
-   ==========================================================
+// Precise symmetric scalloped path for the bottom edge of the top flap (ViewBox: 0 0 2400 550)
+const flapPath = `M 0,0 
+                  L 2400,0 
+                  L 2400,350 
+                  C 2360,370 2320,400 2280,400 
+                  C 2240,400 2200,370 2160,370 
+                  C 2120,370 2080,430 2040,430 
+                  C 2000,430 1960,400 1920,400 
+                  C 1880,400 1840,460 1800,460 
+                  C 1760,460 1720,430 1680,430 
+                  C 1640,430 1600,490 1560,490 
+                  C 1520,490 1480,460 1440,460 
+                  C 1380,460 1320,550 1200,550 
+                  C 1080,550 1020,460 960,460 
+                  C 920,460 880,490 840,490 
+                  C 800,490 760,430 720,430 
+                  C 680,430 640,460 600,460 
+                  C 560,460 520,400 480,400 
+                  C 440,400 400,430 360,430 
+                  C 320,430 280,370 240,370 
+                  C 200,370 160,400 120,400 
+                  C 80,400 40,350 0,350 
+                  Z`;
 
-   Se mantienen solamente 3 curvas principales.
-
-   La forma conserva:
-   - los extremos laterales
-   - una caída suave hacia el centro
-   - el punto más bajo en el centro
-   - la misma proporción general de tu sobre
-*/
-
-const flapPath = `
-  M 0,0
-  L 2400,0
-  L 2400,350
-
-  C 2150,350
-    1900,430
-    1600,430
-
-  C 1400,430
-    1300,550
-    1200,550
-
-  C 1100,550
-    1000,430
-    800,430
-
-  L 0,350
-
-  Z
-`;
-
-/* ==========================================================
-   PARTE INFERIOR DEL SOBRE
-   ==========================================================
-
-   Utilizamos las mismas 3 curvas pero en sentido inverso,
-   para que el borde de la parte inferior coincida
-   exactamente con el borde de la solapa.
-*/
-
-const pocketPath = `
-  M 0,350
-
-  L 800,430
-
-  C 1000,430
-    1100,550
-    1200,550
-
-  C 1300,550
-    1400,430
-    1600,430
-
-  C 1900,430
-    2150,350
-    2400,350
-
-  L 2400,1000
-  L 0,1000
-
-  Z
-`;
-
-/* ==========================================================
-   ABRIR SOBRE
-   ========================================================== */
+// Complement scalloped path for the top edge of the pocket (ViewBox: 0 0 2400 1000)
+const pocketPath = `M 0,350 
+                    C 40,350 80,400 120,400 
+                    C 160,400 200,370 240,370 
+                    C 280,370 320,430 360,430 
+                    C 400,430 440,400 480,400 
+                    C 520,400 560,460 600,460 
+                    C 640,460 680,430 720,430 
+                    C 760,430 800,490 840,490 
+                    C 880,490 920,460 960,460 
+                    C 1020,460 1080,550 1200,550 
+                    C 1320,550 1380,460 1440,460 
+                    C 1480,460 1520,490 1560,490 
+                    C 1600,490 1640,430 1680,430 
+                    C 1720,430 1760,460 1800,460 
+                    C 1840,460 1880,400 1920,400 
+                    C 1960,400 2000,430 2040,430 
+                    C 2080,430 2120,370 2160,370 
+                    C 2200,370 2240,400 2280,400 
+                    C 2320,400 2360,350 2400,350 
+                    L 2400,1000 
+                    L 0,1000 
+                    Z`;
 
 const openEnvelope = () => {
   if (isOpened.value) return;
-
   isOpened.value = true;
 
   // 1. Play background music
@@ -253,53 +222,34 @@ const openEnvelope = () => {
   // 2. Wait for slide animation, then remove welcome overlay
   setTimeout(() => {
     show.value = false;
-
     emit("enter");
-
     // Restore scrolling on the landing page
     document.body.style.overflow = "";
-  }, 1400);
+  }, 1400); // matches slide duration
 };
 
-/* ==========================================================
-   BLOQUEAR SCROLL
-   ========================================================== */
-
+// Block scrolling on load
 if (typeof window !== "undefined") {
   document.body.style.overflow = "hidden";
 }
 </script>
 
 <style scoped>
-/* ==========================================================
-   OVERLAY
-   ========================================================== */
-
 .overlay-fade-leave-active {
   transition: opacity 0.8s ease-in-out;
 }
-
 .overlay-fade-leave-to {
   opacity: 0;
 }
-
-/* ==========================================================
-   FADE
-   ========================================================== */
 
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s ease;
 }
-
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
 }
-
-/* ==========================================================
-   FADE IN
-   ========================================================== */
 
 .animate-fade-in {
   animation: fadeIn 1s ease-out forwards;
@@ -310,16 +260,11 @@ if (typeof window !== "undefined") {
     opacity: 0;
     transform: translateY(-8px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-
-/* ==========================================================
-   BOUNCE INDICATOR
-   ========================================================== */
 
 .animate-bounce-arrow {
   animation: bounceArrow 2s infinite;
@@ -330,16 +275,12 @@ if (typeof window !== "undefined") {
   100% {
     transform: translate(-50%, 60px);
   }
-
   50% {
     transform: translate(-50%, 52px);
   }
 }
 
-/* ==========================================================
-   WAX SEAL STATES
-   ========================================================== */
-
+/* Wax seal states */
 .seal-closed {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
@@ -351,16 +292,12 @@ if (typeof window !== "undefined") {
   filter: blur(4px);
 }
 
-/* ==========================================================
-   PULSE ANIMATION FOR WAX SEAL
-   ========================================================== */
-
+/* Pulse animation for wax seal */
 @keyframes heartbeat {
   0%,
   100% {
     transform: scale(1);
   }
-
   50% {
     transform: scale(1.08);
   }

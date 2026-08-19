@@ -9,14 +9,12 @@
         class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 w-full max-w-5xl mx-auto items-stretch"
       >
         <!-- CARD 1: DRESS CODE (LEFT) -->
-        <div
-          ref="dressRef"
-          class="w-full max-w-md mx-auto transition-all duration-[1200ms] ease-out will-change-[transform,opacity]"
-          :class="
-            dressIntersecting
-              ? 'opacity-100 translate-x-0 rotate-0'
-              : 'opacity-0 -translate-x-[60px] -rotate-3'
-          "
+        <motion.div
+          class="w-full max-w-md mx-auto will-change-[transform,opacity]"
+          :initial="{ opacity: 0, x: -60, rotate: -3 }"
+          :while-in-view="{ opacity: 1, x: 0, rotate: 0 }"
+          :transition="{ duration: 1.2, ease: 'easeOut' }"
+          :viewport="{ once: false, amount: 0.15 }"
         >
           <PaperCard shape="left" class="w-full max-w-md mx-auto">
             <div
@@ -44,56 +42,50 @@
 
               <!-- Color Swatches -->
               <div class="flex justify-center items-center gap-4">
-                <div
-                  class="w-10 h-10 rounded-full bg-white border border-slate-200 shadow-sm transition-all duration-[500ms] cubic-bezier(0.34, 1.56, 0.64, 1) will-change-[transform,opacity] delay-[800ms]"
-                  :class="
-                    dressIntersecting
-                      ? 'opacity-100 scale-100'
-                      : 'opacity-0 scale-0'
-                  "
+                <motion.div
+                  class="w-10 h-10 rounded-full bg-white border border-slate-200 shadow-sm will-change-[transform,opacity]"
+                  :initial="{ opacity: 0, scale: 0 }"
+                  :while-in-view="{ opacity: 1, scale: 1 }"
+                  :transition="{ duration: 0.5, delay: 0.8, ease: 'easeOut' }"
+                  :viewport="{ once: false, amount: 0.15 }"
                   title="Blanco"
-                ></div>
-                <div
-                  class="w-10 h-10 rounded-full bg-[#f3d5b5] border border-gold/20 shadow-sm transition-all duration-[500ms] cubic-bezier(0.34, 1.56, 0.64, 1) will-change-[transform,opacity] delay-[1000ms]"
-                  :class="
-                    dressIntersecting
-                      ? 'opacity-100 scale-100'
-                      : 'opacity-0 scale-0'
-                  "
+                ></motion.div>
+                <motion.div
+                  class="w-10 h-10 rounded-full bg-[#f3d5b5] border border-gold/20 shadow-sm will-change-[transform,opacity]"
+                  :initial="{ opacity: 0, scale: 0 }"
+                  :while-in-view="{ opacity: 1, scale: 1 }"
+                  :transition="{ duration: 0.5, delay: 1.0, ease: 'easeOut' }"
+                  :viewport="{ once: false, amount: 0.15 }"
                   title="Crema"
-                ></div>
-                <div
-                  class="w-10 h-10 rounded-full bg-[#e8dec9] border border-gold/20 shadow-sm transition-all duration-[500ms] cubic-bezier(0.34, 1.56, 0.64, 1) will-change-[transform,opacity] delay-[1200ms]"
-                  :class="
-                    dressIntersecting
-                      ? 'opacity-100 scale-100'
-                      : 'opacity-0 scale-0'
-                  "
+                ></motion.div>
+                <motion.div
+                  class="w-10 h-10 rounded-full bg-[#e8dec9] border border-gold/20 shadow-sm will-change-[transform,opacity]"
+                  :initial="{ opacity: 0, scale: 0 }"
+                  :while-in-view="{ opacity: 1, scale: 1 }"
+                  :transition="{ duration: 0.5, delay: 1.2, ease: 'easeOut' }"
+                  :viewport="{ once: false, amount: 0.15 }"
                   title="Beige"
-                ></div>
-                <div
-                  class="w-10 h-10 rounded-full bg-[#d6ab83] border border-gold/20 shadow-sm transition-all duration-[500ms] cubic-bezier(0.34, 1.56, 0.64, 1) will-change-[transform,opacity] delay-[1400ms]"
-                  :class="
-                    dressIntersecting
-                      ? 'opacity-100 scale-100'
-                      : 'opacity-0 scale-0'
-                  "
+                ></motion.div>
+                <motion.div
+                  class="w-10 h-10 rounded-full bg-[#d6ab83] border border-gold/20 shadow-sm will-change-[transform,opacity]"
+                  :initial="{ opacity: 0, scale: 0 }"
+                  :while-in-view="{ opacity: 1, scale: 1 }"
+                  :transition="{ duration: 0.5, delay: 1.4, ease: 'easeOut' }"
+                  :viewport="{ once: false, amount: 0.15 }"
                   title="Nude"
-                ></div>
+                ></motion.div>
               </div>
             </div>
           </PaperCard>
-        </div>
+        </motion.div>
 
         <!-- CARD 2: SIN NIÑOS (RIGHT) -->
-        <div
-          ref="kidsRef"
-          class="w-full max-w-md mx-auto transition-all duration-[1200ms] delay-[200ms] ease-out will-change-[transform,opacity]"
-          :class="
-            kidsIntersecting
-              ? 'opacity-100 translate-x-0 rotate-0'
-              : 'opacity-0 translate-x-[60px] rotate-3'
-          "
+        <motion.div
+          class="w-full max-w-md mx-auto will-change-[transform,opacity]"
+          :initial="{ opacity: 0, x: 60, rotate: 3 }"
+          :while-in-view="{ opacity: 1, x: 0, rotate: 0 }"
+          :transition="{ duration: 1.2, delay: 0.2, ease: 'easeOut' }"
+          :viewport="{ once: false, amount: 0.15 }"
         >
           <PaperCard shape="right" class="w-full max-w-md mx-auto !h-full">
             <div
@@ -120,45 +112,15 @@
               </p>
             </div>
           </PaperCard>
-        </div>
+        </motion.div>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { motion } from "motion-v";
 import PaperCard from "../../../components/PaperCard.vue";
-import ChampagneGif from "../../../assets/images/gifs/champagne.gif";
 import SuitGif from "../../../assets/images/gifs/suit.gif";
 import HauteCoutureGif from "../../../assets/images/gifs/haute-couture.gif";
-
-const dressRef = ref(null);
-const kidsRef = ref(null);
-const dressIntersecting = ref(false);
-const kidsIntersecting = ref(false);
-let observer = null;
-
-onMounted(() => {
-  if (typeof window !== "undefined") {
-    observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.target === dressRef.value) {
-            dressIntersecting.value = entry.isIntersecting;
-          } else if (entry.target === kidsRef.value) {
-            kidsIntersecting.value = entry.isIntersecting;
-          }
-        });
-      },
-      { threshold: 0.5 },
-    );
-    if (dressRef.value) observer.observe(dressRef.value);
-    if (kidsRef.value) observer.observe(kidsRef.value);
-  }
-});
-
-onUnmounted(() => {
-  if (observer) observer.disconnect();
-});
 </script>

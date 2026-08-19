@@ -2,6 +2,7 @@
   <div
     :class="[
       'physical-card transition-all duration-500 hover:-translate-y-2 flex flex-col p-2 relative z-20',
+      { 'has-shadow': hasShadow },
       containerClass,
     ]"
     :style="cardStyle"
@@ -94,6 +95,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  hasShadow: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 const cardStyle = computed(() => {
@@ -126,6 +131,8 @@ const foliageSvgClasses = computed(() => {
 .physical-card {
   position: relative;
   background-color: #faf7f3;
+}
+.physical-card.has-shadow {
   box-shadow:
     0 15px 35px -10px rgba(74, 99, 96, 0.12),
     inset 0 0 45px rgba(191, 168, 128, 0.04),

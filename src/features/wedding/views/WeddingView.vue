@@ -4,7 +4,7 @@
   >
     <!-- Welcome Overlay screen -->
     <WelcomeOverlay @enter="onEnter" />
-
+    <!-- <WelcomePaper /> -->
     <!-- Main Invitation content -->
     <div class="w-full">
       <!-- 1. Floating Music Controller -->
@@ -71,6 +71,7 @@ import RsvpSection from "../components/RsvpSection.vue";
 import ContactSection from "../components/ContactSection.vue";
 import DetailSection from "../components/DetailSection.vue";
 import BannerImage from "../../../components/BannerImage.vue";
+import WelcomePaper from "../components/WelcomePaper.vue";
 
 // Reactive state
 const ready = ref(false);

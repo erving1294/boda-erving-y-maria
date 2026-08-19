@@ -1,42 +1,12 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { motion } from "motion-v";
 import invitationCard from "../../../assets/images/sobre_verde.webp";
 import paperWedding from "../../../assets/images/papel_boda.jpg";
 import sealUrl from "../../../assets/images/Sello.png";
-
-const detailSectionRef = ref(null);
-const isIntersecting = ref(false);
-
-let observer = null;
-
-onMounted(() => {
-  if (typeof window !== "undefined") {
-    observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          isIntersecting.value = entry.isIntersecting;
-        });
-      },
-      {
-        threshold: 0.7, // Trigger when 15% of the section is visible
-      },
-    );
-    if (detailSectionRef.value) {
-      observer.observe(detailSectionRef.value);
-    }
-  }
-});
-
-onUnmounted(() => {
-  if (observer) {
-    observer.disconnect();
-  }
-});
 </script>
 
 <template>
   <section
-    ref="detailSectionRef"
     id="detailSection"
     class="w-full h-[728px] relative overflow-hidden"
   >
@@ -56,24 +26,18 @@ onUnmounted(() => {
     >
       <!-- Envelope Image -->
       <img
-        :class="
-          isIntersecting
-            ? 'opacity-100 translate-x-0'
-            : 'opacity-0 -translate-x-[80px] md:-translate-x-[150px]'
-        "
         :src="invitationCard"
         alt="Invitation Card"
         class="w-[340px] h-full object-cover max-sm:!h-[480px] transition-all duration-[1500ms] ease-out"
       />
 
       <!-- Inner Invitation Paper Card (Overlapping) -->
-      <article
-        class="absolute bottom-[-110px] right-[-24px] flex-none w-[460px] h-[550px] overflow-visible filter drop-shadow-[2px_2px_4px_rgba(0,0,0,0.25)] max-sm:!w-[340px] max-sm:!h-[520px] max-sm:!bottom-[-100px] max-sm:!right-[-52px] transition-all duration-[1500ms] ease-out"
-        :class="
-          isIntersecting
-            ? 'opacity-100 translate-x-0'
-            : 'opacity-0 translate-x-[80px] md:translate-x-[150px]'
-        "
+      <motion.article
+        class="absolute bottom-[-110px] right-[-24px] flex-none w-[460px] h-[550px] overflow-visible filter drop-shadow-[2px_2px_4px_rgba(0,0,0,0.25)] max-sm:!w-[340px] max-sm:!h-[520px] max-sm:!bottom-[-100px] max-sm:!right-[-52px] will-change-[transform,opacity]"
+        :initial="{ opacity: 0, x: 120 }"
+        :while-in-view="{ opacity: 1, x: 0 }"
+        :transition="{ duration: 1.5, ease: 'easeOut' }"
+        :viewport="{ once: false, amount: 0.15 }"
       >
         <!-- Paper Texture Background -->
         <div class="absolute inset-0 rounded-[inherit]">
@@ -106,13 +70,12 @@ onUnmounted(() => {
           class="text-center absolute top-[53%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col justify-center items-center gap-3.5 w-[299px] h-min p-[10px]"
         >
           <!-- Animatable text wrapper -->
-          <div
-            class="flex flex-col items-center justify-center gap-3.5 w-full transition-all duration-[1500ms] delay-[1000ms] ease-out"
-            :class="
-              isIntersecting
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-[30px]'
-            "
+          <motion.div
+            class="flex flex-col items-center justify-center gap-3.5 w-full will-change-[transform,opacity]"
+            :initial="{ opacity: 0, y: 80 }"
+            :while-in-view="{ opacity: 1, y: 0 }"
+            :transition="{ duration: 1.0, delay: 0.5, ease: 'easeOut' }"
+            :viewport="{ once: false, amount: 0.15 }"
           >
             <!-- Names Layout -->
             <div class="flex flex-col items-center justify-center w-full mb-1">
@@ -169,9 +132,9 @@ onUnmounted(() => {
                 4:00 PM
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </article>
+      </motion.article>
     </div>
   </section>
 </template>

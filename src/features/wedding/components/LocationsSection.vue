@@ -6,14 +6,12 @@
     <div class="max-w-5xl mx-auto px-6">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">
         <!-- CEREMONIA CARD (LEFT) -->
-        <div
-          ref="leftCardRef"
-          class="w-full max-w-md mx-auto transition-all duration-[1200ms] ease-out will-change-[transform,opacity]"
-          :class="
-            leftIntersecting
-              ? 'opacity-100 translate-x-0 rotate-0'
-              : 'opacity-0 -translate-x-[60px] -rotate-3'
-          "
+        <motion.div
+          class="w-full max-w-md mx-auto will-change-[transform,opacity]"
+          :initial="{ opacity: 0, x: -60, rotate: -3 }"
+          :while-in-view="{ opacity: 1, x: 0, rotate: 0 }"
+          :transition="{ duration: 1.2, ease: 'easeOut' }"
+          :viewport="{ once: false, amount: 0.15 }"
         >
           <PaperCard
             shape="left"
@@ -50,17 +48,15 @@
               </a>
             </div>
           </PaperCard>
-        </div>
+        </motion.div>
 
         <!-- CELEBRACION CARD (RIGHT) -->
-        <div
-          ref="rightCardRef"
-          class="w-full max-w-md mx-auto transition-all duration-[1200ms] delay-[200ms] ease-out will-change-[transform,opacity]"
-          :class="
-            rightIntersecting
-              ? 'opacity-100 translate-x-0 rotate-0'
-              : 'opacity-0 translate-x-[60px] rotate-3'
-          "
+        <motion.div
+          class="w-full max-w-md mx-auto will-change-[transform,opacity]"
+          :initial="{ opacity: 0, x: 60, rotate: 3 }"
+          :while-in-view="{ opacity: 1, x: 0, rotate: 0 }"
+          :transition="{ duration: 1.2, delay: 0.2, ease: 'easeOut' }"
+          :viewport="{ once: false, amount: 0.15 }"
         >
           <PaperCard
             shape="right"
@@ -97,49 +93,17 @@
               </a>
             </div>
           </PaperCard>
-        </div>
+        </motion.div>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { motion } from "motion-v";
 import PaperCard from "../../../components/PaperCard.vue";
 import WineGif from "../../../assets/images/gifs/wine.gif";
 import ChurchGif from "../../../assets/images/gifs/church.gif";
-
-const leftCardRef = ref(null);
-const rightCardRef = ref(null);
-const leftIntersecting = ref(false);
-const rightIntersecting = ref(false);
-let observer = null;
-
-onMounted(() => {
-  if (typeof window !== "undefined") {
-    observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.target === leftCardRef.value) {
-            leftIntersecting.value = entry.isIntersecting;
-          } else if (entry.target === rightCardRef.value) {
-            rightIntersecting.value = entry.isIntersecting;
-          }
-        });
-      },
-      { threshold: 0.5 },
-    );
-
-    if (leftCardRef.value) observer.observe(leftCardRef.value);
-    if (rightCardRef.value) observer.observe(rightCardRef.value);
-  }
-});
-
-onUnmounted(() => {
-  if (observer) {
-    observer.disconnect();
-  }
-});
 </script>
 
 <style scoped>

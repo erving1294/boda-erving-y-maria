@@ -9,31 +9,27 @@
         class="max-w-[400px] mx-auto relative px-4 h-[680px] max-sm:h-[600px]"
       >
         <!-- Polaroid Photo (Bottom-Left) -->
-        <div
-          ref="polaroidRef"
-          class="absolute -left-[13px] bottom-[28px] w-[180px] h-[235px] z-0 max-sm:-left-0 max-sm:-bottom-[10px] max-sm:w-[140px] max-sm:h-[185px] transition-all duration-[1000ms] ease-out"
-          :class="
-            polaroidIntersecting
-              ? 'translate-x-0 rotate-[-6deg]'
-              : '-translate-x-[50px] rotate-0'
-          "
+        <motion.div
+          class="absolute -left-[13px] bottom-[28px] w-[180px] h-[235px] z-0 max-sm:-left-0 max-sm:-bottom-[10px] max-sm:w-[140px] max-sm:h-[185px] will-change-[transform,opacity]"
+          :initial="{ x: -50, rotate: 0 }"
+          :while-in-view="{ x: 0, rotate: -6 }"
+          :transition="{ duration: 1.0, ease: 'easeOut' }"
+          :viewport="{ once: false, amount: 0.15 }"
         >
           <PolaroidPhoto
             :src="coverUrl"
             alt="Ervíng & María"
             class="w-full h-full transition-all duration-300 hover:scale-105"
           />
-        </div>
+        </motion.div>
 
         <!-- Main Invitation Card -->
-        <div
-          ref="cardRef"
-          class="transition-all duration-[1200ms] ease-out"
-          :class="
-            cardIntersecting
-              ? 'translate-y-0 opacity-100'
-              : 'translate-y-[50px]  opacity-0'
-          "
+        <motion.div
+          class="will-change-[transform,opacity]"
+          :initial="{ y: 50, opacity: 0 }"
+          :while-in-view="{ y: 0, opacity: 1 }"
+          :transition="{ duration: 1.2, ease: 'easeOut' }"
+          :viewport="{ once: false, amount: 0.15 }"
         >
           <PaperCard
             shape="standard"
@@ -65,17 +61,15 @@
               </a>
             </div>
           </PaperCard>
-        </div>
+        </motion.div>
 
         <!-- Clay Medallion (Bottom-Right) -->
-        <div
-          ref="medallionRef"
-          class="absolute -right-8 bottom-[148px] w-[95px] h-[130px] z-20 max-sm:-right-4 max-sm:bottom-[100px] max-sm:w-[75px] max-sm:h-[105px] rounded-[50%/40%] bg-[#efede7]/95 border border-[#bfa880]/15 flex justify-center items-center select-none transition-all duration-[1000ms] ease-out"
-          :class="
-            medallionIntersecting
-              ? 'translate-x-0 rotate-[8deg]'
-              : 'translate-x-[50px] rotate-0'
-          "
+        <motion.div
+          class="absolute -right-8 bottom-[148px] w-[95px] h-[130px] z-20 max-sm:-right-4 max-sm:bottom-[100px] max-sm:w-[75px] max-sm:h-[105px] rounded-[50%/40%] bg-[#efede7]/95 border border-[#bfa880]/15 flex justify-center items-center select-none will-change-[transform,opacity]"
+          :initial="{ x: 50, rotate: 0 }"
+          :while-in-view="{ x: 0, rotate: 8 }"
+          :transition="{ duration: 1.0, ease: 'easeOut' }"
+          :viewport="{ once: false, amount: 0.15 }"
           style="
             box-shadow:
               0 4px 10px rgba(0, 0, 0, 0.15),
@@ -93,17 +87,16 @@
           >
             E&M
           </span>
-        </div>
+        </motion.div>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { motion } from "motion-v";
 import PaperCard from "../../../components/PaperCard.vue";
 import PolaroidPhoto from "../../../components/PolaroidPhoto.vue";
-import sealUrl from "../../../assets/images/Sello.png";
 import coverUrl from "../../../assets/images/portada-3.webp";
 
 const phone = "51999999999"; // Reemplazar con el número real si es necesario
@@ -111,56 +104,4 @@ const message = encodeURIComponent(
   "¡Hola! Confirmo mi asistencia a la boda de Ervíng y María.",
 );
 const whatsappUrl = `https://api.whatsapp.com/send?phone=${phone}&text=${message}`;
-
-const polaroidRef = ref(null);
-const cardRef = ref(null);
-const medallionRef = ref(null);
-
-const polaroidIntersecting = ref(false);
-const cardIntersecting = ref(false);
-const medallionIntersecting = ref(false);
-
-let polaroidObserver = null;
-let cardObserver = null;
-let medallionObserver = null;
-
-onMounted(() => {
-  if (typeof window !== "undefined") {
-    polaroidObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          polaroidIntersecting.value = entry.isIntersecting;
-        });
-      },
-      { threshold: 0.5 },
-    );
-    if (polaroidRef.value) polaroidObserver.observe(polaroidRef.value);
-
-    cardObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          cardIntersecting.value = entry.isIntersecting;
-        });
-      },
-      { threshold: 0.5 },
-    );
-    if (cardRef.value) cardObserver.observe(cardRef.value);
-
-    medallionObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          medallionIntersecting.value = entry.isIntersecting;
-        });
-      },
-      { threshold: 0.15 },
-    );
-    if (medallionRef.value) medallionObserver.observe(medallionRef.value);
-  }
-});
-
-onUnmounted(() => {
-  if (polaroidObserver) polaroidObserver.disconnect();
-  if (cardObserver) cardObserver.disconnect();
-  if (medallionObserver) medallionObserver.disconnect();
-});
 </script>
