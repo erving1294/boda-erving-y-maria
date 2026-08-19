@@ -31,7 +31,7 @@
       <BannerImage />
 
       <!-- 11. Confirmar Asistencia -->
-      <RsvpSection />
+      <RsvpSection :guest-name="guestName" :passes="passes" />
 
       <!-- 13. Footer -->
       <footer
@@ -71,6 +71,7 @@ import RsvpSection from "../components/RsvpSection.vue";
 import ContactSection from "../components/ContactSection.vue";
 import DetailSection from "../components/DetailSection.vue";
 import BannerImage from "../../../components/BannerImage.vue";
+import guests from "../data/guests.json";
 
 // Reactive state
 const ready = ref(false);
@@ -94,18 +95,15 @@ onMounted(() => {
 
     // Parse Query Parameters
     const params = new URLSearchParams(window.location.search);
+    const invitedCode = params.get("invited");
 
-    // Support both Spanish and English keys
-    const rawGuest = params.get("invitado") || params.get("guest");
-    const rawPasses = params.get("pases") || params.get("passes");
-
-    if (rawGuest) {
-      guestName.value = decodeURIComponent(rawGuest).replace(/\+/g, " ");
-    }
-    if (rawPasses) {
-      const p = parseInt(rawPasses, 10);
-      if (!isNaN(p) && p > 0) {
-        passes.value = p;
+    if (invitedCode) {
+      const guest = guests.find(
+        (g) => g.code.trim().toUpperCase() === invitedCode.trim().toUpperCase()
+      );
+      if (guest) {
+        guestName.value = guest.name;
+        passes.value = guest.invitationCount;
       }
     }
   }

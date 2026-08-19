@@ -61,7 +61,7 @@
               </svg>
             </div>
 
-            <h4 class="title text-4xl mb-2">¡Muchas gracias!</h4>
+            <h4 class="title text-4xl mb-4">¡Muchas gracias!</h4>
 
             <p
               v-if="form.attending === 'yes'"
@@ -147,8 +147,9 @@
                   :disabled="isSending"
                   class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-inria text-slate-dark bg-white/70 transition-all duration-300 text-sm cursor-pointer disabled:bg-slate-100 disabled:cursor-not-allowed"
                 >
-                  <option :value="1">1 persona</option>
-                  <option :value="2">2 personas</option>
+                  <option v-for="n in (passes || 2)" :key="n" :value="n">
+                    {{ n }} {{ n === 1 ? 'persona' : 'personas' }}
+                  </option>
                 </select>
               </div>
 
@@ -173,7 +174,7 @@
                 <button
                   type="submit"
                   :disabled="isSending"
-                  class="button !flex cursor-pointer w-full !max-w-none border-0 justify-center items-center gap-2"
+                  class="button cursor-pointer w-full !max-w-none border-0 !flex justify-center items-center gap-2"
                   :class="isSending ? 'opacity-85 cursor-not-allowed' : ''"
                 >
                   <!-- Loading Spinner -->
@@ -241,6 +242,14 @@ const props = defineProps({
     type: String,
     default: "51999999999",
   },
+  guestName: {
+    type: String,
+    default: "",
+  },
+  passes: {
+    type: Number,
+    default: 2,
+  },
 });
 
 const emit = defineEmits(["close"]);
@@ -260,9 +269,9 @@ const closeModal = () => {
   emit("close");
   // Reset states after modal transition finishes to avoid flickering
   setTimeout(() => {
-    isSubmitted.value = false;
     isSending.value = false;
     errorMessage.value = "";
+    isSubmitted.value = false;
     form.value = {
       fullName: "",
       attending: "",
@@ -280,11 +289,11 @@ const submitForm = async () => {
     "https://script.google.com/macros/s/AKfycbyECyVwSrUGcG3Ejp6z2KXxYSTtIAB7JO5m_85K5QGzZ2ORX_lVHdsWCkfdP54AIzoOTg/exec";
 
   try {
-    const response = await fetch(scriptUrl, {
+    await fetch(scriptUrl, {
       method: "POST",
       mode: "cors",
       headers: {
-        "Content-Type": "text/plain", // Evita CORS preflight en peticiones a Google Apps Script
+        "Content-Type": "text/plain", // Evita CORS preflight
       },
       body: JSON.stringify({
         fullName: form.value.fullName,
@@ -294,8 +303,6 @@ const submitForm = async () => {
       }),
     });
 
-    // Como usamos Content-Type: text/plain, Google Apps Script procesará
-    // la petición y nos devolverá un estado que asumimos correcto al no haber error de red.
     isSubmitted.value = true;
   } catch (error) {
     console.error("Error submitting RSVP to Google Sheets:", error);
@@ -312,6 +319,13 @@ watch(
     if (typeof window !== "undefined") {
       if (newVal) {
         document.body.style.overflow = "hidden";
+        // Pre-fill fields if guest details are passed
+        if (props.guestName && !form.value.fullName) {
+          form.value.fullName = props.guestName;
+        }
+        if (props.passes) {
+          form.value.people = props.passes;
+        }
       } else {
         document.body.style.overflow = "";
       }

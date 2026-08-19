@@ -95,6 +95,8 @@
     <RsvpModal
       :show="showModal"
       :phone="phone"
+      :guest-name="guestName"
+      :passes="passes"
       @close="showModal = false"
     />
   </section>
@@ -107,6 +109,17 @@ import PaperCard from "../../../components/PaperCard.vue";
 import PolaroidPhoto from "../../../components/PolaroidPhoto.vue";
 import RsvpModal from "./RsvpModal.vue";
 import coverUrl from "../../../assets/images/portada-3.webp";
+
+defineProps({
+  guestName: {
+    type: String,
+    default: "",
+  },
+  passes: {
+    type: Number,
+    default: 2,
+  },
+});
 
 const phone = "51999999999"; // Reemplazar con el número real de los novios
 const showModal = ref(false);
