@@ -6,10 +6,7 @@ import sealUrl from "../../../assets/images/Sello.png";
 </script>
 
 <template>
-  <section
-    id="detailSection"
-    class="w-full h-[728px] relative overflow-hidden"
-  >
+  <section id="detailSection" class="w-full h-[728px] relative overflow-hidden">
     <!-- Marble Texture Background Layer -->
     <div
       class="bg-texture-marmol absolute inset-0 rounded-[inherit] border-0"
@@ -37,7 +34,7 @@ import sealUrl from "../../../assets/images/Sello.png";
         :initial="{ opacity: 0, x: 120 }"
         :while-in-view="{ opacity: 1, x: 0 }"
         :transition="{ duration: 1.5, ease: 'easeOut' }"
-        :viewport="{ once: false, amount: 0.15 }"
+        :viewport="{ once: false, amount: 0.55 }"
       >
         <!-- Paper Texture Background -->
         <div class="absolute inset-0 rounded-[inherit]">
@@ -75,7 +72,7 @@ import sealUrl from "../../../assets/images/Sello.png";
             :initial="{ opacity: 0, y: 80 }"
             :while-in-view="{ opacity: 1, y: 0 }"
             :transition="{ duration: 1.0, delay: 0.5, ease: 'easeOut' }"
-            :viewport="{ once: false, amount: 0.15 }"
+            :viewport="{ once: false, amount: 0.55 }"
           >
             <!-- Names Layout -->
             <div class="flex flex-col items-center justify-center w-full mb-1">

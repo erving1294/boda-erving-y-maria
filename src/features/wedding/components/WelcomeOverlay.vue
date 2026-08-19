@@ -131,24 +131,22 @@
       </div>
 
       <!-- Text Instructions and Bounce Indicator -->
-      <Transition name="fade">
+      <!-- <Transition name="fade">
         <div
           v-if="!isOpened"
           class="fixed left-1/2 top-[55vh] -translate-x-1/2 translate-y-[60px] z-40 flex flex-col items-center animate-bounce-arrow"
         >
-          <!-- "Abrir" indicator badge -->
           <div
             class="bg-white text-primary font-sans text-[10px] sm:text-xs tracking-[0.2em] px-5 py-2 rounded-full shadow-md font-semibold border border-gold/15 uppercase text-center min-w-[120px] relative"
           >
             Abrir
 
-            <!-- Tiny triangle pointing up at the wax seal -->
             <div
               class="absolute top-[-4px] left-1/2 -translate-x-1/2 w-2 h-2 bg-white rotate-45 border-t border-l border-gold/15"
             ></div>
           </div>
         </div>
-      </Transition>
+      </Transition> -->
     </div>
   </Transition>
 </template>

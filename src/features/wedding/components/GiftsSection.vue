@@ -10,7 +10,7 @@
         :initial="{ opacity: 0, y: 50, scale: 0.97 }"
         :while-in-view="{ opacity: 1, y: 0, scale: 1 }"
         :transition="{ duration: 1.2, ease: 'easeOut' }"
-        :viewport="{ once: false, amount: 0.15 }"
+        :viewport="{ once: false, amount: 0.55 }"
       >
         <!-- Header Text -->
         <h4 class="title text-4xl mt-6 mb-2 max-sm:mt-8">Mesa de Regalos</h4>
@@ -34,7 +34,7 @@
             :initial="{ opacity: 0, y: 20 }"
             :while-in-view="{ opacity: 1, y: 0 }"
             :transition="{ duration: 0.8, delay: 0.4, ease: 'easeOut' }"
-            :viewport="{ once: false, amount: 0.15 }"
+            :viewport="{ once: false, amount: 0.55 }"
           >
             <div class="flex flex-col text-left">
               <span
@@ -60,7 +60,7 @@
             :initial="{ opacity: 0, y: 20 }"
             :while-in-view="{ opacity: 1, y: 0 }"
             :transition="{ duration: 0.8, delay: 0.8, ease: 'easeOut' }"
-            :viewport="{ once: false, amount: 0.15 }"
+            :viewport="{ once: false, amount: 0.55 }"
           >
             <div class="flex flex-col text-left">
               <span
@@ -86,7 +86,7 @@
             :initial="{ opacity: 0, y: 20 }"
             :while-in-view="{ opacity: 1, y: 0 }"
             :transition="{ duration: 0.8, delay: 1.2, ease: 'easeOut' }"
-            :viewport="{ once: false, amount: 0.15 }"
+            :viewport="{ once: false, amount: 0.55 }"
           >
             <div class="flex flex-col text-left">
               <span

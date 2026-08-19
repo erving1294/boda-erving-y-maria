@@ -1,7 +1,7 @@
 <template>
   <section
     id="countdown"
-    class="bg-texture-white py-16 bg-white text-center select-none flex flex-wrap max-lg:flex-col items-center lg:pr-[100px] lg:pl-[100px] overflow-hidden"
+    class="bg-texture-white py-16 max-sm:py-[84px] bg-white text-center select-none flex flex-wrap max-lg:flex-col items-center lg:pr-[100px] lg:pl-[100px] overflow-hidden"
     style="
       border-radius: inherit;
       corner-shape: inherit;
@@ -12,10 +12,10 @@
     <!-- Imagenes -->
     <motion.div
       class="basis-1/2 max-md:w-full flex justify-center mb-[64px] md:mb-8"
-      :initial="{ scale: 0 }"
-      :while-in-view="{ scale: 1 }"
-      :transition="{ duration: 1.0, ease: 'easeOut' }"
-      :viewport="{ once: false, amount: 0.35 }"
+      :initial="{ opacity: 0, x: -60, rotate: -3 }"
+      :while-in-view="{ opacity: 1, x: 0, rotate: 0 }"
+      :transition="{ duration: 1.2, ease: 'easeOut' }"
+      :viewport="{ once: false, amount: 0.55 }"
     >
       <div
         class="w-[500px] h-[500px] bg-cover relative max-sm:w-[340px] max-sm:h-[340px]"
@@ -42,7 +42,7 @@
               :initial="{ opacity: 0, rotate: 0 }"
               :while-in-view="{ opacity: 1, rotate: -5 }"
               :transition="{ duration: 1.0, ease: 'easeOut' }"
-              :viewport="{ once: false, amount: 0.35 }"
+              :viewport="{ once: false, amount: 0.55 }"
             >
               <PolaroidPhoto
                 :src="PolaroidTwo"
@@ -69,14 +69,14 @@
           :initial="{ scale: 0 }"
           :while-in-view="{ scale: 1 }"
           :transition="{ duration: 0.5, ease: 'easeOut', delay: 0.5 }"
-          :viewport="{ once: false, amount: 0.35 }"
+          :viewport="{ once: false, amount: 0.55 }"
         />
         <motion.div
           class="absolute -right-[57px] -bottom-[66px] w-[200px] h-[200px] translate-x-0 rotate-[8deg] max-sm:w-[120px] max-sm:h-[120px] max-sm:-right-4 max-sm:-bottom-10"
           :initial="{ scale: 0 }"
           :while-in-view="{ scale: 1 }"
           :transition="{ duration: 0.5, ease: 'easeOut', delay: 0.5 }"
-          :viewport="{ once: false, amount: 0.35 }"
+          :viewport="{ once: false, amount: 0.55 }"
         >
           <div
             class="flex justify-center items-center w-full h-full"
@@ -92,10 +92,10 @@
     <div class="basis-1/2 max-md:w-full">
       <motion.div
         class="will-change-[transform,opacity]"
-        :initial="{ opacity: 0, y: 90 }"
-        :while-in-view="{ opacity: 1, y: 0 }"
-        :transition="{ duration: 1.2, delay: 0.3, ease: 'easeOut' }"
-        :viewport="{ once: false, amount: 0.35 }"
+        :initial="{ opacity: 0, x: 60, rotate: -3 }"
+        :while-in-view="{ opacity: 1, x: 0, rotate: 0 }"
+        :transition="{ duration: 1.2, ease: 'easeOut' }"
+        :viewport="{ once: false, amount: 0.55 }"
       >
         <p
           class="w-[380px] max-sm:w-full max-sm:px-4 m-auto text-3xl mb-4 font-new-icon-serif"
@@ -116,7 +116,11 @@
           <div class="w-[420px] max-sm:w-[280px]">
             <!-- Clock grid -->
             <div class="grid grid-cols-4 gap-4 w-full relative z-10">
-              <div
+              <motion.div
+                :initial="{ opacity: 0, y: 20 }"
+                :while-in-view="{ opacity: 1, y: 0 }"
+                :transition="{ duration: 0.8, delay: 0.4, ease: 'easeOut' }"
+                :viewport="{ once: false, amount: 0.55 }"
                 class="flex flex-col justify-center items-center border-r-[1px] border-solid border-slate-muted"
               >
                 <span
@@ -127,9 +131,13 @@
                   class="text-[10px] md:text-xs uppercase tracking-wide text-slate-muted mt-2"
                   >Días</span
                 >
-              </div>
+              </motion.div>
 
-              <div
+              <motion.div
+                :initial="{ opacity: 0, y: 20 }"
+                :while-in-view="{ opacity: 1, y: 0 }"
+                :transition="{ duration: 0.8, delay: 0.8, ease: 'easeOut' }"
+                :viewport="{ once: false, amount: 0.55 }"
                 class="flex flex-col justify-center items-center border-r-[1px] border-solid border-slate-muted"
               >
                 <span
@@ -140,9 +148,13 @@
                   class="text-[10px] md:text-xs uppercase tracking-wide text-slate-muted mt-2"
                   >Horas</span
                 >
-              </div>
+              </motion.div>
 
-              <div
+              <motion.div
+                :initial="{ opacity: 0, y: 20 }"
+                :while-in-view="{ opacity: 1, y: 0 }"
+                :transition="{ duration: 0.8, delay: 1.2, ease: 'easeOut' }"
+                :viewport="{ once: false, amount: 0.55 }"
                 class="flex flex-col justify-center items-center border-r-[1px] border-solid border-slate-muted"
               >
                 <span
@@ -153,9 +165,15 @@
                   class="text-[10px] md:text-xs uppercase tracking-wide text-slate-muted mt-2"
                   >Mins</span
                 >
-              </div>
+              </motion.div>
 
-              <div class="flex flex-col justify-center items-center">
+              <motion.div
+                :initial="{ opacity: 0, y: 20 }"
+                :while-in-view="{ opacity: 1, y: 0 }"
+                :transition="{ duration: 0.8, delay: 1.6, ease: 'easeOut' }"
+                :viewport="{ once: false, amount: 0.55 }"
+                class="flex flex-col justify-center items-center border-r-[1px] border-solid border-slate-muted"
+              >
                 <span
                   class="font-inria text-3xl md:text-4xl text-sage font-bold leading-none"
                   >{{ seconds }}</span
@@ -164,7 +182,7 @@
                   class="text-[10px] md:text-xs uppercase tracking-wide text-slate-muted mt-2"
                   >Segs</span
                 >
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>

@@ -1,17 +1,17 @@
 <template>
   <section
+    ref="sectionRef"
     class="bg-texture-white flex flex-col flex-none justify-center items-center gap-[10px] w-full h-min pb-[60px] relative overflow-hidden"
   >
     <!-- Main Frame Wrapper -->
     <div
-      ref="imagesRef"
       class="relative flex-none w-[425px] h-[517px] overflow-clip max-sm:!w-[356px] max-sm:!h-[398px]"
     >
       <!-- Wedding Frame Image Container -->
       <div class="block">
         <div
-          class="absolute top-0 bottom-0 right-0 flex-none w-[425px] overflow-clip will-change-[transform,opacity] max-sm:!bottom-[unset] max-sm:!h-[383px] max-sm:!left-[calc(50%-173px)] max-sm:!top-[calc(50%-178.5px)] max-sm:!right-[unset] max-sm:!w-[346px] transition-all duration-[1000ms] ease-out"
-          :class="frameVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'"
+          ref="frameRef"
+          class="absolute top-0 bottom-0 right-0 flex-none w-[425px] overflow-clip opacity-0 scale-95 will-change-[transform,opacity] max-sm:!bottom-[unset] max-sm:!h-[383px] max-sm:!left-[calc(50%-173px)] max-sm:!top-[calc(50%-178.5px)] max-sm:!right-[unset] max-sm:!w-[346px]"
         >
           <div class="absolute inset-0 rounded-[inherit]">
             <img
@@ -26,8 +26,8 @@
       <!-- Couple Photo Container (Cusco) -->
       <div class="block">
         <div
-          class="absolute top-[calc(50.4836%-178.5px)] left-[calc(50.5%-173.5px)] z-0 flex-none w-[347px] h-[357px] overflow-clip will-change-[transform,opacity] max-sm:!h-[263px] max-sm:!w-[257px] max-sm:!top-[calc(50.2513%-116px)] max-sm:!left-[calc(50.5618%-127px)] transition-all duration-[1000ms] ease-out"
-          :class="frameVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'"
+          ref="photoRef"
+          class="absolute top-[calc(50.4836%-178.5px)] left-[calc(50.5%-173.5px)] z-0 flex-none w-[347px] h-[357px] overflow-clip opacity-0 scale-90 will-change-[transform,opacity] max-sm:!h-[263px] max-sm:!w-[257px] max-sm:!top-[calc(50.2513%-116px)] max-sm:!left-[calc(50.5618%-127px)]"
         >
           <div class="absolute inset-0 rounded-[inherit]">
             <img
@@ -43,12 +43,7 @@
     <!-- Description Text -->
     <div
       ref="textRef"
-      class="max-sm:px-4 transition-all duration-[1000ms] ease-out will-change-[transform,opacity]"
-      :class="
-        textIntersecting
-          ? 'opacity-100 translate-x-0'
-          : 'opacity-0 -translate-x-[40px]'
-      "
+      class="max-sm:px-4 opacity-0 will-change-[transform,opacity]"
     >
       <p
         class="text-center max-w-[400px] m-auto font-inria text-lg leading-relaxed text-slate-muted"
@@ -68,134 +63,90 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
+import anime from "../../../core/libs/anime.js";
 import marcoBoda from "../../../assets/images/marco_boda.jpg";
 import cuscoImg from "../../../assets/images/cusco.webp";
 
-const imagesRef = ref(null);
+const sectionRef = ref(null);
+const frameRef = ref(null);
+const photoRef = ref(null);
 const textRef = ref(null);
 
-const frameVisible = ref(false);
-const photoVisible = ref(false);
-const textIntersecting = ref(false);
 const displayedCursive = ref("");
-
 const cursiveText = "Para siempre";
-
-let imagesStarted = false;
-let textStarted = false;
-let imagesObserver = null;
-let textObserver = null;
-let cursiveInterval = null;
-
-const typeText = (text, refVar, speed) => {
-  return new Promise((resolve) => {
-    let index = 0;
-    const interval = setInterval(() => {
-      if (!textIntersecting.value) {
-        clearInterval(interval);
-        resolve();
-        return;
-      }
-      refVar.value += text[index];
-      index++;
-      if (index >= text.length) {
-        clearInterval(interval);
-        resolve();
-      }
-    }, speed);
-
-    cursiveInterval = interval;
-  });
-};
+const textStarted = ref(false);
+let observer = null;
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const startImagesAnimation = async () => {
-  if (imagesStarted) return;
-  imagesStarted = true;
+const startTypingAnimation = async () => {
+  if (textStarted.value) return;
+  textStarted.value = true;
 
-  frameVisible.value = true;
-  await delay(500);
-  if (!imagesStarted) return;
-
-  photoVisible.value = true;
-};
-
-const resetImagesAnimation = () => {
-  imagesStarted = false;
-  frameVisible.value = false;
-  photoVisible.value = false;
-};
-
-const startTextAnimation = async () => {
-  if (textStarted) return;
-  textStarted = true;
-  textIntersecting.value = true;
-
-  await delay(800);
-  if (!textIntersecting.value) return;
-
-  await typeText(cursiveText, displayedCursive, 60);
-};
-
-const resetTextAnimation = () => {
-  textIntersecting.value = false;
-  textStarted = false;
-  if (cursiveInterval) {
-    clearInterval(cursiveInterval);
-    cursiveInterval = null;
-  }
   displayedCursive.value = "";
+  for (let i = 0; i < cursiveText.length; i++) {
+    await delay(70);
+    displayedCursive.value += cursiveText[i];
+  }
 };
 
 onMounted(() => {
   if (typeof window !== "undefined") {
-    // Observer for images
-    imagesObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            startImagesAnimation();
-          } else {
-            resetImagesAnimation();
-          }
-        });
-      },
-      {
-        threshold: 0.5,
-      },
-    );
-    if (imagesRef.value) {
-      imagesObserver.observe(imagesRef.value);
-    }
+    // 1. Create Anime.js Timeline for the sequence
+    const tl = anime.timeline({
+      autoplay: false,
+      easing: "easeOutCubic",
+    });
 
-    // Observer for text
-    textObserver = new IntersectionObserver(
+    // Step 1: Animate the wedding frame
+    tl.add({
+      targets: frameRef.value,
+      opacity: [0, 1],
+      scale: [0.95, 1],
+      duration: 1000,
+    })
+    // Step 2: Animate the Cusco couple photo (overlaps frame)
+    .add({
+      targets: photoRef.value,
+      opacity: [0, 1],
+      scale: [0.9, 1],
+      duration: 1000,
+    }, "-=700")
+    // Step 3: Animate the text description sliding from left (overlaps photo)
+    .add({
+      targets: textRef.value,
+      opacity: [0, 1],
+      translateX: ["-40px", "0px"],
+      duration: 1000,
+      complete: () => {
+        // Trigger cursive typing when slide completes
+        startTypingAnimation();
+      }
+    }, "-=500");
+
+    // 2. Setup IntersectionObserver
+    observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            startTextAnimation();
-          } else {
-            resetTextAnimation();
+            tl.play();
+            // Disconnect once animated to prevent re-runs and improve scroll performance
+            observer.unobserve(entry.target);
           }
         });
       },
-      {
-        threshold: 0.5,
-      },
+      { threshold: 0.3 }, // triggers when 30% of the section is visible
     );
-    if (textRef.value) {
-      textObserver.observe(textRef.value);
+
+    if (sectionRef.value) {
+      observer.observe(sectionRef.value);
     }
   }
 });
 
 onUnmounted(() => {
-  if (imagesObserver) {
-    imagesObserver.disconnect();
-  }
-  if (textObserver) {
-    textObserver.disconnect();
+  if (observer) {
+    observer.disconnect();
   }
 });
 </script>

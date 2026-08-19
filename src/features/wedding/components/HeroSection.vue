@@ -204,20 +204,79 @@
 
       <!-- Love Quote with Decorative Quotations -->
       <div
-        class="max-w-md mx-auto !text-white text-sm md:text-base flex flex-col items-center"
+        class="max-w-xl mx-auto !text-white text-sm md:text-base flex flex-col items-center"
       >
         <p
-          class="font-inria text-white text-xl font-light tracking-wide leading-relaxed min-h-[5rem] sm:min-h-[4rem]"
+          class="font-inria text-white text-xl md:text-2xl font-light tracking-wide leading-relaxed text-center flex flex-wrap justify-center min-h-[2rem] sm:min-h-[2rem]"
         >
-          {{ displayedParagraph }}
+          <template v-for="(word, wIndex) in words" :key="'w-' + wIndex">
+            <!-- Word Wrapper to prevent line breaks inside words -->
+            <span class="inline-block whitespace-nowrap">
+              <span
+                v-for="(char, cIndex) in word.letters"
+                :key="'c-' + cIndex"
+                class="inline-block transition-all duration-[1000ms] cubic-bezier(0.16, 1, 0.3, 1) will-change-[transform,opacity]"
+                :style="{
+                  transitionDelay: `${(word.startIndex + cIndex) * 50}ms`,
+                }"
+                :class="
+                  showParagraph
+                    ? 'opacity-100 translate-y-0 scale-100'
+                    : 'opacity-0 translate-y-[12px] scale-90'
+                "
+              >
+                {{ char }}
+              </span>
+            </span>
+            <!-- Space outside the word container to let browser wrap lines naturally -->
+            <span v-if="wIndex < words.length - 1" class="inline-block"
+              >&nbsp;</span
+            >
+          </template>
         </p>
+
+        <!-- Scroll Down Arrow Button -->
+        <button
+          @click="scrollToNextSection"
+          class="mt-8 flex flex-col items-center gap-2 cursor-pointer focus:outline-none z-30 group transition-all duration-[1000ms] cubic-bezier(0.16, 1, 0.3, 1) will-change-[transform,opacity]"
+          :class="
+            showScrollButton
+              ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto'
+              : 'opacity-0 translate-y-[15px] scale-90 pointer-events-none'
+          "
+        >
+          <span
+            class="text-[10px] tracking-[0.25em] uppercase text-white transition-colors font-sans font-medium"
+          >
+            Ver Invitación
+          </span>
+          <div
+            class="w-10 outline-none h-10 rounded-full border flex justify-center items-center border-white/50 group-hover:bg-white/10 transition-all duration-300 animate-bounce-down"
+          >
+            <!-- SVG Chevron Down Icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2.5"
+              stroke="currentColor"
+              class="w-4 h-4 text-white"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+              />
+            </svg>
+          </div>
+        </button>
       </div>
     </div>
   </header>
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import { ref, watch, onUnmounted } from "vue";
 import coverUrl from "../../../assets/images/portada-3.webp";
 
 const props = defineProps({
@@ -230,28 +289,30 @@ const props = defineProps({
 const title1Letters = "Ervíng".split("");
 const title2Letters = "María".split("");
 const paragraphText =
-  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa minima ab voluptatum, possimus voluptatem laborum asperiores.";
+  "Que el amor sea siempre nuestro vínculo y Dios, nuestro camino; para caminar juntos, de la mano, hacia toda una vida por compartir";
+
+// Split into words and pre-calculate indices for seamless stagger delays
+const words = [];
+let currentIndex = 0;
+const rawWords = paragraphText.split(" ");
+for (let i = 0; i < rawWords.length; i++) {
+  const wordText = rawWords[i];
+  const letters = wordText.split("");
+  words.push({
+    text: wordText,
+    letters: letters,
+    startIndex: currentIndex,
+  });
+  currentIndex += letters.length + 1; // +1 to account for the space
+}
 
 const showTitle1 = ref(false);
 const showAmpersand = ref(false);
 const showTitle2 = ref(false);
-const displayedParagraph = ref("");
+const showParagraph = ref(false);
+const showScrollButton = ref(false);
 
 let started = false;
-
-const typeText = (text, refVar, speed) => {
-  return new Promise((resolve) => {
-    let index = 0;
-    const interval = setInterval(() => {
-      refVar.value += text[index];
-      index++;
-      if (index >= text.length) {
-        clearInterval(interval);
-        resolve();
-      }
-    }, speed);
-  });
-};
 
 const startAnimation = async () => {
   if (started) return;
@@ -260,24 +321,67 @@ const startAnimation = async () => {
   showTitle1.value = false;
   showAmpersand.value = false;
   showTitle2.value = false;
-  displayedParagraph.value = "";
+  showParagraph.value = false;
+  showScrollButton.value = false;
 
-  // Step 1: Start "Ervíng" staggered letter transitions
+  // Step 1: Block scroll during animation
+  if (typeof window !== "undefined") {
+    document.body.style.overflow = "hidden";
+  }
+
+  // Step 2: Start "Ervíng" staggered letter transitions
   showTitle1.value = true;
 
-  // Step 2: Fade & scale in the ampersand circle after 700ms (Ervíng completes layout)
+  // Step 3: Fade & scale in the ampersand circle after 700ms (Ervíng completes layout)
   await new Promise((resolve) => setTimeout(resolve, 700));
   showAmpersand.value = true;
 
-  // Step 3: Start "María" staggered letter transitions after 1100ms total (400ms after ampersand)
+  // Step 4: Start "María" staggered letter transitions after 1100ms total (400ms after ampersand)
   await new Promise((resolve) => setTimeout(resolve, 400));
   showTitle2.value = true;
 
-  // Step 4: Stagger before paragraph typing (María starts at 1100ms and finishes around 1500ms, wait 1200ms)
-  await new Promise((resolve) => setTimeout(resolve, 1200));
+  // Step 5: Stagger before paragraph fade-in wave (wait 800ms after María starts)
+  await new Promise((resolve) => setTimeout(resolve, 800));
+  showParagraph.value = true;
 
-  // Step 5: Type paragraph smoothly (45ms per letter)
-  await typeText(paragraphText, displayedParagraph, 45);
+  // Step 6: Wait for paragraph staggered animation to finish (123 letters * 50ms + 1000ms animation duration + buffer)
+  // 123 * 50 = 6150ms. Total animation complete at 6150 + 1000 = 7150ms. Let's wait 7500ms.
+  await new Promise((resolve) => setTimeout(resolve, 7500));
+
+  // Step 7: Reveal scroll arrow button and restore scroll
+  showScrollButton.value = true;
+  if (typeof window !== "undefined") {
+    document.body.style.overflow = "";
+  }
+};
+
+const scrollToNextSection = () => {
+  const nextSection = document.getElementById("detailSection");
+  if (nextSection) {
+    const targetY = nextSection.getBoundingClientRect().top + window.scrollY;
+    const startY = window.scrollY || window.pageYOffset;
+    const difference = targetY - startY;
+    const duration = 1800; // 1.8 seconds for a very smooth glide
+    let startTime = null;
+
+    const easeInOutCubic = (t) => {
+      return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+    };
+
+    const step = (currentTime) => {
+      if (!startTime) startTime = currentTime;
+      const progress = currentTime - startTime;
+      const percent = Math.min(progress / duration, 1);
+
+      window.scrollTo(0, startY + difference * easeInOutCubic(percent));
+
+      if (progress < duration) {
+        requestAnimationFrame(step);
+      }
+    };
+
+    requestAnimationFrame(step);
+  }
 };
 
 watch(
@@ -289,6 +393,13 @@ watch(
   },
   { immediate: true },
 );
+
+onUnmounted(() => {
+  // Safe cleanup: restore scrolling if the page transitions or unmounts
+  if (typeof window !== "undefined") {
+    document.body.style.overflow = "";
+  }
+});
 </script>
 
 <style scoped>
@@ -300,6 +411,35 @@ watch(
 }
 .animate-fade-in {
   animation: fadeIn 2s ease forwards;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.8s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.animate-bounce-down {
+  animation: bounceDown 2s infinite;
+}
+
+@keyframes bounceDown {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(6px);
+  }
+  60% {
+    transform: translateY(3px);
+  }
 }
 
 @keyframes fadeIn {
@@ -329,7 +469,6 @@ watch(
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 </style>

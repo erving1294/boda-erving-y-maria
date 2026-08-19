@@ -14,7 +14,7 @@
           :initial="{ x: -50, rotate: 0 }"
           :while-in-view="{ x: 0, rotate: -6 }"
           :transition="{ duration: 1.0, ease: 'easeOut' }"
-          :viewport="{ once: false, amount: 0.15 }"
+          :viewport="{ once: false, amount: 0.55 }"
         >
           <PolaroidPhoto
             :src="coverUrl"
@@ -29,7 +29,7 @@
           :initial="{ y: 50, opacity: 0 }"
           :while-in-view="{ y: 0, opacity: 1 }"
           :transition="{ duration: 1.2, ease: 'easeOut' }"
-          :viewport="{ once: false, amount: 0.15 }"
+          :viewport="{ once: false, amount: 0.55 }"
         >
           <PaperCard
             shape="standard"
@@ -69,7 +69,7 @@
           :initial="{ x: 50, rotate: 0 }"
           :while-in-view="{ x: 0, rotate: 8 }"
           :transition="{ duration: 1.0, ease: 'easeOut' }"
-          :viewport="{ once: false, amount: 0.15 }"
+          :viewport="{ once: false, amount: 0.55 }"
           style="
             box-shadow:
               0 4px 10px rgba(0, 0, 0, 0.15),

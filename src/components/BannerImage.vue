@@ -6,11 +6,7 @@
       width="1300"
       height="1950"
       sizes="(min-width: 1200px) 100vw, (max-width: 1199.98px) 100vw"
-      srcset="
-        https://framerusercontent.com/images/xCUoBmBbpTC36IIiDxmB0sPw.jpg?scale-down-to=1024&amp;width=1300&amp;height=1950  682w,
-        https://framerusercontent.com/images/xCUoBmBbpTC36IIiDxmB0sPw.jpg?width=1300&amp;height=1950                        1300w
-      "
-      src="https://framerusercontent.com/images/xCUoBmBbpTC36IIiDxmB0sPw.jpg?width=1300&amp;height=1950"
+      :src="Banner"
       alt=""
       style="
         display: block;
@@ -24,3 +20,6 @@
     />
   </div>
 </template>
+<script setup>
+import Banner from "../assets/images/save_the_date.jpg";
+</script>

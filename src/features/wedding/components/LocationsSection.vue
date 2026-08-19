@@ -11,7 +11,7 @@
           :initial="{ opacity: 0, x: -60, rotate: -3 }"
           :while-in-view="{ opacity: 1, x: 0, rotate: 0 }"
           :transition="{ duration: 1.2, ease: 'easeOut' }"
-          :viewport="{ once: false, amount: 0.15 }"
+          :viewport="{ once: false, amount: 0.55 }"
         >
           <PaperCard
             shape="left"
@@ -56,7 +56,7 @@
           :initial="{ opacity: 0, x: 60, rotate: 3 }"
           :while-in-view="{ opacity: 1, x: 0, rotate: 0 }"
           :transition="{ duration: 1.2, delay: 0.2, ease: 'easeOut' }"
-          :viewport="{ once: false, amount: 0.15 }"
+          :viewport="{ once: false, amount: 0.55 }"
         >
           <PaperCard
             shape="right"
