@@ -246,12 +246,12 @@
           "
         >
           <span
-            class="text-[10px] tracking-[0.25em] uppercase text-white/50 group-hover:text-white transition-colors font-sans font-medium"
+            class="text-[10px] tracking-[0.25em] uppercase text-white group-hover:text-white transition-colors font-sans font-medium"
           >
             Ver Invitación
           </span>
           <div
-            class="w-10 h-10 rounded-full border border-white/20 flex justify-center items-center group-hover:border-white/50 group-hover:bg-white/10 transition-all duration-300 animate-bounce-down"
+            class="w-10 h-10 rounded-full border border-white flex justify-center items-center group-hover:border-white/50 group-hover:bg-white/10 transition-all duration-300 animate-bounce-down"
           >
             <!-- SVG Chevron Down Icon -->
             <svg
@@ -286,7 +286,7 @@ const props = defineProps({
   },
   blockScroll: {
     type: Boolean,
-    default: false, // Bloquea por defecto el scroll durante la animación
+    default: true, // Bloquea por defecto el scroll durante la animación
   },
 });
 
