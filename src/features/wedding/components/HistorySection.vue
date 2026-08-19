@@ -27,7 +27,7 @@
       <div class="block">
         <div
           class="absolute top-[calc(50.4836%-178.5px)] left-[calc(50.5%-173.5px)] z-0 flex-none w-[347px] h-[357px] overflow-clip will-change-[transform,opacity] max-sm:!h-[263px] max-sm:!w-[257px] max-sm:!top-[calc(50.2513%-116px)] max-sm:!left-[calc(50.5618%-127px)] transition-all duration-[1000ms] ease-out"
-          :class="photoVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'"
+          :class="frameVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'"
         >
           <div class="absolute inset-0 rounded-[inherit]">
             <img
@@ -44,7 +44,11 @@
     <div
       ref="textRef"
       class="max-sm:px-4 transition-all duration-[1000ms] ease-out will-change-[transform,opacity]"
-      :class="textIntersecting ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-[40px]'"
+      :class="
+        textIntersecting
+          ? 'opacity-100 translate-x-0'
+          : 'opacity-0 -translate-x-[40px]'
+      "
     >
       <p
         class="text-center max-w-[400px] m-auto font-inria text-lg leading-relaxed text-slate-muted"
@@ -158,8 +162,8 @@ onMounted(() => {
         });
       },
       {
-        threshold: 0.15,
-      }
+        threshold: 0.5,
+      },
     );
     if (imagesRef.value) {
       imagesObserver.observe(imagesRef.value);
@@ -177,8 +181,8 @@ onMounted(() => {
         });
       },
       {
-        threshold: 0.15,
-      }
+        threshold: 0.5,
+      },
     );
     if (textRef.value) {
       textObserver.observe(textRef.value);

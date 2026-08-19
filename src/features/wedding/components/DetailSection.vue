@@ -18,7 +18,7 @@ onMounted(() => {
         });
       },
       {
-        threshold: 0.15, // Trigger when 15% of the section is visible
+        threshold: 0.7, // Trigger when 15% of the section is visible
       },
     );
     if (detailSectionRef.value) {
@@ -56,9 +56,14 @@ onUnmounted(() => {
     >
       <!-- Envelope Image -->
       <img
+        :class="
+          isIntersecting
+            ? 'opacity-100 translate-x-0'
+            : 'opacity-0 -translate-x-[80px] md:-translate-x-[150px]'
+        "
         :src="invitationCard"
         alt="Invitation Card"
-        class="w-[340px] h-full object-cover max-sm:!h-[480px]"
+        class="w-[340px] h-full object-cover max-sm:!h-[480px] transition-all duration-[1500ms] ease-out"
       />
 
       <!-- Inner Invitation Paper Card (Overlapping) -->

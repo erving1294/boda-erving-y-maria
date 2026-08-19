@@ -29,7 +29,11 @@
         <div
           ref="cardRef"
           class="transition-all duration-[1200ms] ease-out"
-          :class="cardIntersecting ? 'opacity-100' : 'opacity-0'"
+          :class="
+            cardIntersecting
+              ? 'translate-y-0 opacity-100'
+              : 'translate-y-[50px]  opacity-0'
+          "
         >
           <PaperCard
             shape="standard"
@@ -128,7 +132,7 @@ onMounted(() => {
           polaroidIntersecting.value = entry.isIntersecting;
         });
       },
-      { threshold: 0.15 },
+      { threshold: 0.5 },
     );
     if (polaroidRef.value) polaroidObserver.observe(polaroidRef.value);
 
@@ -138,7 +142,7 @@ onMounted(() => {
           cardIntersecting.value = entry.isIntersecting;
         });
       },
-      { threshold: 0.15 },
+      { threshold: 0.5 },
     );
     if (cardRef.value) cardObserver.observe(cardRef.value);
 

@@ -135,7 +135,7 @@ onMounted(() => {
           isIntersecting.value = entry.isIntersecting;
         });
       },
-      { threshold: 0.15 },
+      { threshold: 0.5 },
     );
     if (giftsRef.value) observer.observe(giftsRef.value);
   }

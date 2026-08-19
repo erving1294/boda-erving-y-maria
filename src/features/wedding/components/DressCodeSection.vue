@@ -151,7 +151,7 @@ onMounted(() => {
           }
         });
       },
-      { threshold: 0.15 },
+      { threshold: 0.5 },
     );
     if (dressRef.value) observer.observe(dressRef.value);
     if (kidsRef.value) observer.observe(kidsRef.value);

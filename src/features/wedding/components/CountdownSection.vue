@@ -16,16 +16,24 @@
         <PolaroidPhoto
           :src="PolaroidTwo"
           alt="Novios mano a mano 1"
-          class="absolute left-0 top-0 w-[216px] h-[283px] z-[1] max-sm:!left-[43px] transition-all duration-[1000ms] ease-out"
-          :class="imagesIntersecting ? 'opacity-100 translate-x-0 rotate-[13deg]' : 'opacity-0 -translate-x-[80px] rotate-0'"
+          class="absolute left-0 top-0 w-[216px] h-[283px] z-[1] max-sm:!left-[43px] transition-all duration-[2000ms] ease-out"
+          :class="
+            imagesIntersecting
+              ? 'opacity-100 translate-x-0 rotate-[13deg]'
+              : 'opacity-0 -translate-x-[80px] rotate-0'
+          "
         />
 
         <!-- Foto 2 (Rotada a la izquierda) -->
         <PolaroidPhoto
           :src="PolaroidOne"
           alt="Novios mano a mano 2"
-          class="absolute bottom-[72px] right-[35px] w-[216px] h-[283px] z-[1] max-sm:!bottom-[60px] max-sm:!right-[35px] transition-all duration-[1000ms] delay-[1000ms] ease-out"
-          :class="imagesIntersecting ? 'opacity-100 translate-x-0 rotate-[-3deg]' : 'opacity-0 translate-x-[80px] rotate-0'"
+          class="absolute bottom-[72px] right-[35px] w-[216px] h-[283px] z-[1] max-sm:!bottom-[60px] max-sm:!right-[35px] transition-all duration-[2000ms] delay-[1000ms] ease-out"
+          :class="
+            imagesIntersecting
+              ? 'opacity-100 translate-x-0 rotate-[-3deg]'
+              : 'opacity-0 translate-x-[80px] rotate-0'
+          "
         />
       </div>
     </div>
@@ -146,8 +154,8 @@ onMounted(() => {
         });
       },
       {
-        threshold: 0.15, // Trigger when 15% of the element is visible
-      }
+        threshold: 0.5, // Trigger when 15% of the element is visible
+      },
     );
     if (imagesRef.value) observer.observe(imagesRef.value);
     if (counterRef.value) observer.observe(counterRef.value);

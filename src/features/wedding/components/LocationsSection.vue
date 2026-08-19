@@ -9,7 +9,11 @@
         <div
           ref="leftCardRef"
           class="w-full max-w-md mx-auto transition-all duration-[1200ms] ease-out will-change-[transform,opacity]"
-          :class="leftIntersecting ? 'opacity-100 translate-x-0 rotate-0' : 'opacity-0 -translate-x-[60px] -rotate-3'"
+          :class="
+            leftIntersecting
+              ? 'opacity-100 translate-x-0 rotate-0'
+              : 'opacity-0 -translate-x-[60px] -rotate-3'
+          "
         >
           <PaperCard
             shape="left"
@@ -52,7 +56,11 @@
         <div
           ref="rightCardRef"
           class="w-full max-w-md mx-auto transition-all duration-[1200ms] delay-[200ms] ease-out will-change-[transform,opacity]"
-          :class="rightIntersecting ? 'opacity-100 translate-x-0 rotate-0' : 'opacity-0 translate-x-[60px] rotate-3'"
+          :class="
+            rightIntersecting
+              ? 'opacity-100 translate-x-0 rotate-0'
+              : 'opacity-0 translate-x-[60px] rotate-3'
+          "
         >
           <PaperCard
             shape="right"
@@ -119,7 +127,7 @@ onMounted(() => {
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.5 },
     );
 
     if (leftCardRef.value) observer.observe(leftCardRef.value);
