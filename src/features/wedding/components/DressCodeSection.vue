@@ -101,7 +101,7 @@
               </div>
 
               <!-- Title -->
-              <h4 class="title py-4">Sin Niños</h4>
+              <h4 class="title py-4">Solo Adultos</h4>
 
               <!-- Description text -->
               <p

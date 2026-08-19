@@ -9,9 +9,12 @@
     >
       <!-- Wedding Frame Image Container -->
       <div class="block">
-        <div
-          ref="frameRef"
-          class="absolute top-0 bottom-0 right-0 flex-none w-[425px] overflow-clip opacity-0 scale-95 will-change-[transform,opacity] max-sm:!bottom-[unset] max-sm:!h-[383px] max-sm:!left-[calc(50%-173px)] max-sm:!top-[calc(50%-178.5px)] max-sm:!right-[unset] max-sm:!w-[346px]"
+        <motion.div
+          class="absolute top-0 bottom-0 right-0 flex-none w-[425px] overflow-clip will-change-[transform,opacity] max-sm:!bottom-[unset] max-sm:!h-[383px] max-sm:!left-[calc(50%-173px)] max-sm:!top-[calc(50%-178.5px)] max-sm:!right-[unset] max-sm:!w-[346px]"
+          :initial="{ opacity: 0, scale: 0.95 }"
+          :while-in-view="{ opacity: 1, scale: 1 }"
+          :transition="{ duration: 1.0, ease: 'easeOut' }"
+          :viewport="{ once: true, amount: 0.3 }"
         >
           <div class="absolute inset-0 rounded-[inherit]">
             <img
@@ -20,14 +23,17 @@
               alt="Marco de boda"
             />
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <!-- Couple Photo Container (Cusco) -->
       <div class="block">
-        <div
-          ref="photoRef"
-          class="absolute top-[calc(50.4836%-178.5px)] left-[calc(50.5%-173.5px)] z-0 flex-none w-[347px] h-[357px] overflow-clip opacity-0 scale-90 will-change-[transform,opacity] max-sm:!h-[263px] max-sm:!w-[257px] max-sm:!top-[calc(50.2513%-116px)] max-sm:!left-[calc(50.5618%-127px)]"
+        <motion.div
+          class="absolute top-[calc(50.4836%-178.5px)] left-[calc(50.5%-173.5px)] z-0 flex-none w-[347px] h-[357px] overflow-clip will-change-[transform,opacity] max-sm:!h-[263px] max-sm:!w-[257px] max-sm:!top-[calc(50.2513%-116px)] max-sm:!left-[calc(50.5618%-127px)]"
+          :initial="{ opacity: 0, scale: 0.9 }"
+          :while-in-view="{ opacity: 1, scale: 1 }"
+          :transition="{ duration: 1.0, delay: 0.5, ease: 'easeOut' }"
+          :viewport="{ once: true, amount: 0.3 }"
         >
           <div class="absolute inset-0 rounded-[inherit]">
             <img
@@ -36,14 +42,17 @@
               alt="Nuestra foto en Cusco"
             />
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
 
     <!-- Description Text -->
-    <div
-      ref="textRef"
-      class="max-sm:px-4 opacity-0 will-change-[transform,opacity]"
+    <motion.div
+      class="max-sm:px-4 will-change-[transform,opacity]"
+      :initial="{ opacity: 0, x: -40 }"
+      :while-in-view="{ opacity: 1, x: 0 }"
+      :transition="{ duration: 1.0, delay: 0.8, ease: 'easeOut' }"
+      :viewport="{ once: true, amount: 0.3 }"
     >
       <p
         class="text-center max-w-[400px] m-auto font-inria text-lg leading-relaxed text-slate-muted"
@@ -57,25 +66,23 @@
       >
         {{ displayedCursive }}
       </p>
-    </div>
+    </motion.div>
   </section>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
-import anime from "../../../core/libs/anime.js";
+import { ref, watch } from "vue";
+import { motion, useInView } from "motion-v";
 import marcoBoda from "../../../assets/images/marco_boda.jpg";
 import cuscoImg from "../../../assets/images/cusco.webp";
 
 const sectionRef = ref(null);
-const frameRef = ref(null);
-const photoRef = ref(null);
-const textRef = ref(null);
-
 const displayedCursive = ref("");
 const cursiveText = "Para siempre";
 const textStarted = ref(false);
-let observer = null;
+
+// Use useInView hook from motion-v to trigger typing animation cleanly
+const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -90,63 +97,11 @@ const startTypingAnimation = async () => {
   }
 };
 
-onMounted(() => {
-  if (typeof window !== "undefined") {
-    // 1. Create Anime.js Timeline for the sequence
-    const tl = anime.timeline({
-      autoplay: false,
-      easing: "easeOutCubic",
-    });
-
-    // Step 1: Animate the wedding frame
-    tl.add({
-      targets: frameRef.value,
-      opacity: [0, 1],
-      scale: [0.95, 1],
-      duration: 1000,
-    })
-    // Step 2: Animate the Cusco couple photo (overlaps frame)
-    .add({
-      targets: photoRef.value,
-      opacity: [0, 1],
-      scale: [0.9, 1],
-      duration: 1000,
-    }, "-=700")
-    // Step 3: Animate the text description sliding from left (overlaps photo)
-    .add({
-      targets: textRef.value,
-      opacity: [0, 1],
-      translateX: ["-40px", "0px"],
-      duration: 1000,
-      complete: () => {
-        // Trigger cursive typing when slide completes
-        startTypingAnimation();
-      }
-    }, "-=500");
-
-    // 2. Setup IntersectionObserver
-    observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            tl.play();
-            // Disconnect once animated to prevent re-runs and improve scroll performance
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.3 }, // triggers when 30% of the section is visible
-    );
-
-    if (sectionRef.value) {
-      observer.observe(sectionRef.value);
-    }
-  }
-});
-
-onUnmounted(() => {
-  if (observer) {
-    observer.disconnect();
+watch(isInView, async (inView) => {
+  if (inView) {
+    // Wait for the slide-in text animation to finish (delay 0.8s + duration 1.0s = 1.8s)
+    await delay(1800);
+    startTypingAnimation();
   }
 });
 </script>

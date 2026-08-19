@@ -56,9 +56,9 @@
                 <strong>01 de agosto de 2026</strong>.
               </p>
 
-              <a :href="whatsappUrl" target="_blank" class="button">
+              <button @click="showModal = true" class="button cursor-pointer border-0">
                 Confirmar Aquí
-              </a>
+              </button>
             </div>
           </PaperCard>
         </motion.div>
@@ -90,18 +90,24 @@
         </motion.div>
       </div>
     </div>
+
+    <!-- RSVP Modal Component -->
+    <RsvpModal
+      :show="showModal"
+      :phone="phone"
+      @close="showModal = false"
+    />
   </section>
 </template>
 
 <script setup>
+import { ref } from "vue";
 import { motion } from "motion-v";
 import PaperCard from "../../../components/PaperCard.vue";
 import PolaroidPhoto from "../../../components/PolaroidPhoto.vue";
+import RsvpModal from "./RsvpModal.vue";
 import coverUrl from "../../../assets/images/portada-3.webp";
 
-const phone = "51999999999"; // Reemplazar con el número real si es necesario
-const message = encodeURIComponent(
-  "¡Hola! Confirmo mi asistencia a la boda de Ervíng y María.",
-);
-const whatsappUrl = `https://api.whatsapp.com/send?phone=${phone}&text=${message}`;
+const phone = "51999999999"; // Reemplazar con el número real de los novios
+const showModal = ref(false);
 </script>

@@ -246,12 +246,12 @@
           "
         >
           <span
-            class="text-[10px] tracking-[0.25em] uppercase text-white transition-colors font-sans font-medium"
+            class="text-[10px] tracking-[0.25em] uppercase text-white/50 group-hover:text-white transition-colors font-sans font-medium"
           >
             Ver Invitación
           </span>
           <div
-            class="w-10 outline-none h-10 rounded-full border flex justify-center items-center border-white/50 group-hover:bg-white/10 transition-all duration-300 animate-bounce-down"
+            class="w-10 h-10 rounded-full border border-white/20 flex justify-center items-center group-hover:border-white/50 group-hover:bg-white/10 transition-all duration-300 animate-bounce-down"
           >
             <!-- SVG Chevron Down Icon -->
             <svg
@@ -283,6 +283,10 @@ const props = defineProps({
   active: {
     type: Boolean,
     default: false,
+  },
+  blockScroll: {
+    type: Boolean,
+    default: false, // Bloquea por defecto el scroll durante la animación
   },
 });
 
@@ -324,8 +328,8 @@ const startAnimation = async () => {
   showParagraph.value = false;
   showScrollButton.value = false;
 
-  // Step 1: Block scroll during animation
-  if (typeof window !== "undefined") {
+  // Step 1: Block scroll during animation if blockScroll is enabled
+  if (props.blockScroll && typeof window !== "undefined") {
     document.body.style.overflow = "hidden";
   }
 
@@ -348,14 +352,21 @@ const startAnimation = async () => {
   // 123 * 50 = 6150ms. Total animation complete at 6150 + 1000 = 7150ms. Let's wait 7500ms.
   await new Promise((resolve) => setTimeout(resolve, 7500));
 
-  // Step 7: Reveal scroll arrow button and restore scroll
+  // Step 7: Reveal scroll arrow button
   showScrollButton.value = true;
-  if (typeof window !== "undefined") {
+
+  // Step 8: Restore scroll automatically if we blocked it
+  if (props.blockScroll && typeof window !== "undefined") {
     document.body.style.overflow = "";
   }
 };
 
 const scrollToNextSection = () => {
+  // Safe scroll restoration
+  if (typeof window !== "undefined") {
+    document.body.style.overflow = "";
+  }
+
   const nextSection = document.getElementById("detailSection");
   if (nextSection) {
     const targetY = nextSection.getBoundingClientRect().top + window.scrollY;
@@ -396,7 +407,7 @@ watch(
 
 onUnmounted(() => {
   // Safe cleanup: restore scrolling if the page transitions or unmounts
-  if (typeof window !== "undefined") {
+  if (props.blockScroll && typeof window !== "undefined") {
     document.body.style.overflow = "";
   }
 });
@@ -469,6 +480,7 @@ onUnmounted(() => {
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 </style>

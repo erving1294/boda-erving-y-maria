@@ -82,8 +82,17 @@ const onEnter = () => {
 };
 
 onMounted(() => {
-  // Parse Query Parameters
+  // Force scroll to top (0, 0) on page load/refresh
   if (typeof window !== "undefined") {
+    if (history.scrollRestoration) {
+      history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+    requestAnimationFrame(() => {
+      window.scrollTo(0, 0);
+    });
+
+    // Parse Query Parameters
     const params = new URLSearchParams(window.location.search);
 
     // Support both Spanish and English keys
