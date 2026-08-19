@@ -32,12 +32,16 @@
                 <!-- Subtitle -->
                 <h5 class="font-cookie text-secondary text-4xl">Elegante</h5>
               </div>
+              <!-- <ul>
+                <li>Para ellos</li>
+                <li>Para ellas</li>
+              </ul> -->
 
               <!-- Warning text -->
               <p
                 class="font-inria text-slate-muted mb-6 max-w-xs leading-relaxed"
               >
-                Evitar colores: blanco, crema, beige, nude
+                Evitar colores: blanco, beige, nude, rosa canela
               </p>
 
               <!-- Color Swatches -->
@@ -51,7 +55,7 @@
                   title="Blanco"
                 ></motion.div>
                 <motion.div
-                  class="w-10 h-10 rounded-full bg-[#f3d5b5] border border-gold/20 shadow-sm will-change-[transform,opacity]"
+                  class="w-10 h-10 rounded-full bg-[rgb(241 241 241)] border border-gold/20 shadow-sm will-change-[transform,opacity]"
                   :initial="{ opacity: 0, scale: 0 }"
                   :while-in-view="{ opacity: 1, scale: 1 }"
                   :transition="{ duration: 0.5, delay: 1.0, ease: 'easeOut' }"
@@ -67,7 +71,7 @@
                   title="Beige"
                 ></motion.div>
                 <motion.div
-                  class="w-10 h-10 rounded-full bg-[#d6ab83] border border-gold/20 shadow-sm will-change-[transform,opacity]"
+                  class="w-10 h-10 rounded-full bg-[#B86A78] border border-gold/20 shadow-sm will-change-[transform,opacity]"
                   :initial="{ opacity: 0, scale: 0 }"
                   :while-in-view="{ opacity: 1, scale: 1 }"
                   :transition="{ duration: 0.5, delay: 1.4, ease: 'easeOut' }"
@@ -92,13 +96,7 @@
               class="w-full text-center flex flex-col items-center justify-center py-4 my-auto"
             >
               <!-- Heart Icon SVG in gold-hover color -->
-              <div class="mb-6 text-gold-hover shrink-0">
-                <svg class="w-12 h-12 fill-current" viewBox="0 0 24 24">
-                  <path
-                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                  />
-                </svg>
-              </div>
+              <img :src="DancingGif" class="icon" />
 
               <!-- Title -->
               <h4 class="title py-4">Solo Adultos</h4>
@@ -122,5 +120,6 @@
 import { motion } from "motion-v";
 import PaperCard from "../../../components/PaperCard.vue";
 import SuitGif from "../../../assets/images/gifs/suit.gif";
+import DancingGif from "../../../assets/images/gifs/dancing.gif";
 import HauteCoutureGif from "../../../assets/images/gifs/haute-couture.gif";
 </script>

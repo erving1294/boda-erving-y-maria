@@ -293,7 +293,7 @@ const props = defineProps({
 const title1Letters = "Ervíng".split("");
 const title2Letters = "María".split("");
 const paragraphText =
-  "Que el amor sea siempre nuestro vínculo y Dios, nuestro camino; para caminar juntos, de la mano, hacia toda una vida por compartir";
+  "Que el amor sea siempre nuestro vínculo y Dios, nuestro camino; para caminar juntos, de la mano, hacia toda una vida por compartir.";
 
 // Split into words and pre-calculate indices for seamless stagger delays
 const words = [];

@@ -26,21 +26,23 @@
               <img :src="ChurchGif" class="icon" />
 
               <!-- Building Name -->
-              <p class="location-name">Parroquia Nuestra Señora de Luján</p>
+              <p class="location-name">Parroquia Cristo Sacerdote</p>
 
               <!-- Address -->
-              <p class="location-address">Av. Pergamino 203, Lima</p>
+              <p class="location-address">
+                Jose Domingo Choquehuanca 239, San Miguel
+              </p>
 
               <!-- Date Block (Classic Invitation Style) -->
               <div class="location-time-block">
-                <span class="location-time-text">17:00 hs</span>
+                <span class="location-time-text">16:00 pm</span>
               </div>
             </div>
 
             <!-- Action Buttons -->
             <div class="location-actions">
               <a
-                href="https://maps.google.com/?q=Av.+Pergamino+203,+Lima"
+                href="https://maps.app.goo.gl/snc1RQhe6D2Pfr1U6"
                 target="_blank"
                 class="button"
               >
@@ -71,21 +73,21 @@
               <img :src="WineGif" class="icon" />
 
               <!-- Building Name -->
-              <p class="location-name">Salón de Fiestas Avril</p>
+              <p class="location-name">Casa Los Rosales</p>
 
               <!-- Address -->
-              <p class="location-address">Av. Los Reartes 12, Lima</p>
+              <p class="location-address">Pachacamac, Lima</p>
 
               <!-- Date Block (Classic Invitation Style) -->
               <div class="location-time-block">
-                <span class="location-time-text">19:30 hs</span>
+                <span class="location-time-text">18:00 pm</span>
               </div>
             </div>
 
             <!-- Action Buttons -->
             <div class="location-actions">
               <a
-                href="https://maps.google.com/?q=Av.+Los+Reartes+12,+Lima"
+                href="https://maps.app.goo.gl/NTzjVfHESMnWHDkk8"
                 target="_blank"
                 class="button"
               >
@@ -112,7 +114,7 @@ import ChurchGif from "../../../assets/images/gifs/church.gif";
 }
 
 .location-name {
-  @apply font-inria font-bold mb-1 px-4 leading-snug;
+  @apply font-inria font-bold mb-1 px-4 text-lg leading-snug;
 }
 
 .location-address {
