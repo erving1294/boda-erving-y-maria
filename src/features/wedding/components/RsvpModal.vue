@@ -105,6 +105,7 @@
                 </label>
                 <input
                   v-model="form.fullName"
+                  disabled
                   type="text"
                   required
                   :disabled="isSending"
@@ -147,8 +148,8 @@
                   :disabled="isSending"
                   class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-inria text-slate-dark bg-white/70 transition-all duration-300 text-sm cursor-pointer disabled:bg-slate-100 disabled:cursor-not-allowed"
                 >
-                  <option v-for="n in (passes || 2)" :key="n" :value="n">
-                    {{ n }} {{ n === 1 ? 'persona' : 'personas' }}
+                  <option v-for="n in passes || 2" :key="n" :value="n">
+                    {{ n }} {{ n === 1 ? "persona" : "personas" }}
                   </option>
                 </select>
               </div>
@@ -257,6 +258,8 @@ const emit = defineEmits(["close"]);
 const isSubmitted = ref(false);
 const isSending = ref(false);
 const errorMessage = ref("");
+const hasBeenSubmitted = ref(false);
+const submittedAttending = ref("");
 
 const form = ref({
   fullName: "",
@@ -271,13 +274,18 @@ const closeModal = () => {
   setTimeout(() => {
     isSending.value = false;
     errorMessage.value = "";
-    isSubmitted.value = false;
-    form.value = {
-      fullName: "",
-      attending: "",
-      people: 1,
-      wishes: "",
-    };
+    if (!hasBeenSubmitted.value) {
+      isSubmitted.value = false;
+      form.value = {
+        fullName: "",
+        attending: "",
+        people: 1,
+        wishes: "",
+      };
+    } else {
+      isSubmitted.value = true;
+      form.value.attending = submittedAttending.value;
+    }
   }, 400);
 };
 
@@ -304,10 +312,13 @@ const submitForm = async () => {
     });
 
     isSubmitted.value = true;
+    hasBeenSubmitted.value = true;
+    submittedAttending.value = form.value.attending;
   } catch (error) {
     console.error("Error submitting RSVP to Google Sheets:", error);
     errorMessage.value =
       "Hubo un problema de conexión al enviar tus datos. Por favor, intenta de nuevo.";
+    sucessConfirmation.value = false;
   } finally {
     isSending.value = false;
   }
@@ -319,12 +330,17 @@ watch(
     if (typeof window !== "undefined") {
       if (newVal) {
         document.body.style.overflow = "hidden";
-        // Pre-fill fields if guest details are passed
-        if (props.guestName && !form.value.fullName) {
-          form.value.fullName = props.guestName;
-        }
-        if (props.passes) {
-          form.value.people = props.passes;
+        if (hasBeenSubmitted.value) {
+          isSubmitted.value = true;
+          form.value.attending = submittedAttending.value;
+        } else {
+          // Pre-fill fields if guest details are passed
+          if (props.guestName && !form.value.fullName) {
+            form.value.fullName = props.guestName;
+          }
+          if (props.passes) {
+            form.value.people = props.passes;
+          }
         }
       } else {
         document.body.style.overflow = "";
