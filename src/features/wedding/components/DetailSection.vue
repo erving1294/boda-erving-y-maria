@@ -9,7 +9,7 @@ import sealUrl from "../../../assets/images/Sello.png";
   <section id="detailSection" class="w-full h-[728px] relative overflow-hidden">
     <!-- Marble Texture Background Layer -->
     <div
-      class="bg-texture-marmol absolute inset-0 rounded-[inherit] border-0"
+      class="bg-texture-flores absolute inset-0 rounded-[inherit] border-0"
     ></div>
 
     <!-- Multiply Overlay Layer -->
@@ -25,7 +25,7 @@ import sealUrl from "../../../assets/images/Sello.png";
       <img
         :src="invitationCard"
         alt="Invitation Card"
-        class="w-[340px] h-full object-cover max-sm:!h-[480px] transition-all duration-[1500ms] ease-out"
+        class="w-[340px] h-full object-cover max-sm:!h-[480px] transition-all duration-[1500ms] ease-out shadow-2xl rotate-[180deg]"
       />
 
       <!-- Inner Invitation Paper Card (Overlapping) -->
@@ -129,6 +129,11 @@ import sealUrl from "../../../assets/images/Sello.png";
                 4:00 PM
               </div>
             </div>
+            <p
+              class="font-cookie italic text-md tracking-[1px] text-slate-muted leading-normal max-w-[240px]"
+            >
+              Queremos celebrar contigo el día más importante de nuestras vidas.
+            </p>
           </motion.div>
         </div>
       </motion.article>

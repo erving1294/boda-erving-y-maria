@@ -32,16 +32,26 @@
                 <!-- Subtitle -->
                 <h5 class="font-cookie text-secondary text-4xl">Elegante</h5>
               </div>
-              <!-- <ul>
-                <li>Para ellos</li>
-                <li>Para ellas</li>
-              </ul> -->
+              <ul class="text-center mb-4">
+                <li>
+                  <p class="font-inria">
+                    <span class="font-inria text-slate-dark">Para ellos:</span>
+                    Terno, pantalón de vestir, camisa, zapatos de vestir,
+                    corbata, saco.
+                  </p>
+                </li>
+                <li>
+                  <p class="font-inria">
+                    <span class="font-inria text-slate-dark">Para ellas:</span>
+                    Vestido de noche, largo o midi, conjunto elegante de
+                    pantalón y blusa, zapatos de vestir o tacones.
+                  </p>
+                </li>
+              </ul>
 
               <!-- Warning text -->
-              <p
-                class="font-inria text-slate-muted mb-6 max-w-xs leading-relaxed"
-              >
-                Evitar colores: blanco, beige, nude, rosa canela
+              <p class="font-inria text-primary italic font-bold mb-6 max-w-xs">
+                Tonos a evitar para las damas
               </p>
 
               <!-- Color Swatches -->
@@ -105,8 +115,9 @@
               <p
                 class="font-inria text-slate-muted max-w-xs mx-auto leading-relaxed"
               >
-                Aunque amamos a los más pequeños este evento será solo para
-                adultos.
+                Amamos a los más pequeños y son parte importante de nuestras
+                vidas. Sin embargo, para esta ocasión tan especial hemos
+                decidido que nuestra celebración será solo para adultos.
               </p>
             </div>
           </PaperCard>
