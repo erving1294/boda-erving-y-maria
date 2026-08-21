@@ -6,17 +6,17 @@
     >
       <!-- 1. TOP SCALLOPED FLAP (Slides UP when opened) -->
       <div
-        class="fixed top-0 left-0 w-full h-[50vh] md:h-[65vh] z-30 transition-transform duration-[1400ms] ease-in-out overflow-hidden"
+        class="fixed top-0 left-0 w-full h-[60vh] md:h-[65vh] z-30 transition-transform duration-[1400ms] ease-in-out overflow-hidden"
         :class="
           isOpened
-            ? '-translate-y-[50vh] md:-translate-y-[65vh]'
+            ? '-translate-y-[60vh] md:-translate-y-[65vh]'
             : 'translate-y-0'
         "
         style="filter: drop-shadow(0 14px 12px rgba(74, 55, 40, 0.22))"
       >
         <!-- SVG that scales to full width to preserve the triangular shape on responsive screens -->
         <svg
-          class="absolute bottom-0 left-0 w-full h-[50vh] md:h-[65vh] overflow-visible"
+          class="absolute bottom-0 left-0 w-full h-full overflow-visible"
           :viewBox="flapViewBox"
           preserveAspectRatio="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -115,7 +115,7 @@
 
       <!-- Wax Seal Button -->
       <div
-        class="fixed left-1/2 top-[50vh] md:top-[65vh] -translate-x-1/2 -translate-y-1/2 z-50 cursor-pointer transition-all duration-[1000ms] ease-in-out"
+        class="fixed left-1/2 top-[60vh] md:top-[65vh] -translate-x-1/2 -translate-y-1/2 z-50 cursor-pointer transition-all duration-[1000ms] ease-in-out"
         :class="
           isOpened
             ? 'seal-opened pointer-events-none'
@@ -176,16 +176,16 @@ const flapPathMobile = `
   M 0,0
   L 2400,0
   L 2400,300
-  L 1320,480
-  Q 1200,500 1080,480
+  L 1320,580
+  Q 1200,600 1080,580
   L 0,300
   Z
 `;
 
 const pocketPathMobile = `
   M 0,300
-  L 1080,480
-  Q 1200,500 1320,480
+  L 1080,580
+  Q 1200,600 1320,580
   L 2400,300
   L 2400,1000
   L 0,1000
@@ -221,7 +221,7 @@ const pocketPath = computed(() => {
 });
 
 const flapViewBox = computed(() => {
-  return isMobile.value ? "0 0 2400 500" : "0 0 2400 650";
+  return isMobile.value ? "0 0 2400 600" : "0 0 2400 650";
 });
 
 /* ==========================================================

@@ -286,7 +286,7 @@ const props = defineProps({
   },
   blockScroll: {
     type: Boolean,
-    default: false, // Bloquea por defecto el scroll durante la animación
+    default: true, // Bloquea por defecto el scroll durante la animación
   },
 });
 
