@@ -244,25 +244,14 @@
 
       <!-- 5. INTERACTIVE WAX SEAL / STAMP -->
       <div
-        v-if="showSeal"
-        class="absolute left-1/2 -translate-x-1/2 top-[65.5%] -translate-y-1/2 z-50 cursor-pointer"
-        :class="
-          isOpen
-            ? 'seal-opened pointer-events-none'
-            : 'seal-closed hover:scale-105 active:scale-95'
-        "
-        @click="$emit('open')"
+        class="absolute left-1/2 -translate-x-1/2 top-[50%] -translate-y-1/2 z-50 cursor-pointer w-[18%] aspect-square flex justify-center items-center"
       >
         <slot name="seal">
-          <div
-            class="relative w-24 h-24 sm:w-28 sm:h-28 flex justify-center items-center"
-          >
-            <img
-              :src="sealUrl"
-              alt="Sello de Cera"
-              class="w-full h-full object-contain filter drop-shadow-[0_4px_6px_rgba(0,0,0,0.25)] animate-heartbeat"
-            />
-          </div>
+          <img
+            :src="sealUrl"
+            alt="Sello de Cera"
+            class="w-full h-full object-contain filter drop-shadow-[0_4px_6px_rgba(0,0,0,0.25)] animate-heartbeat"
+          />
         </slot>
       </div>
     </div>

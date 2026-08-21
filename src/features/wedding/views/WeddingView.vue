@@ -29,10 +29,18 @@
       <HistorySection />
 
       <BannerImage />
-      <GuestsSection :guest-name="guestName || undefined" :passes="passes" />
+      <GuestsSection
+        v-if="showInviteSections"
+        :guest-name="guestName || undefined"
+        :passes="passes"
+      />
 
       <!-- 11. Confirmar Asistencia -->
-      <RsvpSection :guest-name="guestName" :passes="passes" />
+      <RsvpSection
+        v-if="showInviteSections"
+        :guest-name="guestName"
+        :passes="passes"
+      />
 
       <!-- 13. Footer -->
       <footer
@@ -78,6 +86,7 @@ import guests from "../data/guests.json";
 const ready = ref(false);
 const guestName = ref("");
 const passes = ref(2);
+const showInviteSections = ref(false);
 
 const onEnter = () => {
   ready.value = true;
@@ -105,6 +114,7 @@ onMounted(() => {
       if (guest) {
         guestName.value = guest.name;
         passes.value = guest.invitationCount;
+        showInviteSections.value = true;
       }
     }
   }
