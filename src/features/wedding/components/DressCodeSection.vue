@@ -30,18 +30,24 @@
                 <h4 class="title mb-2">{{ texts.dressCode.dressCodeTitle }}</h4>
 
                 <!-- Subtitle -->
-                <h5 class="font-cookie text-secondary text-4xl">{{ texts.dressCode.dressCodeSubtitle }}</h5>
+                <h5 class="font-cookie text-secondary text-4xl">
+                  {{ texts.dressCode.dressCodeSubtitle }}
+                </h5>
               </div>
               <ul class="text-center mb-4">
                 <li>
                   <p class="font-inria">
-                    <span class="font-inria text-slate-dark">{{ texts.dressCode.menTitle }}</span>
+                    <span class="font-inria text-primary">{{
+                      texts.dressCode.menTitle
+                    }}</span>
                     {{ texts.dressCode.menDescription }}
                   </p>
                 </li>
                 <li>
                   <p class="font-inria">
-                    <span class="font-inria text-slate-dark">{{ texts.dressCode.womenTitle }}</span>
+                    <span class="font-inria text-primary">{{
+                      texts.dressCode.womenTitle
+                    }}</span>
                     {{ texts.dressCode.womenDescription }}
                   </p>
                 </li>
@@ -55,7 +61,7 @@
               <!-- Color Swatches -->
               <div class="flex justify-center items-center gap-4">
                 <motion.div
-                   class="w-10 h-10 rounded-full bg-white border border-slate-200 shadow-sm will-change-[transform,opacity]"
+                  class="w-10 h-10 rounded-full bg-white border border-slate-200 shadow-sm will-change-[transform,opacity]"
                   :initial="{ opacity: 0, scale: 0 }"
                   :while-in-view="{ opacity: 1, scale: 1 }"
                   :transition="{ duration: 0.5, delay: 0.8, ease: 'easeOut' }"

@@ -77,16 +77,16 @@ import texts from "../data/texts.json";
           >
             <!-- Names Layout -->
             <div class="flex flex-col items-center justify-center w-full mb-1">
-              <span class="font-new-icon text-4xl text-primary uppercase"
-                >{{ texts.detail.title1 }}</span
-              >
+              <span class="font-new-icon text-4xl text-primary uppercase">{{
+                texts.detail.title1
+              }}</span>
               <span
                 class="font-cookie text-xl text-secondary lowercase italic my-0.5"
                 >&</span
               >
-              <span class="font-new-icon text-4xl text-primary uppercase"
-                >{{ texts.detail.title2 }}</span
-              >
+              <span class="font-new-icon text-4xl text-primary uppercase">{{
+                texts.detail.title2
+              }}</span>
             </div>
 
             <!-- Invite phrase -->
@@ -107,7 +107,7 @@ import texts from "../data/texts.json";
             >
               <!-- Left Side (Day of the week) -->
               <div
-                class="flex-1 border-y border-primary py-2.5 text-xs tracking-[0.15em] uppercase text-center text-slate-muted"
+                class="flex-1 border-y border-primary py-2.5 text-xs tracking-[0.15em] uppercase text-center text-primary"
               >
                 {{ texts.detail.dayOfWeek }}
               </div>
@@ -115,17 +115,17 @@ import texts from "../data/texts.json";
               <div
                 class="px-4 flex flex-col justify-center items-center min-w-[80px]"
               >
-                <span class="text-3xl font-semibold text-primary leading-none"
-                  >{{ texts.detail.dayNumber }}</span
-                >
+                <span class="text-[32px] text-primary leading-none">{{
+                  texts.detail.dayNumber
+                }}</span>
                 <span
-                  class="text-[9px] tracking-[0.15em] uppercase font-bold text-primary mt-1.5 leading-none"
+                  class="text-xs tracking-[0.15em] uppercase font-bold text-primary mt-1.5 leading-none"
                   >{{ texts.detail.month }}</span
                 >
               </div>
               <!-- Right Side (Time) -->
               <div
-                class="flex-1 border-y border-primary py-2.5 text-xs tracking-[0.12em] uppercase text-center text-slate-muted"
+                class="flex-1 border-y border-primary py-2.5 text-xs tracking-[0.12em] uppercase text-center text-primary"
               >
                 {{ texts.detail.time }}
               </div>

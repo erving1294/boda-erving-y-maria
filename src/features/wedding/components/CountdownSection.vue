@@ -16,7 +16,7 @@
         :style="`background-image: url(${MarcoFoto})`"
       >
         <span
-          class="absolute top-[51px] left-[64px] font-cookie italic font-bold text-3xl tracking-widest max-sm:top-9 max-sm:left-12"
+          class="absolute top-[51px] left-[64px] font-cookie italic text-3xl tracking-widest max-sm:top-9 max-sm:left-12"
         >
           21.11.2026
         </span>
@@ -76,7 +76,9 @@
             class="flex justify-center items-center w-full h-full bg-cover bg-center"
             :style="`background-image: url(${Corazon})`"
           >
-            <span class="font-cookie italic text-3xl">{{ texts.countdown.heartText }}</span>
+            <span class="font-cookie italic text-3xl">{{
+              texts.countdown.heartText
+            }}</span>
           </div>
         </motion.div>
       </div>
@@ -95,13 +97,15 @@
           class="w-[380px] max-sm:w-full max-sm:px-4 m-auto text-3xl mb-4 font-new-icon-serif"
         >
           <span class="title block !mb-4">{{ texts.countdown.title }}</span>
-          <span class="block text-base font-inria"
-            >{{ texts.countdown.description }}</span
-          >
+          <span class="block text-base font-inria">{{
+            texts.countdown.description
+          }}</span>
           <span
             class="block max-sm:text-md mt-4 text-secondary font-inria text-2xl"
             >{{
-              isFinished ? texts.countdown.finishedLabel : texts.countdown.waitingLabel
+              isFinished
+                ? texts.countdown.finishedLabel
+                : texts.countdown.waitingLabel
             }}</span
           >
         </p>
