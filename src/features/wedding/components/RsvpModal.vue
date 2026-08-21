@@ -64,18 +64,18 @@
               </svg>
             </div>
 
-            <h4 class="title text-4xl mb-4">¡Muchas gracias!</h4>
+            <h4 class="title text-4xl mb-4 max-sm:mb-5">¡Muchas gracias!</h4>
 
             <p
               v-if="form.attending === 'yes'"
-              class="font-inria text-slate-muted leading-relaxed mb-8 max-w-xs mx-auto text-sm"
+              class="font-inria text-slate-muted leading-relaxed mb-8 max-w-xs mx-auto"
             >
               Tu asistencia ha sido confirmada. Estamos muy felices de que nos
               acompañes en este día tan especial. ¡Nos vemos pronto!
             </p>
             <p
               v-else
-              class="font-inria text-slate-muted leading-relaxed mb-8 max-w-xs mx-auto text-sm"
+              class="font-inria text-slate-muted leading-relaxed mb-8 max-w-xs mx-auto"
             >
               Lamentamos que no puedas asistir. Agradecemos mucho que nos hayas
               avisado. ¡Te enviamos un fuerte abrazo!

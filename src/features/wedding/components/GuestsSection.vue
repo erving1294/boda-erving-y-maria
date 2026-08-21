@@ -47,16 +47,6 @@
               >
                 {{ guestName }}
               </h3>
-              <div>
-                <p
-                  class="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-muted mt-6 mb-2 max-sm:mb-0 max-sm:mt-4"
-                >
-                  {{ passLabel }}
-                </p>
-                <p class="mt-1 text-[32px] font-bold leading-none text-primary">
-                  {{ passes }}
-                </p>
-              </div>
             </article>
           </PaperCard>
           <PolaroidPhoto
