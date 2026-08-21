@@ -115,7 +115,7 @@
         <div class="w-full flex justify-center">
           <div class="w-[420px] max-sm:w-[280px]">
             <!-- Clock grid -->
-            <div class="grid grid-cols-4 gap-4 w-full relative z-10">
+            <div class="grid grid-cols-4 w-full relative z-10">
               <motion.div
                 :initial="{ opacity: 0, y: 20 }"
                 :while-in-view="{ opacity: 1, y: 0 }"
@@ -172,7 +172,7 @@
                 :while-in-view="{ opacity: 1, y: 0 }"
                 :transition="{ duration: 0.8, delay: 1.6, ease: 'easeOut' }"
                 :viewport="{ once: false, amount: 0.55 }"
-                class="flex flex-col justify-center items-center border-r-[1px] border-solid border-slate-muted"
+                class="flex flex-col justify-center items-center border-solid border-slate-muted"
               >
                 <span
                   class="font-inria text-3xl md:text-4xl text-sage font-bold leading-none"
