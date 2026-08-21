@@ -1,8 +1,8 @@
 <template>
   <article
-    :style="`background-image: url(${PolaroidFondo}); background-size: cover; background-position: center;`"
+    :style="`background-image: url(${PolaroidFondo})`"
     :class="[
-      'flex flex-col items-center justify-between p-3 will-change-transform select-none',
+      'flex flex-col items-center justify-between p-3 will-change-transform select-none bg-cover bg-center',
       hasShadow ? 'shadow-[0_3px_10px_rgba(0,0,0,0.25)]' : ''
     ]"
   >

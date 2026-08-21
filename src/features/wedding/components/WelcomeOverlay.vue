@@ -6,13 +6,12 @@
     >
       <!-- 1. TOP SCALLOPED FLAP (Slides UP when opened) -->
       <div
-        class="fixed top-0 left-0 w-full h-[60vh] md:h-[65vh] z-30 transition-transform duration-[1400ms] ease-in-out overflow-hidden"
+        class="fixed top-0 left-0 w-full h-[60vh] md:h-[65vh] z-30 transition-transform duration-[1400ms] ease-in-out overflow-hidden drop-shadow-[0_14px_12px_rgba(74,55,40,0.22)]"
         :class="
           isOpened
             ? '-translate-y-[60vh] md:-translate-y-[65vh]'
             : 'translate-y-0'
         "
-        style="filter: drop-shadow(0 14px 12px rgba(74, 55, 40, 0.22))"
       >
         <!-- SVG that scales to full width to preserve the triangular shape on responsive screens -->
         <svg

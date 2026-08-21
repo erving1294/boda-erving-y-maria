@@ -8,10 +8,9 @@
       <!-- Modal Card using paper-card class for graphic consistency -->
       <div
         :class="[
-          'paper-card w-full max-w-md p-6 md:p-10 rounded-2xl relative select-text max-md:overflow-y-auto',
+          'paper-card w-full max-w-md p-6 md:p-10 rounded-2xl relative select-text max-md:overflow-y-auto shadow-[0_20px_50px_-12px_rgba(44,73,69,0.3)]',
           isSubmitted ? 'max-md:!h-auto' : 'max-md:!h-full',
         ]"
-        style="box-shadow: 0 20px 50px -12px rgba(44, 73, 69, 0.3)"
       >
         <!-- Close Button Top Right -->
         <button

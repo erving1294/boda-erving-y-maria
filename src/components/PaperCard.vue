@@ -16,15 +16,7 @@
         height="100"
         alt=""
         :src="sealUrl"
-        style="
-          display: block;
-          width: 100%;
-          height: 100%;
-          border-radius: inherit;
-          corner-shape: inherit;
-          object-position: center center;
-          object-fit: cover;
-        "
+        class="block w-full h-full rounded-[inherit] [corner-shape:inherit] object-center object-cover"
       />
     </div>
     <!-- Elegant Inset Border Frame -->

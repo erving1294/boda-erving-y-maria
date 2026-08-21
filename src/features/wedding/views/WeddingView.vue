@@ -4,44 +4,38 @@
   >
     <!-- Welcome Overlay screen -->
     <WelcomeOverlay @enter="onEnter" />
-    <!-- <WelcomePaper /> -->
     <!-- Main Invitation content -->
     <div class="w-full">
       <!-- 1. Floating Music Controller -->
       <MusicControl />
-
       <!-- 2. Banner/Portada -->
       <HeroSection :active="ready" />
-
+      <!-- 3. Carta -->
       <DetailSection />
-      <!-- 5. Invitados (Pase de invitados) -->
-      <!-- 3. Contador -->
+      <!-- 4. Cuenta Regresiva -->
       <CountdownSection />
-
-      <!-- 6. Ubicaciones -->
+      <!-- 5. Ubicaciones -->
       <LocationsSection />
-
-      <!-- 9. Regalos -->
+      <!-- 6. Regalos -->
       <GiftsSection />
-
-      <!-- 10. Código de Vestimenta -->
+      <!-- 7. Código de Vestimenta -->
       <DressCodeSection />
+      <!-- 8. Carrusel de imagenes -->
       <HistorySection />
-
+      <!-- 9. Banner con foto -->
       <BannerImage />
+      <!-- 5. Invitados (Pase de invitados) -->
       <GuestsSection
         v-if="showInviteSections"
         :guest-name="guestName || undefined"
         :passes="passes"
       />
-
       <!-- 11. Confirmar Asistencia -->
       <RsvpSection
         v-if="showInviteSections"
         :guest-name="guestName"
         :passes="passes"
       />
-
       <!-- 13. Footer -->
       <footer
         class="bg-primary text-ivory py-16 text-center select-none border-t border-gold/10"
@@ -69,15 +63,12 @@ import WelcomeOverlay from "../components/WelcomeOverlay.vue";
 import MusicControl from "../components/MusicControl.vue";
 import HeroSection from "../components/HeroSection.vue";
 import CountdownSection from "../components/CountdownSection.vue";
-import ParentsSection from "../components/ParentsSection.vue";
 import GuestsSection from "../components/GuestsSection.vue";
 import LocationsSection from "../components/LocationsSection.vue";
-import TimelineSection from "../components/TimelineSection.vue";
 import HistorySection from "../components/HistorySection.vue";
 import GiftsSection from "../components/GiftsSection.vue";
 import DressCodeSection from "../components/DressCodeSection.vue";
 import RsvpSection from "../components/RsvpSection.vue";
-import ContactSection from "../components/ContactSection.vue";
 import DetailSection from "../components/DetailSection.vue";
 import BannerImage from "../../../components/BannerImage.vue";
 import guests from "../data/guests.json";

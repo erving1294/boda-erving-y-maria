@@ -1,13 +1,7 @@
 <template>
   <section
     id="countdown"
-    class="bg-texture-white py-16 max-sm:py-[84px] bg-white text-center select-none flex flex-wrap max-lg:flex-col items-center lg:pr-[100px] lg:pl-[100px] overflow-hidden"
-    style="
-      border-radius: inherit;
-      corner-shape: inherit;
-      inset: 0px;
-      border: 0px;
-    "
+    class="bg-texture-white py-16 max-sm:py-[84px] bg-white text-center select-none flex flex-wrap max-lg:flex-col items-center lg:pr-[100px] lg:pl-[100px] overflow-hidden rounded-[inherit] [corner-shape:inherit] inset-0 border-0"
   >
     <!-- Imagenes -->
     <motion.div
@@ -79,8 +73,8 @@
           :viewport="{ once: false, amount: 0.55 }"
         >
           <div
-            class="flex justify-center items-center w-full h-full"
-            :style="`background-image: url(${Corazon}); background-size: cover; background-position: center;`"
+            class="flex justify-center items-center w-full h-full bg-cover bg-center"
+            :style="`background-image: url(${Corazon})`"
           >
             <span class="font-cookie italic text-3xl">E & M</span>
           </div>

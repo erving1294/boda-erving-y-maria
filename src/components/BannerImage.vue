@@ -8,15 +8,7 @@
       sizes="(min-width: 1200px) 100vw, (max-width: 1199.98px) 100vw"
       :src="Banner"
       alt=""
-      style="
-        display: block;
-        width: 100%;
-        height: 100%;
-        border-radius: inherit;
-        corner-shape: inherit;
-        object-position: 48.4% 24.5%;
-        object-fit: cover;
-      "
+      class="block w-full h-full rounded-[inherit] [corner-shape:inherit] object-[48.4%_24.5%] object-cover"
     />
   </div>
 </template>
