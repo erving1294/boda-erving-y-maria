@@ -76,7 +76,7 @@
             class="flex justify-center items-center w-full h-full bg-cover bg-center"
             :style="`background-image: url(${Corazon})`"
           >
-            <span class="font-cookie italic text-3xl">E & M</span>
+            <span class="font-cookie italic text-3xl">{{ texts.countdown.heartText }}</span>
           </div>
         </motion.div>
       </div>
@@ -94,15 +94,14 @@
         <p
           class="w-[380px] max-sm:w-full max-sm:px-4 m-auto text-3xl mb-4 font-new-icon-serif"
         >
-          <span class="title block !mb-4">Save The Date</span>
+          <span class="title block !mb-4">{{ texts.countdown.title }}</span>
           <span class="block text-base font-inria"
-            >Porque tú has sido parte de nuestra historia, queremos que estés en
-            nuestro mejor capitulo</span
+            >{{ texts.countdown.description }}</span
           >
           <span
             class="block max-sm:text-md mt-4 text-secondary font-inria text-2xl"
             >{{
-              isFinished ? "El gran momento ha llegado" : "Solo faltan:"
+              isFinished ? texts.countdown.finishedLabel : texts.countdown.waitingLabel
             }}</span
           >
         </p>
@@ -123,7 +122,7 @@
                 >
                 <span
                   class="text-[10px] md:text-xs uppercase tracking-wide text-slate-muted mt-2"
-                  >Días</span
+                  >{{ texts.countdown.days }}</span
                 >
               </motion.div>
 
@@ -140,7 +139,7 @@
                 >
                 <span
                   class="text-[10px] md:text-xs uppercase tracking-wide text-slate-muted mt-2"
-                  >Horas</span
+                  >{{ texts.countdown.hours }}</span
                 >
               </motion.div>
 
@@ -157,7 +156,7 @@
                 >
                 <span
                   class="text-[10px] md:text-xs uppercase tracking-wide text-slate-muted mt-2"
-                  >Mins</span
+                  >{{ texts.countdown.minutes }}</span
                 >
               </motion.div>
 
@@ -174,7 +173,7 @@
                 >
                 <span
                   class="text-[10px] md:text-xs uppercase tracking-wide text-slate-muted mt-2"
-                  >Segs</span
+                  >{{ texts.countdown.seconds }}</span
                 >
               </motion.div>
             </div>
@@ -194,6 +193,7 @@ import MarcoFoto from "../../../assets/images/marco_foto.png";
 import FlorBoda from "../../../assets/images/flor_boda.jpg";
 import Corazon from "../../../assets/images/corazon_blanco.png";
 import Sombra from "../../../assets/images/sombra.png";
+import texts from "../data/texts.json";
 
 const { days, hours, minutes, seconds, isFinished } = useCountdown(
   "November 21, 2026 17:00:00",

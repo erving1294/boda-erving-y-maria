@@ -13,11 +13,9 @@
         :transition="{ duration: 1.2, ease: 'easeOut' }"
         :viewport="{ once: false, amount: 0.55 }"
       >
-        <p class="title">Una invitación especial</p>
+        <p class="title">{{ texts.guests.title }}</p>
         <p class="mt-3 leading-relaxed text-slate-muted">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint repellat
-          ipsam, reiciendis dolore voluptates mollitia magnam illo assumenda est
-          quaerat ipsum cum quos expedita dicta ab deserunt neque nam quibusdam?
+          {{ texts.guests.description }}
         </p>
       </motion.div>
 
@@ -40,7 +38,7 @@
           >
             <article class="flex h-full justify-center items-center flex-col">
               <p class="font-cookie text-slate-muted mb-1 text-lg md:text-xl">
-                Reservado para
+                {{ texts.guests.reservedFor }}
               </p>
               <h3
                 class="font-cookie text-[28px] leading-[24px] text-secondary sm:text-[42px] md:leading-8"
@@ -62,7 +60,7 @@
         class="mt-10 text-center text-[10px] font-bold uppercase tracking-[0.2em] text-slate-muted transition-opacity duration-300"
         :class="isOpen ? 'opacity-0' : 'opacity-100'"
       >
-        Toca el sello para abrir tu sobre
+        {{ texts.guests.openEnvelopeInstructions }}
       </p>
     </div>
   </section>
@@ -82,6 +80,9 @@ import texturaKraft from "../../../assets/images/textura_sobre.png";
 import patronFloral from "../../../assets/images/sobre_dentro.png";
 import selloCera from "../../../assets/images/Sello.png";
 
+import defaultSealUrl from "../../../assets/images/Sello.png";
+import texts from "../data/texts.json";
+
 const isOpen = ref(true);
 const showInserts = ref(false);
 const sectionRef = ref(null);
@@ -93,7 +94,7 @@ const props = defineProps({
 });
 
 const passLabel = computed(() =>
-  props.passes === 1 ? "Pase individual" : "Pases disponibles",
+  props.passes === 1 ? texts.guests.singlePass : texts.guests.multiplePasses,
 );
 
 onMounted(() => {

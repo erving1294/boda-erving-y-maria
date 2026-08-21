@@ -3,6 +3,7 @@ import { motion } from "motion-v";
 import invitationCard from "../../../assets/images/sobre_verde.webp";
 import paperWedding from "../../../assets/images/papel_boda.jpg";
 import sealUrl from "../../../assets/images/Sello.png";
+import texts from "../data/texts.json";
 </script>
 
 <template>
@@ -77,14 +78,14 @@ import sealUrl from "../../../assets/images/Sello.png";
             <!-- Names Layout -->
             <div class="flex flex-col items-center justify-center w-full mb-1">
               <span class="font-new-icon text-4xl text-primary uppercase"
-                >Ervíng</span
+                >{{ texts.detail.title1 }}</span
               >
               <span
                 class="font-cookie text-xl text-secondary lowercase italic my-0.5"
                 >&</span
               >
               <span class="font-new-icon text-4xl text-primary uppercase"
-                >María</span
+                >{{ texts.detail.title2 }}</span
               >
             </div>
 
@@ -92,12 +93,12 @@ import sealUrl from "../../../assets/images/Sello.png";
             <p
               class="font-inria text-sm tracking-[0.1em] text-slate-muted leading-normal max-w-[240px]"
             >
-              Tenemos el honor de invitarlos a celebrar nuestro matrimonio.
+              {{ texts.detail.invitationPhrase }}
             </p>
             <p
               class="font-inria text-sm tracking-[0.1em] text-slate-muted leading-normal max-w-[240px]"
             >
-              Que se celebrará el próximo
+              {{ texts.detail.celebrationDateLabel }}
             </p>
 
             <!-- Date Block (Reference Style) -->
@@ -108,31 +109,31 @@ import sealUrl from "../../../assets/images/Sello.png";
               <div
                 class="flex-1 border-y border-primary py-2.5 text-xs tracking-[0.15em] uppercase text-center text-slate-muted"
               >
-                Sábado
+                {{ texts.detail.dayOfWeek }}
               </div>
               <!-- Center (Day number and Month) -->
               <div
                 class="px-4 flex flex-col justify-center items-center min-w-[80px]"
               >
                 <span class="text-3xl font-semibold text-primary leading-none"
-                  >21</span
+                  >{{ texts.detail.dayNumber }}</span
                 >
                 <span
                   class="text-[9px] tracking-[0.15em] uppercase font-bold text-primary mt-1.5 leading-none"
-                  >Noviembre</span
+                  >{{ texts.detail.month }}</span
                 >
               </div>
               <!-- Right Side (Time) -->
               <div
                 class="flex-1 border-y border-primary py-2.5 text-xs tracking-[0.12em] uppercase text-center text-slate-muted"
               >
-                4:00 PM
+                {{ texts.detail.time }}
               </div>
             </div>
             <p
               class="font-cookie italic text-md tracking-[1px] text-slate-muted leading-normal max-w-[240px]"
             >
-              Queremos celebrar contigo el día más importante de nuestras vidas.
+              {{ texts.detail.footPhrase }}
             </p>
           </motion.div>
         </div>

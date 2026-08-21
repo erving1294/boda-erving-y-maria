@@ -20,22 +20,22 @@
           >
             <div>
               <!-- Title -->
-              <h4 class="title">Ceremonia</h4>
-              <h5 class="subtitle">Religiosa</h5>
+              <h4 class="title">{{ texts.locations.ceremony.title }}</h4>
+              <h5 class="subtitle">{{ texts.locations.ceremony.subtitle }}</h5>
 
               <img :src="ChurchGif" class="icon" />
 
               <!-- Building Name -->
-              <p class="location-name">Parroquia Cristo Sacerdote</p>
+              <p class="location-name">{{ texts.locations.ceremony.name }}</p>
 
               <!-- Address -->
               <p class="location-address">
-                Jose Domingo Choquehuanca 239, San Miguel
+                {{ texts.locations.ceremony.address }}
               </p>
 
               <!-- Date Block (Classic Invitation Style) -->
               <div class="location-time-block">
-                <span class="location-time-text">16:00 pm</span>
+                <span class="location-time-text">{{ texts.locations.ceremony.time }}</span>
               </div>
             </div>
 
@@ -46,7 +46,7 @@
                 target="_blank"
                 class="button"
               >
-                Ver Ubicación
+                {{ texts.locations.ceremony.buttonLabel }}
               </a>
             </div>
           </PaperCard>
@@ -67,20 +67,20 @@
           >
             <div>
               <!-- Title -->
-              <h4 class="title">Recepción</h4>
-              <h5 class="subtitle">& Fiesta</h5>
+              <h4 class="title">{{ texts.locations.celebration.title }}</h4>
+              <h5 class="subtitle">{{ texts.locations.celebration.subtitle }}</h5>
 
               <img :src="WineGif" class="icon" />
 
               <!-- Building Name -->
-              <p class="location-name">Casa Los Rosales</p>
+              <p class="location-name">{{ texts.locations.celebration.name }}</p>
 
               <!-- Address -->
-              <p class="location-address">Pachacamac, Lima</p>
+              <p class="location-address">{{ texts.locations.celebration.address }}</p>
 
               <!-- Date Block (Classic Invitation Style) -->
               <div class="location-time-block">
-                <span class="location-time-text">18:00 pm</span>
+                <span class="location-time-text">{{ texts.locations.celebration.time }}</span>
               </div>
             </div>
 
@@ -91,7 +91,7 @@
                 target="_blank"
                 class="button"
               >
-                Ver Ubicación
+                {{ texts.locations.celebration.buttonLabel }}
               </a>
             </div>
           </PaperCard>
@@ -106,7 +106,7 @@ import { motion } from "motion-v";
 import PaperCard from "../../../components/PaperCard.vue";
 import WineGif from "../../../assets/images/gifs/wine.gif";
 import ChurchGif from "../../../assets/images/gifs/church.gif";
-</script>
+import texts from "../data/texts.json";</script>
 
 <style scoped>
 .location-icon {

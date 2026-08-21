@@ -13,7 +13,7 @@
         :viewport="{ once: false, amount: 0.55 }"
       >
         <!-- Header Text -->
-        <h4 class="title text-4xl mt-6 mb-2 max-sm:mt-8">Mesa de Regalos</h4>
+        <h4 class="title text-4xl mt-6 mb-2 max-sm:mt-8">{{ texts.gifts.title }}</h4>
 
         <!-- Gift GIF Icon -->
         <img :src="GiftGif" class="icon" />
@@ -22,8 +22,7 @@
         <p
           class="font-inria text-base text-slate-muted leading-relaxed mb-6 max-w-xs mx-auto"
         >
-          El mejor regalo es que nos acompañes en este día tan especial, pero si
-          desean tener un detalle con nosotros, pueden hacerlo a través de:
+          {{ texts.gifts.description }}
         </p>
 
         <!-- Account details container -->
@@ -39,7 +38,7 @@
             <div class="flex flex-col text-left">
               <span
                 class="text-[9px] uppercase tracking-wider text-slate-muted font-bold"
-                >Número de Cuenta</span
+                >{{ texts.gifts.accountNumberLabel }}</span
               >
               <span
                 class="font-mono font-semibold text-slate-dark text-xs mt-0.5"
@@ -50,7 +49,7 @@
               @click="copyText(cuenta, 'cuenta')"
               class="px-3 py-1.5 text-[9px] uppercase font-bold text-white bg-secondary hover:bg-secondary rounded transition duration-200 shadow-sm"
             >
-              {{ copiedField === "cuenta" ? "Copiado" : "Copiar" }}
+              {{ copiedField === "cuenta" ? texts.gifts.copiedButton : texts.gifts.copyButton }}
             </button>
           </motion.div>
 
@@ -65,7 +64,7 @@
             <div class="flex flex-col text-left">
               <span
                 class="text-[9px] uppercase tracking-wider text-slate-muted font-bold"
-                >Cuenta Interbancaria (CCI)</span
+                >{{ texts.gifts.cciLabel }}</span
               >
               <span
                 class="font-mono font-semibold text-slate-dark text-[11px] mt-0.5"
@@ -76,7 +75,7 @@
               @click="copyText(cci, 'cci')"
               class="px-3 py-1.5 text-[9px] uppercase font-bold text-white bg-secondary hover:bg-secondary rounded transition duration-200 shadow-sm"
             >
-              {{ copiedField === "cci" ? "Copiado" : "Copiar" }}
+              {{ copiedField === "cci" ? texts.gifts.copiedButton : texts.gifts.copyButton }}
             </button>
           </motion.div>
 
@@ -91,10 +90,10 @@
             <div class="flex flex-col text-left">
               <span
                 class="text-[9px] uppercase tracking-wider text-slate-muted font-bold"
-                >Titular</span
+                >{{ texts.gifts.ownerLabel }}</span
               >
               <span class="font-semibold text-slate-dark text-xs mt-0.5"
-                >Ervíng y María</span
+                >{{ texts.gifts.ownerName }}</span
               >
             </div>
           </motion.div>
@@ -118,6 +117,7 @@
 import { ref } from "vue";
 import { motion } from "motion-v";
 import GiftGif from "../../../assets/images/gifs/gift.gif";
+import texts from "../data/texts.json";
 
 const cuenta = "193-98765432-0-12";
 const cci = "002-193-0098765432012-14";
@@ -149,7 +149,7 @@ const fallbackCopy = (text, fieldName) => {
 
 const triggerToast = (fieldName) => {
   copiedField.value = fieldName;
-  toastMessage.value = `${fieldName.toUpperCase()} copiado al portapapeles`;
+  toastMessage.value = `${fieldName.toUpperCase()} ${texts.gifts.toastCopySuccess}`;
   showToast.value = true;
 
   setTimeout(() => {

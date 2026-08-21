@@ -11,7 +11,7 @@
       :transition="{ duration: 1.0, ease: 'easeOut' }"
       :viewport="{ once: true, amount: 0.35 }"
     >
-      <h2 class="title">Nuestros Momentos</h2>
+      <h2 class="title">{{ texts.history.title }}</h2>
 
       <Swiper
         :effect="'coverflow'"
@@ -69,9 +69,7 @@
       <p
         class="text-center max-w-[400px] m-auto font-inria text-lg leading-relaxed text-slate-muted"
       >
-        Todo comenzó en enero del 2017, sin imaginar que ese sería el primer
-        capítulo de nuestra historia. Hoy, con el corazón lleno de gratitud,
-        estamos listos para escribir nuestro…
+        {{ texts.history.description }}
       </p>
       <p
         class="font-cookie text-center italic text-[26px] mt-2 max-w-[400px] m-auto min-h-[39px]"
@@ -92,6 +90,7 @@ import {
   Navigation,
   Autoplay,
 } from "swiper/modules";
+import texts from "../data/texts.json";
 
 // Swiper styles
 import "swiper/css";
@@ -116,7 +115,7 @@ const slides = [
 
 const sectionRef = ref(null);
 const displayedCursive = ref("");
-const cursiveText = "Para siempre";
+const cursiveText = texts.history.cursiveText;
 const textStarted = ref(false);
 
 // Use useInView hook from motion-v to trigger typing animation cleanly

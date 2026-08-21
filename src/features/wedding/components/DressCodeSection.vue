@@ -27,42 +27,40 @@
               </div>
               <div class="py-4">
                 <!-- Title -->
-                <h4 class="title mb-2">Código de Vestimenta</h4>
+                <h4 class="title mb-2">{{ texts.dressCode.dressCodeTitle }}</h4>
 
                 <!-- Subtitle -->
-                <h5 class="font-cookie text-secondary text-4xl">Elegante</h5>
+                <h5 class="font-cookie text-secondary text-4xl">{{ texts.dressCode.dressCodeSubtitle }}</h5>
               </div>
               <ul class="text-center mb-4">
                 <li>
                   <p class="font-inria">
-                    <span class="font-inria text-slate-dark">Para ellos:</span>
-                    Terno, pantalón de vestir, camisa, zapatos de vestir,
-                    corbata, saco.
+                    <span class="font-inria text-slate-dark">{{ texts.dressCode.menTitle }}</span>
+                    {{ texts.dressCode.menDescription }}
                   </p>
                 </li>
                 <li>
                   <p class="font-inria">
-                    <span class="font-inria text-slate-dark">Para ellas:</span>
-                    Vestido de noche, largo o midi, conjunto elegante de
-                    pantalón y blusa, zapatos de vestir o tacones.
+                    <span class="font-inria text-slate-dark">{{ texts.dressCode.womenTitle }}</span>
+                    {{ texts.dressCode.womenDescription }}
                   </p>
                 </li>
               </ul>
 
               <!-- Warning text -->
               <p class="font-inria text-primary italic font-bold mb-6 max-w-xs">
-                Tonos a evitar para las damas
+                {{ texts.dressCode.avoidColorsTitle }}
               </p>
 
               <!-- Color Swatches -->
               <div class="flex justify-center items-center gap-4">
                 <motion.div
-                  class="w-10 h-10 rounded-full bg-white border border-slate-200 shadow-sm will-change-[transform,opacity]"
+                   class="w-10 h-10 rounded-full bg-white border border-slate-200 shadow-sm will-change-[transform,opacity]"
                   :initial="{ opacity: 0, scale: 0 }"
                   :while-in-view="{ opacity: 1, scale: 1 }"
                   :transition="{ duration: 0.5, delay: 0.8, ease: 'easeOut' }"
                   :viewport="{ once: false, amount: 0.55 }"
-                  title="Blanco"
+                  :title="texts.dressCode.avoidColors.white"
                 ></motion.div>
                 <motion.div
                   class="w-10 h-10 rounded-full bg-[rgb(241 241 241)] border border-gold/20 shadow-sm will-change-[transform,opacity]"
@@ -70,7 +68,7 @@
                   :while-in-view="{ opacity: 1, scale: 1 }"
                   :transition="{ duration: 0.5, delay: 1.0, ease: 'easeOut' }"
                   :viewport="{ once: false, amount: 0.55 }"
-                  title="Crema"
+                  :title="texts.dressCode.avoidColors.cream"
                 ></motion.div>
                 <motion.div
                   class="w-10 h-10 rounded-full bg-[#e8dec9] border border-gold/20 shadow-sm will-change-[transform,opacity]"
@@ -78,7 +76,7 @@
                   :while-in-view="{ opacity: 1, scale: 1 }"
                   :transition="{ duration: 0.5, delay: 1.2, ease: 'easeOut' }"
                   :viewport="{ once: false, amount: 0.55 }"
-                  title="Beige"
+                  :title="texts.dressCode.avoidColors.beige"
                 ></motion.div>
                 <motion.div
                   class="w-10 h-10 rounded-full bg-[#B86A78] border border-gold/20 shadow-sm will-change-[transform,opacity]"
@@ -86,7 +84,7 @@
                   :while-in-view="{ opacity: 1, scale: 1 }"
                   :transition="{ duration: 0.5, delay: 1.4, ease: 'easeOut' }"
                   :viewport="{ once: false, amount: 0.55 }"
-                  title="Nude"
+                  :title="texts.dressCode.avoidColors.nude"
                 ></motion.div>
               </div>
             </div>
@@ -109,15 +107,13 @@
               <img :src="DancingGif" class="icon" />
 
               <!-- Title -->
-              <h4 class="title py-4">Solo Adultos</h4>
+              <h4 class="title py-4">{{ texts.dressCode.adultsOnlyTitle }}</h4>
 
               <!-- Description text -->
               <p
                 class="font-inria text-slate-muted max-w-xs mx-auto leading-relaxed"
               >
-                Amamos a los más pequeños y son parte importante de nuestras
-                vidas. Sin embargo, para esta ocasión tan especial hemos
-                decidido que nuestra celebración será solo para adultos.
+                {{ texts.dressCode.adultsOnlyDescription }}
               </p>
             </div>
           </PaperCard>
@@ -133,4 +129,5 @@ import PaperCard from "../../../components/PaperCard.vue";
 import SuitGif from "../../../assets/images/gifs/suit.gif";
 import DancingGif from "../../../assets/images/gifs/dancing.gif";
 import HauteCoutureGif from "../../../assets/images/gifs/haute-couture.gif";
+import texts from "../data/texts.json";
 </script>

@@ -63,28 +63,26 @@
               </svg>
             </div>
 
-            <h4 class="title text-4xl mb-4 max-sm:mb-5">¡Muchas gracias!</h4>
+            <h4 class="title text-4xl mb-4 max-sm:mb-5">{{ texts.rsvp.modal.thanksTitle }}</h4>
 
             <p
               v-if="form.attending === 'yes'"
               class="font-inria text-slate-muted leading-relaxed mb-8 max-w-xs mx-auto"
             >
-              Tu asistencia ha sido confirmada. Estamos muy felices de que nos
-              acompañes en este día tan especial. ¡Nos vemos pronto!
+              {{ texts.rsvp.modal.attendingSuccess }}
             </p>
             <p
               v-else
               class="font-inria text-slate-muted leading-relaxed mb-8 max-w-xs mx-auto"
             >
-              Lamentamos que no puedas asistir. Agradecemos mucho que nos hayas
-              avisado. ¡Te enviamos un fuerte abrazo!
+              {{ texts.rsvp.modal.notAttendingSuccess }}
             </p>
 
             <button
               @click="closeModal"
               class="button cursor-pointer w-full !max-w-[180px] border-0"
             >
-              Cerrar
+              {{ texts.rsvp.modal.closeButton }}
             </button>
           </div>
 
@@ -92,8 +90,8 @@
           <div v-else key="form">
             <!-- Form Header -->
             <div class="text-center mb-6 select-none">
-              <h4 class="title text-4xl mb-1">Confirmar</h4>
-              <h5 class="subtitle text-2xl !mb-0">asistencia</h5>
+              <h4 class="title text-4xl mb-1">{{ texts.rsvp.modal.confirmTitle }}</h4>
+              <h5 class="subtitle text-2xl !mb-0">{{ texts.rsvp.modal.confirmSubtitle }}</h5>
             </div>
 
             <!-- Form Fields -->
@@ -103,7 +101,7 @@
                 <label
                   class="text-[11px] font-sans font-bold tracking-widest text-slate-muted"
                 >
-                  Nombre Completo *
+                  {{ texts.rsvp.modal.fullNameLabel }}
                 </label>
                 <input
                   v-model="form.fullName"
@@ -111,7 +109,7 @@
                   type="text"
                   required
                   :disabled="isSending"
-                  placeholder="Escribe tu nombre y apellido"
+                  :placeholder="texts.rsvp.modal.fullNamePlaceholder"
                   class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-inria text-slate-dark bg-white/70 transition-all duration-300 placeholder:text-slate-muted/40 text-sm disabled:bg-slate-100 disabled:cursor-not-allowed"
                 />
               </div>
@@ -121,14 +119,14 @@
                 <label
                   class="text-[11px] font-sans font-bold tracking-widest text-slate-muted"
                 >
-                  Celular *
+                  {{ texts.rsvp.modal.phoneLabel }}
                 </label>
                 <input
                   v-model="form.phone"
                   type="tel"
                   required
                   :disabled="isSending"
-                  placeholder="Escribe tu número de celular"
+                  :placeholder="texts.rsvp.modal.phonePlaceholder"
                   class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-inria text-slate-dark bg-white/70 transition-all duration-300 placeholder:text-slate-muted/40 text-sm disabled:bg-slate-100 disabled:cursor-not-allowed"
                 />
               </div>
@@ -138,7 +136,7 @@
                 <label
                   class="text-[11px] font-sans font-bold tracking-widest text-slate-muted"
                 >
-                  ¿Podrás asistir al evento? *
+                  {{ texts.rsvp.modal.attendingQuestionLabel }}
                 </label>
                 <select
                   v-model="form.attending"
@@ -147,10 +145,10 @@
                   class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-inria text-slate-dark bg-white/70 transition-all duration-300 text-sm cursor-pointer disabled:bg-slate-100 disabled:cursor-not-allowed"
                 >
                   <option value="" disabled selected>
-                    Selecciona una opción
+                    {{ texts.rsvp.modal.attendingSelectDefault }}
                   </option>
-                  <option value="yes">Sí asistiré</option>
-                  <option value="no">Lo siento, no podré</option>
+                  <option value="yes">{{ texts.rsvp.modal.attendingSelectYes }}</option>
+                  <option value="no">{{ texts.rsvp.modal.attendingSelectNo }}</option>
                 </select>
               </div>
 
@@ -162,7 +160,7 @@
                 <label
                   class="text-[11px] font-sans font-bold tracking-widest text-slate-muted"
                 >
-                  ¿Cuántas personas asistirán? *
+                  {{ texts.rsvp.modal.peopleCountLabel }}
                 </label>
                 <select
                   v-model.number="form.people"
@@ -171,7 +169,7 @@
                   class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-inria text-slate-dark bg-white/70 transition-all duration-300 text-sm cursor-pointer disabled:bg-slate-100 disabled:cursor-not-allowed"
                 >
                   <option v-for="n in passes || 2" :key="n" :value="n">
-                    {{ n }} {{ n === 1 ? "persona" : "personas" }}
+                    {{ n }} {{ n === 1 ? texts.rsvp.modal.personLabel : texts.rsvp.modal.peopleLabel }}
                   </option>
                 </select>
               </div>
@@ -181,13 +179,13 @@
                 <label
                   class="text-[11px] font-sans font-bold tracking-widest text-slate-muted"
                 >
-                  Déjanos tus felicitaciones y buenos deseos
+                  {{ texts.rsvp.modal.wishesLabel }}
                 </label>
                 <textarea
                   v-model="form.wishes"
                   rows="2"
                   :disabled="isSending"
-                  placeholder="Escribe tu mensaje aquí..."
+                  :placeholder="texts.rsvp.modal.wishesPlaceholder"
                   class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-inria text-slate-dark bg-white/70 transition-all duration-300 placeholder:text-slate-muted/40 text-sm resize-none disabled:bg-slate-100 disabled:cursor-not-allowed"
                 ></textarea>
               </div>
@@ -223,7 +221,7 @@
                     ></path>
                   </svg>
                   <span>{{
-                    isSending ? "Enviando..." : "Confirmar Asistencia"
+                    isSending ? texts.rsvp.modal.sendingButtonLabel : texts.rsvp.modal.submitButtonLabel
                   }}</span>
                 </button>
 
@@ -245,6 +243,7 @@
 
 <script setup>
 import { ref, watch, onUnmounted } from "vue";
+import texts from "../data/texts.json";
 
 const props = defineProps({
   show: {
@@ -332,8 +331,7 @@ const submitForm = async () => {
     submittedAttending.value = form.value.attending;
   } catch (error) {
     console.error("Error submitting RSVP to Google Sheets:", error);
-    errorMessage.value =
-      "Hubo un problema de conexión al enviar tus datos. Por favor, intenta de nuevo.";
+    errorMessage.value = texts.rsvp.modal.errorMessage;
     sucessConfirmation.value = false;
   } finally {
     isSending.value = false;

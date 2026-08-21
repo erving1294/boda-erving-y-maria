@@ -40,24 +40,23 @@
             <div
               class="w-full text-center flex flex-col items-center justify-center"
             >
-              <h3 class="title !mb-6 block">Confirmación<br />de asistencia</h3>
+              <h3 class="title !mb-6 block" v-html="texts.rsvp.title"></h3>
 
               <p
                 class="font-inria text-slate-muted leading-relaxed mb-6 max-w-[240px]"
               >
-                Estamos muy emocionados de poder celebrar con ustedes uno de los
-                días más importantes de nuestras vidas.
+                {{ texts.rsvp.description }}
               </p>
 
               <p
                 class="font-inria text-slate-muted leading-relaxed mb-8 max-w-[240px]"
               >
-                Por favor confirmar asistencia antes del
-                <strong>01 de agosto de 2026</strong>.
+                {{ texts.rsvp.deadlineLabelPrefix }}
+                <strong>{{ texts.rsvp.deadlineDate }}</strong>.
               </p>
 
               <button @click="showModal = true" class="button cursor-pointer border-0">
-                Confirmar Aquí
+                {{ texts.rsvp.buttonLabel }}
               </button>
             </div>
           </PaperCard>
@@ -74,7 +73,7 @@
           <span
             class="font-new-icon text-4xl max-sm:text-3xl text-slate-muted/20 tracking-wider font-light [text-shadow:1px_1px_1px_rgba(255,255,255,0.6),_-1px_-1px_1px_rgba(0,0,0,0.15)]"
           >
-            E&M
+            {{ texts.rsvp.medallionText }}
           </span>
         </motion.div>
       </div>
@@ -98,6 +97,7 @@ import PaperCard from "../../../components/PaperCard.vue";
 import PolaroidPhoto from "../../../components/PolaroidPhoto.vue";
 import RsvpModal from "./RsvpModal.vue";
 import coverUrl from "../../../assets/images/portada-3.webp";
+import texts from "../data/texts.json";
 
 defineProps({
   guestName: {

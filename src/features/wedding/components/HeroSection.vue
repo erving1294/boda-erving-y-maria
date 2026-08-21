@@ -248,7 +248,7 @@
           <span
             class="text-[10px] tracking-[0.25em] uppercase text-white group-hover:text-white transition-colors font-sans font-medium"
           >
-            Ver Invitación
+            {{ texts.hero.buttonLabel }}
           </span>
           <div
             class="w-10 h-10 rounded-full border border-white flex justify-center items-center group-hover:border-white/50 group-hover:bg-white/10 transition-all duration-300 animate-bounce-down"
@@ -278,6 +278,7 @@
 <script setup>
 import { ref, watch, onUnmounted } from "vue";
 import coverUrl from "../../../assets/images/portada-3.webp";
+import texts from "../data/texts.json";
 
 const props = defineProps({
   active: {
@@ -290,10 +291,9 @@ const props = defineProps({
   },
 });
 
-const title1Letters = "Ervíng".split("");
-const title2Letters = "María".split("");
-const paragraphText =
-  "Que el amor sea siempre nuestro vínculo y Dios, nuestro camino; para caminar juntos, de la mano, hacia toda una vida por compartir.";
+const title1Letters = texts.hero.title1.split("");
+const title2Letters = texts.hero.title2.split("");
+const paragraphText = texts.hero.paragraph;
 
 // Split into words and pre-calculate indices for seamless stagger delays
 const words = [];

@@ -1,0 +1,151 @@
+{
+  "footer": {
+    "quote": "Donde tú vayas, yo iré; donde tú vivas, yo viviré.",
+    "copyright": "© 2026 Ervíng & María. Todos los derechos reservados."
+  },
+  "welcomeOverlay": {
+    "sealAlt": "Sello de Cera"
+  },
+  "hero": {
+    "title1": "Ervíng",
+    "title2": "María",
+    "paragraph": "Que el amor sea siempre nuestro vínculo y Dios, nuestro camino; para caminar juntos, de la mano, hacia toda una vida por compartir.",
+    "buttonLabel": "Ver Invitación"
+  },
+  "guests": {
+    "title": "Una invitación especial",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint repellat ipsam, reiciendis dolore voluptates mollitia magnam illo assumenda est quaerat ipsum cum quos expedita dicta ab deserunt neque nam quibusdam?",
+    "reservedFor": "Reservado para",
+    "openEnvelopeInstructions": "Toca el sello para abrir tu sobre",
+    "singlePass": "Pase individual",
+    "multiplePasses": "Pases disponibles"
+  },
+  "countdown": {
+    "heartText": "E & M",
+    "title": "Save The Date",
+    "description": "Porque tú has sido parte de nuestra historia, queremos que estés en nuestro mejor capitulo",
+    "finishedLabel": "El gran momento ha llegado",
+    "waitingLabel": "Solo faltan:",
+    "days": "Días",
+    "hours": "Horas",
+    "minutes": "Mins",
+    "seconds": "Segs"
+  },
+  "detail": {
+    "title1": "Ervíng",
+    "title2": "María",
+    "invitationPhrase": "Tenemos el honor de invitarlos a celebrar nuestro matrimonio.",
+    "celebrationDateLabel": "Que se celebrará el próximo",
+    "dayOfWeek": "Sábado",
+    "dayNumber": "21",
+    "month": "Noviembre",
+    "time": "4:00 PM",
+    "footPhrase": "Queremos celebrar contigo el día más importante de nuestras vidas."
+  },
+  "parents": {
+    "title": "Nuestros Padres",
+    "blessing": "Con la bendición de Dios y de nuestros padres",
+    "brideParentsTitle": "Padres de la Novia",
+    "brideMother": "Laura Rodríguez",
+    "brideFather": "Ricardo Martínez",
+    "groomParentsTitle": "Padres del Novio",
+    "groomMother": "María Gutierrez",
+    "groomFather": "Pedro Sánchez"
+  },
+  "locations": {
+    "ceremony": {
+      "title": "Ceremonia",
+      "subtitle": "Religiosa",
+      "name": "Parroquia Cristo Sacerdote",
+      "address": "Jose Domingo Choquehuanca 239, San Miguel",
+      "time": "16:00 pm",
+      "buttonLabel": "Ver Ubicación"
+    },
+    "celebration": {
+      "title": "Recepción",
+      "subtitle": "& Fiesta",
+      "name": "Casa Los Rosales",
+      "address": "Pachacamac, Lima",
+      "time": "18:00 pm",
+      "buttonLabel": "Ver Ubicación"
+    }
+  },
+  "gifts": {
+    "title": "Mesa de Regalos",
+    "description": "El mejor regalo es que nos acompañes en este día tan especial, pero si desean tener un detalle con nosotros, pueden hacerlo a través de:",
+    "accountNumberLabel": "Número de Cuenta",
+    "cciLabel": "Cuenta Interbancaria (CCI)",
+    "ownerLabel": "Titular",
+    "ownerName": "Ervíng y María",
+    "copyButton": "Copiar",
+    "copiedButton": "Copiado",
+    "toastCopySuccess": "copiado al portapapeles"
+  },
+  "dressCode": {
+    "dressCodeTitle": "Código de Vestimenta",
+    "dressCodeSubtitle": "Elegante",
+    "menTitle": "Para ellos:",
+    "menDescription": "Terno, pantalón de vestir, camisa, zapatos de vestir, corbata, saco.",
+    "womenTitle": "Para ellas:",
+    "womenDescription": "Vestido de noche, largo o midi, conjunto elegante de pantalón y blusa, zapatos de vestir o tacones.",
+    "avoidColorsTitle": "Tonos a evitar para las damas",
+    "avoidColors": {
+      "white": "Blanco",
+      "cream": "Crema",
+      "beige": "Beige",
+      "nude": "Nude"
+    },
+    "adultsOnlyTitle": "Solo Adultos",
+    "adultsOnlyDescription": "Amamos a los más pequeños y son parte importante de nuestras vidas. Sin embargo, para esta ocasión tan especial hemos decidido que nuestra celebración será solo para adultos."
+  },
+  "history": {
+    "title": "Nuestros Momentos",
+    "description": "Todo comenzó en enero del 2017, sin imaginar que ese sería el primer capítulo de nuestra historia. Hoy, con el corazón lleno de gratitud, estamos listos para escribir nuestro…",
+    "cursiveText": "Para siempre"
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "¿Alguna consulta?",
+    "description": "Si tienes alguna duda sobre el hospedaje, la vestimenta o cualquier otro detalle, escríbenos directamente por WhatsApp:",
+    "brideLabel": "Novia",
+    "brideName": "María",
+    "brideQueryButton": "Consultar a María",
+    "groomLabel": "Novio",
+    "groomName": "Ervíng",
+    "groomQueryButton": "Consultar a Ervíng",
+    "brideWhatsappMessage": "Hola María, tengo una duda sobre la boda...",
+    "groomWhatsappMessage": "Hola Ervíng, tengo una duda sobre la boda..."
+  },
+  "rsvp": {
+    "title": "Confirmación<br />de asistencia",
+    "description": "Estamos muy emocionados de poder celebrar con ustedes uno de los días más importantes de nuestras vidas.",
+    "deadlineLabelPrefix": "Por favor confirmar asistencia antes del",
+    "deadlineDate": "01 de agosto de 2026",
+    "buttonLabel": "Confirmar Aquí",
+    "medallionText": "E&M",
+    "modal": {
+      "thanksTitle": "¡Muchas gracias!",
+      "attendingSuccess": "Tu asistencia ha sido confirmada. Estamos muy felices de que nos acompañes en este día tan especial. ¡Nos vemos pronto!",
+      "notAttendingSuccess": "Lamentamos que no puedas asistir. Agradecemos mucho que nos hayas avisado. ¡Te enviamos un fuerte abrazo!",
+      "closeButton": "Cerrar",
+      "confirmTitle": "Confirmar",
+      "confirmSubtitle": "asistencia",
+      "fullNameLabel": "Nombre Completo *",
+      "fullNamePlaceholder": "Escribe tu nombre y apellido",
+      "phoneLabel": "Celular *",
+      "phonePlaceholder": "Escribe tu número de celular",
+      "attendingQuestionLabel": "¿Podrás asistir al evento? *",
+      "attendingSelectDefault": "Selecciona una opción",
+      "attendingSelectYes": "Sí asistiré",
+      "attendingSelectNo": "Lo siento, no podré",
+      "peopleCountLabel": "¿Cuántas personas asistirán? *",
+      "personLabel": "persona",
+      "peopleLabel": "personas",
+      "wishesLabel": "Déjanos tus felicitaciones y buenos deseos",
+      "wishesPlaceholder": "Escribe tu mensaje aquí...",
+      "sendingButtonLabel": "Enviando...",
+      "submitButtonLabel": "Confirmar Asistencia",
+      "errorMessage": "Hubo un problema de conexión al enviar tus datos. Por favor, intenta de nuevo."
+    }
+  }
+}
