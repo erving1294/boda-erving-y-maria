@@ -7,7 +7,7 @@
     <div class="relative w-full h-full perspective-2000">
       <!-- 1. BACK INSIDE OF THE ENVELOPE (Visible when flap is open and card slides up) -->
       <div
-        class="absolute inset-0 rounded-lg overflow-hidden bg-[rgb(255,245,233)]"
+        class="absolute inset-0 rounded-lg overflow-hidden bg-[rgb(255,240,221)]"
       >
         <!-- Darker inside shadow to simulate pocket depth -->
         <div class="absolute inset-0 bg-black/[0.06] shadow-inner"></div>

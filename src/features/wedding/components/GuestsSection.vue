@@ -7,7 +7,7 @@
     <div class="guests-section__overlay"></div>
     <div class="relative z-10 mx-auto max-w-3xl px-4 py-16 sm:px-6">
       <motion.div
-        class="mx-auto mb-8 max-w-md text-center sm:mb-12 h-[360px]"
+        class="mx-auto mb-8 text-center sm:mb-12 h-[420px] max-sm:h-[360px]"
         :initial="{ opacity: 0, x: -60, rotate: -3 }"
         :while-in-view="{ opacity: 1, x: 0, rotate: 0 }"
         :transition="{ duration: 1.2, ease: 'easeOut' }"
@@ -15,7 +15,9 @@
       >
         <p class="title">Una invitación especial</p>
         <p class="mt-3 leading-relaxed text-slate-muted">
-          Tenemos reservado un lugar para ti en este día tan especial.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint repellat
+          ipsam, reiciendis dolore voluptates mollitia magnam illo assumenda est
+          quaerat ipsum cum quos expedita dicta ab deserunt neque nam quibusdam?
         </p>
       </motion.div>
 
@@ -37,22 +39,24 @@
             content-class="!p-4 sm:!p-6"
           >
             <article class="flex h-full justify-center items-center flex-col">
-              <p class="font-cookie text-slate-muted mb-1 text-xl">
+              <p class="font-cookie text-slate-muted mb-1 text-lg md:text-xl">
                 Reservado para
               </p>
               <h3
-                class="font-cookie text-2xl leading-[24px] text-secondary sm:text-[42px]"
+                class="font-cookie text-[28px] leading-[24px] text-secondary sm:text-[42px] md:leading-8"
               >
                 {{ guestName }}
               </h3>
-              <p
-                class="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-muted mt-6 mb-2 max-sm:mb-0 max-sm:mt-4"
-              >
-                {{ passLabel }}
-              </p>
-              <p class="mt-1 text-[32px] font-bold leading-none text-primary">
-                {{ passes }}
-              </p>
+              <div>
+                <p
+                  class="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-muted mt-6 mb-2 max-sm:mb-0 max-sm:mt-4"
+                >
+                  {{ passLabel }}
+                </p>
+                <p class="mt-1 text-[32px] font-bold leading-none text-primary">
+                  {{ passes }}
+                </p>
+              </div>
             </article>
           </PaperCard>
           <PolaroidPhoto
@@ -142,7 +146,7 @@ onUnmounted(() => {
 .guests-section__overlay {
   position: absolute;
   inset: 0;
-  /* background: rgba(250, 247, 243, 0.6); */
+  background: rgba(0, 0, 0, 0.03);
 }
 .guest-inserts {
   position: relative;

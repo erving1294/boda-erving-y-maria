@@ -1,57 +1,69 @@
 <template>
   <section
     ref="sectionRef"
-    class="bg-texture-white flex flex-col flex-none justify-center items-center gap-[10px] w-full h-min pb-[60px] relative overflow-hidden"
+    class="bg-texture-white flex flex-col flex-none justify-center items-center gap-[10px] w-full h-min pt-10 pb-[60px] relative overflow-hidden"
   >
-    <!-- Main Frame Wrapper -->
-    <div
-      class="relative flex-none w-[425px] h-[517px] overflow-clip max-sm:!w-[356px] max-sm:!h-[398px]"
+    <!-- Swiper Coverflow Slider -->
+    <motion.div
+      class="w-full flex flex-col gap-6 justify-center items-center py-4"
+      :initial="{ opacity: 0, x: 40 }"
+      :while-in-view="{ opacity: 1, x: 0 }"
+      :transition="{ duration: 1.0, ease: 'easeOut' }"
+      :viewport="{ once: true, amount: 0.35 }"
     >
-      <!-- Wedding Frame Image Container -->
-      <div class="block">
-        <motion.div
-          class="absolute top-0 bottom-0 right-0 flex-none w-[425px] overflow-clip will-change-[transform,opacity] max-sm:!bottom-[unset] max-sm:!h-[383px] max-sm:!left-[calc(50%-173px)] max-sm:!top-[calc(50%-178.5px)] max-sm:!right-[unset] max-sm:!w-[346px]"
-          :initial="{ opacity: 0, scale: 0.95 }"
-          :while-in-view="{ opacity: 1, scale: 1 }"
-          :transition="{ duration: 1.0, ease: 'easeOut' }"
-          :viewport="{ once: true, amount: 0.3 }"
-        >
-          <div class="absolute inset-0 rounded-[inherit]">
-            <img
-              class="block w-full h-full rounded-[inherit] object-center object-cover"
-              :src="marcoBoda"
-              alt="Marco de boda"
-            />
-          </div>
-        </motion.div>
-      </div>
+      <h2 class="title">Nuestros Momentos</h2>
 
-      <!-- Couple Photo Container (Cusco) -->
-      <div class="block">
-        <motion.div
-          class="absolute top-[calc(50.4836%-178.5px)] left-[calc(50.5%-173.5px)] z-0 flex-none w-[347px] h-[357px] overflow-clip will-change-[transform,opacity] max-sm:!h-[263px] max-sm:!w-[257px] max-sm:!top-[calc(50.2513%-116px)] max-sm:!left-[calc(50.5618%-127px)]"
-          :initial="{ opacity: 0, scale: 0.9 }"
-          :while-in-view="{ opacity: 1, scale: 1 }"
-          :transition="{ duration: 1.0, delay: 0.5, ease: 'easeOut' }"
-          :viewport="{ once: true, amount: 0.3 }"
+      <Swiper
+        :effect="'coverflow'"
+        :grabCursor="true"
+        :centeredSlides="true"
+        :slidesPerView="'auto'"
+        :loop="true"
+        :loopedSlides="5"
+        :autoplay="{
+          delay: 3500,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        }"
+        :coverflowEffect="{
+          rotate: 0,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
+        }"
+        :pagination="{
+          clickable: true,
+          dynamicBullets: true,
+        }"
+        :navigation="true"
+        :modules="[EffectCoverflow, Pagination, Navigation, Autoplay]"
+        class="w-full md:w-[768px] !pb-12"
+      >
+        <SwiperSlide
+          v-for="(slide, index) in slides"
+          :key="index"
+          class="w-[280px] h-[340px] sm:w-[360px] sm:h-[440px] md:w-[400px] md:h-[500px] flex justify-center items-center transition-all duration-300"
         >
-          <div class="absolute inset-0 rounded-[inherit]">
+          <div
+            class="relative w-full h-full rounded-2xl overflow-hidden drop-shadow-xl select-none"
+          >
             <img
-              class="block w-full h-full rounded-[inherit] object-center object-cover"
-              :src="cuscoImg"
-              alt="Nuestra foto en Cusco"
+              class="w-full h-full object-cover object-center pointer-events-none"
+              :src="slide.img"
+              :alt="slide.alt"
             />
           </div>
-        </motion.div>
-      </div>
-    </div>
+        </SwiperSlide>
+      </Swiper>
+    </motion.div>
 
     <!-- Description Text -->
     <motion.div
       class="max-sm:px-4 will-change-[transform,opacity]"
       :initial="{ opacity: 0, x: -40 }"
       :while-in-view="{ opacity: 1, x: 0 }"
-      :transition="{ duration: 1.0, delay: 0.8, ease: 'easeOut' }"
+      :transition="{ duration: 1.0, delay: 0.4, ease: 'easeOut' }"
       :viewport="{ once: true, amount: 0.3 }"
     >
       <p
@@ -73,8 +85,34 @@
 <script setup>
 import { ref, watch } from "vue";
 import { motion, useInView } from "motion-v";
-import marcoBoda from "../../../assets/images/marco_boda.jpg";
-import cuscoImg from "../../../assets/images/cusco.webp";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import {
+  EffectCoverflow,
+  Pagination,
+  Navigation,
+  Autoplay,
+} from "swiper/modules";
+
+// Swiper styles
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+// Images
+import badbunny from "../../../assets/images/badbunny.jpg";
+import cusco from "../../../assets/images/cusco.webp";
+import pedida from "../../../assets/images/pedida.webp";
+import fotosPases from "../../../assets/images/fotos_pases.jpeg";
+import portada3 from "../../../assets/images/portada-3.webp";
+
+const slides = [
+  { img: badbunny, alt: "Bad Bunny" },
+  { img: cusco, alt: "Cusco" },
+  { img: pedida, alt: "Pedida" },
+  { img: fotosPases, alt: "Fotos Pases" },
+  { img: portada3, alt: "Portada 3" },
+];
 
 const sectionRef = ref(null);
 const displayedCursive = ref("");
@@ -105,3 +143,17 @@ watch(isInView, async (inView) => {
   }
 });
 </script>
+
+<style scoped>
+:deep(.swiper-button-next),
+:deep(.swiper-button-prev) {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  :deep(.swiper-button-next),
+  :deep(.swiper-button-prev) {
+    display: flex;
+  }
+}
+</style>

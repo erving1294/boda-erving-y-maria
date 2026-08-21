@@ -15,7 +15,6 @@
 
       <DetailSection />
       <!-- 5. Invitados (Pase de invitados) -->
-      <GuestsSection :guest-name="guestName || undefined" :passes="passes" />
       <!-- 3. Contador -->
       <CountdownSection />
 
@@ -28,7 +27,9 @@
       <!-- 10. Código de Vestimenta -->
       <DressCodeSection />
       <HistorySection />
+
       <BannerImage />
+      <GuestsSection :guest-name="guestName || undefined" :passes="passes" />
 
       <!-- 11. Confirmar Asistencia -->
       <RsvpSection :guest-name="guestName" :passes="passes" />
