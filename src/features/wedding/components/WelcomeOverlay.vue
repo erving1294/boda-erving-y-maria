@@ -154,7 +154,6 @@
 <script setup>
 import { ref } from "vue";
 import { useAudio } from "../../../core/composables/useAudio";
-
 import paperTexture from "../../../assets/images/textura_carta.png";
 import sealUrl from "../../../assets/images/Sello.png";
 

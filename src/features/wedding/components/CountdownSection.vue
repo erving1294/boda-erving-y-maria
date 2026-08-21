@@ -101,7 +101,7 @@
           class="w-[380px] max-sm:w-full max-sm:px-4 m-auto text-3xl mb-4 font-new-icon-serif"
         >
           <span class="title block !mb-4">Save The Date</span>
-          <span class="block text-base font-inria max-sm:text-sm"
+          <span class="block text-base font-inria"
             >Porque tú has sido parte de nuestra historia, queremos que estés en
             nuestro mejor capitulo</span
           >

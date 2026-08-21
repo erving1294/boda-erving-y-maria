@@ -14,10 +14,10 @@
       <HeroSection :active="ready" />
 
       <DetailSection />
+      <!-- 5. Invitados (Pase de invitados) -->
+      <GuestsSection :guest-name="guestName || undefined" :passes="passes" />
       <!-- 3. Contador -->
       <CountdownSection />
-      <!-- 5. Invitados (Pase de invitados) -->
-      <!-- <GuestsSection :guest-name="guestName" :passes="passes" /> -->
 
       <!-- 6. Ubicaciones -->
       <LocationsSection />
@@ -99,7 +99,7 @@ onMounted(() => {
 
     if (invitedCode) {
       const guest = guests.find(
-        (g) => g.code.trim().toUpperCase() === invitedCode.trim().toUpperCase()
+        (g) => g.code.trim().toUpperCase() === invitedCode.trim().toUpperCase(),
       );
       if (guest) {
         guestName.value = guest.name;

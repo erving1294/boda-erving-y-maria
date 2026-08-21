@@ -1,75 +1,215 @@
 <template>
   <section
+    ref="sectionRef"
     id="guests"
-    class="bg-texture-marmol py-20 bg-ivory-dark/30 select-none"
-    data-aos="fade-up"
+    class="guests-section bg-texture-flores overflow-hidden"
   >
-    <div class="max-w-2xl mx-auto px-6">
-      <!-- Ticket Card utilizing PaperCard component -->
-      <PaperCard shape="standard" is-white class="max-w-md mx-auto">
+    <div class="guests-section__overlay"></div>
+    <div class="relative z-10 mx-auto max-w-3xl px-4 py-16 sm:px-6">
+      <motion.div
+        class="mx-auto mb-8 max-w-md text-center sm:mb-12 h-[360px]"
+        :initial="{ opacity: 0, x: -60, rotate: -3 }"
+        :while-in-view="{ opacity: 1, x: 0, rotate: 0 }"
+        :transition="{ duration: 1.2, ease: 'easeOut' }"
+        :viewport="{ once: false, amount: 0.55 }"
+      >
+        <p class="title">Una invitación especial</p>
+        <p class="mt-3 leading-relaxed text-slate-muted">
+          Tenemos reservado un lugar para ti en este día tan especial.
+        </p>
+      </motion.div>
+
+      <TexturedEnvelope
+        :is-open="isOpen"
+        :liner-texture="patronFloral"
+        :seal-url="selloCera"
+        @open="isOpen = true"
+      >
         <div
-          class="relative w-full border border-dashed border-gold/40 rounded-2xl py-8 px-6 md:px-8 bg-transparent"
+          class="guest-inserts"
+          :class="{ 'guest-inserts--visible': showInserts }"
         >
-          <!-- Circular punch-outs on the sides to look like a ticket -->
-          <div
-            class="absolute -left-[17px] top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#faf7f3] border-r border-gold/20"
-          ></div>
-          <div
-            class="absolute -right-[17px] top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#faf7f3] border-l border-gold/20"
-          ></div>
-
-          <div
-            class="text-xs uppercase tracking-[0.15em] text-slate-muted font-bold mb-3"
+          <PaperCard
+            shape="standard"
+            :has-foliage="false"
+            :has-shadow="false"
+            class="guest-pass-card h-[100%] md:w-[45%] w-[55%]"
+            content-class="!p-4 sm:!p-6"
           >
-            Invitación Especial Para
-          </div>
-
-          <h4
-            class="font-new-icon text-3xl md:text-4xl text-primary font-bold mb-6"
+            <article class="flex h-full justify-center items-center flex-col">
+              <p class="font-cookie text-slate-muted mb-1 text-xl">
+                Reservado para
+              </p>
+              <h3
+                class="font-cookie text-2xl leading-[24px] text-secondary sm:text-[42px]"
+              >
+                {{ guestName }}
+              </h3>
+              <p
+                class="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-muted mt-6 mb-2 max-sm:mb-0 max-sm:mt-4"
+              >
+                {{ passLabel }}
+              </p>
+              <p class="mt-1 text-[32px] font-bold leading-none text-primary">
+                {{ passes }}
+              </p>
+            </article>
+          </PaperCard>
+          <PolaroidPhoto
+            :src="fotosPases"
+            alt="Ervíng y María"
+            class="guest-photo h-[100%] md:w-[45%] w-[50%]"
           >
-            {{ guestName || "Invitado Especial" }}
-          </h4>
-
-          <div
-            class="w-16 h-16 rounded-full bg-tertiary/30 flex justify-center items-center mx-auto mb-4 border border-gold/30 shadow-sm"
-          >
-            <span
-              class="font-inria text-3xl text-primary font-bold leading-none"
-              >{{ passes || 2 }}</span
-            >
-          </div>
-
-          <div
-            class="text-xs uppercase tracking-[0.15em] text-secondary font-bold mb-6"
-          >
-            {{ passes === 1 ? "Pase Individual" : "Pases Disponibles" }}
-          </div>
-
-          <div class="w-12 h-[1px] bg-gold/30 mx-auto mb-6"></div>
-
-          <p
-            class="font-serif italic text-xs text-slate-muted leading-relaxed max-w-xs mx-auto"
-          >
-            "Tu presencia es muy importante para nosotros. Por favor,
-            confírmanos si podrás asistir."
-          </p>
+          </PolaroidPhoto>
         </div>
-      </PaperCard>
+      </TexturedEnvelope>
+
+      <p
+        class="mt-10 text-center text-[10px] font-bold uppercase tracking-[0.2em] text-slate-muted transition-opacity duration-300"
+        :class="isOpen ? 'opacity-0' : 'opacity-100'"
+      >
+        Toca el sello para abrir tu sobre
+      </p>
     </div>
   </section>
 </template>
 
 <script setup>
-import PaperCard from "../../../components/PaperCard.vue";
+import { computed, ref, onMounted, onUnmounted } from "vue";
+import { motion } from "motion-v";
 
-defineProps({
-  guestName: {
-    type: String,
-    default: "",
-  },
-  passes: {
-    type: Number,
-    default: 2,
-  },
+import TexturedEnvelope from "../../../components/TexturedEnvelope.vue";
+import PolaroidPhoto from "../../../components/PolaroidPhoto.vue";
+import PaperCard from "../../../components/PaperCard.vue";
+import fotosPases from "../../../assets/images/fotos_pases.jpeg";
+
+// Specific assets for the 3D double-sided envelope
+import texturaKraft from "../../../assets/images/textura_sobre.png";
+import patronFloral from "../../../assets/images/sobre_dentro.png";
+import selloCera from "../../../assets/images/Sello.png";
+
+const isOpen = ref(true);
+const showInserts = ref(false);
+const sectionRef = ref(null);
+let observer = null;
+
+const props = defineProps({
+  guestName: { type: String, default: "María Galarza" },
+  passes: { type: Number, default: 2 },
+});
+
+const passLabel = computed(() =>
+  props.passes === 1 ? "Pase individual" : "Pases disponibles",
+);
+
+onMounted(() => {
+  if (typeof window !== "undefined" && "IntersectionObserver" in window) {
+    observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            showInserts.value = true;
+          } else {
+            showInserts.value = false;
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+      },
+    );
+
+    if (sectionRef.value) {
+      observer.observe(sectionRef.value);
+    }
+  } else {
+    showInserts.value = true;
+  }
+});
+
+onUnmounted(() => {
+  if (observer && sectionRef.value) {
+    observer.unobserve(sectionRef.value);
+  }
 });
 </script>
+
+<style scoped>
+.guests-section {
+  position: relative;
+  background-color: #efede7;
+}
+.guests-section__overlay {
+  position: absolute;
+  inset: 0;
+  /* background: rgba(250, 247, 243, 0.6); */
+}
+.guest-inserts {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.guest-photo,
+.guest-pass-card {
+  position: absolute;
+  bottom: 0;
+  opacity: 1;
+  will-change: transform;
+}
+.guest-pass-card {
+  left: 6%;
+  z-index: 2;
+  transform: translate(0%, 145px) rotate(0);
+  /* Transition on close (immediate slide back) */
+  transition: transform 500ms ease-in;
+}
+.guest-photo {
+  right: 5%;
+  z-index: 1;
+  transform: translate(0%, 145px) rotate(0);
+  /* Transition on close (immediate slide back) */
+  transition: transform 500ms ease-in;
+}
+.guest-inserts--visible .guest-photo {
+  transform: translate(0%, -15%) rotate(10deg);
+  /* Transition on open (delayed until envelope flap is open) */
+  transition: transform 1500ms cubic-bezier(0.25, 1, 0.5, 1) 200ms;
+}
+.guest-inserts--visible .guest-pass-card {
+  transform: translate(-10%, -15%) rotate(-10deg);
+  /* Transition on open (delayed until envelope flap is open) */
+  transition: transform 1500ms cubic-bezier(0.25, 1, 0.5, 1) 700ms;
+}
+@media (max-width: 768px) {
+  .guest-pass-card {
+    left: 6%;
+    z-index: 2;
+    transform: translate(0%, 95px) rotate(0);
+    /* Transition on close (immediate slide back) */
+    transition: transform 500ms ease-in;
+  }
+  .guest-photo {
+    right: 5%;
+    z-index: 1;
+    transform: translate(0%, 95px) rotate(0);
+    /* Transition on close (immediate slide back) */
+    transition: transform 500ms ease-in;
+  }
+  .guest-inserts--visible .guest-photo {
+    transform: translate(10%, -10%) rotate(10deg);
+    /* Transition on open (delayed until envelope flap is open) */
+    transition: transform 1500ms cubic-bezier(0.25, 1, 0.5, 1) 200ms;
+  }
+  .guest-inserts--visible .guest-pass-card {
+    transform: translate(-10%, -10%) rotate(-10deg);
+    /* Transition on open (delayed until envelope flap is open) */
+    transition: transform 1500ms cubic-bezier(0.25, 1, 0.5, 1) 700ms;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .guest-photo,
+  .guest-pass-card {
+    transition-duration: 1ms;
+  }
+}
+</style>

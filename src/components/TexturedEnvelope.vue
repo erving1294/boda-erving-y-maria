@@ -5,11 +5,9 @@
   >
     <!-- PERSPECTIVE CONTAINER FOR 3D FLAP -->
     <div class="relative w-full h-full perspective-2000">
-      
       <!-- 1. BACK INSIDE OF THE ENVELOPE (Visible when flap is open and card slides up) -->
-      <div 
-        class="absolute inset-0 rounded-lg overflow-hidden" 
-        :style="paperBgStyle"
+      <div
+        class="absolute inset-0 rounded-lg overflow-hidden bg-[rgb(255,245,233)]"
       >
         <!-- Darker inside shadow to simulate pocket depth -->
         <div class="absolute inset-0 bg-black/[0.06] shadow-inner"></div>
@@ -17,153 +15,248 @@
 
       <!-- 2. CARD INSERT (Slides up when envelope is opened) -->
       <div
-        class="absolute left-[5%] right-[5%] bottom-[5%] h-[85%] transition-all duration-[1200ms] ease-in-out"
-        :class="isOpen ? 'card-opened z-30' : 'card-closed z-10'"
+        class="absolute left-[5%] right-[5%] bottom-[10px] md:bottom-[-20px] h-[90%] max-sm:h-[100%] max-sm:bottom-[-12px]"
+        :class="isOpen ? 'card-opened' : 'card-closed'"
       >
         <slot>
           <!-- Default Card Content if none provided -->
-          <div class="w-full h-full bg-white rounded-md shadow-md p-6 flex flex-col justify-center items-center text-center border border-gold/20">
-            <h3 class="font-cookie text-4xl text-primary mb-2">Mi Invitación</h3>
-            <p class="font-serif text-sm text-slate-muted">Estás invitado a nuestra boda.</p>
+          <div
+            class="w-full h-full bg-white rounded-md shadow-md p-6 flex flex-col justify-center items-center text-center border border-gold/20"
+          >
+            <h3 class="font-cookie text-4xl text-primary mb-2">
+              Mi Invitación
+            </h3>
+            <p class="font-serif text-sm text-slate-muted">
+              Estás invitado a nuestra boda.
+            </p>
           </div>
         </slot>
       </div>
 
       <!-- 3. POCKET FRONT (Bottom and Side Folds) -->
-      <!-- Drawn with SVG to match paper texture and create realistic overlapping paper folds with shadows -->
-      <svg
-        class="absolute inset-0 w-full h-full pointer-events-none z-20 overflow-visible"
-        viewBox="0 0 600 400"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <!-- Paper texture pattern -->
-          <pattern
-            id="pocket-paper-texture"
-            patternUnits="userSpaceOnUse"
-            width="300"
-            height="200"
-          >
-            <image :href="paperTexture" width="300" height="200" preserveAspectRatio="none" />
-          </pattern>
-          
-          <!-- Shadow for the pocket flaps -->
-          <filter id="pocket-shadow" x="-10%" y="-10%" width="120%" height="120%">
-            <feDropShadow dx="0" dy="-4" stdDeviation="5" flood-color="#4a3728" flood-opacity="0.08" />
-          </filter>
-        </defs>
-
-        <!-- Base pocket clipping back to keep edges clean -->
-        <g>
-          <!-- Left side flap -->
-          <path
-            d="M 0,140 L 300,240 L 0,390 Z"
-            fill="url(#pocket-paper-texture)"
-          />
-          <!-- Right side flap -->
-          <path
-            d="M 600,140 L 300,240 L 600,390 Z"
-            fill="url(#pocket-paper-texture)"
-          />
-          
-          <!-- Bottom flap (overlaps side flaps, matches real envelope) -->
-          <path
-            d="M 0,400 L 300,230 L 600,400 Z"
-            fill="url(#pocket-paper-texture)"
-            filter="url(#pocket-shadow)"
-          />
-
-          <!-- Bevel/Crease Lines for Realistic overlapping fold effect -->
-          <!-- Left diagonal crease shadow & highlight -->
-          <line x1="0" y1="400" x2="300" y2="230" stroke="rgba(74, 55, 40, 0.12)" stroke-width="2.5" />
-          <line x1="0" y1="399" x2="300" y2="229" stroke="rgba(255, 255, 255, 0.75)" stroke-width="1.2" />
-
-          <!-- Right diagonal crease shadow & highlight -->
-          <line x1="600" y1="400" x2="300" y2="230" stroke="rgba(74, 55, 40, 0.12)" stroke-width="2.5" />
-          <line x1="600" y1="399" x2="300" y2="229" stroke="rgba(255, 255, 255, 0.75)" stroke-width="1.2" />
-
-          <!-- Outer boundary borders to give clean edge finish -->
-          <path
-            d="M 0,140 L 0,400 L 600,400 L 600,140"
-            fill="none"
-            stroke="rgba(74, 55, 40, 0.05)"
-            stroke-width="1"
-          />
-        </g>
-      </svg>
-
-      <!-- 4. TOP SCALLOPED FLAP (Rotates 180deg upwards) -->
+      <!-- Wrapped in a rounded container to make sure the envelope bottom corners are rounded and clean -->
       <div
-        class="absolute top-0 left-0 w-full h-[70%] transform-origin-top transition-transform duration-[1200ms] ease-in-out pointer-events-none"
-        :class="isOpen ? 'flap-opened z-5' : 'flap-closed z-40'"
-        :style="flapStyle"
+        class="absolute inset-0 rounded-lg overflow-hidden pointer-events-none z-20"
       >
-        <!-- Flap SVG containing Scalloped Path & Double Border -->
         <svg
-          class="w-full h-full overflow-visible drop-shadow-[0_10px_8px_rgba(74,55,40,0.15)]"
-          viewBox="0 0 600 280"
+          class="absolute inset-0 w-full h-full overflow-visible"
+          viewBox="0 0 600 400"
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
-            <!-- Flap paper texture -->
+            <!-- Paper texture pattern -->
             <pattern
-              id="flap-paper-texture"
+              id="pocket-paper-texture"
               patternUnits="userSpaceOnUse"
               width="300"
               height="200"
             >
-              <image :href="paperTexture" width="300" height="200" preserveAspectRatio="none" />
+              <image
+                :href="paperTexture"
+                width="300"
+                height="200"
+                preserveAspectRatio="none"
+              />
             </pattern>
+
+            <!-- Shadow for the pocket flaps -->
+            <filter
+              id="pocket-shadow"
+              x="-10%"
+              y="-10%"
+              width="120%"
+              height="120%"
+            >
+              <feDropShadow
+                dx="0"
+                dy="-4"
+                stdDeviation="5"
+                flood-color="#4a3728"
+                flood-opacity="0.08"
+              />
+            </filter>
           </defs>
 
-          <!-- Main Scalloped Flap Body -->
-          <path
-            :d="flapPath"
-            fill="url(#flap-paper-texture)"
-          />
+          <!-- Base pocket clipping back to keep edges clean -->
+          <g>
+            <!-- Left side flap -->
+            <path
+              d="M 0,0 L 300,240 L 0,400 Z"
+              fill="url(#pocket-paper-texture)"
+              filter="url(#pocket-shadow)"
+            />
+            <path
+              d="M 0,8 L 290,240 L 0,400 Z"
+              fill="url(#pocket-paper-texture)"
+              filter="url(#pocket-shadow)"
+            />
 
-          <!-- Double Border Contour using stroke layering -->
-          <!-- 1. Gold outer line base (thick) -->
-          <path
-            :d="flapPath"
-            fill="none"
-            stroke="#dec5b1"
-            stroke-width="5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            opacity="0.85"
-          />
-          <!-- 2. Paper mask line (middle) -->
-          <path
-            :d="flapPath"
-            fill="none"
-            stroke="#faf7f3"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <!-- 3. Gold inner line (thin) -->
-          <path
-            :d="flapPath"
-            fill="none"
-            stroke="#dec5b1"
-            stroke-width="1"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            opacity="0.9"
-          />
+            <!-- Right side flap -->
+            <path
+              d="M 600,0 L 300,240 L 600,400 Z"
+              fill="url(#pocket-paper-texture)"
+              filter="url(#pocket-shadow)"
+            />
+            <path
+              d="M 600,8 L 300,250 L 600,400 Z"
+              fill="url(#pocket-paper-texture)"
+              filter="url(#pocket-shadow)"
+            />
+
+            <!-- Bottom flap (overlaps side flaps, matches real envelope) -->
+            <path
+              d="M 0,400 L 40,300 L 200,200 L 400,200 L 560,300 L 600,400 Z"
+              fill="url(#pocket-paper-texture)"
+              filter="url(#pocket-shadow)"
+            />
+
+            <path
+              d="M 4,404 L 45,304 L 204,204 L 396,204 L 556,304 L 596,404 Z"
+              fill="url(#pocket-paper-texture)"
+              filter="url(#pocket-shadow)"
+            />
+
+            <!-- Outer boundary borders to give clean edge finish -->
+            <path
+              d="M 0,0 L 0,400 L 600,400 L 600,0"
+              fill="none"
+              stroke="rgba(74, 55, 40, 0.05)"
+              stroke-width="1"
+            />
+          </g>
         </svg>
+      </div>
+
+      <!-- 4. TOP 3D DOUBLE-SIDED FLAP (Rotates 180deg upwards) -->
+      <div
+        class="absolute top-0 left-0 w-full h-[70%] transform-origin-top pointer-events-none preserve-3d"
+        :class="isOpen ? 'flap-opened z-5' : 'flap-closed z-40'"
+        :style="flapStyle"
+      >
+        <!-- FRONT FACE (EXTERIOR) - Kraft Texture -->
+        <div class="absolute inset-0 w-full h-full backface-hidden">
+          <svg
+            class="w-full h-full overflow-visible"
+            viewBox="0 0 600 280"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <pattern
+                id="flap-paper-texture-front"
+                patternUnits="userSpaceOnUse"
+                width="300"
+                height="200"
+              >
+                <image
+                  :href="paperTexture"
+                  width="300"
+                  height="200"
+                  preserveAspectRatio="none"
+                />
+              </pattern>
+            </defs>
+
+            <!-- Main Triangular Flap Body -->
+            <path
+              d="M 12,0 L 588,0 Q 600,0 600,10 L 320,280 Q 300,300 280,280 L 0,12 Q 0,0 12,0 Z"
+              fill="url(#flap-paper-texture-front)"
+              filter="url(#pocket-shadow)"
+            />
+            <path
+              d="M 12,0 L 588,0 Q 600,0 600,10 L 320,280 Q 300,300 280,280 L 0,12 Q 0,0 12,0 Z"
+              fill="url(#flap-paper-texture-front)"
+              filter="url(#pocket-shadow)"
+            />
+            <path
+              d="M 12,0 L 588,0 Q 600,0 600,10 L 320,280 Q 300,300 280,280 L 0,12 Q 0,0 12,0 Z"
+              fill="url(#flap-paper-texture-front)"
+              filter="url(#pocket-shadow)"
+            />
+            <!-- Triángulo interno más pequeño (inset de 8px) -->
+            <path
+              d="M 20,8 L 580,8 Q 592,8 592,18 L 310,278 Q 300,288 290,278 L 8,20 Q 8,8 20,8 Z"
+              fill="url(#flap-paper-texture-front)"
+            />
+          </svg>
+        </div>
+
+        <!-- BACK FACE (INTERIOR) - Floral Pattern -->
+        <div
+          class="absolute inset-0 w-full h-full backface-hidden rotate-x-180"
+        >
+          <svg
+            class="w-full h-full overflow-visible"
+            viewBox="0 0 600 280"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <pattern
+                id="flap-paper-texture-back"
+                patternUnits="userSpaceOnUse"
+                width="300"
+                height="200"
+              >
+                <image
+                  :href="linerTexture"
+                  width="300"
+                  height="200"
+                  preserveAspectRatio="none"
+                />
+              </pattern>
+            </defs>
+
+            <!-- Main Triangular Flap Body -->
+            <path :d="flapPath" fill="url(#flap-paper-texture-back)" />
+
+            <!-- Double Border Contour on the inside edge -->
+            <!-- 1. Gold outer line base (thick) -->
+            <path
+              :d="flapBorderPath"
+              fill="none"
+              stroke="#dec5b1"
+              stroke-width="5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              opacity="0.85"
+            />
+            <!-- 2. Paper mask line (middle) -->
+            <path
+              :d="flapBorderPath"
+              fill="none"
+              stroke="#faf7f3"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <!-- 3. Gold inner line (thin) -->
+            <path
+              :d="flapBorderPath"
+              fill="none"
+              stroke="#dec5b1"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              opacity="0.9"
+            />
+          </svg>
+        </div>
       </div>
 
       <!-- 5. INTERACTIVE WAX SEAL / STAMP -->
       <div
         v-if="showSeal"
-        class="absolute left-1/2 -translate-x-1/2 top-[57.5%] -translate-y-1/2 z-50 cursor-pointer transition-all duration-[800ms] ease-in-out"
-        :class="isOpen ? 'seal-opened pointer-events-none' : 'seal-closed hover:scale-105 active:scale-95'"
+        class="absolute left-1/2 -translate-x-1/2 top-[65.5%] -translate-y-1/2 z-50 cursor-pointer"
+        :class="
+          isOpen
+            ? 'seal-opened pointer-events-none'
+            : 'seal-closed hover:scale-105 active:scale-95'
+        "
         @click="$emit('open')"
       >
         <slot name="seal">
-          <div class="relative w-24 h-24 sm:w-28 sm:h-28 flex justify-center items-center">
+          <div
+            class="relative w-24 h-24 sm:w-28 sm:h-28 flex justify-center items-center"
+          >
             <img
               :src="sealUrl"
               alt="Sello de Cera"
@@ -172,14 +265,14 @@
           </div>
         </slot>
       </div>
-
     </div>
   </div>
 </template>
 
 <script setup>
 import { computed } from "vue";
-import defaultPaperTexture from "../assets/images/papel_boda.jpg";
+import defaultPaperTexture from "../assets/images/textura_carta.png";
+import defaultLinerTexture from "../assets/images/sobre_dentro.png";
 import defaultSealUrl from "../assets/images/Sello.png";
 
 const props = defineProps({
@@ -195,6 +288,10 @@ const props = defineProps({
     type: String,
     default: defaultPaperTexture,
   },
+  linerTexture: {
+    type: String,
+    default: defaultLinerTexture,
+  },
   sealUrl: {
     type: String,
     default: defaultSealUrl,
@@ -207,21 +304,11 @@ const props = defineProps({
 
 defineEmits(["open"]);
 
-// The precise symmetric scalloped path for the top flap (ViewBox: 0 0 600 280)
-const flapPath = `M 0,0 
-                  L 600,0 
-                  L 600,60 
-                  C 585,85 570,110 550,110 
-                  C 530,110 510,95 495,90 
-                  C 480,85 460,135 435,175 
-                  C 415,205 395,180 380,155 
-                  C 360,130 330,210 300,260 
-                  C 270,210 240,130 220,155 
-                  C 205,180 185,205 165,175 
-                  C 140,135 120,85 105,90 
-                  C 90,95 70,110 50,110 
-                  C 30,110 15,85 0,60 
-                  Z`;
+// The clean triangular path with rounded top-left and top-right corners (ViewBox: 0 0 600 280)
+const flapPath = "M 12,0 L 588,0 Q 600,0 600,10 L 300,240 L 0,12 Q 0,0 12,0 Z";
+
+// The border path that outlines the rounded top corners and diagonal edges (excluding the top fold crease line)
+const flapBorderPath = "M 50,0 Q 0,0 0,12 L 300,240 L 600,12 Q 600,0 588,0";
 
 const containerStyle = computed(() => ({
   backgroundColor: props.paperColor,
@@ -233,11 +320,11 @@ const containerStyle = computed(() => ({
   borderRadius: "12px",
 }));
 
-const paperBgStyle = computed(() => ({
-  backgroundImage: `linear-gradient(to bottom, rgba(250, 247, 243, 0.2), rgba(250, 247, 243, 0.2)), url(${props.paperTexture})`,
-  backgroundSize: "cover",
-  backgroundColor: props.paperColor,
-}));
+// const paperBgStyle = computed(() => ({
+//   backgroundImage: `linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url(${props.linerTexture})`,
+//   backgroundSize: "cover",
+//   backgroundColor: props.paperColor,
+// }));
 
 // Flap 3D rotation depending on open/closed state
 const flapStyle = computed(() => ({
@@ -247,7 +334,6 @@ const flapStyle = computed(() => ({
 </script>
 
 <script>
-// For support of standard non-setup script options if needed
 export default {
   name: "TexturedEnvelope",
 };
@@ -263,48 +349,92 @@ export default {
 }
 
 /* 3D Flap styles */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-x-180 {
+  transform: rotateX(180deg);
+}
+
 .flap-closed {
   transform: rotateX(0deg);
   filter: drop-shadow(0 12px 10px rgba(74, 55, 40, 0.22));
+  /* When closing, delay the flap closure until the card has slid down */
+  transition:
+    transform 800ms ease-in-out 400ms,
+    filter 800ms ease-in-out 400ms;
 }
 
 .flap-opened {
   transform: rotateX(180deg);
-  /* When rotated 180deg, we adjust filter to show shadow on top */
+  /* Adjust filter shadow direction when flap is flipped upwards */
   filter: drop-shadow(0 -10px 8px rgba(74, 55, 40, 0.1));
+  /* When opening, start rotation after seal begins fading */
+  transition:
+    transform 800ms ease-in-out 200ms,
+    filter 800ms ease-in-out 200ms;
 }
 
 /* Card slide animations */
 .card-closed {
+  z-index: 10;
   transform: translateY(0) scale(0.95);
   opacity: 0;
   pointer-events: none;
+  /* Slide down immediately on close */
+  transition:
+    transform 800ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 600ms ease;
 }
 
 .card-opened {
+  z-index: 15; /* Behind the pocket (z-index: 20) so it emerges from within, but in front of the inside back (z-index: 10) */
   transform: translateY(-50%) scale(1.02);
   opacity: 1;
   pointer-events: auto;
-  box-shadow: 
-    0 -15px 30px -10px rgba(0, 0, 0, 0.15),
-    0 15px 25px -10px rgba(74, 99, 96, 0.1);
+  /* Removed box-shadow to prevent rectangular grey shadow outlines */
+  /* Delay card slide up until the flap is mostly open */
+  transition:
+    transform 1000ms cubic-bezier(0.34, 1.56, 0.64, 1) 600ms,
+    opacity 800ms ease 600ms;
 }
 
 /* Wax seal animations */
 .seal-closed {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
+  /* Delay seal reappearance when closing */
+  transition:
+    transform 400ms ease-out 1000ms,
+    opacity 400ms ease-out 1000ms;
 }
 
 .seal-opened {
   opacity: 0;
-  transform: translate(-50%, -100%) scale(0.7);
+  transform: translate(-50%, -50%) scale(0.6);
+  filter: blur(4px);
+  /* Fade and shrink immediately on click */
+  transition:
+    transform 400ms ease-in,
+    opacity 400ms ease-in,
+    filter 400ms ease-in;
 }
 
 /* Animation utilities */
 @keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
 }
 
 .animate-heartbeat {
