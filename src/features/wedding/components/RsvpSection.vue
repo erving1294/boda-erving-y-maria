@@ -82,6 +82,7 @@
     <!-- RSVP Modal Component -->
     <RsvpModal
       :show="showModal"
+      :guest-id="guestId"
       :phone="phone"
       :guest-name="guestName"
       :passes="passes"
@@ -100,6 +101,10 @@ import coverUrl from "../../../assets/images/portada-3.webp";
 import texts from "../data/texts.json";
 
 defineProps({
+  guestId: {
+    type: String,
+    default: "",
+  },
   guestName: {
     type: String,
     default: "",

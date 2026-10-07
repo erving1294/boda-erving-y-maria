@@ -3,7 +3,6 @@
     <div
       v-if="show"
       class="fixed inset-0 bg-primary/45 backdrop-blur-sm z-[999] flex justify-center items-center p-4 overflow-y-auto"
-      @click.self="closeModal"
     >
       <!-- Modal Card using paper-card class for graphic consistency -->
       <div
@@ -63,7 +62,9 @@
               </svg>
             </div>
 
-            <h4 class="title text-4xl mb-4 max-sm:mb-5">{{ texts.rsvp.modal.thanksTitle }}</h4>
+            <h4 class="title text-4xl mb-4 max-sm:mb-5">
+              {{ texts.rsvp.modal.thanksTitle }}
+            </h4>
 
             <p
               v-if="form.attending === 'yes'"
@@ -90,8 +91,12 @@
           <div v-else key="form">
             <!-- Form Header -->
             <div class="text-center mb-6 select-none">
-              <h4 class="title text-4xl mb-1">{{ texts.rsvp.modal.confirmTitle }}</h4>
-              <h5 class="subtitle text-2xl !mb-0">{{ texts.rsvp.modal.confirmSubtitle }}</h5>
+              <h4 class="title text-4xl mb-1">
+                {{ texts.rsvp.modal.confirmTitle }}
+              </h4>
+              <h5 class="subtitle text-2xl !mb-0">
+                {{ texts.rsvp.modal.confirmSubtitle }}
+              </h5>
             </div>
 
             <!-- Form Fields -->
@@ -147,8 +152,12 @@
                   <option value="" disabled selected>
                     {{ texts.rsvp.modal.attendingSelectDefault }}
                   </option>
-                  <option value="yes">{{ texts.rsvp.modal.attendingSelectYes }}</option>
-                  <option value="no">{{ texts.rsvp.modal.attendingSelectNo }}</option>
+                  <option value="yes">
+                    {{ texts.rsvp.modal.attendingSelectYes }}
+                  </option>
+                  <option value="no">
+                    {{ texts.rsvp.modal.attendingSelectNo }}
+                  </option>
                 </select>
               </div>
 
@@ -169,7 +178,12 @@
                   class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-inria text-slate-dark bg-white/70 transition-all duration-300 text-sm cursor-pointer disabled:bg-slate-100 disabled:cursor-not-allowed"
                 >
                   <option v-for="n in passes || 2" :key="n" :value="n">
-                    {{ n }} {{ n === 1 ? texts.rsvp.modal.personLabel : texts.rsvp.modal.peopleLabel }}
+                    {{ n }}
+                    {{
+                      n === 1
+                        ? texts.rsvp.modal.personLabel
+                        : texts.rsvp.modal.peopleLabel
+                    }}
                   </option>
                 </select>
               </div>
@@ -221,7 +235,9 @@
                     ></path>
                   </svg>
                   <span>{{
-                    isSending ? texts.rsvp.modal.sendingButtonLabel : texts.rsvp.modal.submitButtonLabel
+                    isSending
+                      ? texts.rsvp.modal.sendingButtonLabel
+                      : texts.rsvp.modal.submitButtonLabel
                   }}</span>
                 </button>
 
@@ -249,6 +265,10 @@ const props = defineProps({
   show: {
     type: Boolean,
     default: false,
+  },
+  guestId: {
+    type: String,
+    default: "",
   },
   phone: {
     type: String,
@@ -307,35 +327,49 @@ const submitForm = async () => {
   isSending.value = true;
   errorMessage.value = "";
 
-  const scriptUrl =
-    "https://script.google.com/macros/s/AKfycbyECyVwSrUGcG3Ejp6z2KXxYSTtIAB7JO5m_85K5QGzZ2ORX_lVHdsWCkfdP54AIzoOTg/exec";
+  const payload = {
+    id: props.guestId,
+    fullName: form.value.fullName,
+    phone: form.value.phone,
+    attending: form.value.attending,
+    people: form.value.attending === "yes" ? form.value.people : 0,
+    wishes: form.value.wishes,
+  };
 
   try {
-    await fetch(scriptUrl, {
+    const response = await fetch("/api/rsvp", {
       method: "POST",
-      mode: "no-cors",
       headers: {
-        "Content-Type": "text/plain", // Evita CORS preflight
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        fullName: form.value.fullName,
-        phone: form.value.phone,
-        attending: form.value.attending,
-        people: form.value.attending === "yes" ? form.value.people : 0,
-        wishes: form.value.wishes,
-      }),
+      body: JSON.stringify(payload),
     });
 
-    isSubmitted.value = true;
-    hasBeenSubmitted.value = true;
-    submittedAttending.value = form.value.attending;
+    if (response.status === 200 || response.status === 302 || response.ok) {
+      isSubmitted.value = true;
+      hasBeenSubmitted.value = true;
+      submittedAttending.value = form.value.attending;
+    } else {
+      // En caso de otros códigos de error (400, 402, 403, 500, etc.)
+      console.error("Error del servidor, código HTTP:", response.status);
+      errorMessage.value = `Error al registrar tu confirmación (Código ${response.status}). Por favor, intenta nuevamente.`;
+    }
   } catch (error) {
-    console.error("Error submitting RSVP to Google Sheets:", error);
-    errorMessage.value = texts.rsvp.modal.errorMessage;
-    sucessConfirmation.value = false;
+    console.error("Error de conexión:", error);
+    errorMessage.value =
+      "No pudimos conectar con el servidor. Por favor, verifica tu conexión e intenta de nuevo.";
   } finally {
     isSending.value = false;
   }
+};
+
+const getPrimaryGuestName = (name) => {
+  if (!name) return "";
+  // Extrae solo el nombre del invitado principal, hasta antes del "y" o "e"
+  // Ejemplo: "Haydee Arica y Álvaro Sanz" -> "Haydee Arica"
+  // Ejemplo: "Gustavo Galarza e Ivonne" -> "Gustavo Galarza"
+  const parts = name.split(/\s+[ye]\s+/i);
+  return parts[0].trim();
 };
 
 watch(
@@ -348,9 +382,8 @@ watch(
           isSubmitted.value = true;
           form.value.attending = submittedAttending.value;
         } else {
-          // Pre-fill fields if guest details are passed
           if (props.guestName && !form.value.fullName) {
-            form.value.fullName = props.guestName;
+            form.value.fullName = getPrimaryGuestName(props.guestName);
           }
           if (props.passes) {
             form.value.people = props.passes;
