@@ -67,7 +67,7 @@
               <span class="text-[11px] uppercase text-slate-muted font-bold">{{
                 texts.gifts.cciLabel
               }}</span>
-              <span class="font-mono text-slate-dark text-base mt-0.5">{{
+              <span class="font-mono text-slate-dark text-sm mt-0.5">{{
                 cci
               }}</span>
             </div>
@@ -95,7 +95,7 @@
               <span class="text-[11px] uppercase text-slate-muted font-bold">{{
                 texts.gifts.ownerLabel
               }}</span>
-              <span class="text-slate-dark text-base mt-0.5">{{
+              <span class="text-slate-dark text-sm mt-0.5">{{
                 texts.gifts.ownerName
               }}</span>
             </div>

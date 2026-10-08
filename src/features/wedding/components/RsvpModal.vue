@@ -7,7 +7,7 @@
       <!-- Modal Card using paper-card class for graphic consistency -->
       <div
         :class="[
-          'paper-card w-full max-w-md p-6 md:p-10 rounded-2xl relative select-text max-md:overflow-y-auto shadow-[0_20px_50px_-12px_rgba(44,73,69,0.3)]',
+          'bg-white w-full max-w-md p-6 md:p-10 relative select-text max-md:overflow-y-auto shadow-[0_20px_50px_-12px_rgba(44,73,69,0.3)]',
           isSubmitted ? 'max-md:!h-auto' : 'max-md:!h-full',
         ]"
       >
@@ -62,7 +62,7 @@
               </svg>
             </div>
 
-            <h4 class="title text-4xl mb-4 max-sm:mb-5">
+            <h4 class="title !text-[40px] !mb-5">
               {{ texts.rsvp.modal.thanksTitle }}
             </h4>
 
@@ -90,11 +90,11 @@
           <!-- Form Layout -->
           <div v-else key="form">
             <!-- Form Header -->
-            <div class="text-center mb-6 select-none">
+            <div class="text-center mb-7 select-none">
               <h4 class="title text-4xl mb-1">
                 {{ texts.rsvp.modal.confirmTitle }}
               </h4>
-              <h5 class="subtitle text-2xl !mb-0">
+              <h5 class="title !text-4xl !mb-0">
                 {{ texts.rsvp.modal.confirmSubtitle }}
               </h5>
             </div>
@@ -103,9 +103,7 @@
             <form @submit.prevent="submitForm" class="space-y-4 text-left">
               <!-- 1. Nombre Completo -->
               <div class="flex flex-col gap-[2px]">
-                <label
-                  class="text-[11px] font-sans font-bold tracking-widest text-slate-muted"
-                >
+                <label class="text-xs font-badoni font-bold text-slate-muted">
                   {{ texts.rsvp.modal.fullNameLabel }}
                 </label>
                 <input
@@ -121,9 +119,7 @@
 
               <!-- Celular -->
               <div class="flex flex-col gap-[2px]">
-                <label
-                  class="text-[11px] font-sans font-bold tracking-widest text-slate-muted"
-                >
+                <label class="text-xs font-badoni font-bold text-slate-muted">
                   {{ texts.rsvp.modal.phoneLabel }}
                 </label>
                 <input
@@ -138,9 +134,7 @@
 
               <!-- 2. ¿Podrás asistir al evento? -->
               <div class="flex flex-col gap-[2px]">
-                <label
-                  class="text-[11px] font-sans font-bold tracking-widest text-slate-muted"
-                >
+                <label class="text-xs font-badoni font-bold text-slate-muted">
                   {{ texts.rsvp.modal.attendingQuestionLabel }}
                 </label>
                 <select
@@ -166,9 +160,7 @@
                 v-if="form.attending === 'yes'"
                 class="flex flex-col gap-[2px]"
               >
-                <label
-                  class="text-[11px] font-sans font-bold tracking-widest text-slate-muted"
-                >
+                <label class="text-xs font-badoni font-bold text-slate-muted">
                   {{ texts.rsvp.modal.peopleCountLabel }}
                 </label>
                 <select
@@ -190,9 +182,7 @@
 
               <!-- 4. Felicitaciones y buenos deseos -->
               <div class="flex flex-col gap-[2px]">
-                <label
-                  class="text-[11px] font-sans font-bold tracking-widest text-slate-muted"
-                >
+                <label class="text-xs font-badoni font-bold text-slate-muted">
                   {{ texts.rsvp.modal.wishesLabel }}
                 </label>
                 <textarea

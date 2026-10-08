@@ -285,7 +285,7 @@ p {
   @apply font-badoni text-slate-muted text-lg italic leading-relaxed max-sm:text-base;
 }
 .button {
-  @apply inline-block bg-secondary text-white font-sans font-bold text-xs uppercase py-3.5 px-8 rounded transition duration-300 shadow-md text-center w-full max-w-[200px];
+  @apply font-badoni inline-block bg-secondary text-white font-bold text-sm py-3.5 px-8 rounded transition duration-300 shadow-md text-center w-full max-w-[200px];
 }
 .icon {
   @apply m-auto mb-6 mt-2 select-none pointer-events-none w-[70px];

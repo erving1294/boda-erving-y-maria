@@ -10,7 +10,7 @@
       >
         <!-- Polaroid Photo (Bottom-Left) -->
         <motion.div
-          class="absolute -left-[13px] bottom-[28px] w-[180px] h-[235px] z-0 max-sm:-left-0 max-sm:-bottom-[10px] max-sm:w-[140px] max-sm:h-[185px]"
+          class="absolute -left-[13px] bottom-0 w-[180px] h-[235px] z-0 max-sm:-left-0 max-sm:-bottom-[10px] max-sm:w-[140px] max-sm:h-[185px]"
           :initial="{ x: -50, rotate: 0 }"
           :while-in-view="{ x: 0, rotate: -6 }"
           :transition="{ duration: 1.0, ease: 'easeOut' }"

@@ -14,7 +14,8 @@
           :viewport="{ once: false, amount: 0.55 }"
         >
           <PaperCard
-            shape="left"
+            shape="standard"
+            is-white
             class="w-full"
             containerClass="max-md:w-[95%]"
           >
@@ -63,7 +64,8 @@
           :viewport="{ once: false, amount: 0.55 }"
         >
           <PaperCard
-            shape="right"
+            shape="standard"
+            is-white
             class="w-full"
             containerClass="max-md:w-[95%]"
           >

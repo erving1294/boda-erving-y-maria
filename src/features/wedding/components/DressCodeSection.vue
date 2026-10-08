@@ -16,7 +16,12 @@
           :transition="{ duration: 1.2, ease: 'easeOut' }"
           :viewport="{ once: false, amount: 0.55 }"
         >
-          <PaperCard shape="left" class="w-full max-w-md mx-auto">
+          <PaperCard
+            shape="standard"
+            is-white
+            show-seal
+            class="w-full max-w-md mx-auto"
+          >
             <div
               class="w-full text-center flex flex-col items-center justify-center py-4 my-auto"
             >
@@ -107,7 +112,12 @@
           :transition="{ duration: 1.2, delay: 0.2, ease: 'easeOut' }"
           :viewport="{ once: false, amount: 0.55 }"
         >
-          <PaperCard shape="right" class="w-full max-w-md mx-auto !h-full">
+          <PaperCard
+            shape="standard"
+            show-seal
+            is-white
+            class="w-full max-w-md mx-auto !h-full"
+          >
             <div
               class="w-full text-center flex flex-col items-center justify-center py-4 my-auto"
             >

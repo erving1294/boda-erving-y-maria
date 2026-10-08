@@ -31,17 +31,17 @@
         >
           <PaperCard
             shape="standard"
-            :has-foliage="false"
-            :has-shadow="false"
+            is-white
+            :hasFoliage="false"
             class="guest-pass-card h-[100%] md:w-[45%] w-[55%]"
             content-class="!p-4 sm:!p-6"
           >
             <article class="flex h-full justify-center items-center flex-col">
-              <p class="font-badoni text-slate-muted mb-1 md:text-lg">
+              <p class="font-badoni italic text-slate-muted mb-1">
                 {{ texts.guests.reservedFor }}
               </p>
               <h3
-                class="font-badoni text-[20px] leading-[24px] text-secondary sm:text-[32px] md:leading-[34px]"
+                class="font-badoni text-primary italic text-[20px] leading-[24px] sm:text-[28px] md:leading-[34px]"
               >
                 {{ guestName }}
               </h3>

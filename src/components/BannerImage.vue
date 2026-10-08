@@ -13,5 +13,5 @@
   </div>
 </template>
 <script setup>
-import Banner from "../assets/images/save_the_date.jpg";
+import Banner from "../assets/images/banner.webp";
 </script>

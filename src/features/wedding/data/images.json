@@ -1,0 +1,50 @@
+{
+  "hero": {
+    "cover": "portada.webp"
+  },
+  "countdown": {
+    "frame": "marco_foto.png",
+    "polaroid": "save_the_date.webp",
+    "flower": "flor_boda.jpg",
+    "heart": "corazon_blanco.png",
+    "shadow": "sombra.png"
+  },
+  "detail": {
+    "invitationCard": "sobre_verde.webp",
+    "paperWedding": "papel_boda.jpg",
+    "seal": "Sello.png"
+  },
+  "guests": {
+    "passes": "fotos_pases.jpeg",
+    "texturaKraft": "textura_sobre.png",
+    "patronFloral": "sobre_dentro.png",
+    "selloCera": "Sello.png"
+  },
+  "history": [
+    { "img": "badbunny.jpg", "alt": "Bad Bunny" },
+    { "img": "cusco.webp", "alt": "Cusco" },
+    { "img": "pedida.webp", "alt": "Pedida" },
+    { "img": "fotos_pases.jpeg", "alt": "Fotos Pases" },
+    { "img": "foto_con_chui.webp", "alt": "Portada 3" },
+    { "img": "arequipa.jpeg", "alt": "Arequipa" }
+  ],
+  "locations": {
+    "church": "gifs/church.gif",
+    "wine": "gifs/wine.gif"
+  },
+  "dressCode": {
+    "suit": "gifs/suit.gif",
+    "dancing": "gifs/dancing.gif",
+    "hauteCouture": "gifs/haute-couture.gif"
+  },
+  "gifts": {
+    "gift": "gifs/gift.gif"
+  },
+  "rsvp": {
+    "cover": "portada-3.webp"
+  },
+  "welcomeOverlay": {
+    "paperTexture": "textura_carta.png",
+    "seal": "Sello.png"
+  }
+}

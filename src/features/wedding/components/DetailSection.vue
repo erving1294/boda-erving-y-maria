@@ -1,8 +1,6 @@
 <script setup>
 import { motion } from "motion-v";
-import invitationCard from "../../../assets/images/sobre_verde.webp";
-import paperWedding from "../../../assets/images/papel_boda.jpg";
-import sealUrl from "../../../assets/images/Sello.png";
+import { images } from "../data/images";
 import texts from "../data/texts.json";
 </script>
 
@@ -24,7 +22,7 @@ import texts from "../data/texts.json";
     >
       <!-- Envelope Image -->
       <img
-        :src="invitationCard"
+        :src="images.detail.invitationCard"
         alt="Invitation Card"
         class="w-[340px] h-full object-cover max-sm:!h-[480px] transition-all duration-[1500ms] ease-out shadow-2xl rotate-[180deg]"
       />
@@ -40,7 +38,7 @@ import texts from "../data/texts.json";
         <!-- Paper Texture Background -->
         <div class="absolute inset-0 rounded-[inherit]">
           <img
-            :src="paperWedding"
+            :src="images.detail.paperWedding"
             alt="Paper Wedding"
             class="block w-full h-full rounded-[inherit] object-center object-contain"
           />
@@ -58,7 +56,7 @@ import texts from "../data/texts.json";
               height="100"
               alt="Sello de cera"
               class="block w-full h-full rounded-[inherit] object-center object-cover"
-              :src="sealUrl"
+              :src="images.detail.seal"
             />
           </div>
         </div>

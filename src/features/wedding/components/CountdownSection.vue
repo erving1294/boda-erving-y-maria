@@ -13,7 +13,7 @@
     >
       <div
         class="w-[500px] h-[500px] bg-cover relative max-sm:w-[340px] max-sm:h-[340px]"
-        :style="`background-image: url(${MarcoFoto})`"
+        :style="bgStyle(images.countdown.frame)"
       >
         <span
           class="absolute top-[51px] left-[64px] font-badoni text-3xl tracking-widest max-sm:top-9 max-sm:left-12"
@@ -26,7 +26,7 @@
               class="w-[75px] h-5 bg-[#F2EBE1] absolute -top-5 -right-6 z-10 rotate-[15deg]"
             >
               <img
-                :src="Sombra"
+                :src="images.countdown.shadow"
                 class="absolute -bottom-[1px] h-[1px] w-[62px] opacity-[0.3]"
               />
             </div>
@@ -39,7 +39,7 @@
               :viewport="{ once: false, amount: 0.55 }"
             >
               <PolaroidPhoto
-                :src="PolaroidTwo"
+                :src="images.countdown.polaroid"
                 :hasShadow="false"
                 alt="Novios mano a mano 1"
                 class="w-[257px] h-[257px] max-sm:w-[157px] max-sm:h-[157px]"
@@ -50,7 +50,7 @@
               class="w-[75px] h-5 bg-[#F0E8DE] absolute -bottom-[22px] -left-6 z-10 rotate-[15deg]"
             >
               <img
-                :src="Sombra"
+                :src="images.countdown.shadow"
                 class="absolute left-[22px] top-[1px] h-[1px] w-[55px] opacity-[0.3]"
               />
             </div>
@@ -59,7 +59,7 @@
 
         <motion.img
           class="absolute -left-[66px] -bottom-[51px] w-[200px] max-sm:w-[120px] max-sm:-left-9"
-          :src="FlorBoda"
+          :src="images.countdown.flower"
           :initial="{ scale: 0 }"
           :while-in-view="{ scale: 1 }"
           :transition="{ duration: 0.5, ease: 'easeOut', delay: 0.5 }"
@@ -74,9 +74,9 @@
         >
           <div
             class="flex justify-center items-center w-full h-full bg-cover bg-center"
-            :style="`background-image: url(${Corazon})`"
+            :style="bgStyle(images.countdown.heart)"
           >
-            <span class="font-badoni text-3xl">{{
+            <span class="font-laparisienne text-3xl">{{
               texts.countdown.heartText
             }}</span>
           </div>
@@ -191,11 +191,7 @@
 import { motion } from "motion-v";
 import { useCountdown } from "../../../core/composables/useCountdown";
 import PolaroidPhoto from "../../../components/PolaroidPhoto.vue";
-import PolaroidTwo from "../../../assets/images/_A744694.jpg";
-import MarcoFoto from "../../../assets/images/marco_foto.png";
-import FlorBoda from "../../../assets/images/flor_boda.jpg";
-import Corazon from "../../../assets/images/corazon_blanco.png";
-import Sombra from "../../../assets/images/sombra.png";
+import { images, bgStyle } from "../data/images";
 import texts from "../data/texts.json";
 
 const { days, hours, minutes, seconds, isFinished } = useCountdown(

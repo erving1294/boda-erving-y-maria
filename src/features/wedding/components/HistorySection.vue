@@ -96,20 +96,10 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-// Images
-import badbunny from "../../../assets/images/badbunny.jpg";
-import cusco from "../../../assets/images/cusco.webp";
-import pedida from "../../../assets/images/pedida.webp";
-import fotosPases from "../../../assets/images/fotos_pases.jpeg";
-import portada3 from "../../../assets/images/portada-3.webp";
+// Centralized Images
+import { images } from "../data/images";
 
-const slides = [
-  { img: badbunny, alt: "Bad Bunny" },
-  { img: cusco, alt: "Cusco" },
-  { img: pedida, alt: "Pedida" },
-  { img: fotosPases, alt: "Fotos Pases" },
-  { img: portada3, alt: "Portada 3" },
-];
+const slides = images.history;
 
 const sectionRef = ref(null);
 const displayedCursive = ref("");
