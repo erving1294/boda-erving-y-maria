@@ -16,7 +16,7 @@
         :style="`background-image: url(${MarcoFoto})`"
       >
         <span
-          class="absolute top-[51px] left-[64px] font-cookie italic text-3xl tracking-widest max-sm:top-9 max-sm:left-12"
+          class="absolute top-[51px] left-[64px] font-badoni text-3xl tracking-widest max-sm:top-9 max-sm:left-12"
         >
           21.11.2026
         </span>
@@ -32,7 +32,7 @@
             </div>
 
             <motion.div
-              class="z-[1] max-sm:!left-[43px] will-change-[transform,opacity]"
+              class="z-[1] max-sm:!left-[43px]"
               :initial="{ opacity: 0, rotate: 0 }"
               :while-in-view="{ opacity: 1, rotate: -5 }"
               :transition="{ duration: 1.0, ease: 'easeOut' }"
@@ -76,7 +76,7 @@
             class="flex justify-center items-center w-full h-full bg-cover bg-center"
             :style="`background-image: url(${Corazon})`"
           >
-            <span class="font-cookie italic text-3xl">{{
+            <span class="font-badoni text-3xl">{{
               texts.countdown.heartText
             }}</span>
           </div>
@@ -87,7 +87,6 @@
     <!-- Contador -->
     <div class="basis-1/2 max-md:w-full">
       <motion.div
-        class="will-change-[transform,opacity]"
         :initial="{ opacity: 0, x: 60, rotate: -3 }"
         :while-in-view="{ opacity: 1, x: 0, rotate: 0 }"
         :transition="{ duration: 1.2, ease: 'easeOut' }"
@@ -97,11 +96,11 @@
           class="w-[380px] max-sm:w-full max-sm:px-4 m-auto text-3xl mb-4 font-new-icon-serif"
         >
           <span class="title block !mb-4">{{ texts.countdown.title }}</span>
-          <span class="block text-base font-inria">{{
+          <span class="block text-lg py-2 description">{{
             texts.countdown.description
           }}</span>
           <span
-            class="block max-sm:text-md mt-4 text-secondary font-inria text-2xl"
+            class="block max-sm:text-md mt-4 text-secondary font-badoni text-xl"
             >{{
               isFinished
                 ? texts.countdown.finishedLabel
@@ -121,7 +120,7 @@
                 class="flex flex-col justify-center items-center border-r-[1px] border-solid border-slate-muted"
               >
                 <span
-                  class="font-inria text-3xl md:text-4xl text-sage font-bold leading-none"
+                  class="font-badoni text-3xl md:text-4xl text-sage font-bold leading-none"
                   >{{ days }}</span
                 >
                 <span
@@ -138,7 +137,7 @@
                 class="flex flex-col justify-center items-center border-r-[1px] border-solid border-slate-muted"
               >
                 <span
-                  class="font-inria text-3xl md:text-4xl text-sage font-bold leading-none"
+                  class="font-badoni text-3xl md:text-4xl text-sage font-bold leading-none"
                   >{{ hours }}</span
                 >
                 <span
@@ -155,7 +154,7 @@
                 class="flex flex-col justify-center items-center border-r-[1px] border-solid border-slate-muted"
               >
                 <span
-                  class="font-inria text-3xl md:text-4xl text-sage font-bold leading-none"
+                  class="font-badoni text-3xl md:text-4xl text-sage font-bold leading-none"
                   >{{ minutes }}</span
                 >
                 <span
@@ -172,7 +171,7 @@
                 class="flex flex-col justify-center items-center border-solid border-slate-muted"
               >
                 <span
-                  class="font-inria text-3xl md:text-4xl text-sage font-bold leading-none"
+                  class="font-badoni text-3xl md:text-4xl text-sage font-bold leading-none"
                   >{{ seconds }}</span
                 >
                 <span
@@ -192,7 +191,7 @@
 import { motion } from "motion-v";
 import { useCountdown } from "../../../core/composables/useCountdown";
 import PolaroidPhoto from "../../../components/PolaroidPhoto.vue";
-import PolaroidTwo from "../../../assets/images/pedida.webp";
+import PolaroidTwo from "../../../assets/images/_A744694.jpg";
 import MarcoFoto from "../../../assets/images/marco_foto.png";
 import FlorBoda from "../../../assets/images/flor_boda.jpg";
 import Corazon from "../../../assets/images/corazon_blanco.png";

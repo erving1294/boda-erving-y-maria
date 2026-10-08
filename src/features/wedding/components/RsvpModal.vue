@@ -68,13 +68,13 @@
 
             <p
               v-if="form.attending === 'yes'"
-              class="font-inria text-slate-muted leading-relaxed mb-8 max-w-xs mx-auto"
+              class="font-badoni text-slate-muted leading-relaxed mb-8 max-w-xs mx-auto"
             >
               {{ texts.rsvp.modal.attendingSuccess }}
             </p>
             <p
               v-else
-              class="font-inria text-slate-muted leading-relaxed mb-8 max-w-xs mx-auto"
+              class="font-badoni text-slate-muted leading-relaxed mb-8 max-w-xs mx-auto"
             >
               {{ texts.rsvp.modal.notAttendingSuccess }}
             </p>
@@ -115,7 +115,7 @@
                   required
                   :disabled="isSending"
                   :placeholder="texts.rsvp.modal.fullNamePlaceholder"
-                  class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-inria text-slate-dark bg-white/70 transition-all duration-300 placeholder:text-slate-muted/40 text-sm disabled:bg-slate-100 disabled:cursor-not-allowed"
+                  class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-badoni text-slate-dark bg-white/70 transition-all duration-300 placeholder:text-slate-muted/40 text-sm disabled:bg-slate-100 disabled:cursor-not-allowed"
                 />
               </div>
 
@@ -132,7 +132,7 @@
                   required
                   :disabled="isSending"
                   :placeholder="texts.rsvp.modal.phonePlaceholder"
-                  class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-inria text-slate-dark bg-white/70 transition-all duration-300 placeholder:text-slate-muted/40 text-sm disabled:bg-slate-100 disabled:cursor-not-allowed"
+                  class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-badoni text-slate-dark bg-white/70 transition-all duration-300 placeholder:text-slate-muted/40 text-sm disabled:bg-slate-100 disabled:cursor-not-allowed"
                 />
               </div>
 
@@ -147,7 +147,7 @@
                   v-model="form.attending"
                   required
                   :disabled="isSending"
-                  class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-inria text-slate-dark bg-white/70 transition-all duration-300 text-sm cursor-pointer disabled:bg-slate-100 disabled:cursor-not-allowed"
+                  class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-badoni text-slate-dark bg-white/70 transition-all duration-300 text-sm cursor-pointer disabled:bg-slate-100 disabled:cursor-not-allowed"
                 >
                   <option value="" disabled selected>
                     {{ texts.rsvp.modal.attendingSelectDefault }}
@@ -175,7 +175,7 @@
                   v-model.number="form.people"
                   required
                   :disabled="isSending"
-                  class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-inria text-slate-dark bg-white/70 transition-all duration-300 text-sm cursor-pointer disabled:bg-slate-100 disabled:cursor-not-allowed"
+                  class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-badoni text-slate-dark bg-white/70 transition-all duration-300 text-sm cursor-pointer disabled:bg-slate-100 disabled:cursor-not-allowed"
                 >
                   <option v-for="n in passes || 2" :key="n" :value="n">
                     {{ n }}
@@ -200,7 +200,7 @@
                   rows="2"
                   :disabled="isSending"
                   :placeholder="texts.rsvp.modal.wishesPlaceholder"
-                  class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-inria text-slate-dark bg-white/70 transition-all duration-300 placeholder:text-slate-muted/40 text-sm resize-none disabled:bg-slate-100 disabled:cursor-not-allowed"
+                  class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-badoni text-slate-dark bg-white/70 transition-all duration-300 placeholder:text-slate-muted/40 text-sm resize-none disabled:bg-slate-100 disabled:cursor-not-allowed"
                 ></textarea>
               </div>
 

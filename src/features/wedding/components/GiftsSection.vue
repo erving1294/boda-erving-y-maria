@@ -6,22 +6,22 @@
     <div class="max-w-4xl mx-auto px-6">
       <!-- Arched Card Container with paper texture for volume -->
       <motion.div
-        class="arched-card max-w-md mx-auto rounded-t-[180px] p-8 md:p-12 text-center relative flex flex-col items-center justify-center border border-gold/15 will-change-[transform,opacity]"
+        class="arched-card max-w-md mx-auto rounded-t-[180px] p-8 md:p-12 text-center relative flex flex-col items-center justify-center border border-gold/15"
         :initial="{ opacity: 0, y: 50, scale: 0.97 }"
         :while-in-view="{ opacity: 1, y: 0, scale: 1 }"
         :transition="{ duration: 1.2, ease: 'easeOut' }"
         :viewport="{ once: false, amount: 0.55 }"
       >
         <!-- Header Text -->
-        <h4 class="title text-4xl mt-6 mb-2 max-sm:mt-8">{{ texts.gifts.title }}</h4>
+        <h4 class="title text-4xl mt-6 mb-2 max-sm:mt-8">
+          {{ texts.gifts.title }}
+        </h4>
 
         <!-- Gift GIF Icon -->
         <img :src="GiftGif" class="icon" />
 
         <!-- Paragraph -->
-        <p
-          class="font-inria text-base text-slate-muted leading-relaxed mb-6 max-w-xs mx-auto"
-        >
+        <p class="description mb-6 max-w-xs mx-auto">
           {{ texts.gifts.description }}
         </p>
 
@@ -29,72 +29,75 @@
         <div class="w-full max-w-[320px] mx-auto space-y-3 text-xs">
           <!-- Cuenta Box -->
           <motion.div
-            class="flex justify-between items-center border border-secondary rounded-xl p-3.5 will-change-[transform,opacity]"
+            class="flex justify-between items-center border border-secondary rounded-xl p-3.5"
             :initial="{ opacity: 0, y: 20 }"
             :while-in-view="{ opacity: 1, y: 0 }"
             :transition="{ duration: 0.8, delay: 0.4, ease: 'easeOut' }"
             :viewport="{ once: false, amount: 0.55 }"
           >
             <div class="flex flex-col text-left">
-              <span
-                class="text-[9px] uppercase tracking-wider text-slate-muted font-bold"
-                >{{ texts.gifts.accountNumberLabel }}</span
-              >
-              <span
-                class="font-mono font-semibold text-slate-dark text-xs mt-0.5"
-                >{{ cuenta }}</span
-              >
+              <span class="text-[11px] uppercase text-slate-muted font-bold">{{
+                texts.gifts.accountNumberLabel
+              }}</span>
+              <span class="font-mono text-slate-dark text-sm mt-0.5">{{
+                cuenta
+              }}</span>
             </div>
             <button
               @click="copyText(cuenta, 'cuenta')"
               class="px-3 py-1.5 text-[9px] uppercase font-bold text-white bg-secondary hover:bg-secondary rounded transition duration-200 shadow-sm"
             >
-              {{ copiedField === "cuenta" ? texts.gifts.copiedButton : texts.gifts.copyButton }}
+              {{
+                copiedField === "cuenta"
+                  ? texts.gifts.copiedButton
+                  : texts.gifts.copyButton
+              }}
             </button>
           </motion.div>
 
           <!-- CCI Box -->
           <motion.div
-            class="flex justify-between items-center border border-secondary rounded-xl p-3.5 will-change-[transform,opacity]"
+            class="flex justify-between items-center border border-secondary rounded-xl p-3.5"
             :initial="{ opacity: 0, y: 20 }"
             :while-in-view="{ opacity: 1, y: 0 }"
             :transition="{ duration: 0.8, delay: 0.8, ease: 'easeOut' }"
             :viewport="{ once: false, amount: 0.55 }"
           >
             <div class="flex flex-col text-left">
-              <span
-                class="text-[9px] uppercase tracking-wider text-slate-muted font-bold"
-                >{{ texts.gifts.cciLabel }}</span
-              >
-              <span
-                class="font-mono font-semibold text-slate-dark text-[11px] mt-0.5"
-                >{{ cci }}</span
-              >
+              <span class="text-[11px] uppercase text-slate-muted font-bold">{{
+                texts.gifts.cciLabel
+              }}</span>
+              <span class="font-mono text-slate-dark text-base mt-0.5">{{
+                cci
+              }}</span>
             </div>
             <button
               @click="copyText(cci, 'cci')"
               class="px-3 py-1.5 text-[9px] uppercase font-bold text-white bg-secondary hover:bg-secondary rounded transition duration-200 shadow-sm"
             >
-              {{ copiedField === "cci" ? texts.gifts.copiedButton : texts.gifts.copyButton }}
+              {{
+                copiedField === "cci"
+                  ? texts.gifts.copiedButton
+                  : texts.gifts.copyButton
+              }}
             </button>
           </motion.div>
 
           <!-- Titular Box -->
           <motion.div
-            class="flex justify-between items-center border border-secondary rounded-xl p-3.5 will-change-[transform,opacity]"
+            class="flex justify-between items-center border border-secondary rounded-xl p-3.5"
             :initial="{ opacity: 0, y: 20 }"
             :while-in-view="{ opacity: 1, y: 0 }"
             :transition="{ duration: 0.8, delay: 1.2, ease: 'easeOut' }"
             :viewport="{ once: false, amount: 0.55 }"
           >
             <div class="flex flex-col text-left">
-              <span
-                class="text-[9px] uppercase tracking-wider text-slate-muted font-bold"
-                >{{ texts.gifts.ownerLabel }}</span
-              >
-              <span class="font-semibold text-slate-dark text-xs mt-0.5"
-                >{{ texts.gifts.ownerName }}</span
-              >
+              <span class="text-[11px] uppercase text-slate-muted font-bold">{{
+                texts.gifts.ownerLabel
+              }}</span>
+              <span class="text-slate-dark text-base mt-0.5">{{
+                texts.gifts.ownerName
+              }}</span>
             </div>
           </motion.div>
         </div>

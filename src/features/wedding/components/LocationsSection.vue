@@ -7,7 +7,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">
         <!-- CEREMONIA CARD (LEFT) -->
         <motion.div
-          class="w-full max-w-md mx-auto will-change-[transform,opacity]"
+          class="w-full max-w-md mx-auto"
           :initial="{ opacity: 0, x: -60, rotate: -3 }"
           :while-in-view="{ opacity: 1, x: 0, rotate: 0 }"
           :transition="{ duration: 1.2, ease: 'easeOut' }"
@@ -35,7 +35,9 @@
 
               <!-- Date Block (Classic Invitation Style) -->
               <div class="location-time-block">
-                <span class="location-time-text">{{ texts.locations.ceremony.time }}</span>
+                <span class="location-time-text">{{
+                  texts.locations.ceremony.time
+                }}</span>
               </div>
             </div>
 
@@ -54,7 +56,7 @@
 
         <!-- CELEBRACION CARD (RIGHT) -->
         <motion.div
-          class="w-full max-w-md mx-auto will-change-[transform,opacity]"
+          class="w-full max-w-md mx-auto"
           :initial="{ opacity: 0, x: 60, rotate: 3 }"
           :while-in-view="{ opacity: 1, x: 0, rotate: 0 }"
           :transition="{ duration: 1.2, delay: 0.2, ease: 'easeOut' }"
@@ -68,19 +70,27 @@
             <div>
               <!-- Title -->
               <h4 class="title">{{ texts.locations.celebration.title }}</h4>
-              <h5 class="subtitle">{{ texts.locations.celebration.subtitle }}</h5>
+              <h5 class="subtitle">
+                {{ texts.locations.celebration.subtitle }}
+              </h5>
 
               <img :src="WineGif" class="icon" />
 
               <!-- Building Name -->
-              <p class="location-name">{{ texts.locations.celebration.name }}</p>
+              <p class="location-name">
+                {{ texts.locations.celebration.name }}
+              </p>
 
               <!-- Address -->
-              <p class="location-address">{{ texts.locations.celebration.address }}</p>
+              <p class="location-address">
+                {{ texts.locations.celebration.address }}
+              </p>
 
               <!-- Date Block (Classic Invitation Style) -->
               <div class="location-time-block">
-                <span class="location-time-text">{{ texts.locations.celebration.time }}</span>
+                <span class="location-time-text">{{
+                  texts.locations.celebration.time
+                }}</span>
               </div>
             </div>
 
@@ -106,7 +116,8 @@ import { motion } from "motion-v";
 import PaperCard from "../../../components/PaperCard.vue";
 import WineGif from "../../../assets/images/gifs/wine.gif";
 import ChurchGif from "../../../assets/images/gifs/church.gif";
-import texts from "../data/texts.json";</script>
+import texts from "../data/texts.json";
+</script>
 
 <style scoped>
 .location-icon {
@@ -114,11 +125,11 @@ import texts from "../data/texts.json";</script>
 }
 
 .location-name {
-  @apply font-inria font-bold mb-1 px-4 text-lg leading-snug;
+  @apply font-badoni font-bold mb-1 px-4 text-lg leading-snug;
 }
 
 .location-address {
-  @apply font-serif italic text-base text-slate-muted mb-6;
+  @apply font-badoni italic text-lg text-slate-muted mb-6;
 }
 
 .location-time-block {

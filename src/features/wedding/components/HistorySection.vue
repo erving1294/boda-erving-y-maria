@@ -11,7 +11,7 @@
       :transition="{ duration: 1.0, ease: 'easeOut' }"
       :viewport="{ once: true, amount: 0.35 }"
     >
-      <h2 class="title">{{ texts.history.title }}</h2>
+      <h2 class="title !mb-4">{{ texts.history.title }}</h2>
 
       <Swiper
         :effect="'coverflow'"
@@ -60,19 +60,17 @@
 
     <!-- Description Text -->
     <motion.div
-      class="max-sm:px-4 will-change-[transform,opacity]"
+      class="max-sm:px-4"
       :initial="{ opacity: 0, x: -40 }"
       :while-in-view="{ opacity: 1, x: 0 }"
       :transition="{ duration: 1.0, delay: 0.4, ease: 'easeOut' }"
       :viewport="{ once: true, amount: 0.3 }"
     >
-      <p
-        class="text-center max-w-[400px] m-auto font-inria text-lg leading-relaxed text-slate-muted"
-      >
+      <p class="text-center max-w-[400px] m-auto description">
         {{ texts.history.description }}
       </p>
       <p
-        class="font-cookie text-center italic text-[26px] mt-2 max-w-[400px] m-auto min-h-[39px]"
+        class="font-laparisienne text-secondary text-center text-[34px] mt-2 max-w-[400px] m-auto min-h-[39px]"
       >
         {{ displayedCursive }}
       </p>

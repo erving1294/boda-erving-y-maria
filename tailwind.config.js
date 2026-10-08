@@ -43,6 +43,10 @@ export default {
         "new-icon-script": ['"new-icon-script"', "cursive"],
         "new-icon-serif": ['"new-icon-serif"', "serif"],
         "new-icon-serif-condensed": ['"new-icon-serif-condensed"', "serif"],
+        badoni: ['"badoni"', "serif"],
+        bodoni: ['"badoni"', "serif"],
+        laparisienne: ['"laparisienne"', "cursive"],
+        "la-parisienne": ['"laparisienne"', "cursive"],
       },
       boxShadow: {
         "sage-sm": "0 4px 12px rgba(94, 111, 82, 0.06)",

@@ -153,14 +153,14 @@
     <div class="px-4 max-w-3xl z-20 flex flex-col items-center">
       <!-- Names with Green Ampersand Circle -->
       <h1
-        class="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 font-new-icon text-6xl md:text-8xl text-white mb-8 drop-shadow-md select-text normal-case"
+        class="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 font-laparisienne text-6xl md:text-8xl text-white mb-8 drop-shadow-md select-text normal-case"
       >
         <!-- Ervíng -->
         <span class="inline-flex">
           <span
             v-for="(char, index) in title1Letters"
             :key="'t1-' + index"
-            class="inline-block transition-all duration-[1000ms] cubic-bezier(0.16, 1, 0.3, 1) will-change-[transform,opacity]"
+            class="inline-block transition-all duration-[1000ms] cubic-bezier(0.16, 1, 0.3, 1)"
             :style="{ transitionDelay: `${index * 100}ms` }"
             :class="
               showTitle1
@@ -174,7 +174,7 @@
 
         <!-- Ampersand -->
         <span
-          class="inline-flex justify-center items-center w-12 h-12 md:w-16 md:h-16 rounded-full bg-primary text-white text-3xl md:text-4xl font-new-icon font-light shadow-md shadow-black/10 border border-white/20 select-none my-2 md:my-0 normal-case transition-all duration-500 ease-out"
+          class="inline-flex justify-center items-center rounded-full text-white text-3xl md:text-4xl font-laparisienne font-light select-none my-2 md:my-0 normal-case transition-all duration-500 ease-out"
           :class="
             showAmpersand
               ? 'opacity-100 scale-100'
@@ -189,7 +189,7 @@
           <span
             v-for="(char, index) in title2Letters"
             :key="'t2-' + index"
-            class="inline-block transition-all duration-[1000ms] cubic-bezier(0.16, 1, 0.3, 1) will-change-[transform,opacity]"
+            class="inline-block transition-all duration-[1000ms] cubic-bezier(0.16, 1, 0.3, 1)"
             :style="{ transitionDelay: `${index * 100}ms` }"
             :class="
               showTitle2
@@ -207,7 +207,7 @@
         class="max-w-xl mx-auto !text-white text-sm md:text-base flex flex-col items-center"
       >
         <p
-          class="font-inria text-white text-xl md:text-2xl font-light tracking-wide leading-relaxed text-center flex flex-wrap justify-center min-h-[2rem] sm:min-h-[2rem]"
+          class="font-badoni text-white text-xl md:text-2xl font-light tracking-wide leading-relaxed text-center flex flex-wrap justify-center min-h-[2rem] sm:min-h-[2rem] italic"
         >
           <template v-for="(word, wIndex) in words" :key="'w-' + wIndex">
             <!-- Word Wrapper to prevent line breaks inside words -->
@@ -215,7 +215,7 @@
               <span
                 v-for="(char, cIndex) in word.letters"
                 :key="'c-' + cIndex"
-                class="inline-block transition-all duration-[1000ms] cubic-bezier(0.16, 1, 0.3, 1) will-change-[transform,opacity]"
+                class="inline-block transition-all duration-[1000ms] cubic-bezier(0.16, 1, 0.3, 1)"
                 :style="{
                   transitionDelay: `${(word.startIndex + cIndex) * 50}ms`,
                 }"
@@ -238,7 +238,7 @@
         <!-- Scroll Down Arrow Button -->
         <button
           @click="scrollToNextSection"
-          class="mt-8 flex flex-col items-center gap-2 cursor-pointer focus:outline-none z-30 group transition-all duration-[1000ms] cubic-bezier(0.16, 1, 0.3, 1) will-change-[transform,opacity]"
+          class="mt-8 flex flex-col items-center gap-2 cursor-pointer focus:outline-none z-30 group transition-all duration-[1000ms] cubic-bezier(0.16, 1, 0.3, 1)"
           :class="
             showScrollButton
               ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto'
@@ -277,7 +277,7 @@
 
 <script setup>
 import { ref, watch, onUnmounted } from "vue";
-import coverUrl from "../../../assets/images/portada-3.webp";
+import coverUrl from "../../../assets/images/portada.jpg";
 import texts from "../data/texts.json";
 
 const props = defineProps({

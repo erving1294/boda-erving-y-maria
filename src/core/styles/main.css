@@ -31,6 +31,125 @@
   font-display: swap;
 }
 
+/* Badoni / Bodoni Moda */
+@font-face {
+  font-family: "badoni";
+  src: url("../../assets/fonts/badoni/BodoniModa_9pt-Regular.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "badoni";
+  src: url("../../assets/fonts/badoni/BodoniModa_9pt-Italic.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "badoni";
+  src: url("../../assets/fonts/badoni/BodoniModa_9pt-Medium.ttf")
+    format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "badoni";
+  src: url("../../assets/fonts/badoni/BodoniModa_9pt-MediumItalic.ttf")
+    format("truetype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "badoni";
+  src: url("../../assets/fonts/badoni/BodoniModa_9pt-SemiBold.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "badoni";
+  src: url("../../assets/fonts/badoni/BodoniModa_9pt-SemiBoldItalic.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "badoni";
+  src: url("../../assets/fonts/badoni/BodoniModa_9pt-Bold.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "badoni";
+  src: url("../../assets/fonts/badoni/BodoniModa_9pt-BoldItalic.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "badoni";
+  src: url("../../assets/fonts/badoni/BodoniModa_9pt-ExtraBold.ttf")
+    format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "badoni";
+  src: url("../../assets/fonts/badoni/BodoniModa_9pt-ExtraBoldItalic.ttf")
+    format("truetype");
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "badoni";
+  src: url("../../assets/fonts/badoni/BodoniModa_9pt-Black.ttf")
+    format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "badoni";
+  src: url("../../assets/fonts/badoni/BodoniModa_9pt-BlackItalic.ttf")
+    format("truetype");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* La Parisienne */
+@font-face {
+  font-family: "laparisienne";
+  src: url("../../assets/fonts/laparisienne/La-Parisienne-Script-Casual.otf")
+    format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -61,16 +180,16 @@
   h5,
   h6 {
     /* color: var(--color-primary); */
-    @apply font-inria text-slate-muted;
+    @apply font-badoni text-slate-muted;
   }
   strong,
   b {
-    @apply font-inria text-slate-muted;
+    @apply font-badoni text-slate-muted;
     /* color: var(--color-primary); */
   }
 }
 p {
-  @apply font-inria text-slate-muted;
+  @apply font-badoni text-slate-muted;
   /* color: var(--color-primary); */
 }
 
@@ -157,10 +276,13 @@ p {
 }
 
 .title {
-  @apply font-cookie text-[46px] text-primary mb-1 leading-10;
+  @apply font-laparisienne text-[46px] text-primary mb-1 leading-10;
 }
 .subtitle {
-  @apply font-cookie text-[32px] text-secondary mb-6 leading-none;
+  @apply font-laparisienne text-3xl text-secondary mb-6 leading-none;
+}
+.description {
+  @apply font-badoni text-slate-muted text-lg italic leading-relaxed max-sm:text-base;
 }
 .button {
   @apply inline-block bg-secondary text-white font-sans font-bold text-xs uppercase py-3.5 px-8 rounded transition duration-300 shadow-md text-center w-full max-w-[200px];

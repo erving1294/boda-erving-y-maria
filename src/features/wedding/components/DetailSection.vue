@@ -31,7 +31,7 @@ import texts from "../data/texts.json";
 
       <!-- Inner Invitation Paper Card (Overlapping) -->
       <motion.article
-        class="absolute bottom-[-110px] right-[-24px] flex-none w-[460px] h-[550px] overflow-visible filter drop-shadow-[2px_2px_4px_rgba(0,0,0,0.25)] max-sm:!w-[340px] max-sm:!h-[520px] max-sm:!bottom-[-100px] max-sm:!right-[-52px] will-change-[transform,opacity]"
+        class="absolute bottom-[-110px] right-[-24px] flex-none w-[460px] h-[550px] overflow-visible filter drop-shadow-[2px_2px_4px_rgba(0,0,0,0.25)] max-sm:!w-[340px] max-sm:!h-[520px] max-sm:!bottom-[-100px] max-sm:!right-[-52px]"
         :initial="{ opacity: 0, x: 120 }"
         :while-in-view="{ opacity: 1, x: 0 }"
         :transition="{ duration: 1.5, ease: 'easeOut' }"
@@ -69,7 +69,7 @@ import texts from "../data/texts.json";
         >
           <!-- Animatable text wrapper -->
           <motion.div
-            class="flex flex-col items-center justify-center gap-3.5 w-full will-change-[transform,opacity]"
+            class="flex flex-col items-center justify-center gap-3.5 w-full will-change"
             :initial="{ opacity: 0, y: 80 }"
             :while-in-view="{ opacity: 1, y: 0 }"
             :transition="{ duration: 1.0, delay: 0.5, ease: 'easeOut' }"
@@ -81,7 +81,7 @@ import texts from "../data/texts.json";
                 texts.detail.title1
               }}</span>
               <span
-                class="font-cookie text-xl text-secondary lowercase italic my-0.5"
+                class="font-badoni text-xl text-secondary lowercase italic my-0.5"
                 >&</span
               >
               <span class="font-new-icon text-4xl text-primary uppercase">{{
@@ -91,19 +91,19 @@ import texts from "../data/texts.json";
 
             <!-- Invite phrase -->
             <p
-              class="font-inria text-sm tracking-[0.1em] text-slate-muted leading-normal max-w-[240px]"
+              class="font-badoni text-sm tracking-[0.1em] text-slate-muted leading-normal max-w-[240px]"
             >
               {{ texts.detail.invitationPhrase }}
             </p>
             <p
-              class="font-inria text-sm tracking-[0.1em] text-slate-muted leading-normal max-w-[240px]"
+              class="font-badoni text-sm tracking-[0.1em] text-slate-muted leading-normal max-w-[240px]"
             >
               {{ texts.detail.celebrationDateLabel }}
             </p>
 
             <!-- Date Block (Reference Style) -->
             <div
-              class="flex items-center justify-center w-full my-2 font-inria text-slate-muted select-none"
+              class="flex items-center justify-center w-full my-2 font-badoni text-slate-muted select-none"
             >
               <!-- Left Side (Day of the week) -->
               <div
@@ -131,7 +131,7 @@ import texts from "../data/texts.json";
               </div>
             </div>
             <p
-              class="font-cookie italic text-md tracking-[1px] text-slate-muted leading-normal max-w-[240px]"
+              class="font-badoni italic text-md tracking-[1px] text-slate-muted leading-normal max-w-[240px]"
             >
               {{ texts.detail.footPhrase }}
             </p>

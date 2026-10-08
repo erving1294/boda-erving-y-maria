@@ -10,7 +10,7 @@
       >
         <!-- CARD 1: DRESS CODE (LEFT) -->
         <motion.div
-          class="w-full max-w-md mx-auto will-change-[transform,opacity]"
+          class="w-full max-w-md mx-auto"
           :initial="{ opacity: 0, x: -60, rotate: -3 }"
           :while-in-view="{ opacity: 1, x: 0, rotate: 0 }"
           :transition="{ duration: 1.2, ease: 'easeOut' }"
@@ -30,22 +30,22 @@
                 <h4 class="title mb-2">{{ texts.dressCode.dressCodeTitle }}</h4>
 
                 <!-- Subtitle -->
-                <h5 class="font-cookie text-secondary text-4xl">
+                <h5 class="font-badoni text-secondary italic py-2 text-2xl">
                   {{ texts.dressCode.dressCodeSubtitle }}
                 </h5>
               </div>
               <ul class="text-center mb-4">
                 <li>
-                  <p class="font-inria">
-                    <span class="font-inria text-primary">{{
+                  <p class="description">
+                    <span class="font-bold text-primary">{{
                       texts.dressCode.menTitle
                     }}</span>
                     {{ texts.dressCode.menDescription }}
                   </p>
                 </li>
-                <li>
-                  <p class="font-inria">
-                    <span class="font-inria text-primary">{{
+                <li class="mt-3">
+                  <p class="description">
+                    <span class="font-bold text-primary">{{
                       texts.dressCode.womenTitle
                     }}</span>
                     {{ texts.dressCode.womenDescription }}
@@ -54,14 +54,16 @@
               </ul>
 
               <!-- Warning text -->
-              <p class="font-inria text-primary italic font-bold mb-6 max-w-xs">
+              <p
+                class="font-badoni text-primary text-lg italic font-bold mb-6 max-w-xs"
+              >
                 {{ texts.dressCode.avoidColorsTitle }}
               </p>
 
               <!-- Color Swatches -->
               <div class="flex justify-center items-center gap-4">
                 <motion.div
-                  class="w-10 h-10 rounded-full bg-white border border-slate-200 shadow-sm will-change-[transform,opacity]"
+                  class="w-10 h-10 rounded-full bg-white border border-slate-200 shadow-sm"
                   :initial="{ opacity: 0, scale: 0 }"
                   :while-in-view="{ opacity: 1, scale: 1 }"
                   :transition="{ duration: 0.5, delay: 0.8, ease: 'easeOut' }"
@@ -69,7 +71,7 @@
                   :title="texts.dressCode.avoidColors.white"
                 ></motion.div>
                 <motion.div
-                  class="w-10 h-10 rounded-full bg-[rgb(241 241 241)] border border-gold/20 shadow-sm will-change-[transform,opacity]"
+                  class="w-10 h-10 rounded-full bg-[rgb(241 241 241)] border border-gold/20 shadow-sm"
                   :initial="{ opacity: 0, scale: 0 }"
                   :while-in-view="{ opacity: 1, scale: 1 }"
                   :transition="{ duration: 0.5, delay: 1.0, ease: 'easeOut' }"
@@ -77,7 +79,7 @@
                   :title="texts.dressCode.avoidColors.cream"
                 ></motion.div>
                 <motion.div
-                  class="w-10 h-10 rounded-full bg-[#e8dec9] border border-gold/20 shadow-sm will-change-[transform,opacity]"
+                  class="w-10 h-10 rounded-full bg-[#e8dec9] border border-gold/20 shadow-sm"
                   :initial="{ opacity: 0, scale: 0 }"
                   :while-in-view="{ opacity: 1, scale: 1 }"
                   :transition="{ duration: 0.5, delay: 1.2, ease: 'easeOut' }"
@@ -85,7 +87,7 @@
                   :title="texts.dressCode.avoidColors.beige"
                 ></motion.div>
                 <motion.div
-                  class="w-10 h-10 rounded-full bg-[#B86A78] border border-gold/20 shadow-sm will-change-[transform,opacity]"
+                  class="w-10 h-10 rounded-full bg-[#B86A78] border border-gold/20 shadow-sm"
                   :initial="{ opacity: 0, scale: 0 }"
                   :while-in-view="{ opacity: 1, scale: 1 }"
                   :transition="{ duration: 0.5, delay: 1.4, ease: 'easeOut' }"
@@ -99,7 +101,7 @@
 
         <!-- CARD 2: SIN NIÑOS (RIGHT) -->
         <motion.div
-          class="w-full max-w-md mx-auto will-change-[transform,opacity]"
+          class="w-full max-w-md mx-auto"
           :initial="{ opacity: 0, x: 60, rotate: 3 }"
           :while-in-view="{ opacity: 1, x: 0, rotate: 0 }"
           :transition="{ duration: 1.2, delay: 0.2, ease: 'easeOut' }"
@@ -116,9 +118,7 @@
               <h4 class="title py-4">{{ texts.dressCode.adultsOnlyTitle }}</h4>
 
               <!-- Description text -->
-              <p
-                class="font-inria text-slate-muted max-w-xs mx-auto leading-relaxed"
-              >
+              <p class="description">
                 {{ texts.dressCode.adultsOnlyDescription }}
               </p>
             </div>

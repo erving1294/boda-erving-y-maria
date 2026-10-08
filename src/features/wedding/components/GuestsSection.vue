@@ -2,19 +2,19 @@
   <section
     ref="sectionRef"
     id="guests"
-    class="guests-section bg-texture-flores overflow-hidden"
+    class="guests-section bg-texture-white overflow-hidden"
   >
     <div class="guests-section__overlay"></div>
     <div class="relative z-10 mx-auto max-w-3xl px-4 py-16 sm:px-6">
       <motion.div
-        class="mx-auto mb-8 text-center sm:mb-12 h-[420px] max-sm:h-[360px]"
+        class="mx-auto mb-8 text-center sm:mb-12 h-[440px] max-sm:h-[400px]"
         :initial="{ opacity: 0, x: -60, rotate: -3 }"
         :while-in-view="{ opacity: 1, x: 0, rotate: 0 }"
         :transition="{ duration: 1.2, ease: 'easeOut' }"
         :viewport="{ once: false, amount: 0.55 }"
       >
         <p class="title">{{ texts.guests.title }}</p>
-        <p class="mt-3 leading-relaxed text-slate-muted">
+        <p class="description mt-4">
           {{ texts.guests.description }}
         </p>
       </motion.div>
@@ -37,11 +37,11 @@
             content-class="!p-4 sm:!p-6"
           >
             <article class="flex h-full justify-center items-center flex-col">
-              <p class="font-cookie text-slate-muted mb-1 text-lg md:text-xl">
+              <p class="font-badoni text-slate-muted mb-1 md:text-lg">
                 {{ texts.guests.reservedFor }}
               </p>
               <h3
-                class="font-cookie text-[28px] leading-[24px] text-secondary sm:text-[42px] md:leading-8"
+                class="font-badoni text-[20px] leading-[24px] text-secondary sm:text-[32px] md:leading-[34px]"
               >
                 {{ guestName }}
               </h3>

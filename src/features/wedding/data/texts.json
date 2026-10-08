@@ -1,7 +1,7 @@
 {
   "footer": {
     "quote": "Donde tú vayas, yo iré; donde tú vivas, yo viviré.",
-    "copyright": "© 2026 Ervíng & María. Todos los derechos reservados."
+    "copyright": "© 2026 María y Erving. Todos los derechos reservados."
   },
   "welcomeOverlay": {
     "sealAlt": "Sello de Cera"
@@ -14,16 +14,16 @@
   },
   "guests": {
     "title": "Una invitación especial",
-    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint repellat ipsam, reiciendis dolore voluptates mollitia magnam illo assumenda est quaerat ipsum cum quos expedita dicta ab deserunt neque nam quibusdam?",
+    "description": "Esta invitación es personal e intransferible. La cantidad de personas indicada corresponde a los lugares reservados especialmente para ustedes. Les agradecemos respetar el número señalado al confirmar su asistencia.",
     "reservedFor": "Reservado para",
     "openEnvelopeInstructions": "Toca el sello para abrir tu sobre",
     "singlePass": "Pase individual",
     "multiplePasses": "Pases disponibles"
   },
   "countdown": {
-    "heartText": "E & M",
+    "heartText": "M & E",
     "title": "Save The Date",
-    "description": "Porque tú has sido parte de nuestra historia, queremos que estés en nuestro mejor capitulo",
+    "description": "Porque tú has sido parte de nuestra historia, queremos que estés en nuestro mejor capitulo.",
     "finishedLabel": "El gran momento ha llegado",
     "waitingLabel": "Solo faltan:",
     "days": "Días",
@@ -63,7 +63,7 @@
     },
     "celebration": {
       "title": "Recepción",
-      "subtitle": "& Fiesta",
+      "subtitle": "y fiesta",
       "name": "Casa Los Rosales",
       "address": "Pachacamac, Lima",
       "time": "18:00 pm",
@@ -82,7 +82,7 @@
     "toastCopySuccess": "copiado al portapapeles"
   },
   "dressCode": {
-    "dressCodeTitle": "Código de Vestimenta",
+    "dressCodeTitle": "Código de vestimenta",
     "dressCodeSubtitle": "Elegante",
     "menTitle": "Para ellos:",
     "menDescription": "Terno, pantalón de vestir, camisa, zapatos de vestir, corbata, saco.",

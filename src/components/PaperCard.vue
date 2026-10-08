@@ -22,7 +22,7 @@
     <!-- Elegant Inset Border Frame -->
     <div
       :class="[
-        'border border-gold/15 flex flex-col justify-between items-center text-center h-full relative w-full p-8 md:p-12',
+        'border border-gold/15 flex flex-col justify-between items-center text-center h-full relative w-full p-8',
         contentClass,
       ]"
     >

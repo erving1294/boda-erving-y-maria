@@ -15,13 +15,15 @@
       <!-- 4. Cuenta Regresiva -->
       <CountdownSection />
       <!-- 5. Ubicaciones -->
+      <!-- 8. Carrusel de imagenes -->
       <LocationsSection />
+      <HistorySection />
+
       <!-- 6. Regalos -->
       <GiftsSection />
       <!-- 7. Código de Vestimenta -->
       <DressCodeSection />
-      <!-- 8. Carrusel de imagenes -->
-      <HistorySection />
+
       <!-- 9. Banner con foto -->
       <BannerImage />
       <!-- 5. Invitados (Pase de invitados) -->
@@ -39,13 +41,13 @@
       />
       <!-- 13. Footer -->
       <footer
-        class="bg-primary text-ivory py-16 text-center select-none border-t border-gold/10"
+        class="bg-primary font-laparisienne py-16 text-center select-none border-t border-gold/10"
       >
         <div class="max-w-md mx-auto px-6">
-          <h2 class="title !font-new-icon !text-white">
-            {{ texts.hero.title1 }} & {{ texts.hero.title2 }}
+          <h2 class="title !font-laparisienne !text-white">
+            {{ texts.hero.title2 }} y {{ texts.hero.title1 }}
           </h2>
-          <p class="font-serif italic text-xl text-white max-w-xs mx-auto mb-8">
+          <p class="font-badoni italic text-xl text-white my-4 mb-8">
             "{{ texts.footer.quote }}"
           </p>
           <div class="w-12 h-[1px] bg-white mx-auto mb-6"></div>

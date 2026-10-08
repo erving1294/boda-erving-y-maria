@@ -10,7 +10,7 @@
       >
         <!-- Polaroid Photo (Bottom-Left) -->
         <motion.div
-          class="absolute -left-[13px] bottom-[28px] w-[180px] h-[235px] z-0 max-sm:-left-0 max-sm:-bottom-[10px] max-sm:w-[140px] max-sm:h-[185px] will-change-[transform,opacity]"
+          class="absolute -left-[13px] bottom-[28px] w-[180px] h-[235px] z-0 max-sm:-left-0 max-sm:-bottom-[10px] max-sm:w-[140px] max-sm:h-[185px]"
           :initial="{ x: -50, rotate: 0 }"
           :while-in-view="{ x: 0, rotate: -6 }"
           :transition="{ duration: 1.0, ease: 'easeOut' }"
@@ -25,7 +25,7 @@
 
         <!-- Main Invitation Card -->
         <motion.div
-          class="will-change-[transform,opacity]"
+          class=""
           :initial="{ y: 50, opacity: 0 }"
           :while-in-view="{ y: 0, opacity: 1 }"
           :transition="{ duration: 1.2, ease: 'easeOut' }"
@@ -42,20 +42,20 @@
             >
               <h3 class="title !mb-6 block" v-html="texts.rsvp.title"></h3>
 
-              <p
-                class="font-inria text-slate-muted leading-relaxed mb-6 max-w-[240px]"
-              >
+              <p class="description mb-6 max-w-[240px]">
                 {{ texts.rsvp.description }}
               </p>
 
-              <p
-                class="font-inria text-slate-muted leading-relaxed mb-8 max-w-[240px]"
-              >
+              <p class="description mb-8 max-w-[240px]">
                 {{ texts.rsvp.deadlineLabelPrefix }}
-                <strong>{{ texts.rsvp.deadlineDate }}</strong>.
+                <strong>{{ texts.rsvp.deadlineDate }}</strong
+                >.
               </p>
 
-              <button @click="showModal = true" class="button cursor-pointer border-0">
+              <button
+                @click="showModal = true"
+                class="button cursor-pointer border-0"
+              >
                 {{ texts.rsvp.buttonLabel }}
               </button>
             </div>
@@ -64,7 +64,7 @@
 
         <!-- Clay Medallion (Bottom-Right) -->
         <motion.div
-          class="absolute -right-8 bottom-[148px] w-[95px] h-[130px] z-20 max-sm:-right-4 max-sm:bottom-[100px] max-sm:w-[75px] max-sm:h-[105px] rounded-[50%/40%] bg-[#efede7]/95 border border-[#bfa880]/15 flex justify-center items-center select-none will-change-[transform,opacity] [box-shadow:0_4px_10px_rgba(0,0,0,0.15),_inset_0_2px_4px_rgba(255,255,255,0.4),_inset_0_-2px_4px_rgba(0,0,0,0.1)]"
+          class="absolute -right-8 bottom-[148px] w-[95px] h-[130px] z-20 max-sm:-right-4 max-sm:bottom-[100px] max-sm:w-[75px] max-sm:h-[105px] rounded-[50%/40%] bg-[#efede7]/95 border border-[#bfa880]/15 flex justify-center items-center select-none [box-shadow:0_4px_10px_rgba(0,0,0,0.15),_inset_0_2px_4px_rgba(255,255,255,0.4),_inset_0_-2px_4px_rgba(0,0,0,0.1)]"
           :initial="{ x: 50, rotate: 0 }"
           :while-in-view="{ x: 0, rotate: 8 }"
           :transition="{ duration: 1.0, ease: 'easeOut' }"
