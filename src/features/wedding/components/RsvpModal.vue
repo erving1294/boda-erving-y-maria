@@ -91,10 +91,10 @@
           <div v-else key="form">
             <!-- Form Header -->
             <div class="text-center mb-7 select-none">
-              <h4 class="title text-4xl mb-1">
+              <h4 class="title mb-1">
                 {{ texts.rsvp.modal.confirmTitle }}
               </h4>
-              <h5 class="title !text-4xl !mb-0">
+              <h5 class="title !mb-0">
                 {{ texts.rsvp.modal.confirmSubtitle }}
               </h5>
             </div>

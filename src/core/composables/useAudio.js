@@ -1,44 +1,45 @@
-import { ref } from 'vue'
-import audioUrl from '../../assets/audio/Christina-Perri-A-Thousand-Years.mp3'
+import { ref } from "vue";
+import audioUrl from "../../assets/audio/digimon_can.mp3";
 
-const isPlaying = ref(false)
-let audio = null
+const isPlaying = ref(false);
+let audio = null;
 
-if (typeof window !== 'undefined') {
-  audio = new Audio(audioUrl)
-  audio.loop = true
+if (typeof window !== "undefined") {
+  audio = new Audio(audioUrl);
+  audio.loop = true;
 }
 
 export function useAudio() {
   const play = () => {
-    if (!audio) return
-    audio.play()
+    if (!audio) return;
+    audio
+      .play()
       .then(() => {
-        isPlaying.value = true
+        isPlaying.value = true;
       })
       .catch((err) => {
-        console.warn('Audio play failed:', err)
-      })
-  }
+        console.warn("Audio play failed:", err);
+      });
+  };
 
   const pause = () => {
-    if (!audio) return
-    audio.pause()
-    isPlaying.value = false
-  }
+    if (!audio) return;
+    audio.pause();
+    isPlaying.value = false;
+  };
 
   const toggle = () => {
     if (isPlaying.value) {
-      pause()
+      pause();
     } else {
-      play()
+      play();
     }
-  }
+  };
 
   return {
     isPlaying,
     play,
     pause,
     toggle,
-  }
+  };
 }
