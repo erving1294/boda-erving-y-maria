@@ -62,79 +62,11 @@ import texts from "../data/texts.json";
         </div>
 
         <!-- Invitation Details Content -->
-        <div
+        <!-- <div
           class="text-center absolute top-[53%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col justify-center items-center gap-3.5 w-[299px] h-min p-[10px]"
-        >
-          <!-- Animatable text wrapper -->
-          <motion.div
-            class="flex flex-col items-center justify-center gap-3.5 w-full will-change"
-            :initial="{ opacity: 0, y: 80 }"
-            :while-in-view="{ opacity: 1, y: 0 }"
-            :transition="{ duration: 1.0, delay: 0.5, ease: 'easeOut' }"
-            :viewport="{ once: false, amount: 0.55 }"
-          >
-            <!-- Names Layout -->
-            <div class="flex flex-col items-center justify-center w-full mb-1">
-              <span class="font-new-icon text-4xl text-primary uppercase">{{
-                texts.detail.title1
-              }}</span>
-              <span
-                class="font-badoni text-xl text-secondary lowercase italic my-0.5"
-                >&</span
-              >
-              <span class="font-new-icon text-4xl text-primary uppercase">{{
-                texts.detail.title2
-              }}</span>
-            </div>
-
-            <!-- Invite phrase -->
-            <p
-              class="font-badoni text-sm tracking-[0.1em] text-slate-muted leading-normal max-w-[240px]"
-            >
-              {{ texts.detail.invitationPhrase }}
-            </p>
-            <p
-              class="font-badoni text-sm tracking-[0.1em] text-slate-muted leading-normal max-w-[240px]"
-            >
-              {{ texts.detail.celebrationDateLabel }}
-            </p>
-
-            <!-- Date Block (Reference Style) -->
-            <div
-              class="flex items-center justify-center w-full my-2 font-badoni text-slate-muted select-none"
-            >
-              <!-- Left Side (Day of the week) -->
-              <div
-                class="flex-1 border-y border-primary py-2.5 text-xs tracking-[0.15em] uppercase text-center text-primary"
-              >
-                {{ texts.detail.dayOfWeek }}
-              </div>
-              <!-- Center (Day number and Month) -->
-              <div
-                class="px-4 flex flex-col justify-center items-center min-w-[80px]"
-              >
-                <span class="text-[32px] text-primary leading-none">{{
-                  texts.detail.dayNumber
-                }}</span>
-                <span
-                  class="text-xs tracking-[0.15em] uppercase font-bold text-primary mt-1.5 leading-none"
-                  >{{ texts.detail.month }}</span
-                >
-              </div>
-              <!-- Right Side (Time) -->
-              <div
-                class="flex-1 border-y border-primary py-2.5 text-xs tracking-[0.12em] uppercase text-center text-primary"
-              >
-                {{ texts.detail.time }}
-              </div>
-            </div>
-            <p
-              class="font-badoni italic text-md tracking-[1px] text-slate-muted leading-normal max-w-[240px]"
-            >
-              {{ texts.detail.footPhrase }}
-            </p>
-          </motion.div>
-        </div>
+        > -->
+        <!-- Animatable text wrapper -->
+        <!-- </div> -->
       </motion.article>
     </div>
   </section>

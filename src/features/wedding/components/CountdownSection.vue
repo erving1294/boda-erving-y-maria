@@ -15,12 +15,9 @@
         class="w-[500px] h-[500px] bg-cover relative max-sm:w-[340px] max-sm:h-[340px]"
         :style="bgStyle(images.countdown.frame)"
       >
-        <span
-          class="absolute top-[51px] left-[64px] font-badoni text-3xl tracking-widest max-sm:top-9 max-sm:left-12"
+        <div
+          class="absolute left-[103px] top-[102px] max-sm:left-[60px] max-sm:top-[60px]"
         >
-          21.11.2026
-        </span>
-        <div class="absolute left-[125px] top-[102px] max-sm:left-[90px]">
           <div class="relative">
             <div
               class="w-[75px] h-5 bg-[#F2EBE1] absolute -top-5 -right-6 z-10 rotate-[15deg]"
@@ -42,7 +39,7 @@
                 :src="images.countdown.polaroid"
                 :hasShadow="false"
                 alt="Novios mano a mano 1"
-                class="w-[257px] h-[257px] max-sm:w-[157px] max-sm:h-[157px]"
+                class="w-[281px] h-[281px] max-sm:w-[210px] max-sm:h-[210px]"
               />
             </motion.div>
 
@@ -76,7 +73,7 @@
             class="flex justify-center items-center w-full h-full bg-cover bg-center"
             :style="bgStyle(images.countdown.heart)"
           >
-            <span class="font-laparisienne text-3xl">{{
+            <span class="font-laparisienne text-3xl max-sm:text-xl">{{
               texts.countdown.heartText
             }}</span>
           </div>

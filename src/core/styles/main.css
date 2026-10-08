@@ -262,7 +262,7 @@ p {
 }
 
 .bg-texture-flores {
-  background-image: url("../../assets/images/fondo_flores.jpg");
+  background-image: url("../../assets/images/primer_fondo.png");
   background-repeat: repeat;
   background-position: center top;
   background-size: 480px;

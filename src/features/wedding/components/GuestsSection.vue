@@ -78,9 +78,9 @@ import fotosPases from "../../../assets/images/fotos_pases.jpeg";
 // Specific assets for the 3D double-sided envelope
 import texturaKraft from "../../../assets/images/textura_sobre.png";
 import patronFloral from "../../../assets/images/sobre_dentro.png";
-import selloCera from "../../../assets/images/Sello.png";
+import selloCera from "../../../assets/images/Sello.webp";
 
-import defaultSealUrl from "../../../assets/images/Sello.png";
+import defaultSealUrl from "../../../assets/images/Sello.webp";
 import texts from "../data/texts.json";
 
 const isOpen = ref(true);

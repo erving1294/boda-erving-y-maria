@@ -262,7 +262,7 @@
 import { computed } from "vue";
 import defaultPaperTexture from "../assets/images/textura_carta.png";
 import defaultLinerTexture from "../assets/images/sobre_dentro.png";
-import defaultSealUrl from "../assets/images/Sello.png";
+import defaultSealUrl from "../assets/images/Sello.webp";
 
 const props = defineProps({
   isOpen: {

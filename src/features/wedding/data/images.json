@@ -11,14 +11,14 @@
   },
   "detail": {
     "invitationCard": "sobre_verde.webp",
-    "paperWedding": "papel_boda.jpg",
-    "seal": "Sello.png"
+    "paperWedding": "invitacion.jpg",
+    "seal": "Sello.webp"
   },
   "guests": {
     "passes": "fotos_pases.jpeg",
     "texturaKraft": "textura_sobre.png",
     "patronFloral": "sobre_dentro.png",
-    "selloCera": "Sello.png"
+    "selloCera": "Sello.webp"
   },
   "history": [
     { "img": "badbunny.jpg", "alt": "Bad Bunny" },
@@ -45,6 +45,6 @@
   },
   "welcomeOverlay": {
     "paperTexture": "textura_carta.png",
-    "seal": "Sello.png"
+    "seal": "Sello.webp"
   }
 }

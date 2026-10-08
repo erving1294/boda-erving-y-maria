@@ -60,7 +60,7 @@
 import { computed } from "vue";
 import papelBodaUrl from "../assets/images/papel_boda.jpg";
 import papelBodaBlancoUrl from "../assets/images/papel_boda_blanco.jpg";
-import sealUrl from "../assets/images/Sello.png";
+import sealUrl from "../assets/images/Sello.webp";
 
 const props = defineProps({
   shape: {
