@@ -73,7 +73,7 @@ import { motion } from "motion-v";
 import TexturedEnvelope from "../../../components/TexturedEnvelope.vue";
 import PolaroidPhoto from "../../../components/PolaroidPhoto.vue";
 import PaperCard from "../../../components/PaperCard.vue";
-import fotosPases from "../../../assets/images/fotos_pases.jpeg";
+import fotosPases from "../../../assets/images/historia/fotos_pases.jpeg";
 
 // Specific assets for the 3D double-sided envelope
 import texturaKraft from "../../../assets/images/textura_sobre.png";

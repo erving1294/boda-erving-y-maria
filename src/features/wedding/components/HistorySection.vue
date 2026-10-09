@@ -66,7 +66,7 @@
       :transition="{ duration: 1.0, delay: 0.4, ease: 'easeOut' }"
       :viewport="{ once: true, amount: 0.3 }"
     >
-      <p class="text-center max-w-[400px] m-auto description">
+      <p class="text-center max-w-[480px] m-auto description">
         {{ texts.history.description }}
       </p>
       <p

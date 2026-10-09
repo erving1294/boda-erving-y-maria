@@ -9,8 +9,8 @@
   "hero": {
     "title1": "Ervíng",
     "title2": "María",
-    "paragraph": "Que el amor sea siempre nuestro vínculo y Dios, nuestro camino; para caminar juntos, de la mano, hacia toda una vida por compartir.",
-    "buttonLabel": "Ver Invitación"
+    "paragraph": "Que el amor sea nuestro vínculo y Dios, nuestra guía, mientras caminamos juntos de la mano hacia la vida que soñamos compartir.",
+    "buttonLabel": "D Invitación"
   },
   "guests": {
     "title": "Una invitación especial",
@@ -23,7 +23,7 @@
   "countdown": {
     "heartText": "M & E",
     "title": "Save The Date",
-    "description": "Porque tú has sido parte de nuestra historia, queremos que estés en nuestro mejor capitulo.",
+    "description": "Porque tú has sido parte de nuestra historia, queremos que estés en nuestro mejor capitulo. Cada vez más cerca de nuestro sí.",
     "finishedLabel": "El gran momento ha llegado",
     "waitingLabel": "Solo faltan:",
     "days": "Días",
@@ -63,7 +63,7 @@
     },
     "celebration": {
       "title": "Recepción",
-      "subtitle": "y fiesta",
+      "subtitle": "",
       "name": "Casa Los Rosales",
       "address": "Pachacamac, Lima",
       "time": "18:00 pm",
@@ -72,7 +72,7 @@
   },
   "gifts": {
     "title": "Mesa de Regalos",
-    "description": "El mejor regalo es que nos acompañes en este día tan especial, pero si desean tener un detalle con nosotros, pueden hacerlo a través de:",
+    "description": "Nos hace muy felices compartir este inicio tan especial contigo. Tu compañía es nuestro mejor regalo. Si deseas tener un detalle con nosotros, hemos habilitado estas cuentas para que puedas hacernos llegar tu regalo en efectivo.",
     "accountNumberLabel": "Número de Cuenta",
     "cciLabel": "Cuenta Interbancaria (CCI)",
     "ownerLabel": "Titular",
@@ -100,7 +100,7 @@
   },
   "history": {
     "title": "Nuestros Momentos",
-    "description": "Todo comenzó en enero del 2017, sin imaginar que ese sería el primer capítulo de nuestra historia. Hoy, con el corazón lleno de gratitud, estamos listos para escribir nuestro…",
+    "description": "Nuestro amor comenzó un 21 de enero de 2017, sin imaginar todo lo que la vida nos tenía preparado. Hemos crecido, aprendido y enfrentado juntos caminos que nos hicieron más fuertes. Hoy miramos atrás con el corazón lleno de gratitud, porque en cada paso, incluso en los más difíciles, seguimos encontrando razones para elegirnos. Y ahora, de la mano de Dios, estamos listos para formar nuestra familia y comenzar una nueva historia...",
     "cursiveText": "Para siempre"
   },
   "contact": {

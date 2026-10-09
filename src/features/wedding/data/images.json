@@ -21,12 +21,22 @@
     "selloCera": "Sello.webp"
   },
   "history": [
-    { "img": "badbunny.jpg", "alt": "Bad Bunny" },
-    { "img": "cusco.webp", "alt": "Cusco" },
-    { "img": "pedida.webp", "alt": "Pedida" },
-    { "img": "fotos_pases.jpeg", "alt": "Fotos Pases" },
-    { "img": "foto_con_chui.webp", "alt": "Portada 3" },
-    { "img": "arequipa.jpeg", "alt": "Arequipa" }
+    { "img": "historia/atypax.jpeg", "alt": "Atypax" },
+    { "img": "historia/san_valentin.jpeg", "alt": "San Valentin" },
+    { "img": "historia/malecon.jpeg", "alt": "Malecón" },
+    { "img": "historia/barranco.webp", "alt": "Barranco" },
+    { "img": "historia/badbunny.jpg", "alt": "Bad Bunny" },
+    { "img": "historia/cusco.jpeg", "alt": "Cusco" },
+    { "img": "historia/arequipa_catedral.webp", "alt": "Arequipa" },
+    { "img": "historia/arequipa.jpeg", "alt": "Arequipa" },
+    { "img": "historia/la_punta.jpeg", "alt": "La punta" },
+    { "img": "historia/fotos_pases.jpeg", "alt": "Fotos Pases" },
+    { "img": "historia/pedida.webp", "alt": "Pedida" },
+    { "img": "historia/anillo.webp", "alt": "Anillo" },
+    { "img": "historia/preboda_black.jpg", "alt": "Pre boda black" },
+    { "img": "historia/amor.webp", "alt": "Amor" },
+    { "img": "historia/amor_dos.webp", "alt": "Amor dos" },
+    { "img": "historia/foto_con_chui.webp", "alt": "Fotos con Chui" }
   ],
   "locations": {
     "church": "gifs/church.gif",
