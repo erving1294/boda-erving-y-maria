@@ -1,7 +1,7 @@
 <template>
   <section
     id="rsvp"
-    class="bg-texture-marmol py-20 bg-ivory-dark/30 select-none overflow-hidden"
+    class="bg-texture-verde py-20 bg-ivory-dark/30 select-none overflow-hidden"
   >
     <div class="max-w-4xl mx-auto px-6">
       <!-- Relative container for overlapping elements -->

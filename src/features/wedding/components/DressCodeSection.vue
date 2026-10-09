@@ -1,7 +1,7 @@
 <template>
   <section
     id="dresscode"
-    class="bg-texture-marmol py-20 bg-ivory-dark/30 select-none overflow-hidden"
+    class="bg-texture-flores py-20 bg-ivory-dark/30 select-none overflow-hidden"
   >
     <div class="max-w-5xl mx-auto px-6">
       <!-- Responsive Grid for side-by-side cards -->
@@ -61,11 +61,13 @@
 
               <!-- Warning text -->
               <p
-                class="font-badoni text-primary text-lg italic font-bold mb-6 max-w-xs"
+                class="font-badoni text-primary text-lg italic font-bold mb-2 max-w-xs"
               >
                 {{ texts.dressCode.avoidColorsTitle }}
               </p>
-
+              <p class="description !text-sm mb-4">
+                {{ texts.dressCode.descriptionAvoidColors }}
+              </p>
               <!-- Color Swatches -->
               <div class="flex justify-center items-center gap-4">
                 <motion.div

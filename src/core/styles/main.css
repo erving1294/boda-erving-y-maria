@@ -155,7 +155,7 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: #2c4945;
+  --color-primary: #4e635b;
   --color-secondary: #bb8884;
   --color-tertiary: #c6d7cf;
   --color-bg-light: #faf7f3;
@@ -258,11 +258,11 @@ p {
   background-image: url("../../assets/images/marmol_textura.jpg");
   background-repeat: repeat;
   background-position: center top;
-  background-size: 480px;
+  background-size: auto;
 }
 
 .bg-texture-flores {
-  background-image: url("../../assets/images/primer_fondo.png");
+  background-image: url("../../assets/images/fondo_flores.jpg");
   background-repeat: repeat;
   background-position: center top;
   background-size: auto;
@@ -272,9 +272,15 @@ p {
   background-image: url("../../assets/images/textura_blanca.jpg");
   background-repeat: repeat;
   background-position: center top;
-  background-size: 480px;
+  background-size: auto;
 }
 
+.bg-texture-verde {
+  background-image: url("../../assets/images/segundo_fondo.jpg");
+  background-repeat: repeat;
+  background-position: center top;
+  background-size: auto;
+}
 .title {
   @apply font-laparisienne text-[46px] text-primary mb-1 leading-10;
 }

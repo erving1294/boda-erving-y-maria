@@ -10,7 +10,7 @@
     "title1": "Ervíng",
     "title2": "María",
     "paragraph": "Que el amor sea nuestro vínculo y Dios, nuestra guía, mientras caminamos juntos de la mano hacia la vida que soñamos compartir.",
-    "buttonLabel": "D Invitación"
+    "buttonLabel": "Ver invitación"
   },
   "guests": {
     "title": "Una invitación especial",
@@ -83,12 +83,13 @@
   },
   "dressCode": {
     "dressCodeTitle": "Código de vestimenta",
-    "dressCodeSubtitle": "Elegante",
+    "dressCodeSubtitle": "Formal de noche",
     "menTitle": "Para ellos:",
-    "menDescription": "Terno, pantalón de vestir, camisa, zapatos de vestir, corbata, saco.",
+    "menDescription": "Sugerimos terno con camisa y zapatos de vestir para acompañarnos con elegancia en esta noche especial.",
     "womenTitle": "Para ellas:",
-    "womenDescription": "Vestido de noche, largo o midi, conjunto elegante de pantalón y blusa, zapatos de vestir o tacones.",
-    "avoidColorsTitle": "Tonos a evitar para las damas",
+    "womenDescription": "Vestido de noche, preferentemente largo, para celebrar juntos esta ocasión tan especial.",
+    "avoidColorsTitle": "Tonos reservados para nuestras damas",
+    "descriptionAvoidColors": "Agradecemos evitar estos cuatro tonos en los atuendos de las invitadas.",
     "avoidColors": {
       "white": "Blanco",
       "cream": "Crema",
