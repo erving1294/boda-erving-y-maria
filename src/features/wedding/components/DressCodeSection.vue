@@ -26,18 +26,19 @@
               class="w-full text-center flex flex-col items-center justify-center py-4 my-auto"
             >
               <!-- GIF Icon -->
-              <div class="flex">
-                <img :src="SuitGif" class="icon" />
-                <img :src="HauteCoutureGif" class="icon" />
-              </div>
+
               <div class="py-4">
                 <!-- Title -->
                 <h4 class="title mb-2">{{ texts.dressCode.dressCodeTitle }}</h4>
 
                 <!-- Subtitle -->
-                <h5 class="font-badoni text-secondary italic py-2 text-2xl">
+                <h5 class="font-badoni text-secondary italic py-2 text-3xl">
                   {{ texts.dressCode.dressCodeSubtitle }}
                 </h5>
+              </div>
+              <div class="flex">
+                <img :src="SuitGif" class="icon" />
+                <img :src="HauteCoutureGif" class="icon" />
               </div>
               <ul class="text-center mb-4">
                 <li>
@@ -122,10 +123,10 @@
               class="w-full text-center flex flex-col items-center justify-center py-4 my-auto"
             >
               <!-- Heart Icon SVG in gold-hover color -->
-              <img :src="DancingGif" class="icon" />
 
               <!-- Title -->
               <h4 class="title py-4">{{ texts.dressCode.adultsOnlyTitle }}</h4>
+              <img :src="DancingGif" class="icon" />
 
               <!-- Description text -->
               <p class="description">

@@ -22,7 +22,6 @@
             <div>
               <!-- Title -->
               <h4 class="title">{{ texts.locations.ceremony.title }}</h4>
-              <h5 class="subtitle">{{ texts.locations.ceremony.subtitle }}</h5>
 
               <img :src="ChurchGif" class="icon" />
 
@@ -72,9 +71,6 @@
             <div>
               <!-- Title -->
               <h4 class="title">{{ texts.locations.celebration.title }}</h4>
-              <h5 class="subtitle">
-                {{ texts.locations.celebration.subtitle }}
-              </h5>
 
               <img :src="WineGif" class="icon" />
 

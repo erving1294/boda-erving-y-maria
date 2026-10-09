@@ -17,7 +17,7 @@
           :viewport="{ once: false, amount: 0.55 }"
         >
           <PolaroidPhoto
-            :src="coverUrl"
+            :src="images.rsvp.cover"
             alt="Ervíng & María"
             class="w-full h-full transition-all duration-300 hover:scale-105"
           />
@@ -71,7 +71,7 @@
           :viewport="{ once: false, amount: 0.55 }"
         >
           <span
-            class="font-new-icon text-4xl max-sm:text-3xl text-slate-muted/20 tracking-wider font-light [text-shadow:1px_1px_1px_rgba(255,255,255,0.6),_-1px_-1px_1px_rgba(0,0,0,0.15)]"
+            class="font-laparisienne text-3xl max-sm:text-xl max-sm:text-3xl text-slate-muted/20 tracking-wider font-light [text-shadow:1px_1px_1px_rgba(255,255,255,0.6),_-1px_-1px_1px_rgba(0,0,0,0.15)]"
           >
             {{ texts.rsvp.medallionText }}
           </span>
@@ -97,10 +97,10 @@ import { motion } from "motion-v";
 import PaperCard from "../../../components/PaperCard.vue";
 import PolaroidPhoto from "../../../components/PolaroidPhoto.vue";
 import RsvpModal from "./RsvpModal.vue";
-import coverUrl from "../../../assets/images/portada-3.webp";
 import texts from "../data/texts.json";
+import { images } from "../data/images";
 
-defineProps({
+const props = defineProps({
   guestId: {
     type: String,
     default: "",

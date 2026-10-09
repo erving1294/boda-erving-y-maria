@@ -1,7 +1,6 @@
 <script setup>
 import { motion } from "motion-v";
 import { images } from "../data/images";
-import texts from "../data/texts.json";
 </script>
 
 <template>
@@ -60,13 +59,6 @@ import texts from "../data/texts.json";
             />
           </div>
         </div>
-
-        <!-- Invitation Details Content -->
-        <!-- <div
-          class="text-center absolute top-[53%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col justify-center items-center gap-3.5 w-[299px] h-min p-[10px]"
-        > -->
-        <!-- Animatable text wrapper -->
-        <!-- </div> -->
       </motion.article>
     </div>
   </section>

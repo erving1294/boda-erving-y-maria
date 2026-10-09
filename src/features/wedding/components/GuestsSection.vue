@@ -21,7 +21,7 @@
 
       <TexturedEnvelope
         :is-open="isOpen"
-        :liner-texture="patronFloral"
+        :liner-texture="images.guests.patronFloral"
         :seal-url="selloCera"
         @open="isOpen = true"
       >
@@ -48,7 +48,7 @@
             </article>
           </PaperCard>
           <PolaroidPhoto
-            :src="fotosPases"
+            :src="images.guests.passes"
             alt="Ervíng y María"
             class="guest-photo h-[100%] md:w-[45%] w-[50%]"
           >
@@ -69,19 +69,14 @@
 <script setup>
 import { computed, ref, onMounted, onUnmounted } from "vue";
 import { motion } from "motion-v";
-
+import { images } from "../data/images";
 import TexturedEnvelope from "../../../components/TexturedEnvelope.vue";
 import PolaroidPhoto from "../../../components/PolaroidPhoto.vue";
 import PaperCard from "../../../components/PaperCard.vue";
-import fotosPases from "../../../assets/images/historia/fotos_pases.jpeg";
+import texts from "../data/texts.json";
 
 // Specific assets for the 3D double-sided envelope
-import texturaKraft from "../../../assets/images/textura_sobre.png";
-import patronFloral from "../../../assets/images/sobre_dentro.png";
 import selloCera from "../../../assets/images/Sello.webp";
-
-import defaultSealUrl from "../../../assets/images/Sello.webp";
-import texts from "../data/texts.json";
 
 const isOpen = ref(true);
 const showInserts = ref(false);

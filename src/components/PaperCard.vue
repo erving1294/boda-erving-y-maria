@@ -97,10 +97,10 @@ const cardStyle = computed(() => {
   const bgImg = props.isWhite ? papelBodaBlancoUrl : papelBodaUrl;
   const opacity = props.isWhite ? 0.3 : 0.93;
   return {
-    backgroundImage: `linear-gradient(to bottom, rgba(250, 247, 243, ${opacity}), rgba(250, 247, 243, ${opacity})), url(${bgImg})`,
-    backgroundSize: props.isWhite ? "100% 100%" : "auto",
-    backgroundRepeat: props.isWhite ? "no-repeat" : "repeat",
-    backgroundPosition: props.isWhite ? "center" : "left top",
+    // backgroundImage: `linear-gradient(to bottom, rgba(250, 247, 243, ${opacity}), rgba(250, 247, 243, ${opacity})), url(${bgImg})`,
+    // backgroundSize: props.isWhite ? "100% 100%" : "auto",
+    // backgroundRepeat: props.isWhite ? "no-repeat" : "repeat",
+    // backgroundPosition: props.isWhite ? "center" : "left top",
   };
 });
 

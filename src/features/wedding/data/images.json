@@ -15,7 +15,7 @@
     "seal": "Sello.webp"
   },
   "guests": {
-    "passes": "fotos_pases.jpeg",
+    "passes": "pases.webp",
     "texturaKraft": "textura_sobre.png",
     "patronFloral": "sobre_dentro.png",
     "selloCera": "Sello.webp"
@@ -51,7 +51,7 @@
     "gift": "gifs/gift.gif"
   },
   "rsvp": {
-    "cover": "portada-3.webp"
+    "cover": "rsvp.webp"
   },
   "welcomeOverlay": {
     "paperTexture": "textura_carta.png",

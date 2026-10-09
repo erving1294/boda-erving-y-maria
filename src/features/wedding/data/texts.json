@@ -122,7 +122,7 @@
     "deadlineLabelPrefix": "Por favor confirmar asistencia antes del",
     "deadlineDate": "21 de Octubre de 2026",
     "buttonLabel": "Confirmar Aquí",
-    "medallionText": "E&M",
+    "medallionText": "M&E",
     "modal": {
       "thanksTitle": "¡Muchas gracias!",
       "attendingSuccess": "Tu asistencia ha sido confirmada. Estamos muy felices de que nos acompañes en este día tan especial. ¡Nos vemos pronto!",
@@ -147,5 +147,35 @@
       "submitButtonLabel": "Confirmar Asistencia",
       "errorMessage": "Hubo un problema de conexión al enviar tus datos. Por favor, intenta de nuevo."
     }
+  },
+  "timeline": {
+    "title": "Itinerario",
+    "subtitle": "Programa de nuestra boda",
+    "events": [
+      {
+        "time": "16:00 P.M.",
+        "title": "Ceremonia religiosa",
+        "description": "El Sí, Acepto",
+        "icon": "church"
+      },
+      {
+        "time": "18:00 P.M.",
+        "title": "Recepción",
+        "description": "Casa Los Rosales, Pachacamac",
+        "icon": "toast"
+      },
+      {
+        "time": "19:30 P.M.",
+        "title": "Cena",
+        "description": "Banquete para nuestros invitados",
+        "icon": "dinner"
+      },
+      {
+        "time": "20:30 P.M.",
+        "title": "Fiesta y celebración",
+        "description": "¡A celebrar hasta el final!",
+        "icon": "party"
+      }
+    ]
   }
 }

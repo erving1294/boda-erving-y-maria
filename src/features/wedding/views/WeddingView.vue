@@ -15,8 +15,10 @@
       <!-- 4. Cuenta Regresiva -->
       <CountdownSection />
       <!-- 5. Ubicaciones -->
-      <!-- 8. Carrusel de imagenes -->
       <LocationsSection />
+      <!-- Timeline / Itinerario -->
+      <TimelineSection />
+      <!-- 8. Carrusel de imagenes -->
       <HistorySection />
 
       <!-- 6. Regalos -->
@@ -70,6 +72,7 @@ import HeroSection from "../components/HeroSection.vue";
 import CountdownSection from "../components/CountdownSection.vue";
 import GuestsSection from "../components/GuestsSection.vue";
 import LocationsSection from "../components/LocationsSection.vue";
+import TimelineSection from "../components/TimelineSection.vue";
 import HistorySection from "../components/HistorySection.vue";
 import GiftsSection from "../components/GiftsSection.vue";
 import DressCodeSection from "../components/DressCodeSection.vue";
