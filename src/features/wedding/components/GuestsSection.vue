@@ -2,7 +2,7 @@
   <section
     ref="sectionRef"
     id="guests"
-    class="guests-section bg-texture-white overflow-hidden"
+    class="guests-section bg-fondo-blanco overflow-hidden"
   >
     <div class="guests-section__overlay"></div>
     <div class="relative z-10 mx-auto max-w-3xl px-4 py-16 sm:px-6">
@@ -127,7 +127,6 @@ onUnmounted(() => {
 <style scoped>
 .guests-section {
   position: relative;
-  background-color: #efede7;
 }
 .guests-section__overlay {
   position: absolute;
@@ -147,7 +146,7 @@ onUnmounted(() => {
   will-change: transform;
 }
 .guest-pass-card {
-  left: 6%;
+  left: 8%;
   z-index: 2;
   transform: translate(0%, 145px) rotate(0);
   /* Transition on close (immediate slide back) */

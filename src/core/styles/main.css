@@ -4,33 +4,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Cookie&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
 
-@font-face {
-  font-family: "new-icon-script";
-  src: url("../../assets/fonts/new-icon/new-icon-script_fontlot26ec.otf")
-    format("opentype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "new-icon-serif";
-  src: url("../../assets/fonts/new-icon/new-icon-serif_fontlotec05.otf")
-    format("opentype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "new-icon-serif-condensed";
-  src: url("../../assets/fonts/new-icon/new-icon-serif-condensed_fontlotbb33.otf")
-    format("opentype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
 /* Badoni / Bodoni Moda */
 @font-face {
   font-family: "badoni";
@@ -212,7 +185,9 @@ p {
 .swiper-pagination-bullet-active {
   background: #bfa880 !important;
 }
-
+.bg-green {
+  background-color: #c4cead !important;
+}
 .swiper-button-next,
 .swiper-button-prev {
   color: #bfa880 !important;
@@ -253,33 +228,38 @@ p {
     inset 0 0 40px rgba(191, 168, 128, 0.04);
 }
 
-/* Background Texture Utilities */
-.bg-texture-marmol {
-  background-image: url("../../assets/images/marmol_textura.jpg");
-  background-repeat: repeat;
-  background-position: center top;
-  background-size: auto;
+.bg-fondo-marfil {
+  background-image: url("../../assets/images/fondos/papel_marfil_texturizado.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
 }
-
-.bg-texture-flores {
-  background-image: url("../../assets/images/fondo_flores.jpg");
-  background-repeat: repeat;
-  background-position: center top;
-  background-size: auto;
+.bg-fondo-blanco {
+  background-color: #fff9f1;
+  /* background-image: url("../../assets/images/textura_blanca.jpg"); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
 }
-
-.bg-texture-white {
-  background-image: url("../../assets/images/textura_blanca.jpg");
-  background-repeat: repeat;
-  background-position: center top;
-  background-size: auto;
+.bg-fondo-verde {
+  background-color: #dcddcd;
+  /* background-image: url("../../assets/images/fondos/fondo_04.png"); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
 }
-
-.bg-texture-verde {
-  background-image: url("../../assets/images/segundo_fondo.jpg");
-  background-repeat: repeat;
-  background-position: center top;
-  background-size: auto;
+.bg-fondo-flor {
+  background-image: url("../../assets/images/fondos/fondo_03.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+}
+.bg-fondo-verde-bold {
+  background-color: #c1c2b5;
+  /* background-image: url("../../assets/images/fondos/fondo_04.png"); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
 }
 .title {
   @apply font-laparisienne text-[46px] text-primary mb-1 leading-10;

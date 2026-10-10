@@ -1,7 +1,7 @@
 <template>
   <section
     ref="sectionRef"
-    class="bg-texture-white flex flex-col flex-none justify-center items-center gap-[10px] w-full h-min pt-10 pb-[60px] relative overflow-hidden"
+    class="bg-fondo-blanco flex flex-col flex-none justify-center items-center gap-[10px] w-full h-min pt-10 pb-[60px] relative overflow-hidden"
   >
     <!-- Swiper Coverflow Slider -->
     <motion.div

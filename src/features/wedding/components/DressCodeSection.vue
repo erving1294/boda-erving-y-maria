@@ -1,7 +1,7 @@
 <template>
   <section
     id="dresscode"
-    class="bg-texture-flores py-20 bg-ivory-dark/30 select-none overflow-hidden"
+    class="bg-fondo-blanco py-20 select-none overflow-hidden"
   >
     <div class="max-w-5xl mx-auto px-6">
       <!-- Responsive Grid for side-by-side cards -->

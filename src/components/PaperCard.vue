@@ -122,7 +122,7 @@ const foliageSvgClasses = computed(() => {
 <style scoped>
 .physical-card {
   position: relative;
-  background-color: #faf7f3;
+  background-color: white;
 }
 .physical-card.has-shadow {
   box-shadow:

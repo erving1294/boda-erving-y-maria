@@ -7,12 +7,7 @@ import { images } from "../data/images";
   <section id="detailSection" class="w-full h-[728px] relative overflow-hidden">
     <!-- Marble Texture Background Layer -->
     <div
-      class="bg-texture-flores absolute inset-0 rounded-[inherit] border-0"
-    ></div>
-
-    <!-- Multiply Overlay Layer -->
-    <div
-      class="absolute inset-0 mix-blend-multiply bg-[#faf5eb]/40 flex-none"
+      class="bg-fondo-blanco absolute inset-0 rounded-[inherit] border-0"
     ></div>
 
     <!-- Outer Card Wrapper -->

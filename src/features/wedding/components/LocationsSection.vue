@@ -1,7 +1,7 @@
 <template>
   <section
     id="details"
-    class="bg-texture-verde py-20 select-none overflow-hidden"
+    class="bg-fondo-blanco py-20 select-none overflow-hidden"
   >
     <div class="max-w-5xl mx-auto px-6">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">

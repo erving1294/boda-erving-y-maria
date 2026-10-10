@@ -1,8 +1,5 @@
 <template>
-  <section
-    id="gifts"
-    class="bg-texture-verde py-24 select-none overflow-hidden"
-  >
+  <section id="gifts" class="bg-fondo-verde py-24 select-none overflow-hidden">
     <div class="max-w-4xl mx-auto px-6">
       <!-- Arched Card Container with paper texture for volume -->
       <motion.div

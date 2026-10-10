@@ -1,7 +1,7 @@
 <template>
   <section
     id="countdown"
-    class="bg-texture-white py-16 max-sm:py-[84px] bg-white text-center select-none flex flex-wrap max-lg:flex-col items-center lg:pr-[100px] lg:pl-[100px] overflow-hidden rounded-[inherit] [corner-shape:inherit] inset-0 border-0"
+    class="bg-fondo-verde py-16 max-sm:py-[84px] bg-white text-center select-none flex flex-wrap max-lg:flex-col items-center lg:pr-[100px] lg:pl-[100px] overflow-hidden rounded-[inherit] [corner-shape:inherit] inset-0 border-0"
   >
     <!-- Imagenes -->
     <motion.div
@@ -97,7 +97,7 @@
             texts.countdown.description
           }}</span>
           <span
-            class="block max-sm:text-md mt-4 text-secondary font-badoni text-xl"
+            class="block max-sm:text-md mt-4 font-bold font-badoni text-xl"
             >{{
               isFinished
                 ? texts.countdown.finishedLabel
