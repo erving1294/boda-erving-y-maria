@@ -43,7 +43,7 @@
       />
       <!-- 13. Footer -->
       <footer
-        class="bg-primary font-laparisienne py-16 text-center select-none border-t border-gold/10"
+        class="bg-[#4b6865] font-laparisienne py-16 text-center select-none border-t border-gold/10"
       >
         <div class="max-w-md mx-auto px-6">
           <h2 class="title !font-laparisienne !text-white">

@@ -235,15 +235,15 @@ p {
   background-position: top center;
 }
 .bg-fondo-blanco {
-  background-color: #fff9f1;
-  /* background-image: url("../../assets/images/textura_blanca.jpg"); */
+  /* background-color: #fff9f1; */
+  background-image: url("../../assets/images/fondos/fondo_2.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
 }
 .bg-fondo-verde {
-  background-color: #dcddcd;
-  /* background-image: url("../../assets/images/fondos/fondo_04.png"); */
+  /* background-color: #dcddcd; */
+  background-image: url("../../assets/images/fondos/fondo_04.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
@@ -255,7 +255,7 @@ p {
   background-position: top center;
 }
 .bg-fondo-verde-bold {
-  background-color: #c1c2b5;
+  background-color: #dcddcd;
   /* background-image: url("../../assets/images/fondos/fondo_04.png"); */
   background-repeat: no-repeat;
   background-size: cover;

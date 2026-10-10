@@ -97,7 +97,7 @@
             texts.countdown.description
           }}</span>
           <span
-            class="block max-sm:text-md mt-4 font-bold font-badoni text-xl"
+            class="block max-sm:text-md mt-4 font-bold text-primary font-badoni text-xl"
             >{{
               isFinished
                 ? texts.countdown.finishedLabel

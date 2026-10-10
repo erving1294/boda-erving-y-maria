@@ -1,7 +1,7 @@
 <template>
   <section
     id="timeline"
-    class="bg-fondo-verde-bold py-20 select-none overflow-hidden"
+    class="bg-fondo-verde py-20 select-none overflow-hidden"
   >
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
       <motion.div
