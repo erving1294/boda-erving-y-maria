@@ -2,7 +2,7 @@
   <section
     ref="sectionRef"
     id="guests"
-    class="guests-section bg-fondo-blanco overflow-hidden"
+    class="guests-section bg-fondo-blanco-texture overflow-hidden"
   >
     <div class="guests-section__overlay"></div>
     <div class="relative z-10 mx-auto max-w-3xl px-4 py-16 sm:px-6">

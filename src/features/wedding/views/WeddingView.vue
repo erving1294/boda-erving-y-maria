@@ -94,6 +94,16 @@ const onEnter = () => {
 };
 
 onMounted(() => {
+  // Preload hero fonts early in background while overlay is active
+  if (typeof document !== "undefined" && document.fonts) {
+    try {
+      document.fonts.load('60px "laparisienne"');
+      document.fonts.load('italic 24px "badoni"');
+    } catch (e) {
+      // Ignore background preload errors
+    }
+  }
+
   // Force scroll to top (0, 0) on page load/refresh
   if (typeof window !== "undefined") {
     if (history.scrollRestoration) {

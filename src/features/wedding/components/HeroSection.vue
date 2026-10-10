@@ -8,19 +8,22 @@
     <div class="px-4 max-w-3xl z-20 flex flex-col items-center">
       <!-- Names with Green Ampersand Circle -->
       <h1
-        class="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 font-laparisienne text-6xl md:text-8xl text-white mb-8 drop-shadow-md select-text normal-case"
+        class="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 font-laparisienne text-6xl md:text-8xl text-white mb-8 [text-shadow:_0_2px_10px_rgba(0,0,0,0.45)] select-text normal-case"
       >
         <!-- Ervíng -->
-        <span class="inline-flex">
+        <span
+          class="inline-flex transition-opacity duration-500"
+          :class="showTitle1 ? 'opacity-100 visible' : 'opacity-0 invisible'"
+        >
           <span
             v-for="(char, index) in title1Letters"
             :key="'t1-' + index"
-            class="inline-block transition-all duration-[1000ms] cubic-bezier(0.16, 1, 0.3, 1)"
-            :style="{ transitionDelay: `${index * 100}ms` }"
+            class="inline-block transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] [backface-visibility:hidden] [-webkit-backface-visibility:hidden] [transform:translateZ(0)]"
+            :style="{ transitionDelay: `${index * 80}ms` }"
             :class="
               showTitle1
-                ? 'opacity-100 translate-y-0 scale-100'
-                : 'opacity-0 translate-y-[15px] scale-75'
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-3'
             "
           >
             {{ char }}
@@ -29,27 +32,30 @@
 
         <!-- Ampersand -->
         <span
-          class="inline-flex justify-center items-center rounded-full text-white text-3xl md:text-4xl font-laparisienne font-light select-none my-2 md:my-0 normal-case transition-all duration-500 ease-out"
+          class="inline-flex justify-center items-center rounded-full text-white text-3xl md:text-4xl font-laparisienne font-light select-none my-2 md:my-0 normal-case transition-[opacity,transform] duration-500 ease-out [backface-visibility:hidden] [-webkit-backface-visibility:hidden] [transform:translateZ(0)]"
           :class="
             showAmpersand
-              ? 'opacity-100 scale-100'
-              : 'opacity-0 scale-50 pointer-events-none'
+              ? 'opacity-100 scale-100 visible'
+              : 'opacity-0 scale-50 invisible pointer-events-none'
           "
         >
           &
         </span>
 
         <!-- María -->
-        <span class="inline-flex">
+        <span
+          class="inline-flex transition-opacity duration-500"
+          :class="showTitle2 ? 'opacity-100 visible' : 'opacity-0 invisible'"
+        >
           <span
             v-for="(char, index) in title2Letters"
             :key="'t2-' + index"
-            class="inline-block transition-all duration-[1000ms] cubic-bezier(0.16, 1, 0.3, 1)"
-            :style="{ transitionDelay: `${index * 100}ms` }"
+            class="inline-block transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] [backface-visibility:hidden] [-webkit-backface-visibility:hidden] [transform:translateZ(0)]"
+            :style="{ transitionDelay: `${index * 80}ms` }"
             :class="
               showTitle2
-                ? 'opacity-100 translate-y-0 scale-100'
-                : 'opacity-0 translate-y-[15px] scale-75'
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-3'
             "
           >
             {{ char }}
@@ -62,7 +68,8 @@
         class="max-w-xl mx-auto !text-white text-sm md:text-base flex flex-col items-center"
       >
         <p
-          class="font-badoni text-white text-xl md:text-2xl font-light tracking-wide leading-relaxed text-center flex flex-wrap justify-center min-h-[2rem] sm:min-h-[2rem] italic"
+          class="font-badoni text-white text-xl md:text-2xl font-light tracking-wide leading-relaxed text-center flex flex-wrap justify-center min-h-[2rem] sm:min-h-[2rem] italic transition-opacity duration-700"
+          :class="showParagraph ? 'opacity-100 visible' : 'opacity-0 invisible'"
         >
           <template v-for="(word, wIndex) in words" :key="'w-' + wIndex">
             <!-- Word Wrapper to prevent line breaks inside words -->
@@ -70,14 +77,14 @@
               <span
                 v-for="(char, cIndex) in word.letters"
                 :key="'c-' + cIndex"
-                class="inline-block transition-all duration-[1000ms] cubic-bezier(0.16, 1, 0.3, 1)"
+                class="inline-block transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] [backface-visibility:hidden] [-webkit-backface-visibility:hidden] [transform:translateZ(0)]"
                 :style="{
-                  transitionDelay: `${(word.startIndex + cIndex) * 50}ms`,
+                  transitionDelay: `${(word.startIndex + cIndex) * 35}ms`,
                 }"
                 :class="
                   showParagraph
-                    ? 'opacity-100 translate-y-0 scale-100'
-                    : 'opacity-0 translate-y-[12px] scale-90'
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-2'
                 "
               >
                 {{ char }}
@@ -93,11 +100,11 @@
         <!-- Scroll Down Arrow Button -->
         <button
           @click="scrollToNextSection"
-          class="mt-8 flex flex-col items-center gap-2 cursor-pointer focus:outline-none z-30 group transition-all duration-[1000ms] cubic-bezier(0.16, 1, 0.3, 1)"
+          class="mt-8 flex flex-col items-center gap-2 cursor-pointer focus:outline-none z-30 group transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] [backface-visibility:hidden] [-webkit-backface-visibility:hidden]"
           :class="
             showScrollButton
-              ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto'
-              : 'opacity-0 translate-y-[15px] scale-90 pointer-events-none'
+              ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto visible'
+              : 'opacity-0 translate-y-3 scale-95 pointer-events-none invisible'
           "
         >
           <span
@@ -183,6 +190,25 @@ const startAnimation = async () => {
   showParagraph.value = false;
   showScrollButton.value = false;
 
+  // Step 0: Ensure critical fonts are loaded so no font swap or layout shift occurs during animation
+  if (typeof document !== "undefined" && document.fonts) {
+    try {
+      await Promise.race([
+        Promise.all([
+          document.fonts.load('60px "laparisienne"'),
+          document.fonts.load('italic 24px "badoni"'),
+          document.fonts.ready,
+        ]),
+        new Promise((resolve) => setTimeout(resolve, 1500)),
+      ]);
+    } catch (e) {
+      console.warn("HeroSection fonts ready check:", e);
+    }
+  }
+
+  // Small frame delay so browser paints text styles cleanly
+  await new Promise((resolve) => setTimeout(resolve, 80));
+
   // Step 1: Block scroll during animation if blockScroll is enabled
   if (props.blockScroll && typeof window !== "undefined") {
     document.body.style.overflow = "hidden";
@@ -195,17 +221,17 @@ const startAnimation = async () => {
   await new Promise((resolve) => setTimeout(resolve, 700));
   showAmpersand.value = true;
 
-  // Step 4: Start "María" staggered letter transitions after 1100ms total (400ms after ampersand)
+  // Step 4: Start "María" staggered letter transitions after 400ms (1100ms total)
   await new Promise((resolve) => setTimeout(resolve, 400));
   showTitle2.value = true;
 
-  // Step 5: Stagger before paragraph fade-in wave (wait 800ms after María starts)
-  await new Promise((resolve) => setTimeout(resolve, 800));
+  // Step 5: Wait for "María" to finish animating before paragraph starts (1100ms)
+  await new Promise((resolve) => setTimeout(resolve, 1100));
   showParagraph.value = true;
 
-  // Step 6: Wait for paragraph staggered animation to finish (123 letters * 50ms + 1000ms animation duration + buffer)
-  // 123 * 50 = 6150ms. Total animation complete at 6150 + 1000 = 7150ms. Let's wait 7500ms.
-  await new Promise((resolve) => setTimeout(resolve, 7500));
+  // Step 6: Wait for paragraph staggered animation to finish
+  // 123 letters * 35ms = 4305ms + 700ms transition duration = 5005ms. Wait ~5200ms.
+  await new Promise((resolve) => setTimeout(resolve, 5200));
 
   // Step 7: Reveal scroll arrow button
   showScrollButton.value = true;

@@ -9,6 +9,24 @@
   font-family: "badoni";
   src: url("../../assets/fonts/badoni/BodoniModa_9pt-Regular.ttf")
     format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "badoni";
+  src: url("../../assets/fonts/badoni/BodoniModa_9pt-Italic.ttf")
+    format("truetype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "badoni";
+  src: url("../../assets/fonts/badoni/BodoniModa_9pt-Regular.ttf")
+    format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -128,8 +146,8 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: #1e3230;
-  --color-secondary: #bb8884;
+  --color-primary: #4d5047;
+  --color-secondary: #743d43;
   --color-tertiary: #c6d7cf;
   --color-bg-light: #faf7f3;
   --color-bg-dark: #efede7;
@@ -237,6 +255,13 @@ p {
 .bg-fondo-blanco {
   /* background-color: #fff9f1; */
   background-image: url("../../assets/images/fondos/fondo_2.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+}
+.bg-fondo-blanco-texture {
+  /* background-color: #fff9f1; */
+  background-image: url("../../assets/images/fondos/fondo_2_new.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
