@@ -342,7 +342,7 @@
                   <!-- Description / Address / Details -->
                   <p
                     v-if="event.description"
-                    class="font-badoni italic text-xs sm:text-sm text-slate-muted mt-1 leading-snug"
+                    class="font-badoni italic text-base text-slate-muted mt-1 leading-snug"
                   >
                     {{ event.description }}
                   </p>
