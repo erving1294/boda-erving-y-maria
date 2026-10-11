@@ -2,7 +2,7 @@
   <Transition name="fade">
     <div
       v-if="show"
-      class="fixed inset-0 bg-primary/45 backdrop-blur-sm z-[999] flex justify-center items-center p-4 overflow-y-auto"
+      class="fixed inset-0 bg-[rgba(0,0,0,0.8)] z-[999] flex justify-center items-center p-4 overflow-y-auto"
     >
       <!-- Modal Card using paper-card class for graphic consistency -->
       <div

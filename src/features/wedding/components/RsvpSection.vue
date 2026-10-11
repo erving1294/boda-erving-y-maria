@@ -6,11 +6,11 @@
     <div class="max-w-4xl mx-auto px-6">
       <!-- Relative container for overlapping elements -->
       <div
-        class="max-w-[400px] mx-auto relative px-4 h-[680px] max-sm:h-[600px]"
+        class="max-w-[490px] mx-auto relative px-4 h-[740px] max-sm:h-[728px] max-md:px-0 max-md:max-w-[100%]"
       >
         <!-- Polaroid Photo (Bottom-Left) -->
         <motion.div
-          class="absolute -left-[13px] bottom-0 w-[180px] h-[235px] z-0 max-sm:-left-0 max-sm:-bottom-[10px] max-sm:w-[140px] max-sm:h-[185px]"
+          class="absolute -left-[36px] bottom-[29px] w-[180px] h-[235px] z-0 max-sm:-left-0 max-sm:-bottom-[10px] max-sm:w-[140px] max-sm:h-[185px]"
           :initial="{ x: -50, rotate: 0 }"
           :while-in-view="{ x: 0, rotate: -6 }"
           :transition="{ duration: 1.0, ease: 'easeOut' }"
@@ -36,20 +36,21 @@
             show-seal
             is-white
             containerClass="min-h-[455px]"
+            contentClass="max-md:!px-4"
           >
             <div
               class="w-full text-center flex flex-col items-center justify-center"
             >
               <h3 class="title !mb-6 block" v-html="texts.rsvp.title"></h3>
 
-              <p class="description mb-6 max-w-[240px]">
+              <p class="description mb-6 w-full">
                 {{ texts.rsvp.description }}
-              </p>
-
-              <p class="description mb-8 max-w-[240px]">
-                {{ texts.rsvp.deadlineLabelPrefix }}
                 <strong>{{ texts.rsvp.deadlineDate }}</strong
                 >.
+              </p>
+
+              <p class="description mb-8 w-full">
+                {{ texts.rsvp.deadlineLabelPrefix }}
               </p>
 
               <button
@@ -64,7 +65,7 @@
 
         <!-- Clay Medallion (Bottom-Right) -->
         <motion.div
-          class="absolute -right-8 bottom-[148px] w-[95px] h-[130px] z-20 max-sm:-right-4 max-sm:bottom-[100px] max-sm:w-[75px] max-sm:h-[105px] rounded-[50%/40%] bg-[#efede7]/95 border border-[#bfa880]/15 flex justify-center items-center select-none [box-shadow:0_4px_10px_rgba(0,0,0,0.15),_inset_0_2px_4px_rgba(255,255,255,0.4),_inset_0_-2px_4px_rgba(0,0,0,0.1)]"
+          class="absolute -right-8 bottom-[148px] w-[95px] h-[130px] z-20 max-sm:-right-4 max-sm:bottom-[64px] max-sm:w-[75px] max-sm:h-[105px] rounded-[50%/40%] bg-[#efede7]/95 border border-[#bfa880]/15 flex justify-center items-center select-none [box-shadow:0_4px_10px_rgba(0,0,0,0.15),_inset_0_2px_4px_rgba(255,255,255,0.4),_inset_0_-2px_4px_rgba(0,0,0,0.1)]"
           :initial="{ x: 50, rotate: 0 }"
           :while-in-view="{ x: 0, rotate: 8 }"
           :transition="{ duration: 1.0, ease: 'easeOut' }"

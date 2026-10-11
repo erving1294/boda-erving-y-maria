@@ -2,7 +2,7 @@
   <section
     ref="sectionRef"
     id="guests"
-    class="guests-section bg-fondo-blanco-texture overflow-hidden"
+    class="guests-section bg-fondo-marmol overflow-hidden"
   >
     <div class="guests-section__overlay"></div>
     <div class="relative z-10 mx-auto max-w-3xl px-4 py-16 sm:px-6">
@@ -34,17 +34,24 @@
             is-white
             :hasFoliage="false"
             class="guest-pass-card h-[100%] md:w-[45%] w-[55%]"
-            content-class="!p-4 sm:!p-6"
+            content-class="!p-2 sm:!p-6"
           >
             <article class="flex h-full justify-center items-center flex-col">
-              <p class="font-badoni italic text-slate-muted mb-1">
+              <p
+                class="font-badoni italic text-slate-muted mb-1 max-sm:text-[13px]"
+              >
                 {{ texts.guests.reservedFor }}
               </p>
               <h3
-                class="font-badoni text-primary italic text-[20px] leading-[24px] sm:text-[28px] md:leading-[34px]"
+                class="font-badoni text-primary italic text-[16px] leading-[20px] sm:text-[24px] md:leading-[28px]"
               >
                 {{ guestName }}
               </h3>
+              <p
+                class="font-badoni text-secondary font-bold italic mb-1 mt-4 max-sm:text-sm"
+              >
+                N° de Pases: {{ passes }}
+              </p>
             </article>
           </PaperCard>
           <PolaroidPhoto
@@ -87,10 +94,6 @@ const props = defineProps({
   guestName: { type: String, default: "María Galarza" },
   passes: { type: Number, default: 2 },
 });
-
-const passLabel = computed(() =>
-  props.passes === 1 ? texts.guests.singlePass : texts.guests.multiplePasses,
-);
 
 onMounted(() => {
   if (typeof window !== "undefined" && "IntersectionObserver" in window) {
@@ -146,7 +149,7 @@ onUnmounted(() => {
   will-change: transform;
 }
 .guest-pass-card {
-  left: 8%;
+  left: 11%;
   z-index: 2;
   transform: translate(0%, 145px) rotate(0);
   /* Transition on close (immediate slide back) */
@@ -171,7 +174,7 @@ onUnmounted(() => {
 }
 @media (max-width: 768px) {
   .guest-pass-card {
-    left: 6%;
+    left: 8%;
     z-index: 2;
     transform: translate(0%, 95px) rotate(0);
     /* Transition on close (immediate slide back) */

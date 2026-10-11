@@ -37,8 +37,8 @@
                 </h5>
               </div>
               <div class="flex">
-                <img :src="SuitGif" class="icon" />
-                <img :src="HauteCoutureGif" class="icon" />
+                <img :src="images.dressCode.suit" class="icon" />
+                <img :src="images.dressCode.hauteCouture" class="icon" />
               </div>
               <ul class="text-center mb-4">
                 <li>
@@ -58,11 +58,8 @@
                   </p>
                 </li>
               </ul>
-
               <!-- Warning text -->
-              <p
-                class="font-badoni text-primary text-lg italic font-bold mb-2 max-w-xs"
-              >
+              <p class="font-badoni text-primary text-lg italic font-bold mb-0">
                 {{ texts.dressCode.avoidColorsTitle }}
               </p>
               <p class="description !text-sm mb-4">
@@ -128,7 +125,7 @@
 
               <!-- Title -->
               <h4 class="title py-4">{{ texts.dressCode.adultsOnlyTitle }}</h4>
-              <img :src="DancingGif" class="icon" />
+              <img :src="images.dressCode.dancing" class="icon" />
 
               <!-- Description text -->
               <p class="description">
@@ -145,8 +142,6 @@
 <script setup>
 import { motion } from "motion-v";
 import PaperCard from "../../../components/PaperCard.vue";
-import SuitGif from "../../../assets/images/gifs/suit.gif";
-import DancingGif from "../../../assets/images/gifs/dancing.gif";
-import HauteCoutureGif from "../../../assets/images/gifs/haute-couture.gif";
+import { images } from "../data/images";
 import texts from "../data/texts.json";
 </script>

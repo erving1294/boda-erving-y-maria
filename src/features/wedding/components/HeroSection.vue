@@ -32,7 +32,7 @@
 
         <!-- Ampersand -->
         <span
-          class="inline-flex justify-center items-center rounded-full text-white text-3xl md:text-4xl font-laparisienne font-light select-none my-2 md:my-0 normal-case transition-[opacity,transform] duration-500 ease-out [backface-visibility:hidden] [-webkit-backface-visibility:hidden] [transform:translateZ(0)]"
+          class="inline-flex justify-center items-center rounded-full text-white text-3xl md:text-4xl font-laparisienne font-light select-none my-2 md:my-0 normal-case transition-[opacity,transform] duration-500 ease-out [backface-visibility:hidden] [-webkit-backface-visibility:hidden] [transform:translateZ(0)] relative top-[14px]"
           :class="
             showAmpersand
               ? 'opacity-100 scale-100 visible'

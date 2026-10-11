@@ -28,7 +28,6 @@
     { "img": "historia/badbunny.jpg", "alt": "Bad Bunny" },
     { "img": "historia/cusco.jpeg", "alt": "Cusco" },
     { "img": "historia/arequipa.jpeg", "alt": "Arequipa" },
-    { "img": "historia/la_punta.jpeg", "alt": "La punta" },
     { "img": "historia/fotos_pases.jpeg", "alt": "Fotos Pases" },
     { "img": "historia/pedida.webp", "alt": "Pedida" },
     { "img": "historia/anillo.webp", "alt": "Anillo" },
@@ -45,7 +44,7 @@
   "dressCode": {
     "suit": "gifs/suit.gif",
     "dancing": "gifs/dancing.gif",
-    "hauteCouture": "gifs/haute-couture.gif"
+    "hauteCouture": "gifs/dress.gif"
   },
   "gifts": {
     "gift": "gifs/gift.gif"

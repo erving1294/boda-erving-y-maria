@@ -15,7 +15,7 @@
   "guests": {
     "title": "Una invitación especial",
     "description": "Esta invitación es personal e intransferible. La cantidad de personas indicada corresponde a los lugares reservados especialmente para ustedes. Les agradecemos respetar el número señalado al confirmar su asistencia.",
-    "reservedFor": "Reservado para",
+    "reservedFor": "Reservado para:",
     "openEnvelopeInstructions": "Toca el sello para abrir tu sobre",
     "singlePass": "Pase individual",
     "multiplePasses": "Pases disponibles"
@@ -58,7 +58,7 @@
       "subtitle": "Religiosa",
       "name": "Parroquia Cristo Sacerdote",
       "address": "Jose Domingo Choquehuanca 239, San Miguel",
-      "time": "16:00 pm",
+      "time": "3:30 PM",
       "buttonLabel": "Ver Ubicación"
     },
     "celebration": {
@@ -66,17 +66,17 @@
       "subtitle": "",
       "name": "Casa Los Rosales",
       "address": "Pachacamac, Lima",
-      "time": "18:00 pm",
+      "time": "6:30 PM",
       "buttonLabel": "Ver Ubicación"
     }
   },
   "gifts": {
-    "title": "Mesa de Regalos",
-    "description": "Nos hace muy felices compartir este inicio tan especial contigo. Tu compañía es nuestro mejor regalo. Si deseas tener un detalle con nosotros, hemos habilitado estas cuentas para que puedas hacernos llegar tu regalo en efectivo.",
-    "accountNumberLabel": "Número de Cuenta",
+    "title": "Mesa de regalos",
+    "description": "Tu compañía es nuestro mejor regalo. Si deseas tener un detalle con nosotros, hemos habilitado una cuenta para recibirlo. Agradecemos mucho tu consideración.",
+    "accountNumberLabel": "Número de Cuenta - BCP",
     "cciLabel": "Cuenta Interbancaria (CCI)",
     "ownerLabel": "Titular",
-    "ownerName": "Ervíng y María",
+    "ownerName": "Erving Eduardo Córdova Félix",
     "copyButton": "Copiar",
     "copiedButton": "Copiado",
     "toastCopySuccess": "copiado al portapapeles"
@@ -85,9 +85,9 @@
     "dressCodeTitle": "Código de vestimenta",
     "dressCodeSubtitle": "Formal de noche",
     "menTitle": "Para ellos:",
-    "menDescription": "Sugerimos terno con camisa y zapatos de vestir para acompañarnos con elegancia en esta noche especial.",
+    "menDescription": "Terno o saco con pantalón de vestir. Corbata opcional.",
     "womenTitle": "Para ellas:",
-    "womenDescription": "Vestido de noche, preferentemente largo, para celebrar juntos esta ocasión tan especial.",
+    "womenDescription": "Vestido de noche, preferentemente largo, o conjunto elegante de pantalón y blusa.",
     "avoidColorsTitle": "Tonos reservados para nuestras damas",
     "descriptionAvoidColors": "Agradecemos evitar estos cuatro tonos en los atuendos de las invitadas.",
     "avoidColors": {
@@ -100,8 +100,8 @@
     "adultsOnlyDescription": "Amamos a los más pequeños y son parte importante de nuestras vidas. Sin embargo, para esta ocasión tan especial hemos decidido que nuestra celebración será solo para adultos."
   },
   "history": {
-    "title": "Nuestros Momentos",
-    "description": "Nuestro amor comenzó un 21 de enero, sin imaginar todo lo que la vida nos tenía preparado. Hoy miramos atrás con el corazón agradecido, porque en cada paso encontramos razones para elegirnos. Junto a Dios, estamos listos para nuestro...",
+    "title": "Nuestros momentos",
+    "description": "Nuestro amor comenzó un 21 de enero del 2017, sin imaginar todo lo que la vida nos tenía preparado. Hoy miramos atrás con el corazón agradecido, porque en cada paso encontramos razones para elegirnos. Junto a Dios, estamos listos para nuestro...",
     "cursiveText": "Para siempre"
   },
   "contact": {
@@ -119,9 +119,9 @@
   },
   "rsvp": {
     "title": "Confirmación<br />de asistencia",
-    "description": "Estamos muy emocionados de poder celebrar con ustedes uno de los días más importantes de nuestras vidas.",
-    "deadlineLabelPrefix": "Por favor confirmar asistencia antes del",
-    "deadlineDate": "21 de Octubre de 2026",
+    "description": "Nos encantará compartir este día tan especial con ustedes. Para ayudarnos a organizar cada detalle de nuestra boda, les agradeceremos confirmar su asistencia ",
+    "deadlineLabelPrefix": "Si no recibimos su confirmación hasta esa fecha, entenderemos que no podrán acompañarnos y respetaremos su decisión. Agradecemos mucho su sinceridad y comprensión.",
+    "deadlineDate": "hasta el  21 de octubre de 2026",
     "buttonLabel": "Confirmar Aquí",
     "medallionText": "M&E",
     "modal": {
@@ -135,7 +135,7 @@
       "fullNamePlaceholder": "Escribe tu nombre y apellido",
       "phoneLabel": "Celular *",
       "phonePlaceholder": "Escribe tu número de celular",
-      "attendingQuestionLabel": "¿Podrás asistir al evento? *",
+      "attendingQuestionLabel": "¿Podrás asistir a nuestra boda? *",
       "attendingSelectDefault": "Selecciona una opción",
       "attendingSelectYes": "Sí asistiré",
       "attendingSelectNo": "Lo siento, no podré",
@@ -151,30 +151,30 @@
   },
   "timeline": {
     "title": "Itinerario",
-    "subtitle": "Programa de nuestra boda",
+    "subtitle": "Con mucho amor, compartimos contigo cada momento de nuestro día.",
     "events": [
       {
-        "time": "16:00 P.M.",
+        "time": "3:30 PM",
         "title": "Ceremonia religiosa",
-        "description": "El Sí, Acepto",
+        "description": "Nuestro \"sí, acepto\"",
         "icon": "church"
       },
       {
-        "time": "18:00 P.M.",
+        "time": "6:30 PM",
         "title": "Recepción",
         "description": "Casa Los Rosales, Pachacamac",
         "icon": "toast"
       },
       {
-        "time": "19:30 P.M.",
+        "time": "7:30 PM",
         "title": "Cena",
         "description": "Banquete para nuestros invitados",
         "icon": "dinner"
       },
       {
-        "time": "20:30 P.M.",
-        "title": "Fiesta y celebración",
-        "description": "¡A celebrar hasta el final!",
+        "time": "8:30 PM",
+        "title": "Celebración",
+        "description": "¡Qué comience la fiesta!",
         "icon": "party"
       }
     ]

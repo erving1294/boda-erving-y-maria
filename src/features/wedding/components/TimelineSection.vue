@@ -17,16 +17,16 @@
           show-seal
           has-foliage
           class="w-full"
-          containerClass="max-md:w-[96%]"
+          containerClass="max-md:w-[100%]"
           contentClass="!px-4 sm:!px-8 !py-10"
         >
           <div class="w-full flex flex-col items-center">
             <!-- Header -->
-            <div class="text-center mb-8 sm:mb-10 w-full">
+            <div class="text-center mb-4 w-full">
               <h4 class="title text-4xl sm:text-5xl mb-1">
                 {{ texts.timeline.title }}
               </h4>
-              <h5 class="subtitle text-2xl sm:text-3xl !mb-3">
+              <h5 class="description mt-4 !mb-1 px-[84px] max-md:px-0">
                 {{ texts.timeline.subtitle }}
               </h5>
             </div>

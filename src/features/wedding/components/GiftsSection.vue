@@ -119,8 +119,8 @@ import { motion } from "motion-v";
 import GiftGif from "../../../assets/images/gifs/gift.gif";
 import texts from "../data/texts.json";
 
-const cuenta = "193-98765432-0-12";
-const cci = "002-193-0098765432012-14";
+const cuenta = "19395437272082";
+const cci = "00219319543727208218";
 
 const copiedField = ref(null);
 const showToast = ref(false);
