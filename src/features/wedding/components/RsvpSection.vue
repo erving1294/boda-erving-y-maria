@@ -43,7 +43,7 @@
             >
               <h3 class="title !mb-6 block" v-html="texts.rsvp.title"></h3>
 
-              <p class="description mb-6 w-full">
+              <p class="description mb-4 w-full">
                 {{ texts.rsvp.description }}
                 <strong>{{ texts.rsvp.deadlineDate }}</strong
                 >.
