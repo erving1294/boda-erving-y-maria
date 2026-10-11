@@ -145,7 +145,7 @@
       "wishesLabel": "Déjanos tus felicitaciones y buenos deseos",
       "wishesPlaceholder": "Escribe tu mensaje aquí...",
       "sendingButtonLabel": "Enviando...",
-      "submitButtonLabel": "Confirmar asistencia",
+      "submitButtonLabel": "Confirmar",
       "errorMessage": "Hubo un problema de conexión al enviar tus datos. Por favor, intenta de nuevo."
     }
   },

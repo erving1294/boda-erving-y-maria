@@ -102,46 +102,17 @@
             <!-- Form Fields -->
             <form @submit.prevent="submitForm" class="space-y-4 text-left">
               <!-- 1. Nombre Completo -->
-              <div class="flex flex-col gap-[2px]">
-                <label class="text-xs font-badoni font-bold text-slate-muted">
-                  {{ texts.rsvp.modal.fullNameLabel }}
-                </label>
-                <input
-                  v-model="form.fullName"
-                  disabled
-                  type="text"
-                  required
-                  :disabled="isSending"
-                  :placeholder="texts.rsvp.modal.fullNamePlaceholder"
-                  class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-badoni text-slate-dark bg-white/70 transition-all duration-300 placeholder:text-slate-muted/40 text-sm disabled:bg-slate-100 disabled:cursor-not-allowed"
-                />
-              </div>
-
-              <!-- Celular -->
-              <div class="flex flex-col gap-[2px]">
-                <label class="text-xs font-badoni font-bold text-slate-muted">
-                  {{ texts.rsvp.modal.phoneLabel }}
-                </label>
-                <input
-                  v-model="form.phone"
-                  type="tel"
-                  required
-                  :disabled="isSending"
-                  :placeholder="texts.rsvp.modal.phonePlaceholder"
-                  class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-badoni text-slate-dark bg-white/70 transition-all duration-300 placeholder:text-slate-muted/40 text-sm disabled:bg-slate-100 disabled:cursor-not-allowed"
-                />
-              </div>
 
               <!-- 2. ¿Podrás asistir al evento? -->
               <div class="flex flex-col gap-[2px]">
-                <label class="text-xs font-badoni font-bold text-slate-muted">
+                <label class="form-label">
                   {{ texts.rsvp.modal.attendingQuestionLabel }}
                 </label>
                 <select
                   v-model="form.attending"
                   required
                   :disabled="isSending"
-                  class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-badoni text-slate-dark bg-white/70 transition-all duration-300 text-sm cursor-pointer disabled:bg-slate-100 disabled:cursor-not-allowed"
+                  class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-badoni text-slate-dark bg-white/70 transition-all duration-300 text-base italic cursor-pointer disabled:bg-slate-100 disabled:cursor-not-allowed"
                 >
                   <option value="" disabled selected>
                     {{ texts.rsvp.modal.attendingSelectDefault }}
@@ -160,14 +131,14 @@
                 v-if="form.attending === 'yes'"
                 class="flex flex-col gap-[2px]"
               >
-                <label class="text-xs font-badoni font-bold text-slate-muted">
+                <label class="form-label">
                   {{ texts.rsvp.modal.peopleCountLabel }}
                 </label>
                 <select
                   v-model.number="form.people"
                   required
                   :disabled="isSending"
-                  class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-badoni text-slate-dark bg-white/70 transition-all duration-300 text-sm cursor-pointer disabled:bg-slate-100 disabled:cursor-not-allowed"
+                  class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-badoni text-slate-dark bg-white/70 transition-all duration-300 italic cursor-pointer disabled:bg-slate-100 disabled:cursor-not-allowed"
                 >
                   <option v-for="n in passes || 2" :key="n" :value="n">
                     {{ n }}
@@ -179,10 +150,25 @@
                   </option>
                 </select>
               </div>
+              <!-- Celular -->
+              <div class="flex flex-col gap-[2px]">
+                <label class="form-label">
+                  {{ texts.rsvp.modal.phoneLabel }}
+                </label>
+                <input
+                  v-model="form.phone"
+                  type="tel"
+                  required
+                  maxlength="12"
+                  :disabled="isSending"
+                  :placeholder="texts.rsvp.modal.phonePlaceholder"
+                  class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-badoni text-slate-dark bg-white/70 transition-all duration-300 placeholder:text-slate-muted/40 text-base italic disabled:bg-slate-100 disabled:cursor-not-allowed"
+                />
+              </div>
 
               <!-- 4. Felicitaciones y buenos deseos -->
               <div class="flex flex-col gap-[2px]">
-                <label class="text-xs font-badoni font-bold text-slate-muted">
+                <label class="form-label">
                   {{ texts.rsvp.modal.wishesLabel }}
                 </label>
                 <textarea
@@ -190,7 +176,7 @@
                   rows="2"
                   :disabled="isSending"
                   :placeholder="texts.rsvp.modal.wishesPlaceholder"
-                  class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-badoni text-slate-dark bg-white/70 transition-all duration-300 placeholder:text-slate-muted/40 text-sm resize-none disabled:bg-slate-100 disabled:cursor-not-allowed"
+                  class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-badoni text-slate-dark bg-white/70 transition-all duration-300 placeholder:text-slate-muted/40 text-base italic resize-none disabled:bg-slate-100 disabled:cursor-not-allowed"
                 ></textarea>
               </div>
 
@@ -394,6 +380,9 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+.form-label {
+  @apply text-sm font-badoni italic font-bold text-slate-muted;
+}
 /* Backdrop transition */
 .fade-enter-active,
 .fade-leave-active {
