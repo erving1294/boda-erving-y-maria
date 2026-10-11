@@ -179,7 +179,7 @@
                 </label>
                 <textarea
                   v-model="form.wishes"
-                  rows="2"
+                  rows="3"
                   :disabled="isSending"
                   :placeholder="texts.rsvp.modal.wishesPlaceholder"
                   class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-badoni text-slate-dark bg-white/70 transition-all duration-300 placeholder:text-slate-muted/40 text-base italic resize-none disabled:bg-slate-100 disabled:cursor-not-allowed"

@@ -10,7 +10,7 @@
       >
         <!-- Polaroid Photo (Bottom-Left) -->
         <motion.div
-          class="absolute -left-[36px] bottom-[29px] w-[180px] h-[235px] z-0 max-sm:-left-0 max-sm:-bottom-[10px] max-sm:w-[140px] max-sm:h-[185px]"
+          class="absolute -left-[36px] bottom-[29px] w-[180px] h-[235px] z-0 max-sm:-left-[5px] max-sm:-bottom-[6px] max-sm:w-[140px] max-sm:h-[185px]"
           :initial="{ x: -50, rotate: 0 }"
           :while-in-view="{ x: 0, rotate: -6 }"
           :transition="{ duration: 1.0, ease: 'easeOut' }"
@@ -55,7 +55,7 @@
 
               <button
                 @click="showModal = true"
-                class="button cursor-pointer border-0"
+                class="button cursor-pointer border-0 max-sm:!max-w-[100%]"
               >
                 {{ texts.rsvp.buttonLabel }}
               </button>
@@ -65,7 +65,7 @@
 
         <!-- Clay Medallion (Bottom-Right) -->
         <motion.div
-          class="absolute -right-8 bottom-[148px] w-[95px] h-[130px] z-20 max-sm:-right-4 max-sm:bottom-[64px] max-sm:w-[75px] max-sm:h-[105px] rounded-[50%/40%] bg-[#efede7]/95 border border-[#bfa880]/15 flex justify-center items-center select-none [box-shadow:0_4px_10px_rgba(0,0,0,0.15),_inset_0_2px_4px_rgba(255,255,255,0.4),_inset_0_-2px_4px_rgba(0,0,0,0.1)]"
+          class="absolute -right-8 bottom-[148px] w-[95px] h-[130px] z-20 max-sm:-right-4 max-sm:bottom-[48px] max-sm:w-[75px] max-sm:h-[105px] rounded-[50%/40%] bg-[#efede7]/95 border border-[#bfa880]/15 flex justify-center items-center select-none [box-shadow:0_4px_10px_rgba(0,0,0,0.15),_inset_0_2px_4px_rgba(255,255,255,0.4),_inset_0_-2px_4px_rgba(0,0,0,0.1)]"
           :initial="{ x: 50, rotate: 0 }"
           :while-in-view="{ x: 0, rotate: 8 }"
           :transition="{ duration: 1.0, ease: 'easeOut' }"
