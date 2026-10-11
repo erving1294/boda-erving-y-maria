@@ -151,15 +151,21 @@
                 </select>
               </div>
               <!-- Celular -->
-              <div class="flex flex-col gap-[2px]">
+              <div
+                class="flex flex-col gap-[2px]"
+                v-if="form.attending === 'yes'"
+              >
                 <label class="form-label">
                   {{ texts.rsvp.modal.phoneLabel }}
                 </label>
                 <input
                   v-model="form.phone"
                   type="tel"
+                  inputmode="numeric"
+                  @input="handlePhoneInput"
                   required
                   maxlength="12"
+                  minlength="8"
                   :disabled="isSending"
                   :placeholder="texts.rsvp.modal.phonePlaceholder"
                   class="w-full px-4 py-2.5 border border-secondary/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg outline-none font-badoni text-slate-dark bg-white/70 transition-all duration-300 placeholder:text-slate-muted/40 text-base italic disabled:bg-slate-100 disabled:cursor-not-allowed"
@@ -276,6 +282,12 @@ const form = ref({
   people: 1,
   wishes: "",
 });
+
+const handlePhoneInput = (event) => {
+  const cleaned = event.target.value.replace(/\D/g, "");
+  form.value.phone = cleaned;
+  event.target.value = cleaned;
+};
 
 const closeModal = () => {
   emit("close");
