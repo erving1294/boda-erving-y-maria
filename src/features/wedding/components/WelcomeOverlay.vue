@@ -123,12 +123,22 @@
         @click="openEnvelope"
       >
         <div
-          class="relative w-28 h-28 sm:w-32 sm:h-32 flex justify-center items-center"
+          class="relative w-28 h-28 sm:w-32 sm:h-32 flex gap-2 justify-center items-center flex-col"
         >
+          <div
+            class="text-center animate-heartbeat justify-center z-10 inset-x-0 duration-500 ease-in transition-all opacity-100"
+          >
+            <p
+              class="text-sm italic px-2 py-1 rounded-md bg-[#743D43] text-white text-center"
+            >
+              Click aquí
+            </p>
+            <div class="arrow-container"></div>
+          </div>
           <img
             :src="sealUrl"
             alt="Sello de Cera"
-            class="w-full h-full object-contain filter drop-shadow-[0_4px_8px_rgba(0,0,0,0.3)] animate-heartbeat"
+            class="w-full h-full object-contain filter drop-shadow-[0_4px_8px_rgba(0,0,0,0.3)]"
           />
         </div>
       </div>
@@ -157,12 +167,6 @@ onMounted(() => {
   mediaQuery = window.matchMedia("(min-width: 768px)");
   isMobile.value = !mediaQuery.matches;
   mediaQuery.addEventListener("change", handleQuery);
-});
-
-onMounted(() => {
-  setTimeout(() => {
-    openEnvelope();
-  }, 1000);
 });
 
 onUnmounted(() => {
@@ -237,7 +241,15 @@ const openEnvelope = () => {
   if (isOpened.value) return;
 
   isOpened.value = true;
-  play();
+
+  // 1. Play background music
+  try {
+    play();
+  } catch (e) {
+    console.warn("Audio play blocked or failed:", e);
+  }
+
+  // 2. Wait for slide animation, then remove welcome overlay
   setTimeout(() => {
     show.value = false;
 
@@ -355,5 +367,15 @@ if (typeof window !== "undefined") {
 
 .animate-heartbeat {
   animation: heartbeat 2s ease-in-out infinite;
+}
+.arrow-container {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #743d43;
+  margin: 0 auto;
+  position: relative;
+  top: -1px;
 }
 </style>
