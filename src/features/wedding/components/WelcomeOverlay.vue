@@ -129,7 +129,7 @@
             class="text-center animate-heartbeat justify-center z-10 inset-x-0 duration-500 ease-in transition-all opacity-100"
           >
             <p
-              class="text-sm italic px-2 py-1 rounded-md bg-[#743D43] text-white text-center"
+              class="text-[10px] tracking-[0.25em] uppercase text-white group-hover:text-white transition-colors font-sans font-medium px-2 py-1 rounded-md bg-[#743D43] text-center"
             >
               Click aquí
             </p>
