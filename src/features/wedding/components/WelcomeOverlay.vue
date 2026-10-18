@@ -159,6 +159,12 @@ onMounted(() => {
   mediaQuery.addEventListener("change", handleQuery);
 });
 
+onMounted(() => {
+  setTimeout(() => {
+    openEnvelope();
+  }, 1000);
+});
+
 onUnmounted(() => {
   if (mediaQuery) {
     mediaQuery.removeEventListener("change", handleQuery);
