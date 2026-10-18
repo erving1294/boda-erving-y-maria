@@ -237,15 +237,7 @@ const openEnvelope = () => {
   if (isOpened.value) return;
 
   isOpened.value = true;
-
-  // 1. Play background music
-  try {
-    play();
-  } catch (e) {
-    console.warn("Audio play blocked or failed:", e);
-  }
-
-  // 2. Wait for slide animation, then remove welcome overlay
+  play();
   setTimeout(() => {
     show.value = false;
 
