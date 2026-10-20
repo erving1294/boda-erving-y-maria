@@ -128,7 +128,7 @@
 
               <!-- 3. ¿Cuántas personas asistirán? (Visible only if attending is 'yes') -->
               <div
-                v-if="form.attending === 'yes'"
+                v-if="form.attending === 'yes' && passes > 1"
                 class="flex flex-col gap-[2px]"
               >
                 <label class="form-label">
