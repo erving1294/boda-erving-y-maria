@@ -131,7 +131,7 @@
             <p
               class="text-[10px] tracking-[0.25em] uppercase text-white group-hover:text-white transition-colors font-sans font-medium px-2 py-1 rounded-md bg-[#743D43] text-center"
             >
-              Click aquí
+              Clic aquí
             </p>
             <div class="arrow-container"></div>
           </div>
