@@ -530,8 +530,15 @@
   {
     "code": "eym-rfplvq",
     "name": "Rodrigo Figueroa Ching",
-    "invitationCount": 1,
+    "invitationCount": 2,
     "queue": true,
     "url": "https://boda-erving-y-maria.vercel.app/?invited=eym-rfplvq"
+  },
+  {
+    "code": "eym-gigvcm",
+    "name": "Gustavo Inti Guerrero",
+    "invitationCount": 1,
+    "queue": true,
+    "url": "https://boda-erving-y-maria.vercel.app/?invited=eym-gigvcm"
   }
 ]
