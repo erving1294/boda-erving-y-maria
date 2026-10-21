@@ -58,7 +58,7 @@
       "subtitle": "Religiosa",
       "name": "Parroquia Cristo Sacerdote",
       "address": "José Domingo Choquehuanca 239, San Miguel",
-      "time": "3:30 PM",
+      "time": "3:00 PM",
       "buttonLabel": "Ver ubicación"
     },
     "celebration": {
@@ -155,7 +155,7 @@
     "subtitle": "Con mucho amor, compartimos contigo cada momento de nuestro día.",
     "events": [
       {
-        "time": "3:30 PM",
+        "time": "3:00 PM",
         "title": "Ceremonia religiosa",
         "description": "Nuestro «sí, acepto»",
         "icon": "church"
