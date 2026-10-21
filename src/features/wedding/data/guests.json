@@ -488,12 +488,14 @@
   {
     "code": "eym-b7a2p",
     "name": "Milagros Baularte y Esposo",
+    "queue": true,
     "invitationCount": 2,
     "url": "https://boda-erving-y-maria.vercel.app/?invited=eym-b7a2p"
   },
   {
     "code": "eym-qwa9l",
     "name": "Ada Tueros y Esposo",
+    "queue": true,
     "invitationCount": 2,
     "url": "https://boda-erving-y-maria.vercel.app/?invited=eym-qwa9l"
   },
@@ -501,12 +503,35 @@
     "code": "eym-nja5p",
     "name": "José Pando Tapia",
     "invitationCount": 1,
+    "queue": true,
     "url": "https://boda-erving-y-maria.vercel.app/?invited=eym-nja5p"
   },
   {
     "code": "eym-p78ig",
     "name": "Brenda Arica Vilela",
     "invitationCount": 1,
+    "queue": true,
     "url": "https://boda-erving-y-maria.vercel.app/?invited=eym-p78ig"
+  },
+  {
+    "code": "eym-poltgf",
+    "name": "Kevin Mendoza Tasayco",
+    "queue": true,
+    "invitationCount": 1,
+    "url": "https://boda-erving-y-maria.vercel.app/?invited=eym-poltgf"
+  },
+  {
+    "code": "eym-jarpkg",
+    "name": "Jhon Almeyda Rioja",
+    "invitationCount": 1,
+    "queue": true,
+    "url": "https://boda-erving-y-maria.vercel.app/?invited=eym-jarpkg"
+  },
+  {
+    "code": "eym-rfplvq",
+    "name": "Rodrigo Figueroa Ching",
+    "invitationCount": 1,
+    "queue": true,
+    "url": "https://boda-erving-y-maria.vercel.app/?invited=eym-rfplvq"
   }
 ]

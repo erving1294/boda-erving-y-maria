@@ -40,6 +40,7 @@
         :guest-id="guestId"
         :guest-name="guestName"
         :passes="passes"
+        :queue="isQueue"
       />
       <!-- 13. Footer -->
       <footer
@@ -87,6 +88,7 @@ const ready = ref(false);
 const guestId = ref("");
 const guestName = ref("");
 const passes = ref(2);
+const isQueue = ref(false);
 const showInviteSections = ref(false);
 
 const onEnter = () => {
@@ -126,6 +128,7 @@ onMounted(() => {
         guestId.value = guest.code;
         guestName.value = guest.name;
         passes.value = guest.invitationCount;
+        isQueue.value = Boolean(guest.queue);
         showInviteSections.value = true;
       }
     }

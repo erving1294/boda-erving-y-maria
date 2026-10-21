@@ -45,7 +45,7 @@
 
               <p class="description mb-4 w-full">
                 {{ texts.rsvp.description }}
-                <strong>{{ texts.rsvp.deadlineDate }}</strong
+                <strong>{{ deadlineDate }}</strong
                 >.
               </p>
 
@@ -93,12 +93,13 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { motion } from "motion-v";
 import PaperCard from "../../../components/PaperCard.vue";
 import PolaroidPhoto from "../../../components/PolaroidPhoto.vue";
 import RsvpModal from "./RsvpModal.vue";
 import texts from "../data/texts.json";
+import guests from "../data/guests.json";
 import { images } from "../data/images";
 
 const props = defineProps({
@@ -114,6 +115,26 @@ const props = defineProps({
     type: Number,
     default: 2,
   },
+  queue: {
+    type: Boolean,
+    default: false,
+  },
+});
+
+const isQueue = computed(() => {
+  if (props.queue) return true;
+  if (!props.guestId) return false;
+  const guest = guests.find(
+    (g) => g.code.trim().toUpperCase() === props.guestId.trim().toUpperCase(),
+  );
+  return Boolean(guest?.queue);
+});
+
+const deadlineDate = computed(() => {
+  if (isQueue.value) {
+    return texts.rsvp.deadlineDateQueue;
+  }
+  return texts.rsvp.deadlineDate;
 });
 
 const phone = "51999999999"; // Reemplazar con el número real de los novios
