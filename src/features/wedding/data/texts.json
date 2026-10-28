@@ -66,7 +66,7 @@
       "subtitle": "",
       "name": "Casa Los Rosales",
       "address": "Pachacamac, Lima",
-      "time": "6:30 PM",
+      "time": "6:00 PM",
       "buttonLabel": "Ver ubicación"
     }
   },
@@ -161,7 +161,7 @@
         "icon": "church"
       },
       {
-        "time": "6:30 PM",
+        "time": "6:00 PM",
         "title": "Recepción",
         "description": "Casa Los Rosales, Pachacamac",
         "icon": "toast"
