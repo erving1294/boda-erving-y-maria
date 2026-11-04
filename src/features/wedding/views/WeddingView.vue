@@ -1,5 +1,10 @@
 <template>
+  <!-- If invitation is invalid: show "Invitación no disponible" -->
+  <InvalidInvitation v-if="!isValidGuest" />
+
+  <!-- If invitation is valid: show full wedding experience -->
   <div
+    v-else
     class="relative bg-ivory min-h-screen text-slate-dark selection:bg-gold/30 selection:text-sage"
   >
     <!-- Welcome Overlay screen -->
@@ -68,6 +73,7 @@ import { ref, onMounted } from "vue";
 
 // Import Subcomponents
 import WelcomeOverlay from "../components/WelcomeOverlay.vue";
+import InvalidInvitation from "../components/InvalidInvitation.vue";
 import MusicControl from "../components/MusicControl.vue";
 import HeroSection from "../components/HeroSection.vue";
 import CountdownSection from "../components/CountdownSection.vue";
@@ -83,19 +89,64 @@ import BannerImage from "../../../components/BannerImage.vue";
 import guests from "../data/guests.json";
 import texts from "../data/texts.json";
 
+function findGuest(invitedCode) {
+  if (!invitedCode || typeof invitedCode !== "string") return null;
+  const cleanCode = invitedCode.trim().toUpperCase();
+  if (!cleanCode) return null;
+
+  return (
+    guests.find((g) => {
+      if (g.code && g.code.trim().toUpperCase() === cleanCode) return true;
+      if (g.url) {
+        try {
+          const u = new URL(g.url);
+          const urlCode = u.searchParams.get("invited");
+          if (urlCode && urlCode.trim().toUpperCase() === cleanCode) return true;
+        } catch {
+          const match = g.url.match(/[?&]invited=([^&#]+)/i);
+          if (
+            match &&
+            decodeURIComponent(match[1]).trim().toUpperCase() === cleanCode
+          ) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }) || null
+  );
+}
+
+function getGuestFromCurrentUrl() {
+  if (typeof window === "undefined") return null;
+  const params = new URLSearchParams(window.location.search);
+  const invitedCode = params.get("invited") || params.get("code");
+  return findGuest(invitedCode);
+}
+
+const currentGuest = getGuestFromCurrentUrl();
+
 // Reactive state
+const isValidGuest = ref(Boolean(currentGuest));
 const ready = ref(false);
-const guestId = ref("");
-const guestName = ref("");
-const passes = ref(2);
-const isQueue = ref(false);
-const showInviteSections = ref(false);
+const guestId = ref(currentGuest?.code || "");
+const guestName = ref(currentGuest?.name || "");
+const passes = ref(currentGuest?.invitationCount || 2);
+const isQueue = ref(Boolean(currentGuest?.queue));
+const showInviteSections = ref(Boolean(currentGuest));
 
 const onEnter = () => {
   ready.value = true;
 };
 
 onMounted(() => {
+  if (!isValidGuest.value) {
+    if (typeof document !== "undefined") {
+      document.body.style.overflow = "";
+    }
+    return;
+  }
+
   // Preload hero fonts early in background while overlay is active
   if (typeof document !== "undefined" && document.fonts) {
     try {
@@ -115,23 +166,6 @@ onMounted(() => {
     requestAnimationFrame(() => {
       window.scrollTo(0, 0);
     });
-
-    // Parse Query Parameters
-    const params = new URLSearchParams(window.location.search);
-    const invitedCode = params.get("invited");
-
-    if (invitedCode) {
-      const guest = guests.find(
-        (g) => g.code.trim().toUpperCase() === invitedCode.trim().toUpperCase(),
-      );
-      if (guest) {
-        guestId.value = guest.code;
-        guestName.value = guest.name;
-        passes.value = guest.invitationCount;
-        isQueue.value = Boolean(guest.queue);
-        showInviteSections.value = true;
-      }
-    }
   }
 });
 </script>

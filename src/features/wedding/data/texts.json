@@ -6,6 +6,11 @@
   "welcomeOverlay": {
     "sealAlt": "Sello de Cera"
   },
+  "invalidInvitation": {
+    "title": "Invitación no disponible",
+    "description": "Esta invitación no se encuentra disponible o el enlace no es válido.",
+    "subtext": "Si consideras que se trata de un error, por favor comunícate con los anfitriones."
+  },
   "hero": {
     "title1": "Ervíng",
     "title2": "María",
