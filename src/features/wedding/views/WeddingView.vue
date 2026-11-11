@@ -101,7 +101,8 @@ function findGuest(invitedCode) {
         try {
           const u = new URL(g.url);
           const urlCode = u.searchParams.get("invited");
-          if (urlCode && urlCode.trim().toUpperCase() === cleanCode) return true;
+          if (urlCode && urlCode.trim().toUpperCase() === cleanCode)
+            return true;
         } catch {
           const match = g.url.match(/[?&]invited=([^&#]+)/i);
           if (
@@ -147,7 +148,6 @@ onMounted(() => {
     return;
   }
 
-  // Preload hero fonts early in background while overlay is active
   if (typeof document !== "undefined" && document.fonts) {
     try {
       document.fonts.load('60px "laparisienne"');
@@ -157,7 +157,6 @@ onMounted(() => {
     }
   }
 
-  // Force scroll to top (0, 0) on page load/refresh
   if (typeof window !== "undefined") {
     if (history.scrollRestoration) {
       history.scrollRestoration = "manual";
